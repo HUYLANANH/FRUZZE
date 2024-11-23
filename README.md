@@ -30,10 +30,10 @@
 
 ## THÀNH VIÊN NHÓM
 
-| STT | MSSV     | Họ và Tên            | GitHub                            | Email                  |
-| :-- | :------- | :------------------- | :-------------------------------- | :--------------------- |
-| 1   | 22520492 | Phạm Ngọc Ánh Hồng   | https://github.com/pnah11102004   | 22520492@gm.uit.edu.vn |
-| 2   | 22520902 | Nguyễn Trần Yến My   |                                   | 22520902@gm.uit.edu.vn |
-| 3   | 22521442 | Nguyễn Ngọc Anh Thư  |                                   | 22521442@gm.uit.edu.vn |
-| 4   | 21520763 | Trần Văn Dương       | https://github.com/Duogz          | 21520763@gm.uit.edu.vn |
-| 5   | 22520562 | Nguyễn Minh Huy      | https://github.com/HUYLANANH      | 22520562@gm.uit.edu.vn |
+| STT | MSSV     | Họ và Tên            | GitHub                               | Email                  |
+| :-- | :------- | :------------------- | :------------------------------------| :--------------------- |
+| 1   | 22520492 | Phạm Ngọc Ánh Hồng   | https://github.com/pnah11102004      | 22520492@gm.uit.edu.vn |
+| 2   | 22520902 | Nguyễn Trần Yến My   | https://github.com/Nguyen-Tran-Yen-My| 22520902@gm.uit.edu.vn |
+| 3   | 22521442 | Nguyễn Ngọc Anh Thư  | https://github.com/athu1124          | 22521442@gm.uit.edu.vn |
+| 4   | 21520763 | Trần Văn Dương       | https://github.com/Duogz             | 21520763@gm.uit.edu.vn |
+| 5   | 22520562 | Nguyễn Minh Huy      | https://github.com/HUYLANANH         | 22520562@gm.uit.edu.vn |
