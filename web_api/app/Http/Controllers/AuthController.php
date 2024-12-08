@@ -48,11 +48,11 @@ class AuthController extends Controller
         if (User::where('phone_number', $request->phone_number)->exists()) {
             return response()->json(['error' => 'Sdt đã tồn tại'], 400);
         }
-        
+
         // Tạo người dùng với role_id là 2 (user)
         $user = User::create([
             'username' => $request->username,
-            'email' => $request->email, 
+            'email' => $request->email,
             'password' => Hash::make($request->password),
             'role_id' => 2,
             'full_name' => $request->full_name,
@@ -60,7 +60,7 @@ class AuthController extends Controller
             'phone_number' => $request->phone_number,
             'address' => $request->address,
         ]);
-    
+
         return response()->json(['user' => $user], 201);
     }
 
@@ -83,7 +83,7 @@ class AuthController extends Controller
             'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role_id' => 1, 
+            'role_id' => 1,
             'full_name' => $request->full_name,
             'birth_year' => $request->birth_year,
             'phone_number' => $request->phone_number,
@@ -95,10 +95,6 @@ class AuthController extends Controller
 
     public function resetPassword(Request $request)
     {
-        $request->validate([
-            'reset_token' => 'required|string'
-        ]);
-
         $resetData = Cache::get('password-reset-' . $request->email);
 
         if (!$resetData || $resetData != $request->reset_token) {
@@ -113,4 +109,19 @@ class AuthController extends Controller
 
         return response()->json(['message' => 'Mật khẩu đã được thay đổi thành công']);
     }
+
+    public function changePassword(Request $request){
+        $user = auth('api')->user();
+
+        if (!Hash::check($request->old_password, $user->password)) {
+            return response()->json(['error' => 'Mật khẩu cũ không chính xác'], 400);
+        }
+
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+
+        return response()->json(['message' => 'Đổi mật khẩu thành công']);
+    }
+
+
 }
