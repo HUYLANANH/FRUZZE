@@ -1,38 +1,26 @@
 <!DOCTYPE html>
 <html lang="vi">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>FRUZZE</title>
+    <title>FRUZZE | @yield('title')</title>
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Favicon -->
-    <link
-      rel="shortcut icon"
-      type="image/x-icon"
-      href="assets/images/FRUZZE-favicon.png">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700,600">
-    <link href="https://pennypixels.pennymacusa.com/css/1_4_1/pp.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-    <link rel="icon" type="image/x-icon" href="{{ asset('assets/colored-logo.png') }}">
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.2/dist/sweetalert2.min.css" rel="stylesheet">
-
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-  </head>
-
-  <body>
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/FRUZZE-favicon.png') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/vendor/font-awesome.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/vendor/Pe-icon-7-stroke.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/animate.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/jquery-ui.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/swiper-bundle.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/nice-select.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/magnific-popup.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
+</head>
+<body>
     <div class="main-wrapper">
-      <!-- Begin Main Header Area -->
-      <header class="main-header_area position-relative">
+        <!-- Main Header Area -->
+        <header class="main-header_area position-relative">
         <div class="header-middle py-5">
           <div class="container">
             <div class="row align-items-center">
@@ -291,50 +279,159 @@
           </div>
         </div>
         <div class="global-overlay"></div>
-      </header>
-      <!-- Main Header Area End Here -->
+        </header>
 
-    <div class="login-wrapper">
-        <div class="login">
-            <div class="txt-divider">Đăng nhập</div>
-            <br>
-            <!-- Form -->
-            <form id="loginForm" class="login-form">
-                <!-- Email -->
-                <label for="username" style="font-weight: 400;">Tên đăng nhập</label><br>
-                <input type="text" id="username" name="username" placeholder="Nhập tên đăng nhập" required><br><br>
+        @yield('content') <!-- Placeholder for dynamic content -->
 
-
-                <!-- Password -->
-                <label for="password-user" style="font-weight: 400;">Mật khẩu</label><br>
-                <input type="password" id="password-user" name="password" placeholder="Nhập mật khẩu" required><br><br>
-
-                <!-- Error Message -->
-                <span id="errorMessage" style="color: red; display: none;">Sai email hoặc mật khẩu</span>
-
-                <!-- Submit Button -->
-                <button class="btn-login txt-uppercase" type="submit">Đăng nhập</button>
-            </form>
-            <br>
-            <a href="" class="txt-cyan txt-14 right" id="forget-password">Quên mật khẩu</a><br>
-            <hr style="width: 70%; height: 1px; background-color: var(--black); border: none; margin: 20px auto;">
-            <div class="create-acc txt-center">
-                <span>Bạn chưa có tài khoản? <a href="" class="txt-cyan orange-link">Tạo tài khoản</a></span>
+          <!-- Begin Footer Area -->
+      <div class="footer-area">
+        <div
+          class="footer-top section-space-y-axis-100 text-black"
+          data-bg-color="#F7F8DF"
+        >
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-3 col-md-6">
+                <div class="widget-item">
+                  <div class="footer-logo pb-4">
+                    <a href="index.html">
+                      <img src="assets/images/logo/FRUZZE.png" alt="Logo" />
+                    </a>
+                  </div>
+                  <p class="short-desc mb-2">
+                    Fruzze tự hào là thương hiệu luôn đặt chất lượng lên hàng
+                    đầu, mang đến những trải nghiệm tuyệt vời qua từng sản phẩm.
+                  </p>
+                  <div class="widget-contact-info pb-6">
+                    <ul>
+                      <li>
+                        <i class="pe-7s-map-marker"></i>
+                        Tân Lập, Dĩ An, Bình Dương
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-2 offset-lg-1 col-md-6 pt-10 pt-lg-0">
+                <div class="widget-item">
+                  <h3 class="widget-title mb-5">Liên Hệ</h3>
+                  <ul class="widget-list-item">
+                    <li>
+                      <b>FB: </b>
+                      <a
+                        href="https://www.facebook.com/profile.php?id=61554393290754"
+                        >FRUZZE</a
+                      >
+                    </li>
+                    <li>
+                      <b>IG: </b>
+                      <a href="https://www.instagram.com/ours.fruzze/"
+                        >ours.fruzze</a
+                      >
+                    </li>
+                    <li>
+                      <b>Điện thoại: </b>
+                      <a href="tel: +84859306712">0859306712</a>
+                    </li>
+                    <li>
+                      <b>Email: </b>
+                      22521442@gm.uit.edu.vn
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-lg-2 offset-lg-1 col-md-6 pt-10 pt-lg-0">
+                <div class="widget-item">
+                  <h3 class="widget-title mb-5">FRUZZE</h3>
+                  <ul class="widget-list-item">
+                    <li>
+                      <a href="index.html">Trang Chủ</a>
+                    </li>
+                    <li>
+                      <a href="shop.html">Cửa Hàng</a>
+                    </li>
+                    <li>
+                      <a href="blog.html">Bài Viết</a>
+                    </li>
+                    <li>
+                      <a href="term.html">Chính Sách</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 pt-10 pt-lg-0">
+                <div class="widget-item">
+                  <h3 class="widget-title mb-5">Để lại lời nhắn</h3>
+                  <p class="short-desc">
+                    Nếu quan tâm đến FRUZZE, hãy để lại thông tin liên lạc tại
+                    đây nhé.
+                  </p>
+                </div>
+                <div class="widget-form-area">
+                  <form class="widget-form" action="#">
+                    <input
+                      class="input-field"
+                      type="email"
+                      autocomplete="off"
+                      placeholder="Email của bạn"
+                    />
+                    <div class="button-wrap pt-5">
+                      <button
+                        class="btn btn-custom-size btn-primary btn-secondary-hover rounded-0"
+                        id="mc-submit"
+                      >
+                        Gửi
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
+        <div class="footer-bottom py-3" data-bg-color="#3B6230">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="copyright">
+                  <span class="copyright-text text-white"
+                    >© 2024 FRUZZE Made With
+                    <i class="fa fa-heart text-danger"></i> by
+                    <a href="https://hasthemes.com/" target="_blank">Group 10</a>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Footer Area End Here -->
+
+      <!-- Begin Scroll To Top -->
+      <a class="scroll-to-top" href="">
+        <i class="fa fa-chevron-up"></i>
+      </a>
+      <!-- Scroll To Top End Here -->
     </div>
 
-    <footer style="background-color: white; color: var(--cyan);">
-        <div class="footer-copyright txt-center" style="font-weight: 400;">
-            Copyright by PING Cosmetics - Based in Ho Chi Minh City
-        </div>
-        <div class="footer-hotline txt-center">Hotline: 012345678</div>
-    </footer>
+    <!-- Vendor JS -->
+    <script src="{{ asset('assets/js/vendor/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/jquery-3.5.1.min.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/jquery-migrate-3.3.0.min.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/modernizr-3.11.2.min.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/jquery.waypoints.js') }}"></script>
 
-    <!-- JavaScript -->
-    <script src="https://kit.fontawesome.com/6594d9651c.js" crossorigin="anonymous"></script>
-    <script>
-        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+    <!--Plugins JS-->
+    <script src="{{ asset('assets/js/plugins/wow.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/swiper-bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/jquery.nice-select.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/parallax.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/jquery.magnific-popup.min.js') }}"></script>
+
+    <!--Main JS (Common Activation Codes)-->
+    <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script> document.getElementById('loginForm').addEventListener('submit', async (e) => {
             e.preventDefault(); // Chặn hành vi submit mặc định
 
             // Lấy dữ liệu từ form
@@ -368,8 +465,8 @@
                 document.getElementById('errorMessage').innerText = 'Đã xảy ra lỗi. Vui lòng thử lại.';
                 document.getElementById('errorMessage').style.display = 'block';
             }
-        });
-    </script>
+        });</script>
 </body>
-
 </html>
+
+       
