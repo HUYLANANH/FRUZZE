@@ -4,7 +4,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EmailController;
+
 
 Route::group([
     'prefix' => 'auth'
@@ -40,4 +42,8 @@ Route::group([
     // lấy danh sách theo role
     Route::get('all-users/{role_id}', [AdminController::class, 'getUsers']);
 });
+
+Route::apiResource('category', CategoryController::class);
+
+
 
