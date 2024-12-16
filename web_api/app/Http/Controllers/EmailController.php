@@ -24,12 +24,12 @@ class EmailController extends Controller
 
         return response()->json(['message' => 'OTP sent successfully!', 'otp' => $otp], 200);
     }
-    
+
     public function verifyOtp(Request $request)
     {
         $otpData = Cache::get($request->email);
 
-        if ($otpData && $otpData == $request->Otp) {
+        if ($otpData && $otpData == $request->otp) {
             Cache::forget($request->email);
             $resetToken = Str::random(60);
             Cache::put('password-reset-' . $request->email, $resetToken, 5*60);
