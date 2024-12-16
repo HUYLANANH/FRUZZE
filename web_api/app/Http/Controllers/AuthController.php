@@ -123,5 +123,4 @@ class AuthController extends Controller
         return response()->json(['message' => 'Đổi mật khẩu thành công']);
     }
 
-
 }
