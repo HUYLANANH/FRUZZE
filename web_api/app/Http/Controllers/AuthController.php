@@ -53,10 +53,10 @@ class AuthController extends Controller
 
         if($result)
         {
-            return response()->json(['message' => 'Hồ sơ cá nhân đã được cập nhật thành công.', 'user' => $user]);
+            return response()->json(['message' => 'Hồ sơ cá nhân đã được cập nhật thành công.', 'user' => $user],201);
         }
         else{
-            return response()->json(['message' => 'Không cập nhật thành công', 'user' => $user]);
+            return response()->json(['error' => 'Không cập nhật thành công', 'user' => $user],500);
         }
 
     }

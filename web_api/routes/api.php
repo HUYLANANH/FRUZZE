@@ -18,6 +18,8 @@ Route::group([
     Route::post('logout', [AuthController::class, 'logout'])->middleware('check_login');
     //lấy thông tin người dùng
     Route::get('profile', [AuthController::class, 'profile'])->middleware('check_login');
+    //Sửa thông tin người dùng
+    Route::patch('update-profile',[AuthController::class,'updateProfile'])->middleware('check_login');
     //đăng kí người dùng (user)
     Route::post('register', [AuthController::class, 'registerUser']);
     //đăng kí admin
