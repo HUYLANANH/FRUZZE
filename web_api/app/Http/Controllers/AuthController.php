@@ -36,6 +36,31 @@ class AuthController extends Controller
     {
         return response()->json(auth('api')->User());
     }
+
+    public function updateProfile(Request $request)
+    {
+        // Lấy người dùng hiện tại
+        $user = auth('api')->user();
+
+        // Cập nhật thông tin người dùng
+        $user->full_name = $request->full_name;
+        $user->username = $request->username;
+        $user->email = $request->email;
+        $user->phone_number = $request->phone_number;
+        $user->address = $request->address;
+
+        $result = $user->save();
+
+        if($result)
+        {
+            return response()->json(['message' => 'Hồ sơ cá nhân đã được cập nhật thành công.', 'user' => $user],201);
+        }
+        else{
+            return response()->json(['error' => 'Không cập nhật thành công', 'user' => $user],500);
+        }
+
+    }
+
     public function registerUser(Request $request)
     {
         if (User::where('username', $request->name)->exists()) {
@@ -122,6 +147,5 @@ class AuthController extends Controller
 
         return response()->json(['message' => 'Đổi mật khẩu thành công']);
     }
-
 
 }
