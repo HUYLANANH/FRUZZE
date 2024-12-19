@@ -10,7 +10,7 @@ const UserList: React.FC = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get('/v3/api/user', {
+      const response = await axios.get('http://127.0.0.1:8000/admin/all-users/2', {
         headers: {
           'Authorization': `Bearer ${token}`,
           'accept': '*/*',

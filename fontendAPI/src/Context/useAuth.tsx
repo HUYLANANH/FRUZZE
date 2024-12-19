@@ -2,7 +2,7 @@
 import { createContext, useEffect, useState } from "react";
 import { UserProfile } from "../Models/User";
 import { useNavigate } from "react-router-dom";
-import { loginAPI, registerAPI } from "../Services/AuthService";
+import { loginAPI } from "../Services/AuthService";
 import { toast } from "react-toastify";
 import React from "react";
 import axios from "axios";
@@ -10,12 +10,6 @@ import axios from "axios";
 type UserContextType = {
   user: UserProfile | null;
   token: string | null;
-  registerUser: (
-    username: string,
-    email: string,
-    password: string,
-    nameOfUser: string
-  ) => Promise<void>;
   loginUser: (username: string, password: string) => Promise<void>;
   logout: () => void;
   isLoggedIn: () => boolean;
@@ -53,40 +47,14 @@ export const UserProvider = ({ children }: Props) => {
     loadUserFromStorage();
   }, []);
 
-  const registerUser = async (
-    username: string,
-    email: string,
-    password: string,
-    nameOfUser: string
-  ) => {
-    try {
-      const payload = { username, email, password, nameOfUser };
-      const res = await registerAPI(payload);
-
-      if (res) {
-        const { token, username, email, role } = res.data;
-        const userObj = { username, email, token, role };
-        localStorage.setItem("token", token);
-        localStorage.setItem("user", JSON.stringify(userObj));
-
-        setToken(token);
-        setUser(userObj);
-        toast.success("Registration successful! Please log in.");
-        navigate("/login");
-      }
-    } catch (error) {
-      toast.error("Registration failed. Please try again.");
-      console.error("Registration Error:", error);
-    }
-  };
 
   const loginUser = async (username: string, password: string) => {
     try {
       const res = await loginAPI(username, password);
 
       if (res) {
-        const { token, username, email, role } = res.data;
-        const userObj = { username, email, token, role };
+        const { token,  role } = res.data;
+        const userObj = {  token, role };
         localStorage.setItem("token", token);
         localStorage.setItem("user", JSON.stringify(userObj));
 
@@ -114,7 +82,7 @@ export const UserProvider = ({ children }: Props) => {
 
   return (
     <UserContext.Provider
-      value={{ user, token, registerUser, loginUser, logout, isLoggedIn }}
+      value={{ user, token, loginUser, logout, isLoggedIn }}
     >
       {isReady ? children : <div>Loading...</div>}
     </UserContext.Provider>
