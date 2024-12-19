@@ -7,7 +7,7 @@
                     <div class="breadcrumb-item">
                         <h2 class="breadcrumb-heading">TÀI KHOẢN CỦA BẠN</h2>
                         <ul>
-                            <li><a href="/index">Trang Chủ <i class="pe-7s-angle-right"></i></a></li>
+                            <li><a href="/">Trang Chủ <i class="pe-7s-angle-right"></i></a></li>
                             <li>Tài Khoản Của Bạn</li>
                         </ul>
                     </div>
@@ -76,35 +76,39 @@
     </div>
 </main>
 <script>
-    async function fetchProfile() {
-            const token = localStorage.getItem('token');
-
-            try {
-                const response = await fetch('http://127.0.0.1:8000/api/auth/profile', {
-                    method: 'GET',
-                    headers: {
-                        'Authorization': `Bearer ${token}`,
-                        'Content-Type': 'application/json'
-                    }
-                });
-                if (!response.ok) throw new Error('Failed to fetch profile data');
-                const data = await response.json();
-
-                // Populate form fields with the data
-                document.getElementById('full_name').value = data.full_name || '';
-                document.getElementById('username').value = data.username || '';
-                document.getElementById('email').value = data.email || '';
-                document.getElementById('phone_number').value = data.phone_number || '';
-                document.getElementById('birth_year').value = data.birth_year || '';
-                document.getElementById('address').value = data.address || '';
-            } catch (error) {
-                showAlert('danger', 'Failed to load profile. Please try again.');
-            }
-        }
-
-        async function saveProfile() {
+   // Hàm lấy thông tin người dùng từ backend và đổ vào form
+   async function fetchProfile() {
         const token = localStorage.getItem('token');
-        const data = {
+
+        try {
+            const response = await fetch('http://127.0.0.1:8000/api/auth/profile', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+            if (!response.ok) throw new Error('Không thể tải dữ liệu hồ sơ');
+            const data = await response.json();
+
+            // Gán dữ liệu vào form
+            document.getElementById('full_name').value = data.full_name || '';
+            document.getElementById('username').value = data.username || '';
+            document.getElementById('email').value = data.email || '';
+            document.getElementById('phone_number').value = data.phone_number || '';
+            document.getElementById('birth_year').value = data.birth_year || '';
+            document.getElementById('address').value = data.address || '';
+        } catch (error) {
+            showAlert('danger', 'Không thể tải thông tin hồ sơ. Vui lòng thử lại.');
+        }
+    }
+
+    // Hàm lưu hồ sơ người dùng sau khi chỉnh sửa
+    async function saveProfile() {
+        const token = localStorage.getItem('token');
+
+        // Lấy dữ liệu từ form
+        const formData = {
             full_name: document.getElementById('full_name').value,
             username: document.getElementById('username').value,
             email: document.getElementById('email').value,
@@ -114,45 +118,52 @@
         };
 
         try {
-            const response = await fetch('http://127.0.0.1:8000/api/auth/profile', {
+            const response = await fetch('http://127.0.0.1:8000/api/auth/update-profile', {
                 method: 'PATCH',
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(data)
+                body: JSON.stringify(formData) // stringify object formData
             });
 
-            if (!response.ok) throw new Error('Failed to update profile');
-            showAlert('success', 'Profile updated successfully.');
+            const responseData = await response.json();
+            if (!response.ok) throw new Error(responseData.message || 'Cập nhật thất bại');
+            showAlert('success', 'Hồ sơ đã được cập nhật thành công.');
         } catch (error) {
-            showAlert('danger', 'Failed to update profile. Please try again.');
+            showAlert('danger', error.message || 'Cập nhật hồ sơ thất bại. Vui lòng thử lại.');
         }
     }
+
+
     document.getElementById('change-password').addEventListener('click', function () {
     window.location.href = '/change-password'; // URL của trang đổi mật khẩu
 });
 
-        // Function to show alerts
-        function showAlert(type, message) {
-            const alertBox = document.getElementById('alert');
-            alertBox.className = `alert alert-${type}`;
-            alertBox.textContent = message;
-            alertBox.classList.remove('d-none');
-        }
-
-        // Initialize the form with user data
-        document.addEventListener('DOMContentLoaded', fetchProfile);
-
-        document.getElementById('edit-profile').addEventListener('click', function () {
+    // Xử lý nút "Sửa Thông Tin"
+    document.getElementById('edit-profile').addEventListener('click', function () {
         const isEditing = this.textContent === 'Lưu Thay Đổi';
         const fields = document.querySelectorAll('#profile-form input, #profile-form textarea');
 
+        // Chuyển đổi trạng thái chỉnh sửa
         fields.forEach(field => field.disabled = isEditing);
         this.textContent = isEditing ? 'Sửa Thông Tin' : 'Lưu Thay Đổi';
 
+        // Nếu đang lưu thay đổi, gọi hàm saveProfile
         if (isEditing) saveProfile();
     });
+
+    // Hiển thị thông báo
+    function showAlert(type, message) {
+        const alertBox = document.getElementById('alert');
+        alertBox.className = `alert alert-${type}`;
+        alertBox.textContent = message;
+        alertBox.classList.remove('d-none');
+    }
+
+
+    // Tải dữ liệu hồ sơ khi trang được load
+    document.addEventListener('DOMContentLoaded', fetchProfile);
 
     document.getElementById('change-password').addEventListener('click', function () {
         document.getElementById('password-section').classList.remove('d-none');

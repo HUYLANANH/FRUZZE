@@ -10,41 +10,19 @@
                 class="slide-inner bg-height"
                 data-bg-image="assets/images/slider/bg/1-1.jpg"
               >
-                <div class="parallax-img-wrap">
-                  <div class="chilly">
-                    <div class="scene fill">
-                      <div class="expand-width" data-depth="0.2">
-                        <img
-                          src="assets/images/slider/inner-img/1-1-231x210.png"
-                          alt="Inner Image"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="avocado">
-                    <div class="scene fill">
-                      <div class="expand-width" data-depth="0.5">
-                        <img
-                          src="assets/images/slider/inner-img/1-2-224x204.png"
-                          alt="Inner Image"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
                 <div class="container">
                   <div class="parallax-with-content">
                     <div class="slide-content">
-                      <span class="sub-title mb-3">Thực Phẩm Tự Nhiên </span>
+                      <span class="sub-title mb-3">FRUZZE</span>
                       <h2 class="title mb-9">
-                        -40% Offer All <br />
-                        Products.
+                        Đích đến của<br />
+                        Lối sống lành mạnh.
                       </h2>
                       <div class="button-wrap">
                         <a
                           class="btn btn-custom-size lg-size btn-primary btn-white-hover rounded-0"
-                          href="shop.html"
-                          >Shop Now</a
+                          href="/about"
+                          >Về FRUZZE</a
                         >
                       </div>
                     </div>
@@ -53,7 +31,7 @@
                         <div class="scene fill">
                           <div class="expand-width" data-depth="0.5">
                             <img
-                              src="assets/images/slider/inner-img/1-3-601x534.png"
+                              src="assets/images/Ảnh trang chủ/Claudia Alves.png"
                               alt="Inner Image"
                             />
                           </div>
@@ -69,41 +47,19 @@
                 class="slide-inner bg-height"
                 data-bg-image="assets/images/slider/bg/1-1.jpg"
               >
-                <div class="parallax-img-wrap">
-                  <div class="chilly">
-                    <div class="scene fill">
-                      <div class="expand-width" data-depth="0.2">
-                        <img
-                          src="assets/images/slider/inner-img/1-1-231x210.png"
-                          alt="Inner Image"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="avocado">
-                    <div class="scene fill">
-                      <div class="expand-width" data-depth="0.5">
-                        <img
-                          src="assets/images/slider/inner-img/1-2-224x204.png"
-                          alt="Inner Image"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
                 <div class="container">
                   <div class="parallax-with-content">
                     <div class="slide-content">
-                      <span class="sub-title mb-3">Natural & Organic</span>
+                      <span class="sub-title mb-3">FRUZZE</span>
                       <h2 class="title mb-9">
-                        -40% Offer All <br />
-                        Products.
+                        Cam Kết 100 %<br />
+                        An toàn từ thiên nhiên
                       </h2>
                       <div class="button-wrap">
                         <a
                           class="btn btn-custom-size lg-size btn-primary btn-white-hover rounded-0"
-                          href="shop.html"
-                          >Shop Now</a
+                          href="/shop"
+                          >Ghé Cửa Hàng</a
                         >
                       </div>
                     </div>
@@ -112,7 +68,7 @@
                         <div class="scene fill">
                           <div class="expand-width" data-depth="0.5">
                             <img
-                              src="assets/images/slider/inner-img/2-1-601x426.png"
+                              src="assets/images/Ảnh trang chủ/Screenshot 2024-11-14 192759.png"
                               alt="Inner Image"
                             />
                           </div>
@@ -134,81 +90,85 @@
       </div>
       <!-- Slider Area End Here -->
 
-      <!-- Begin Shipping Area -->
-      <div class="shipping-area section-space-top-100">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-4 col-md-6">
-              <div class="shipping-item">
-                <div class="shipping-img">
-                  <img
-                    src="assets/images/shipping/icon/plane.png"
-                    alt="Shipping Icon"
-                  />
-                </div>
-                <div class="shipping-content">
-                  <h5 class="title">Free Shipping</h5>
-                  <p class="short-desc mb-0">Free Home Delivery Offer</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6 pt-6 pt-md-0">
-              <div class="shipping-item">
-                <div class="shipping-img">
-                  <img
-                    src="assets/images/shipping/icon/earphones.png"
-                    alt="Shipping Icon"
-                  />
-                </div>
-                <div class="shipping-content">
-                  <h5 class="title">Online Support</h5>
-                  <p class="short-desc mb-0">24/7 Online Support Provide</p>
+        <!-- Begin Shipping Area -->
+        <div class="shipping-area section-space-y-axis-100">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-4 col-md-6">
+                <div class="shipping-item">
+                  <div class="shipping-img">
+                    <img
+                      src="assets/images/shipping/icon/plane.png"
+                      alt="Shipping Icon"
+                    />
+                  </div>
+                  <div class="shipping-content">
+                    <h5 class="title">Miễn Phí Vận Chuyển</h5>
+                    <p class="short-desc mb-0">
+                      FRUZZE cung cấp dịch cụ vận chuyển miễn phí
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="col-lg-4 col-md-6 pt-6 pt-lg-0">
-              <div class="shipping-item">
-                <div class="shipping-img">
-                  <img
-                    src="assets/images/shipping/icon/shield.png"
-                    alt="Shipping Icon"
-                  />
+              <div class="col-lg-4 col-md-6 pt-6 pt-md-0">
+                <div class="shipping-item">
+                  <div class="shipping-img">
+                    <img
+                      src="assets/images/shipping/icon/earphones.png"
+                      alt="Shipping Icon"
+                    />
+                  </div>
+                  <div class="shipping-content">
+                    <h5 class="title">Hỗ Trợ Online</h5>
+                    <p class="short-desc mb-0">
+                      FRUZZE cung cấp dịch vụ hỗ trợ 24/7
+                    </p>
+                  </div>
                 </div>
-                <div class="shipping-content">
-                  <h5 class="title">Secure Payment</h5>
-                  <p class="short-desc mb-0">Fully Secure Payment System</p>
+              </div>
+              <div class="col-lg-4 col-md-6 pt-6 pt-lg-0">
+                <div class="shipping-item">
+                  <div class="shipping-img">
+                    <img
+                      src="assets/images/shipping/icon/shield.png"
+                      alt="Shipping Icon"
+                    />
+                  </div>
+                  <div class="shipping-content">
+                    <h5 class="title">Thanh Toán An Toàn</h5>
+                    <p class="short-desc mb-0">
+                      FRUZZE cam kết thanh toán an toàn, bảo mật
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <!-- Shipping Area End Here -->
+        <!-- Shipping Area End Here -->
 
       <!-- Begin Product Area -->
-      <div class="product-area section-space-top-100">
         <div class="container">
           <div class="row">
             <div class="col-lg-12">
               <ul class="nav product-tab-nav pb-10" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                  <a
-                    class="active"
-                    id="all-items-tab"
-                    data-bs-toggle="tab"
-                    href="#all-items"
-                    role="tab"
-                    aria-controls="all-items"
-                    aria-selected="true"
-                  >
-                    <div class="product-tab-icon">
-                      <img
-                        src="assets/images/product/icon/1.png"
-                        alt="Product Icon"
-                      />
-                    </div>
-                    All Items
-                  </a>
+                    <a
+                      id="fresh-fruits-tab"
+                      data-bs-toggle="tab"
+                      href="#fresh-fruits"
+                      role="tab"
+                      aria-controls="fresh-fruits"
+                      aria-selected="false"
+                    >
+                      <div class="product-tab-icon">
+                        <img
+                          src="assets/images/Ảnh trang chủ/Durian/3.png"
+                          alt="Product Icon"
+                        />
+                      </div>
+                      Sầu Riêng
+                    </a>
                 </li>
                 <li class="nav-item" role="presentation">
                   <a
@@ -221,65 +181,155 @@
                   >
                     <div class="product-tab-icon">
                       <img
-                        src="assets/images/product/icon/2.png"
+                        src="assets/images/Ảnh trang chủ/Durian/6.png"
                         alt="Product Icon"
                       />
                     </div>
-                    Fresh Fruits
+                    Xoài
                   </a>
                 </li>
                 <li class="nav-item" role="presentation">
                   <a
-                    id="vegetable-tab"
-                    data-bs-toggle="tab"
-                    href="#vegetable"
-                    role="tab"
-                    aria-controls="vegetable"
-                    aria-selected="false"
+                  id="fresh-fruits-tab"
+                      data-bs-toggle="tab"
+                      href="#fresh-fruits"
+                      role="tab"
+                      aria-controls="fresh-fruits"
+                      aria-selected="false"
                   >
                     <div class="product-tab-icon">
                       <img
-                        src="assets/images/product/icon/3.png"
+                        src="assets/images/Ảnh trang chủ/Durian/7.png"
                         alt="Product Icon"
                       />
                     </div>
-                    Vegetable
+                    Chuối
                   </a>
                 </li>
                 <li class="nav-item" role="presentation">
                   <a
-                    id="fish-meat-tab"
-                    data-bs-toggle="tab"
-                    href="#fish-meat"
-                    role="tab"
-                    aria-controls="fish-meat"
-                    aria-selected="false"
+                  id="fresh-fruits-tab"
+                      data-bs-toggle="tab"
+                      href="#fresh-fruits"
+                      role="tab"
+                      aria-controls="fresh-fruits"
+                      aria-selected="false"
                   >
                     <div class="product-tab-icon">
                       <img
-                        src="assets/images/product/icon/4.png"
+                        src="assets/images/Ảnh trang chủ/Durian/8.png"
                         alt="Product Icon"
                       />
                     </div>
-                    Fish & Meat
+                    Thanh long
                   </a>
                 </li>
                 <li class="nav-item" role="presentation">
                   <a
-                    id="wheat-tab"
-                    data-bs-toggle="tab"
-                    href="#wheat"
-                    role="tab"
-                    aria-controls="wheat"
-                    aria-selected="false"
+                  id="fresh-fruits-tab"
+                      data-bs-toggle="tab"
+                      href="#fresh-fruits"
+                      role="tab"
+                      aria-controls="fresh-fruits"
+                      aria-selected="false"
                   >
                     <div class="product-tab-icon">
                       <img
-                        src="assets/images/product/icon/5.png"
+                        src="assets/images/Ảnh trang chủ/Durian/5.png"
                         alt="Product Icon"
                       />
                     </div>
-                    Wheat
+                    Đào
+                  </a>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <a
+                  id="fresh-fruits-tab"
+                      data-bs-toggle="tab"
+                      href="#fresh-fruits"
+                      role="tab"
+                      aria-controls="fresh-fruits"
+                      aria-selected="false"
+                  >
+                    <div class="product-tab-icon">
+                      <img
+                        src="assets/images/Ảnh trang chủ/Durian/9.png"
+                        alt="Product Icon"
+                      />
+                    </div>
+                    Dứa
+                  </a>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <a
+                  id="fresh-fruits-tab"
+                      data-bs-toggle="tab"
+                      href="#fresh-fruits"
+                      role="tab"
+                      aria-controls="fresh-fruits"
+                      aria-selected="false"
+                  >
+                    <div class="product-tab-icon">
+                      <img
+                        src="assets/images/Ảnh trang chủ/Durian/4.png"
+                        alt="Product Icon"
+                      />
+                    </div>
+                    Măng Cụt
+                  </a>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <a
+                  id="fresh-fruits-tab"
+                      data-bs-toggle="tab"
+                      href="#fresh-fruits"
+                      role="tab"
+                      aria-controls="fresh-fruits"
+                      aria-selected="false"
+                  >
+                    <div class="product-tab-icon">
+                      <img
+                        src="assets/images/Ảnh trang chủ/Durian/1.png"
+                        alt="Product Icon"
+                      />
+                    </div>
+                    Dâu
+                  </a>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <a
+                  id="fresh-fruits-tab"
+                      data-bs-toggle="tab"
+                      href="#fresh-fruits"
+                      role="tab"
+                      aria-controls="fresh-fruits"
+                      aria-selected="false"
+                  >
+                    <div class="product-tab-icon">
+                      <img
+                        src="assets/images/Ảnh trang chủ/Durian/2.png"
+                        alt="Product Icon"
+                      />
+                    </div>
+                    Kiwi
+                  </a>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <a
+                  id="fresh-fruits-tab"
+                      data-bs-toggle="tab"
+                      href="#fresh-fruits"
+                      role="tab"
+                      aria-controls="fresh-fruits"
+                      aria-selected="false"
+                  >
+                    <div class="product-tab-icon">
+                      <img
+                        src="assets/images/Ảnh trang chủ/Durian/10.png"
+                        alt="Product Icon"
+                      />
+                    </div>
+                    Mít
                   </a>
                 </li>
               </ul>
@@ -306,11 +356,6 @@
                               <li>
                                 <a href="cart.html">
                                   <i class="pe-7s-cart"></i>
-                                </a>
-                              </li>
-                              <li>
-                                <a href="compare.html">
-                                  <i class="pe-7s-shuffle"></i>
                                 </a>
                               </li>
                               <li>
@@ -358,11 +403,6 @@
                                 </a>
                               </li>
                               <li>
-                                <a href="compare.html">
-                                  <i class="pe-7s-shuffle"></i>
-                                </a>
-                              </li>
-                              <li>
                                 <a href="wishlist.html">
                                   <i class="pe-7s-like"></i>
                                 </a>
@@ -404,11 +444,6 @@
                               <li>
                                 <a href="cart.html">
                                   <i class="pe-7s-cart"></i>
-                                </a>
-                              </li>
-                              <li>
-                                <a href="compare.html">
-                                  <i class="pe-7s-shuffle"></i>
                                 </a>
                               </li>
                               <li>
@@ -456,11 +491,6 @@
                                 </a>
                               </li>
                               <li>
-                                <a href="compare.html">
-                                  <i class="pe-7s-shuffle"></i>
-                                </a>
-                              </li>
-                              <li>
                                 <a href="wishlist.html">
                                   <i class="pe-7s-like"></i>
                                 </a>
@@ -502,11 +532,6 @@
                               <li>
                                 <a href="cart.html">
                                   <i class="pe-7s-cart"></i>
-                                </a>
-                              </li>
-                              <li>
-                                <a href="compare.html">
-                                  <i class="pe-7s-shuffle"></i>
                                 </a>
                               </li>
                               <li>
@@ -554,11 +579,6 @@
                                 </a>
                               </li>
                               <li>
-                                <a href="compare.html">
-                                  <i class="pe-7s-shuffle"></i>
-                                </a>
-                              </li>
-                              <li>
                                 <a href="wishlist.html">
                                   <i class="pe-7s-like"></i>
                                 </a>
@@ -603,11 +623,6 @@
                                 </a>
                               </li>
                               <li>
-                                <a href="compare.html">
-                                  <i class="pe-7s-shuffle"></i>
-                                </a>
-                              </li>
-                              <li>
                                 <a href="wishlist.html">
                                   <i class="pe-7s-like"></i>
                                 </a>
@@ -649,11 +664,6 @@
                               <li>
                                 <a href="cart.html">
                                   <i class="pe-7s-cart"></i>
-                                </a>
-                              </li>
-                              <li>
-                                <a href="compare.html">
-                                  <i class="pe-7s-shuffle"></i>
                                 </a>
                               </li>
                               <li>
@@ -710,11 +720,6 @@
                                 </a>
                               </li>
                               <li>
-                                <a href="compare.html">
-                                  <i class="pe-7s-shuffle"></i>
-                                </a>
-                              </li>
-                              <li>
                                 <a href="wishlist.html">
                                   <i class="pe-7s-like"></i>
                                 </a>
@@ -756,11 +761,6 @@
                               <li>
                                 <a href="cart.html">
                                   <i class="pe-7s-cart"></i>
-                                </a>
-                              </li>
-                              <li>
-                                <a href="compare.html">
-                                  <i class="pe-7s-shuffle"></i>
                                 </a>
                               </li>
                               <li>
@@ -808,11 +808,6 @@
                                 </a>
                               </li>
                               <li>
-                                <a href="compare.html">
-                                  <i class="pe-7s-shuffle"></i>
-                                </a>
-                              </li>
-                              <li>
                                 <a href="wishlist.html">
                                   <i class="pe-7s-like"></i>
                                 </a>
@@ -854,11 +849,6 @@
                               <li>
                                 <a href="cart.html">
                                   <i class="pe-7s-cart"></i>
-                                </a>
-                              </li>
-                              <li>
-                                <a href="compare.html">
-                                  <i class="pe-7s-shuffle"></i>
                                 </a>
                               </li>
                               <li>
@@ -906,11 +896,6 @@
                                 </a>
                               </li>
                               <li>
-                                <a href="compare.html">
-                                  <i class="pe-7s-shuffle"></i>
-                                </a>
-                              </li>
-                              <li>
                                 <a href="wishlist.html">
                                   <i class="pe-7s-like"></i>
                                 </a>
@@ -952,11 +937,6 @@
                               <li>
                                 <a href="cart.html">
                                   <i class="pe-7s-cart"></i>
-                                </a>
-                              </li>
-                              <li>
-                                <a href="compare.html">
-                                  <i class="pe-7s-shuffle"></i>
                                 </a>
                               </li>
                               <li>
@@ -1004,11 +984,6 @@
                                 </a>
                               </li>
                               <li>
-                                <a href="compare.html">
-                                  <i class="pe-7s-shuffle"></i>
-                                </a>
-                              </li>
-                              <li>
                                 <a href="wishlist.html">
                                   <i class="pe-7s-like"></i>
                                 </a>
@@ -1050,11 +1025,6 @@
                               <li>
                                 <a href="cart.html">
                                   <i class="pe-7s-cart"></i>
-                                </a>
-                              </li>
-                              <li>
-                                <a href="compare.html">
-                                  <i class="pe-7s-shuffle"></i>
                                 </a>
                               </li>
                               <li>
@@ -1111,11 +1081,6 @@
                                 </a>
                               </li>
                               <li>
-                                <a href="compare.html">
-                                  <i class="pe-7s-shuffle"></i>
-                                </a>
-                              </li>
-                              <li>
                                 <a href="wishlist.html">
                                   <i class="pe-7s-like"></i>
                                 </a>
@@ -1157,11 +1122,6 @@
                               <li>
                                 <a href="cart.html">
                                   <i class="pe-7s-cart"></i>
-                                </a>
-                              </li>
-                              <li>
-                                <a href="compare.html">
-                                  <i class="pe-7s-shuffle"></i>
                                 </a>
                               </li>
                               <li>
@@ -1209,11 +1169,6 @@
                                 </a>
                               </li>
                               <li>
-                                <a href="compare.html">
-                                  <i class="pe-7s-shuffle"></i>
-                                </a>
-                              </li>
-                              <li>
                                 <a href="wishlist.html">
                                   <i class="pe-7s-like"></i>
                                 </a>
@@ -1255,11 +1210,6 @@
                               <li>
                                 <a href="cart.html">
                                   <i class="pe-7s-cart"></i>
-                                </a>
-                              </li>
-                              <li>
-                                <a href="compare.html">
-                                  <i class="pe-7s-shuffle"></i>
                                 </a>
                               </li>
                               <li>
@@ -1307,11 +1257,6 @@
                                 </a>
                               </li>
                               <li>
-                                <a href="compare.html">
-                                  <i class="pe-7s-shuffle"></i>
-                                </a>
-                              </li>
-                              <li>
                                 <a href="wishlist.html">
                                   <i class="pe-7s-like"></i>
                                 </a>
@@ -1353,11 +1298,6 @@
                               <li>
                                 <a href="cart.html">
                                   <i class="pe-7s-cart"></i>
-                                </a>
-                              </li>
-                              <li>
-                                <a href="compare.html">
-                                  <i class="pe-7s-shuffle"></i>
                                 </a>
                               </li>
                               <li>
@@ -1405,11 +1345,6 @@
                                 </a>
                               </li>
                               <li>
-                                <a href="compare.html">
-                                  <i class="pe-7s-shuffle"></i>
-                                </a>
-                              </li>
-                              <li>
                                 <a href="wishlist.html">
                                   <i class="pe-7s-like"></i>
                                 </a>
@@ -1451,11 +1386,6 @@
                               <li>
                                 <a href="cart.html">
                                   <i class="pe-7s-cart"></i>
-                                </a>
-                              </li>
-                              <li>
-                                <a href="compare.html">
-                                  <i class="pe-7s-shuffle"></i>
                                 </a>
                               </li>
                               <li>
@@ -1512,11 +1442,6 @@
                                 </a>
                               </li>
                               <li>
-                                <a href="compare.html">
-                                  <i class="pe-7s-shuffle"></i>
-                                </a>
-                              </li>
-                              <li>
                                 <a href="wishlist.html">
                                   <i class="pe-7s-like"></i>
                                 </a>
@@ -1558,11 +1483,6 @@
                               <li>
                                 <a href="cart.html">
                                   <i class="pe-7s-cart"></i>
-                                </a>
-                              </li>
-                              <li>
-                                <a href="compare.html">
-                                  <i class="pe-7s-shuffle"></i>
                                 </a>
                               </li>
                               <li>
@@ -1610,11 +1530,6 @@
                                 </a>
                               </li>
                               <li>
-                                <a href="compare.html">
-                                  <i class="pe-7s-shuffle"></i>
-                                </a>
-                              </li>
-                              <li>
                                 <a href="wishlist.html">
                                   <i class="pe-7s-like"></i>
                                 </a>
@@ -1656,11 +1571,6 @@
                               <li>
                                 <a href="cart.html">
                                   <i class="pe-7s-cart"></i>
-                                </a>
-                              </li>
-                              <li>
-                                <a href="compare.html">
-                                  <i class="pe-7s-shuffle"></i>
                                 </a>
                               </li>
                               <li>
@@ -1708,11 +1618,6 @@
                                 </a>
                               </li>
                               <li>
-                                <a href="compare.html">
-                                  <i class="pe-7s-shuffle"></i>
-                                </a>
-                              </li>
-                              <li>
                                 <a href="wishlist.html">
                                   <i class="pe-7s-like"></i>
                                 </a>
@@ -1754,11 +1659,6 @@
                               <li>
                                 <a href="cart.html">
                                   <i class="pe-7s-cart"></i>
-                                </a>
-                              </li>
-                              <li>
-                                <a href="compare.html">
-                                  <i class="pe-7s-shuffle"></i>
                                 </a>
                               </li>
                               <li>
@@ -1806,11 +1706,6 @@
                                 </a>
                               </li>
                               <li>
-                                <a href="compare.html">
-                                  <i class="pe-7s-shuffle"></i>
-                                </a>
-                              </li>
-                              <li>
                                 <a href="wishlist.html">
                                   <i class="pe-7s-like"></i>
                                 </a>
@@ -1852,11 +1747,6 @@
                               <li>
                                 <a href="cart.html">
                                   <i class="pe-7s-cart"></i>
-                                </a>
-                              </li>
-                              <li>
-                                <a href="compare.html">
-                                  <i class="pe-7s-shuffle"></i>
                                 </a>
                               </li>
                               <li>
@@ -1913,11 +1803,6 @@
                                 </a>
                               </li>
                               <li>
-                                <a href="compare.html">
-                                  <i class="pe-7s-shuffle"></i>
-                                </a>
-                              </li>
-                              <li>
                                 <a href="wishlist.html">
                                   <i class="pe-7s-like"></i>
                                 </a>
@@ -1959,11 +1844,6 @@
                               <li>
                                 <a href="cart.html">
                                   <i class="pe-7s-cart"></i>
-                                </a>
-                              </li>
-                              <li>
-                                <a href="compare.html">
-                                  <i class="pe-7s-shuffle"></i>
                                 </a>
                               </li>
                               <li>
@@ -2011,11 +1891,6 @@
                                 </a>
                               </li>
                               <li>
-                                <a href="compare.html">
-                                  <i class="pe-7s-shuffle"></i>
-                                </a>
-                              </li>
-                              <li>
                                 <a href="wishlist.html">
                                   <i class="pe-7s-like"></i>
                                 </a>
@@ -2057,11 +1932,6 @@
                               <li>
                                 <a href="cart.html">
                                   <i class="pe-7s-cart"></i>
-                                </a>
-                              </li>
-                              <li>
-                                <a href="compare.html">
-                                  <i class="pe-7s-shuffle"></i>
                                 </a>
                               </li>
                               <li>
@@ -2109,11 +1979,6 @@
                                 </a>
                               </li>
                               <li>
-                                <a href="compare.html">
-                                  <i class="pe-7s-shuffle"></i>
-                                </a>
-                              </li>
-                              <li>
                                 <a href="wishlist.html">
                                   <i class="pe-7s-like"></i>
                                 </a>
@@ -2155,11 +2020,6 @@
                               <li>
                                 <a href="cart.html">
                                   <i class="pe-7s-cart"></i>
-                                </a>
-                              </li>
-                              <li>
-                                <a href="compare.html">
-                                  <i class="pe-7s-shuffle"></i>
                                 </a>
                               </li>
                               <li>
@@ -2207,11 +2067,6 @@
                                 </a>
                               </li>
                               <li>
-                                <a href="compare.html">
-                                  <i class="pe-7s-shuffle"></i>
-                                </a>
-                              </li>
-                              <li>
                                 <a href="wishlist.html">
                                   <i class="pe-7s-like"></i>
                                 </a>
@@ -2256,11 +2111,6 @@
                                 </a>
                               </li>
                               <li>
-                                <a href="compare.html">
-                                  <i class="pe-7s-shuffle"></i>
-                                </a>
-                              </li>
-                              <li>
                                 <a href="wishlist.html">
                                   <i class="pe-7s-like"></i>
                                 </a>
@@ -2293,7 +2143,6 @@
             </div>
           </div>
         </div>
-      </div>
       <!-- Product Area End Here -->
 
       <!-- Begin Banner Area -->
@@ -2375,8 +2224,8 @@
       <div class="product-area section-space-y-axis-100">
         <div class="container">
           <div class="section-title text-center pb-55">
-            <span class="sub-title text-primary">See Our Latest</span>
-            <h2 class="title mb-0">Arrival Products</h2>
+            <span class="sub-title text-primary">Ghé FRUZZE để</span>
+            <h2 class="title mb-0">Xem các sản phẩm mới nhất</h2>
           </div>
           <div class="row">
             <div class="col-lg-12">
@@ -2399,11 +2248,6 @@
                             <li>
                               <a href="cart.html">
                                 <i class="pe-7s-cart"></i>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="compare.html">
-                                <i class="pe-7s-shuffle"></i>
                               </a>
                             </li>
                             <li>
@@ -2451,11 +2295,6 @@
                               </a>
                             </li>
                             <li>
-                              <a href="compare.html">
-                                <i class="pe-7s-shuffle"></i>
-                              </a>
-                            </li>
-                            <li>
                               <a href="wishlist.html">
                                 <i class="pe-7s-like"></i>
                               </a>
@@ -2500,11 +2339,6 @@
                               </a>
                             </li>
                             <li>
-                              <a href="compare.html">
-                                <i class="pe-7s-shuffle"></i>
-                              </a>
-                            </li>
-                            <li>
                               <a href="wishlist.html">
                                 <i class="pe-7s-like"></i>
                               </a>
@@ -2546,11 +2380,6 @@
                             <li>
                               <a href="cart.html">
                                 <i class="pe-7s-cart"></i>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="compare.html">
-                                <i class="pe-7s-shuffle"></i>
                               </a>
                             </li>
                             <li>
@@ -2617,38 +2446,38 @@
             <div class="col-md-6 align-self-center">
               <div class="banner-content text-white text-center text-md-start">
                 <div class="section-title">
-                  <span class="sub-title">New Offer Products</span>
-                  <h2 class="title font-size-60 mb-6">SAVE 20% OFF</h2>
+                  <span class="sub-title">Siêu Sale Giáng Sinh</span>
+                  <h2 class="title font-size-60 mb-6">GIẢM GIÁ 10% </h2>
                 </div>
                 <div class="countdown-wrap">
                   <div
                     class="countdown item-4"
-                    data-countdown="2022/01/01"
+                    data-countdown="2024/12/26"
                     data-format="short"
                   >
                     <div class="countdown__item me-3">
                       <span class="countdown__time daysLeft"></span>
-                      <span class="countdown__text daysText"></span>
+                      <span class="countdown__text daysText">ngày</span>
                     </div>
                     <div class="countdown__item me-3">
                       <span class="countdown__time hoursLeft"></span>
-                      <span class="countdown__text hoursText"></span>
+                      <span class="countdown__text hoursText">giờ</span>
                     </div>
                     <div class="countdown__item me-3">
                       <span class="countdown__time minsLeft"></span>
-                      <span class="countdown__text minsText"></span>
+                      <span class="countdown__text minsText">phút</span>
                     </div>
                     <div class="countdown__item">
                       <span class="countdown__time secsLeft"></span>
-                      <span class="countdown__text secsText"></span>
+                      <span class="countdown__text secsText">giây</span>
                     </div>
                   </div>
                 </div>
                 <div class="button-wrap pt-10">
                   <a
                     class="btn btn-custom-size lg-size btn-white rounded-0"
-                    href="shop.html"
-                    >Shop Now</a
+                    href="/shop"
+                    >Mua Ngay</a
                   >
                 </div>
               </div>
@@ -2658,280 +2487,12 @@
       </div>
       <!-- Banner Area End Here -->
 
-      <!-- Begin Product Area -->
-      <div class="product-area section-space-top-100">
-        <div class="container">
-          <div class="section-title text-center pb-55">
-            <span class="sub-title text-primary">See Our Latest</span>
-            <h2 class="title mb-0">Arrival Products</h2>
-          </div>
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="swiper-container product-list-slider border-issue">
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide">
-                    <div class="product-list-item">
-                      <div class="product-img img-zoom-effect">
-                        <a href="single-product.html">
-                          <img
-                            class="img-full"
-                            src="assets/images/product/small-size/1-1-112x124.jpg"
-                            alt="Product Images"
-                          />
-                        </a>
-                      </div>
-                      <div class="product-content">
-                        <a class="product-name" href="single-product.html"
-                          >Black Pepper Grains</a
-                        >
-                        <div class="price-box pb-1">
-                          <span class="new-price">$80.00</span>
-                        </div>
-                        <div class="rating-box-wrap">
-                          <div class="rating-box">
-                            <ul>
-                              <li><i class="pe-7s-star"></i></li>
-                              <li><i class="pe-7s-star"></i></li>
-                              <li><i class="pe-7s-star"></i></li>
-                              <li><i class="pe-7s-star"></i></li>
-                              <li><i class="pe-7s-star"></i></li>
-                            </ul>
-                          </div>
-                          <div class="product-add-action">
-                            <ul>
-                              <li>
-                                <a href="cart.html">
-                                  <i class="pe-7s-cart"></i>
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="product-list-item">
-                      <div class="product-img img-zoom-effect">
-                        <a href="single-product.html">
-                          <img
-                            class="img-full"
-                            src="assets/images/product/small-size/1-2-112x124.jpg"
-                            alt="Product Images"
-                          />
-                        </a>
-                      </div>
-                      <div class="product-content">
-                        <a class="product-name" href="single-product.html"
-                          >Peanut Big Bean</a
-                        >
-                        <div class="price-box pb-1">
-                          <span class="new-price">$80.00</span>
-                        </div>
-                        <div class="rating-box-wrap">
-                          <div class="rating-box">
-                            <ul>
-                              <li><i class="pe-7s-star"></i></li>
-                              <li><i class="pe-7s-star"></i></li>
-                              <li><i class="pe-7s-star"></i></li>
-                              <li><i class="pe-7s-star"></i></li>
-                              <li><i class="pe-7s-star"></i></li>
-                            </ul>
-                          </div>
-                          <div class="product-add-action">
-                            <ul>
-                              <li>
-                                <a href="cart.html">
-                                  <i class="pe-7s-cart"></i>
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="product-list-item">
-                      <div class="product-img img-zoom-effect">
-                        <a href="single-product.html">
-                          <img
-                            class="img-full"
-                            src="assets/images/product/small-size/1-3-112x124.jpg"
-                            alt="Product Images"
-                          />
-                        </a>
-                      </div>
-                      <div class="product-content">
-                        <a class="product-name" href="single-product.html"
-                          >Dried Lemon Green</a
-                        >
-                        <div class="price-box pb-1">
-                          <span class="new-price">$80.00</span>
-                        </div>
-                        <div class="rating-box-wrap">
-                          <div class="rating-box">
-                            <ul>
-                              <li><i class="pe-7s-star"></i></li>
-                              <li><i class="pe-7s-star"></i></li>
-                              <li><i class="pe-7s-star"></i></li>
-                              <li><i class="pe-7s-star"></i></li>
-                              <li><i class="pe-7s-star"></i></li>
-                            </ul>
-                          </div>
-                          <div class="product-add-action">
-                            <ul>
-                              <li>
-                                <a href="cart.html">
-                                  <i class="pe-7s-cart"></i>
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="product-list-item">
-                      <div class="product-img img-zoom-effect">
-                        <a href="single-product.html">
-                          <img
-                            class="img-full"
-                            src="assets/images/product/small-size/1-4-112x124.jpg"
-                            alt="Product Images"
-                          />
-                        </a>
-                      </div>
-                      <div class="product-content">
-                        <a class="product-name" href="single-product.html"
-                          >Natural Coconut</a
-                        >
-                        <div class="price-box pb-1">
-                          <span class="new-price">$80.00</span>
-                        </div>
-                        <div class="rating-box-wrap">
-                          <div class="rating-box">
-                            <ul>
-                              <li><i class="pe-7s-star"></i></li>
-                              <li><i class="pe-7s-star"></i></li>
-                              <li><i class="pe-7s-star"></i></li>
-                              <li><i class="pe-7s-star"></i></li>
-                              <li><i class="pe-7s-star"></i></li>
-                            </ul>
-                          </div>
-                          <div class="product-add-action">
-                            <ul>
-                              <li>
-                                <a href="cart.html">
-                                  <i class="pe-7s-cart"></i>
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="product-list-item">
-                      <div class="product-img img-zoom-effect">
-                        <a href="single-product.html">
-                          <img
-                            class="img-full"
-                            src="assets/images/product/small-size/1-5-112x124.jpg"
-                            alt="Product Images"
-                          />
-                        </a>
-                      </div>
-                      <div class="product-content">
-                        <a class="product-name" href="single-product.html"
-                          >Black Peppepr Read</a
-                        >
-                        <div class="price-box pb-1">
-                          <span class="new-price">$80.00</span>
-                        </div>
-                        <div class="rating-box-wrap">
-                          <div class="rating-box">
-                            <ul>
-                              <li><i class="pe-7s-star"></i></li>
-                              <li><i class="pe-7s-star"></i></li>
-                              <li><i class="pe-7s-star"></i></li>
-                              <li><i class="pe-7s-star"></i></li>
-                              <li><i class="pe-7s-star"></i></li>
-                            </ul>
-                          </div>
-                          <div class="product-add-action">
-                            <ul>
-                              <li>
-                                <a href="cart.html">
-                                  <i class="pe-7s-cart"></i>
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="product-list-item">
-                      <div class="product-img img-zoom-effect">
-                        <a href="single-product.html">
-                          <img
-                            class="img-full"
-                            src="assets/images/product/small-size/1-6-112x124.jpg"
-                            alt="Product Images"
-                          />
-                        </a>
-                      </div>
-                      <div class="product-content">
-                        <a class="product-name" href="single-product.html"
-                          >Green Vegetable</a
-                        >
-                        <div class="price-box pb-1">
-                          <span class="new-price">$80.00</span>
-                        </div>
-                        <div class="rating-box-wrap">
-                          <div class="rating-box">
-                            <ul>
-                              <li><i class="pe-7s-star"></i></li>
-                              <li><i class="pe-7s-star"></i></li>
-                              <li><i class="pe-7s-star"></i></li>
-                              <li><i class="pe-7s-star"></i></li>
-                              <li><i class="pe-7s-star"></i></li>
-                            </ul>
-                          </div>
-                          <div class="product-add-action">
-                            <ul>
-                              <li>
-                                <a href="cart.html">
-                                  <i class="pe-7s-cart"></i>
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Add Arrows -->
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Product Area End Here -->
-
       <!-- Begin Blog Area -->
       <div class="blog-area section-space-y-axis-100">
         <div class="container">
           <div class="section-title text-center pb-55">
-            <span class="sub-title text-primary">Read Our</span>
-            <h2 class="title mb-0">Latest Blog</h2>
+            <span class="sub-title text-primary">Xem Các</span>
+            <h2 class="title mb-0">Bài Viết Mới Nhất Của Chúng Tôi</h2>
           </div>
           <div class="row">
             <div class="col-lg-12">

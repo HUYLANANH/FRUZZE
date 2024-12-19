@@ -9,7 +9,7 @@
                <div class="col-lg-3 col-md-6">
                  <div class="widget-item">
                    <div class="footer-logo pb-4">
-                     <a href="/index">
+                     <a href="/">
                        <img
                        src="{{ asset('assets/images/logo/logotachnen.png') }}"
                        alt="Logo"
@@ -63,7 +63,7 @@
                    <h3 class="widget-title mb-5">FRUZZE</h3>
                    <ul class="widget-list-item">
                      <li>
-                       <a href="/index">Trang Chủ</a>
+                       <a href="/">Trang Chủ</a>
                      </li>
                      <li>
                        <a href="/shop">Cửa Hàng</a>
@@ -135,14 +135,14 @@
     </div>
 
     <!-- Vendor JS -->
-    <script src="{{ asset('assets/js/vendor/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('assets/js/vendor/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('assets/js/vendor/jquery-3.5.1.min.js') }}"></script>
 <script src="{{ asset('assets/js/vendor/jquery-migrate-3.3.0.min.js') }}"></script>
 <script src="{{ asset('assets/js/vendor/modernizr-3.11.2.min.js') }}"></script>
 <script src="{{ asset('assets/js/vendor/jquery.waypoints.js') }}"></script>
 
 
-   <!-- Plugins JS -->
+  <!-- Plugins JS -->
 <script src="{{ asset('assets/js/plugins/wow.min.js') }}"></script>
 <script src="{{ asset('assets/js/plugins/jquery-ui.min.js') }}"></script>
 <script src="{{ asset('assets/js/plugins/swiper-bundle.min.js') }}"></script>
@@ -155,6 +155,7 @@
 
 <script src="{{ asset('assets/js/header.js') }}"></script>
 
+<script src="{{ asset('assets/js/404.js') }}"></script>
 
   </body>
 </html>

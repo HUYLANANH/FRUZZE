@@ -81,7 +81,7 @@
 
 body {
     margin: 0;
-    font-family: "Poppins", sans-serif;
+    font-family: "VietFont", sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
@@ -121,7 +121,7 @@ h6,
 .h6 {
     margin-top: 0;
     margin-bottom: 0.5rem;
-    font-family: "Playfair Display", serif;
+    font-family: "VietFont", serif;
     font-weight: 700;
     line-height: 1.2;
     color: #010101;
@@ -7209,7 +7209,7 @@ fieldset:disabled .btn {
     z-index: 1070;
     display: block;
     margin: 0;
-    font-family: "Poppins", sans-serif;
+    font-family: "VietFont", sans-serif;
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
@@ -7334,7 +7334,7 @@ fieldset:disabled .btn {
     z-index: 1060;
     display: block;
     max-width: 276px;
-    font-family: "Poppins", sans-serif;
+    font-family: "VietFont", sans-serif;
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
@@ -16257,7 +16257,7 @@ blockquote .inner-content:before {
 }
 
 blockquote .inner-content p {
-    font-family: "Playfair Display", serif;
+    font-family: "VietFont", serif;
     font-style: italic;
     font-size: 24px;
     line-height: 44px;
@@ -16265,7 +16265,7 @@ blockquote .inner-content p {
 }
 
 blockquote .inner-content .user-name {
-    font-family: "Poppins", sans-serif;
+    font-family: "VietFont", sans-serif;
     font-size: 16px;
     line-height: 11px;
     position: relative;
@@ -16993,7 +16993,7 @@ blockquote .inner-content .user-name:before {
 }
 
 .slide-content .sub-title {
-    font-family: "Playfair Display", serif;
+    font-family: "VietFont", serif;
     font-size: 24px;
     line-height: 30px;
     display: block;
@@ -18291,11 +18291,11 @@ blockquote .inner-content .user-name:before {
 /*  16. Footer
 /*----------------------------------------*/
 .widget-title {
-    font-family: "Poppins", sans-serif;
+    font-family: "VietFont", sans-serif;
     text-transform: uppercase;
     color: #000000;
-    font-weight: 500;
-    font-size: 16px;
+    font-weight: bold;
+    font-size: 20px;
     line-height: 26px;
     position: relative;
     padding-bottom: 5px;
@@ -18410,7 +18410,7 @@ blockquote .inner-content .user-name:before {
 }
 
 .shipping-content .short-desc {
-    font-family: "rubikregular";
+    font-family: "VietFont";
     font-size: 14px;
 }
 
@@ -19102,7 +19102,7 @@ blockquote .inner-content .user-name:before {
 }
 
 .banner-style-2 .banner-content .price-box span {
-    font-family: "Playfair Display", serif;
+    font-family: "VietFont", serif;
     font-size: 30px;
     line-height: 33px;
 }
@@ -19555,7 +19555,7 @@ blockquote .inner-content .user-name:before {
 }
 
 .testimonial-item .short-desc {
-    font-family: "Playfair Display", serif;
+    font-family: "VietFont", serif;
     font-style: italic;
     font-size: 18px;
     line-height: 32px;
@@ -19606,11 +19606,11 @@ blockquote .inner-content .user-name:before {
 /*  10. Breadcrumb
 /*----------------------------------------*/
 .breadcrumb-height {
-    height: 370px;
+    height: 200px;
 }
 
 .breadcrumb-heading {
-    font-size: 36px;
+    font-size: 30px;
 }
 
 .breadcrumb-item {
@@ -19637,7 +19637,7 @@ blockquote .inner-content .user-name:before {
 .breadcrumb-item ul li {
     display: inline-block;
     line-height: 30px;
-    font-size: 14px;
+    font-size: 15px;
 }
 
 .breadcrumb-item ul li i {
@@ -19744,20 +19744,20 @@ blockquote .inner-content .user-name:before {
 .brand-story-heading {
     font-size: 36px;
     font-weight: bold;
-    color: #3B6230;
+    color: #3b6230;
     margin-bottom: 30px;
     text-transform: uppercase;
     text-align: center;
-  }
-  
-  /* Gạch ngang phân cách */
-  .brand-story-divider {
+}
+
+/* Gạch ngang phân cách */
+.brand-story-divider {
     border: 0;
     height: 1px;
-    background: #3B6230; /* Màu gạch ngang */
+    background: #3b6230; /* Màu gạch ngang */
     margin: 20px auto;
     width: 80%; /* Chiều rộng gạch ngang */
-  }  
+}
 
 @media (max-width: 768px) {
     .brand-story-item {
@@ -20025,7 +20025,7 @@ blockquote .inner-content .user-name:before {
 }
 
 .widgets-title {
-    font-family: "Poppins", sans-serif;
+    font-family: "VietFont", sans-serif;
     font-weight: 500;
     font-size: 18px;
 }

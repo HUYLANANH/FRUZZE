@@ -9,7 +9,7 @@
                     <div class="breadcrumb-item">
                         <h2 class="breadcrumb-heading">ĐĂNG KÝ</h2>
                         <ul>
-                            <li><a href="/index">Trang Chủ <i class="pe-7s-angle-right"></i></a></li>
+                            <li><a href="/">Trang Chủ <i class="pe-7s-angle-right"></i></a></li>
                             <li>Đăng Ký</li>
                         </ul>
                     </div>
