@@ -25,6 +25,7 @@
             </div>
           </div>
         </div>
+
         <div class="shop-area section-space-y-axis-100">
           <div class="container">
             <div class="row">
@@ -136,49 +137,7 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="widgets-area mb-9">
-                    <h2 class="widgets-title mb-5">Sản Phẩm Được Đánh Giá Cao</h2>
-                    <div class="widgets-item">
-                      <div class="swiper-container widgets-list-slider">
-                        <div class="swiper-wrapper">
-                          <div class="swiper-slide">
-                            <div class="product-list-item">
-                              <div class="product-img img-zoom-effect">
-                                <a href="/detail-shop">
-                                  <img
-                                    class="img-full"
-                                    src="assets/images/product/small-size/1-1-112x124.jpg"
-                                    alt="Product Images"
-                                  />
-                                </a>
-                              </div>
-                              <div class="product-content">
-                                <a
-                                  class="product-name"
-                                  href="/detail-shop"
-                                  >Dried Lemon Green</a
-                                >
-                                <div class="price-box pb-1">
-                                  <span class="new-price">$80.00</span>
-                                </div>
-                                <div class="rating-box-wrap">
-                                  <div class="rating-box">
-                                    <ul>
-                                      <li><i class="pe-7s-star"></i></li>
-                                      <li><i class="pe-7s-star"></i></li>
-                                      <li><i class="pe-7s-star"></i></li>
-                                      <li><i class="pe-7s-star"></i></li>
-                                      <li><i class="pe-7s-star"></i></li>
-                                    </ul>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  
                   <div class="widgets-area">
                     <h2 class="widgets-title mb-5">Thẻ</h2>
                     <div class="widgets-item">
@@ -222,280 +181,109 @@
                 </div>
               </div>
               <div class="col-lg-9 order-lg-2 order-1">
-                <div class="product-topbar">
-                  <ul>
-                    <li class="product-view-wrap">
-                      <ul class="nav" role="tablist">
-                        <li class="grid-view" role="presentation">
-                          <a
-                            id="grid-view-tab"
-                            data-bs-toggle="tab"
-                            href="#grid-view"
-                            role="tab"
-                            aria-selected="true"
-                          >
-                            <i class="fa fa-th"></i>
-                          </a>
-                        </li>
-                        <li class="list-view" role="presentation">
-                          <a
-                            class="active"
-                            id="list-view-tab"
-                            data-bs-toggle="tab"
-                            href="#list-view"
-                            role="tab"
-                            aria-selected="true"
-                          >
-                            <i class="fa fa-th-list"></i>
-                          </a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li class="page-count">
-                      <span>23</span> Sản phẩm được tìm thấy trong tổng cộng <span>50</span> sản phẩm
-                    </li>
-                    <li class="short">
-                      <select class="nice-select wide rounded-0">
-                        <option value="1">Sắp xếp theo mặc định</option>
-                        <option value="3">Sắp xếp theo xếp hạng</option>
-                        <option value="4">Sắp xếp theo mới nhất</option>
-                        <option value="5">Sắp xếp theo giá cao đến thấp</option>
-                        <option value="6">Sắp xếp theo giá thấp đến cao</option>
-                      </select>
-                    </li>
-                  </ul>
-                </div>
-                <div class="tab-content text-charcoal pt-8">
-                  <div
-                    class="tab-pane fade"
-                    id="grid-view"
-                    role="tabpanel"
-                    aria-labelledby="grid-view-tab"
-                  >
-                    <div class="product-grid-view row">
-                      <div class="col-lg-4 col-sm-6">
-                        <div class="product-item">
-                          <div class="product-img img-zoom-effect">
-                            <a href="/detail-shop">
-                              <img
-                                class="img-full"
-                                src="assets/images/product/medium-size/1-1-270x300.jpg"
-                                alt="Product Images"
-                              />
-                            </a>
-                            <div class="product-add-action">
-                              <ul>
-                                <li>
-                                  <a href="/cart">
-                                    <i class="pe-7s-cart"></i>
-                                  </a>
+                        <div class="product-topbar">
+                            <ul>
+                                <li class="product-view-wrap">
+                                    <ul class="nav" role="tablist">
+                                        <li class="grid-view" role="presentation">
+                                            <a id="grid-view-tab" data-bs-toggle="tab" href="#grid-view" role="tab" aria-selected="true">
+                                                <i class="fa fa-th"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-view" role="presentation">
+                                            <a class="active" id="list-view-tab" data-bs-toggle="tab" href="#list-view" role="tab" aria-selected="true">
+                                                <i class="fa fa-th-list"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </li>
-                                <li>
-                                  <a href="/wishlist">
-                                    <i class="pe-7s-like"></i>
-                                  </a>
+                                <li class="short">
+                                    <select class="nice-select wide rounded-0">
+                                        <option value="1">Sắp xếp theo mặc định</option>
+                                        <option value="4">Sắp xếp theo mới nhất</option>
+                                        <option value="5">Sắp xếp theo giá cao đến thấp</option>
+                                        <option value="6">Sắp xếp theo giá thấp đến cao</option>
+                                    </select>
                                 </li>
-                              </ul>
-                            </div>
-                          </div>
-                          <div class="product-content">
-                            <a class="product-name" href="/detail-shop"
-                              >Green Vegetable</a
-                            >
-                            <div class="price-box pb-1">
-                              <span class="new-price">$80.00</span>
-                            </div>
-                            <div class="rating-box">
-                              <ul>
-                                <li><i class="pe-7s-star"></i></li>
-                                <li><i class="pe-7s-star"></i></li>
-                                <li><i class="pe-7s-star"></i></li>
-                                <li><i class="pe-7s-star"></i></li>
-                                <li><i class="pe-7s-star"></i></li>
-                              </ul>
-                            </div>
-                          </div>
+                            </ul>
                         </div>
-                      </div>
-                      <div class="col-lg-4 col-sm-6 pt-6 pt-sm-0">
-                        <div class="product-item">
-                          <div class="product-img img-zoom-effect">
-                            <a href="/detail-shop">
-                              <img
-                                class="img-full"
-                                src="assets/images/product/medium-size/1-2-270x300.jpg"
-                                alt="Product Images"
-                              />
-                            </a>
-                            <div class="product-add-action">
-                              <ul>
-                                <li>
-                                  <a href="/cart">
-                                    <i class="pe-7s-cart"></i>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="/wishlist">
-                                    <i class="pe-7s-like"></i>
-                                  </a>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                          <div class="product-content">
-                            <a class="product-name" href="single-product.html"
-                              >Lemon Juice</a
-                            >
-                            <div class="price-box pb-1">
-                              <span class="new-price">$80.00</span>
-                            </div>
-                            <div class="rating-box">
-                              <ul>
-                                <li><i class="pe-7s-star"></i></li>
-                                <li><i class="pe-7s-star"></i></li>
-                                <li><i class="pe-7s-star"></i></li>
-                                <li><i class="pe-7s-star"></i></li>
-                                <li><i class="pe-7s-star"></i></li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                        <div class="tab-content text-charcoal pt-8" id="product-list"></div>
                     </div>
-                  </div>
-                  <div
-                    class="tab-pane fade show active"
-                    id="list-view"
-                    role="tabpanel"
-                    aria-labelledby="list-view-tab"
-                  >
-                    <div class="product-list-view with-sidebar row">
-                      <div class="col-12">
-                        <div class="product-item">
-                          <div class="product-img img-zoom-effect">
-                            <a href="single-product.html">
-                              <img
-                                class="img-full"
-                                src="assets/images/product/medium-size/1-1-270x300.jpg"
-                                alt="Product Images"
-                              />
-                            </a>
-                            <div class="product-add-action">
-                              <ul>
-                                <li>
-                                  <a href="cart.html">
-                                    <i class="pe-7s-cart"></i>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="wishlist.html">
-                                    <i class="pe-7s-like"></i>
-                                  </a>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                          <div class="product-content align-self-center">
-                            <a
-                              class="product-name pb-2"
-                              href="single-product.html"
-                              >Cow Milk & Meat</a
-                            >
-                            <div class="price-box pb-1">
-                              <span class="new-price">$80.00</span>
-                            </div>
-                            <div class="rating-box pb-2">
-                              <ul>
-                                <li><i class="pe-7s-star"></i></li>
-                                <li><i class="pe-7s-star"></i></li>
-                                <li><i class="pe-7s-star"></i></li>
-                                <li><i class="pe-7s-star"></i></li>
-                                <li><i class="pe-7s-star"></i></li>
-                              </ul>
-                            </div>
-                            <p class="short-desc mb-0">
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-12 pt-6">
-                        <div class="product-item">
-                          <div class="product-img img-zoom-effect">
-                            <a href="single-product.html">
-                              <img
-                                class="img-full"
-                                src="assets/images/product/medium-size/1-2-270x300.jpg"
-                                alt="Product Images"
-                              />
-                            </a>
-                            <div class="product-add-action">
-                              <ul>
-                                <li>
-                                  <a href="/cart">
-                                    <i class="pe-7s-cart"></i>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="/wishlist">
-                                    <i class="pe-7s-like"></i>
-                                  </a>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                          <div class="product-content align-self-center">
-                            <a
-                              class="product-name pb-2"
-                              href="/detail-shop"
-                              >Black Pepper Grains</a
-                            >
-                            <div class="price-box pb-1">
-                              <span class="new-price">$80.00</span>
-                            </div>
-                            <div class="rating-box pb-2">
-                              <ul>
-                                <li><i class="pe-7s-star"></i></li>
-                                <li><i class="pe-7s-star"></i></li>
-                                <li><i class="pe-7s-star"></i></li>
-                                <li><i class="pe-7s-star"></i></li>
-                                <li><i class="pe-7s-star"></i></li>
-                              </ul>
-                            </div>
-                            <p class="short-desc mb-0">
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
-                <div class="pagination-area pt-10">
-                  <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center">
-                      <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                          <span class="fa fa-chevron-left"></span>
-                        </a>
-                      </li>
-                      <li class="page-item active">
-                        <a class="page-link" href="#">1</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="#">2</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                          <span class="fa fa-chevron-right"></span>
-                        </a>
-                      </li>
-                    </ul>
-                  </nav>
-                </div>
-              </div>
             </div>
-          </div>
         </div>
-      </main>
+    </main>
+</div>
       <!-- Main Content Area End Here -->
+
+      <script>
+// Fetch product data from the API
+function fetchProducts() {
+  const token = localStorage.getItem('token');
+  fetch('/api/product', {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'    
+    }
+  })
+  .then(response => {
+        if (!response.ok) {
+          console.log('lỗi');
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+  .then(data => {
+      console.log('Dữ liệu trả về từ backend:', data);
+      if (Array.isArray(data) && data.length > 0) {
+          let productListHTML = '';
+          data.forEach(product => {
+              const formattedPrice = product.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+              productListHTML += `
+                  <div class="product-list-view with-sidebar row">
+                      <div class="col-12 pt-6">
+                          <div class="product-item">
+                              <div class="product-img img-zoom-effect">
+                                  <a href="/product/${product.id}">
+                                      <img class="img-full" src="${product.thumbnail}" alt="${product.name}" />
+                                  </a>
+                                  <div class="product-add-action">
+                                      <ul>
+                                          <li>
+                                              <a href="/cart">
+                                                  <i class="pe-7s-cart"></i>
+                                              </a>
+                                          </li>
+                                          <li>
+                                              <a href="/wishlist">
+                                                  <i class="pe-7s-like"></i>
+                                              </a>
+                                          </li>
+                                      </ul>
+                                  </div>
+                              </div>
+                              <div class="product-content align-self-center">
+                                  <a class="product-name pb-2" href="/product/${product.id}">${product.name}</a>
+                                  <div class="price-box pb-1">
+                                      <span class="new-price">${formattedPrice}</span>
+                                  </div>
+                                  <p class="short-desc mb-0">${product.description}</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              `;
+          });
+
+          document.getElementById('product-list').innerHTML = productListHTML;
+      } else {
+          document.getElementById('product-list').innerHTML = "<p>No products found</p>";
+      }
+  })
+  .catch(error => console.error('Error fetching products:', error));
+} // Missing closing bracket added here
+</script>
+
 
 @include('layouts.footer')

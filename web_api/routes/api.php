@@ -60,7 +60,7 @@ Route::group([
     //sửa danh mục
     Route::patch('category/{id}', [CategoryController::class, 'update'])->middleware('admin');
     //xóa danh mục
-    Route::delete('category', [CategoryController::class, 'destroy'])->middleware('admin');
+    Route::delete('category/{id}', [CategoryController::class, 'destroy'])->middleware('admin');
 });
 
 Route::group([
