@@ -3,17 +3,14 @@ import App from "../App";
 import SearchPage from "../Components/Search/Search";
 import CategoryList from "../Pages/Admin/CategoryList";
 import LoginPage from "../Pages/Accounts/LoginPage";
-import RegisterPage from "../Pages/Accounts/RegisterPage";
 import ProductUpdate from "../Pages/Admin/Products/ProductUpdate";
 import ProductList from "../Pages/Admin/Products/ProducList";
 import ProductAdd from "../Pages/Admin/Products/ProductAdd";
 import UserList from "../Pages/Admin/UserList";
-import ChangePassword from "../Pages/Accounts/ChagePassword";
 import AllOrders from "../Pages/Admin/AllOrders";
 import Finance from "../Pages/Admin/Finance";
 import Admin from "../Pages/Admin/Admin";
 import Winter2024 from "../Components/InformationWeb/winter2024";
-import ForgotPassword from "../Pages/Accounts/ForgotPassword";
 import ProtectedRoute from "./ProtectedRoute";
 export const router = createBrowserRouter([
   {
@@ -40,8 +37,6 @@ export const router = createBrowserRouter([
       },
      
       { path: "login", element: <LoginPage /> },
-      { path: "register", element: <RegisterPage /> },
-      { path:"change-password", element: <ChangePassword/>},
       {path:"gioi-thieu", element:<Winter2024/>},
       {path:"tuyen-dung", element:<Winter2024/>},
       {path:"tin-tuc", element:<Winter2024/>},
