@@ -20,8 +20,12 @@ class EmailController extends Controller
         $otp = str_pad(random_int(0, 999999), 6, '0', STR_PAD_LEFT);
         Cache::put($request->email, $otp, 2*60);
 
-        Mail::to($request->email)->send(new SendOtpMail($otp));
-
+        try {
+            Mail::to($request->email)->send(new SendOtpMail($otp));
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Không thể gửi email, vui lòng thử lại sau.'], 500);
+        }
+        
         return response()->json(['message' => 'OTP sent successfully!', 'otp' => $otp], 200);
     }
 
@@ -41,4 +45,5 @@ class EmailController extends Controller
 
         return response()->json(['message' => 'OTP không chính xác hoặc đã hết hạn.'], 400);
     }
+
 }
