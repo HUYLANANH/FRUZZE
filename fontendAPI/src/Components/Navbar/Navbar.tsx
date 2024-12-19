@@ -35,7 +35,7 @@ const Navbar: React.FC<Props> = () => {
       <div className="flex items-center text-lg justify-between">
         <div className="flex items-center space-x-6">
           <Link to="/product">
-            <img src={logo} alt="Logo" className="h-14" />
+            <img src={logo} alt="Logo" className="h-20" />
           </Link>
 
     </div>
