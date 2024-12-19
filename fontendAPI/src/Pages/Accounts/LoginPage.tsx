@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { useAuth } from '../../Context/useAuth';
 import { useForm } from 'react-hook-form';
-import Navbar from "../../Components/Navbar/Navbar";
 
 type Props = {};
 
@@ -35,7 +34,6 @@ const LoginPage = (props: Props) => {
 
   return (
     <div className="w-full">
-      <Navbar />
       <section className="bg-gray-50 dark:bg-gray-900 min-h-screen flex items-center justify-center">
         <div className="w-full max-w-md bg-white rounded-lg shadow-lg dark:bg-gray-800">
           <div className="p-6 space-y-2 sm:p-8">
@@ -80,14 +78,6 @@ const LoginPage = (props: Props) => {
                 </div>
                 {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
               </div>
-              <div className="mt-4">
-                <a
-                  href="/forgot-password"
-                  className="text-xs text-gray-500 hover:text-green-700 dark:text-blue-400 dark:hover:text-blue-300"
-                >
-                  Quên mật khẩu?
-                </a>
-              </div>
 
               <button
                 type="submit"
@@ -96,28 +86,7 @@ const LoginPage = (props: Props) => {
                 Đăng nhập
               </button>
 
-              <div className="w-full border-t my-4">
-                <p className="text-center text-gray-500 dark:text-gray-400">Hoặc</p>
-              </div>
-
-              <div className="mt-2 text-center">
-                <span className="text-sm text-gray-500 dark:text-gray-400">Bạn chưa có tài khoản? </span>
-                <a
-                  href="/register"
-                  className="text-sm font-semibold text-green-500 hover:text-green-700 dark:text-green-400 dark:hover:text-green-300">
-                  Đăng ký
-                </a>
-              </div>
             </form>
-            <div className="flex space-x-4 text-sm">
-                
-                {/* <button
-                   onClick={loginWithFacebook} 
-                  className="w-1/2 h-10 border-2 border-blue-600 rounded-full font-semibold text-blue-600 hover:bg-blue-600 hover:text-white transition duration-200"
-                >
-                  Đăng nhập với Facebook
-                </button> */}
-              </div>
           </div>
         </div>
       </section>

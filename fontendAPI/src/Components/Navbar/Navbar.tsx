@@ -3,32 +3,13 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import logo from "./logo.png";
 import { useAuth } from "../../Context/useAuth";
 import { FaUserCircle, FaShoppingCart } from 'react-icons/fa'; 
-import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
 
 interface Props {}
 
 const Navbar: React.FC<Props> = () => {
   const { isLoggedIn, user, logout } = useAuth();
-  const [searchQuery, setSearchQuery] = useState<string>("");
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
-  const [cartCount, setCartCount] = useState<number>(0);
-  const navigate = useNavigate();
   const location = useLocation();
-
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!searchQuery.trim()) {
-      navigate("/product");
-    } else {
-      navigate(`/search?query=${encodeURIComponent(searchQuery.trim())}`);
-    }
-  };
-
-  useEffect(() => {
-    if (!location.pathname.startsWith("/search")) {
-      setSearchQuery(""); 
-    }
-  }, [location.pathname]);
 
   return (
     <nav className="relative w-full p-2 bg-green-500 shadow-md sticky top-0 z-50 px-32 text-white">
@@ -51,6 +32,7 @@ const Navbar: React.FC<Props> = () => {
                     </span>
                   )}
                 </Link>
+
               </div>
             </div>
           )}
