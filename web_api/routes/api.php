@@ -42,7 +42,7 @@ Route::group([
 
 Route::group([
     'prefix' => 'admin',
-    
+
 ], function ($router) {
     // lấy danh sách theo role
     Route::get('all-users/{role_id}', [AdminController::class, 'getUsers']);
