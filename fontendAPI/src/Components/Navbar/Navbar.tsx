@@ -16,9 +16,7 @@ const Navbar: React.FC<Props> = () => {
       <div className="flex items-center text-lg justify-between">
         <div className="flex items-center space-x-6">
           <Link to="/product">
-            <img src={logo} alt="Logo" className="h-20" />
-          </Link>
-
+            <img s            <img src={logo} alt="Logo" className="h-20" />
     </div>
         <div className="flex items-center space-x-6">
           {isLoggedIn() && (
