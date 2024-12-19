@@ -185,11 +185,6 @@
                             <ul>
                                 <li class="product-view-wrap">
                                     <ul class="nav" role="tablist">
-                                        <li class="grid-view" role="presentation">
-                                            <a id="grid-view-tab" data-bs-toggle="tab" href="#grid-view" role="tab" aria-selected="true">
-                                                <i class="fa fa-th"></i>
-                                            </a>
-                                        </li>
                                         <li class="list-view" role="presentation">
                                             <a class="active" id="list-view-tab" data-bs-toggle="tab" href="#list-view" role="tab" aria-selected="true">
                                                 <i class="fa fa-th-list"></i>
@@ -220,7 +215,7 @@
 // Fetch product data from the API
 function fetchProducts() {
   const token = localStorage.getItem('token');
-  fetch('/api/product', {
+  fetch('http://127.0.0.1:8000/api/product', {
     method: 'GET',
     headers: {
       'Authorization': `Bearer ${token}`,
@@ -245,7 +240,7 @@ function fetchProducts() {
                       <div class="col-12 pt-6">
                           <div class="product-item">
                               <div class="product-img img-zoom-effect">
-                                  <a href="/product/${product.id}">
+                                  <a href="/shop/${product.id}">
                                       <img class="img-full" src="${product.thumbnail}" alt="${product.name}" />
                                   </a>
                                   <div class="product-add-action">
@@ -264,11 +259,11 @@ function fetchProducts() {
                                   </div>
                               </div>
                               <div class="product-content align-self-center">
-                                  <a class="product-name pb-2" href="/product/${product.id}">${product.name}</a>
+                                  <a class="product-name pb-2" href="/shop/${product.id}"><b>${product.name}</b></a>
                                   <div class="price-box pb-1">
-                                      <span class="new-price">${formattedPrice}</span>
+                                      <span class="new-price"><b>Giá tiền:</b> ${product.price} VNĐ</span>
                                   </div>
-                                  <p class="short-desc mb-0">${product.description}</p>
+                                  <p class="short-desc mb-0"><b>Mô tả:</b> ${product.description}</p>
                               </div>
                           </div>
                       </div>
@@ -283,6 +278,11 @@ function fetchProducts() {
   })
   .catch(error => console.error('Error fetching products:', error));
 } // Missing closing bracket added here
+
+document.addEventListener("DOMContentLoaded", function() {
+    console.log("DOM fully loaded and parsed. Calling fetchProducts...");
+    fetchProducts();
+});
 </script>
 
 
