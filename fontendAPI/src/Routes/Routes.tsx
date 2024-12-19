@@ -14,7 +14,6 @@ import Finance from "../Pages/Admin/Finance";
 import Admin from "../Pages/Admin/Admin";
 import Winter2024 from "../Components/InformationWeb/winter2024";
 import ForgotPassword from "../Pages/Accounts/ForgotPassword";
-import ResetPassword from "../Pages/Accounts/ResetPassword";
 import ProtectedRoute from "./ProtectedRoute";
 export const router = createBrowserRouter([
   {
@@ -43,8 +42,6 @@ export const router = createBrowserRouter([
       { path: "login", element: <LoginPage /> },
       { path: "register", element: <RegisterPage /> },
       { path:"change-password", element: <ChangePassword/>},
-      { path:"forgot-password", element: <ForgotPassword/>},
-      { path:"reset-password", element: <ResetPassword/>},
       {path:"gioi-thieu", element:<Winter2024/>},
       {path:"tuyen-dung", element:<Winter2024/>},
       {path:"tin-tuc", element:<Winter2024/>},

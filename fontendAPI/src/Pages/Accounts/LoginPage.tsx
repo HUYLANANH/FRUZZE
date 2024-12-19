@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { useAuth } from '../../Context/useAuth';
 import { useForm } from 'react-hook-form';
-import Navbar from "../../Components/Navbar/Navbar";
 
 type Props = {};
 
@@ -35,7 +34,6 @@ const LoginPage = (props: Props) => {
 
   return (
     <div className="w-full">
-      <Navbar />
       <section className="bg-gray-50 dark:bg-gray-900 min-h-screen flex items-center justify-center">
         <div className="w-full max-w-md bg-white rounded-lg shadow-lg dark:bg-gray-800">
           <div className="p-6 space-y-2 sm:p-8">
@@ -79,14 +77,6 @@ const LoginPage = (props: Props) => {
                   </button>
                 </div>
                 {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
-              </div>
-              <div className="mt-4">
-                <a
-                  href="/forgot-password"
-                  className="text-xs text-gray-500 hover:text-green-700 dark:text-blue-400 dark:hover:text-blue-300"
-                >
-                  Quên mật khẩu?
-                </a>
               </div>
 
               <button
