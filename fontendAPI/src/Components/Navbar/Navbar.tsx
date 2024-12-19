@@ -23,20 +23,8 @@ const Navbar: React.FC<Props> = () => {
           {isLoggedIn() && (
             <div className="flex items-center space-x-4 ">
               <span className="text-white italic">{user?.username }</span> 
-              <div className="relative">
-                <Link to="/cart" className="hover:text-blue-600 flex items-center">
-                  <FaShoppingCart className="text-2xl" />
-                  {cartCount > 0 && (
-                    <span className="absolute top-0 right-0 text-xs bg-red-600 rounded-full h-5 w-5 flex items-center justify-center">
-                      {cartCount}
-                    </span>
-                  )}
-                </Link>
-
-              </div>
             </div>
           )}
-
           {isLoggedIn() ? (
             <div className="hidden lg:flex items-center space-x-6">
               <div className="relative flex items-start">
