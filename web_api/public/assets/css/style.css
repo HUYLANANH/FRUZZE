@@ -18288,85 +18288,62 @@ blockquote .inner-content .user-name:before {
 }
 
 /*----------------------------------------*/
-/*  16. Footer
-/*----------------------------------------*/
-.widget-title {
-    font-family: "VietFont", sans-serif;
-    text-transform: uppercase;
-    color: #000000;
-    font-weight: bold;
-    font-size: 20px;
-    line-height: 26px;
-    position: relative;
-    padding-bottom: 5px;
+/*  16. Footer Adjustments for Equal Columns */
+.footer-area .row {
+    display: flex;
+    justify-content: space-between; /* Ensure even spacing between columns */
 }
 
-.widget-title:before {
-    background-color: #bac34e;
-    height: 2px;
-    width: 40px;
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
+.footer-area .col-lg-3,
+.footer-area .col-lg-2 {
+    flex: 1;
+    margin: 0 20px; /* Add spacing between columns */
+    max-width: 23%; /* Ensure consistent column width */
+}
+
+.widget-item {
+    text-align: left;
 }
 
 .widget-item li,
 .widget-item a,
 .widget-item p {
     font-size: 14px;
-    line-height: 26px;
+    line-height: 22px;
 }
 
-.widget-item .short-desc {
-    max-width: 280px;
-}
-
-.widget-contact-info ul li:not(:last-child) {
-    padding-bottom: 5px;
+.widget-contact-info ul li {
+    margin-bottom: 5px;
 }
 
 .widget-contact-info ul li i {
-    vertical-align: middle;
-    margin-right: 5px;
-    font-size: 24px;
+    margin-right: 8px;
+    font-size: 18px;
 }
 
-.widget-list-item > li:not(:last-child) {
-    padding-bottom: 10px;
-}
-
-.widget-list-item > li a {
-    text-transform: uppercase;
+.widget-list-item > li {
+    margin-bottom: 8px;
 }
 
 .widget-form .input-field {
-    background-color: #f0ece5;
-    color: #a7a7a7;
+    margin-top: 10px;
+    padding: 8px 12px;
     font-size: 12px;
-    border: 0;
     width: 100%;
-    height: 50px;
-    padding-left: 15px;
-    padding-right: 15px;
 }
 
-.widget-form .btn-primary:focus {
-    color: #fff;
+.widget-form .button-wrap {
+    margin-top: 15px;
 }
 
-/* ---Copyright--- */
-.copyright {
-    text-align: center;
+/* Footer Bottom Spacing */
+.footer-bottom {
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
-
 .copyright-text {
-    text-transform: capitalize;
-    font-size: 14px;
-}
-
-.copyright-text a:hover {
-    color: #fff;
+    font-size: 13px;
+    text-align: center;
 }
 
 /*----------------------------------------*/
