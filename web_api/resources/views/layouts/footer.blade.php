@@ -32,7 +32,7 @@
             <h3 class="widget-title mb-5">Liên Hệ</h3>
             <ul class="widget-list-item">
               <li><i class="fab fa-facebook"></i> <a href="https://www.facebook.com/profile.php?id=61554393290754">FRUZZE</a></li>
-              <li><i class="fab fa-instagram"></i> <a href="https://www.instagram.com/ours.fruzze/">ours.fruzze</a></li>
+              <li><i class="fab fa-instagram"></i> <a href="https://www.instagram.com/ours.fruzze">ours.fruzze</a></li>
               <li><i class="fas fa-phone-alt"></i> <a href="tel:+84859306712">0859306712</a></li>
               <li><i class="fas fa-envelope"></i> <a href="mailto:22521442@gm.uit.edu.vn">fruzze@gmail.com</a></li>
             </ul>
