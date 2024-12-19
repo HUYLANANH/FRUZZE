@@ -39,7 +39,7 @@
             <div class="row align-items-center">
               <div class="col-lg-12">
                 <div class="header-middle-wrap">
-                  <a href="/index" class="header-logo">
+                  <a href="/" class="header-logo">
                     <img
                       src="{{ asset('assets/images/logo/logotachnen.png') }}"
                       alt="Header Logo"
@@ -103,6 +103,11 @@
                           <i class="pe-7s-like"></i>
                         </a>
                       </li>
+                      <li class="d-none d-md-block">
+                        <a href="/cart">
+                          <i class="pe-7s-cart"></i>
+                        </a>
+                      </li>
                       <li class="d-block d-lg-none">
                         <a href="#searchBar" class="search-btn toolbar-btn">
                           <i class="pe-7s-search"></i>
@@ -124,7 +129,7 @@
                     <nav class="main-nav">
                       <ul>
                         <li>
-                          <a href="/index">Trang Chủ</a>
+                          <a href="/">Trang Chủ</a>
                         </li>
                         <li>
                           <a href="/about">Về FRUZZE</a>

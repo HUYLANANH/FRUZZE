@@ -12,7 +12,7 @@
                   <h2 class="breadcrumb-heading">ĐĂNG NHẬP</h2>
                   <ul>
                     <li>
-                      <a href="/index"
+                      <a href="/"
                         >Trang Chủ <i class="pe-7s-angle-right"></i
                       ></a>
                     </li>

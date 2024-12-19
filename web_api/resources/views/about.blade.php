@@ -12,7 +12,7 @@
                   <h2 class="breadcrumb-heading">VỀ FRUZZE</h2>
                   <ul>
                     <li>
-                      <a href="/index"
+                      <a href="/"
                         >Trang Chủ <i class="pe-7s-angle-right"></i
                       ></a>
                     </li>
@@ -73,6 +73,7 @@
       </div>
     </div>
   </div>
+  </section>
   <!-- Thêm hình ảnh dưới câu chuyện thương hiệu -->
 <div class="row">
       <div class="col-12">
@@ -81,66 +82,7 @@
         </div>
       </div>
     </div>
-</section>
-<hr class="brand-story-divider" />
 
-<div class="row">
-      <div class="col-12 text-center">
-        <h2 class="brand-story-heading">FRUZZE Cung Cấp Dịch Vụ</h2>
-      </div>
-    </div>
- <!-- Begin Shipping Area -->
- <div class="shipping-area section-space-y-axis-100">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-4 col-md-6">
-                <div class="shipping-item">
-                  <div class="shipping-img">
-                    <img
-                      src="assets/images/shipping/icon/plane.png"
-                      alt="Shipping Icon"
-                    />
-                  </div>
-                  <div class="shipping-content">
-                    <h5 class="title">Miễn Phí Vận Chuyển</h5>
-                    <p class="short-desc mb-0">FRUZZE cung cấp dịch cụ vận chuyển miễn phí</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6 pt-6 pt-md-0">
-                <div class="shipping-item">
-                  <div class="shipping-img">
-                    <img
-                      src="assets/images/shipping/icon/earphones.png"
-                      alt="Shipping Icon"
-                    />
-                  </div>
-                  <div class="shipping-content">
-                    <h5 class="title">Hỗ Trợ Online</h5>
-                    <p class="short-desc mb-0">FRUZZE cung cấp dịch vụ hỗ trọ 24/7</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6 pt-6 pt-lg-0">
-               <div class="shipping-item">
-                  <div class="shipping-img">
-                    <img
-                      src="assets/images/shipping/icon/shield.png"
-                      alt="Shipping Icon"
-                    />
-                  </div>
-                  <div class="shipping-content">
-                    <h5 class="title">Thanh Toán An Toàn</h5>
-                    <p class="short-desc mb-0">FRUZZE cam kết thanh toán an toàn, bảo mật</p>
-                  </div>
-                </div>
-              </div>
-           </div>
-          </div>
-        </div>
-        </main>
-        <!-- Shipping Area End Here -->
-        <hr class="brand-story-divider" />
         <div
           class="about-banner different-bg-position section-space-y-axis-100"
           data-bg-image="assets/images/about/banner/1-1-1920x598.jpg"
@@ -181,6 +123,55 @@
             </div>
           </div>
         </div>
-        <hr class="brand-story-divider" />
-
+<!-- Begin Shipping Area -->
+<div class="shipping-area section-space-y-axis-100">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-4 col-md-6">
+                <div class="shipping-item">
+                  <div class="shipping-img">
+                    <img
+                      src="assets/images/shipping/icon/plane.png"
+                      alt="Shipping Icon"
+                    />
+                  </div>
+                  <div class="shipping-content">
+                    <h5 class="title">Miễn Phí Vận Chuyển</h5>
+                    <p class="short-desc mb-0">FRUZZE cung cấp dịch cụ vận chuyển miễn phí</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 pt-6 pt-md-0">
+                <div class="shipping-item">
+                  <div class="shipping-img">
+                    <img
+                      src="assets/images/shipping/icon/earphones.png"
+                      alt="Shipping Icon"
+                    />
+                  </div>
+                  <div class="shipping-content">
+                    <h5 class="title">Hỗ Trợ Online</h5>
+                    <p class="short-desc mb-0">FRUZZE cung cấp dịch vụ hỗ trợ 24/7</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 pt-6 pt-lg-0">
+               <div class="shipping-item">
+                  <div class="shipping-img">
+                    <img
+                      src="assets/images/shipping/icon/shield.png"
+                      alt="Shipping Icon"
+                    />
+                  </div>
+                  <div class="shipping-content">
+                    <h5 class="title">Thanh Toán An Toàn</h5>
+                    <p class="short-desc mb-0">FRUZZE cam kết thanh toán an toàn, bảo mật</p>
+                  </div>
+                </div>
+              </div>
+           </div>
+          </div>
+        </div>
+<!-- Shipping Area End Here -->
+        </main>
 @include('layouts.footer')

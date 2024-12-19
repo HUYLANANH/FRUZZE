@@ -16,7 +16,7 @@
                 <div class="button-wrap">
                   <a
                     class="btn btn-custom-size lg-size btn-primary btn-secondary-hover rounded-0"
-                    href="/index"
+                    href="/"
                     >Về trang chủ</a
                   >
                 </div>
