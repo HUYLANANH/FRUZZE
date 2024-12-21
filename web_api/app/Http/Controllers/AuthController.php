@@ -65,7 +65,7 @@ class AuthController extends Controller
             return response()->json(['message' => 'Hồ sơ cá nhân đã được cập nhật thành công.', 'user' => $user],201);
         }
         else{
-            return response()->json(['error' => 'Không cập nhật thành công', 'user' => $user],500);
+            return response()->json(['error' => 'Không cập nhật thành công người dùng', 'user' => $user],500);
         }
 
     }
