@@ -42,39 +42,38 @@ Route::group([
 
 Route::group([
     'prefix' => 'admin',
-
 ], function ($router) {
     // lấy danh sách theo role
     Route::get('all-users/{role_id}', [AdminController::class, 'getUsers']);
 });
 
 Route::group([
-    'middleware' => ['check_login']
+
 ], function ($router) {
     // lấy danh sách danh mục sản phẩm
     Route::get('category', [CategoryController::class, 'index']);
     //lấy 1 danh mục cụ thể
     Route::get('category/{id}', [CategoryController::class, 'show']);
     //thêm mới danh mục
-    Route::post('category', [CategoryController::class, 'store'])->middleware('admin');
+    Route::post('category', [CategoryController::class, 'store'])->middleware(['admin', 'check_login']);
     //sửa danh mục
-    Route::patch('category/{id}', [CategoryController::class, 'update'])->middleware('admin');
+    Route::patch('category/{id}', [CategoryController::class, 'update'])->middleware(['admin', 'check_login']);
     //xóa danh mục
-    Route::delete('category/{id}', [CategoryController::class, 'destroy'])->middleware('admin');
+    Route::delete('category/{id}', [CategoryController::class, 'destroy'])->middleware(['admin', 'check_login']);
 });
 
 Route::group([
-    'middleware' => ['check_login']
+
 ], function ($router) {
     // lấy danh sách danh mục sản phẩm
     Route::get('product', [ProductController::class, 'index']);
     //lấy 1 danh mục cụ thể
     Route::get('product/{id}', [ProductController::class, 'show']);
     //thêm mới danh mục
-    Route::post('product', [ProductController::class, 'store'])->middleware('admin');
+    Route::post('product', [ProductController::class, 'store'])->middleware(['admin', 'check_login']);
     //sửa danh mục
-    Route::patch('product/{id}', [ProductController::class, 'update'])->middleware('admin');
+    Route::patch('product/{id}', [ProductController::class, 'update'])->middleware(['admin', 'check_login']);
     //xóa danh mục
-    Route::delete('product/{id}', [ProductController::class, 'destroy'])->middleware('admin');
+    Route::delete('product/{id}', [ProductController::class, 'destroy'])->middleware(['admin', 'check_login']);
 });
 
