@@ -23,16 +23,21 @@ class ProductController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'price' => 'required',
+            'price' => 'required|numeric',
             'thumbnail' => 'nullable|string|max:255',
             'description' => 'nullable|string',
+            'weight' => 'required|numeric',
             'category_id' => 'required|exists:categories,id',
         ]);
 
         // Tạo sản phẩm mới
         $product = Product::create($validatedData);
 
-        return response()->json($product, 201);
+        if ($product) {
+            return response()->json($product, 201);
+        } else {
+            return response()->json(['message' => 'Không thể tạo sản phẩm'], 500);
+        }
     }
 
     /**
@@ -62,9 +67,10 @@ class ProductController extends Controller
 
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'price' => 'required|decimal:10,2',
+            'price' => 'required|numeric',
             'thumbnail' => 'nullable|string|max:255',
             'description' => 'nullable|string',
+            'weight' => 'required|numeric',
             'category_id' => 'required|exists:categories,id',
         ]);
 
