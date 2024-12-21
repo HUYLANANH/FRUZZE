@@ -6,7 +6,6 @@ export type UserProfileToken = {
 };
 
 export type UserProfile = {
-  username: string;
   token: string;
   role: string; 
 };
