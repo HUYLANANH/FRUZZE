@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('galeries', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('product_id')->constrained('products')->onDelete('cascade'); // Khóa ngoại đến bảng products
+            $table->string('image'); // Trường lưu trữ đường dẫn hình ảnh
             $table->timestamps();
         });
     }
