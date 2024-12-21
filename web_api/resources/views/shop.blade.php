@@ -194,7 +194,7 @@ function fetchProducts(page = 1) {
       let productListHTML = '';
       data.data.forEach(product => {
         // Tính giá sau khi giảm 15%
-        const discountRate = 15;
+        const discountRate = 10;
         const oldPrice = parseFloat(product.price);
         const newPrice = oldPrice - (oldPrice * discountRate / 100);
 

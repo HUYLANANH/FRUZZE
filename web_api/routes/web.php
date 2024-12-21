@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EmailController;
+use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
     return view('index');
@@ -68,3 +69,7 @@ Route::get('change-password', function () {
 Route::get('profile', function () {
     return view('profile.profile');
 })->name('profile');
+
+Route::get('show', function() {
+    return view('admin.product.show'); // Hiển thị sản phẩm
+});
