@@ -54,7 +54,7 @@ export const UserProvider = ({ children }: Props) => {
 
       if (res) {
         const { token,  role } = res.data;
-        const userObj = {  token, role };
+        const userObj = { username, token, role };
         localStorage.setItem("token", token);
         localStorage.setItem("user", JSON.stringify(userObj));
 
