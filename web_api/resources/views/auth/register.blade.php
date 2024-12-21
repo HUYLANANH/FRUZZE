@@ -27,15 +27,9 @@
                             <h4 class="login-title text-center">Đăng Ký</h4>
                             <div class="row">
                                 <!-- Họ và tên -->
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <label for="full_name">Họ và tên*</label>
-                                    <input type="text" id="full_name" name="full_name" placeholder="Họ và tên" required />
-                                </div>
-
-                                <!-- Avatar -->
-                                <div class="col-md-6">
-                                    <label for="avatar">Ảnh đại diện</label>
-                                    <input type="file" id="avatar" name="avatar" accept="image/*" class="form-control" onchange="previewAvatar()" />
+                                    <input type="text" id="full_name" name="full_name" placeholder="Nhập họ và tên" required />
                                 </div>
 
                                 <!-- Username -->
@@ -125,7 +119,6 @@
     const password_confirmation = document.getElementById('password_confirm').value.trim();
     const address = document.getElementById('address').value.trim(); 
     const gender = document.getElementById('gender').value.trim(); 
-    const avatar = document.getElementById('avatar').value.trim(); 
 
     const errorMessage = document.getElementById('errorMessage'); 
 
@@ -151,7 +144,7 @@
                 'Accept': 'application/json',
                 // Authorization: 'Bearer ' + localStorage.getItem('token')  // Token nếu cần
             },
-            body: JSON.stringify({ full_name, username, email, phone_number, birth_year, password, address, gender, avatar }) // Gửi thêm address
+            body: JSON.stringify({ full_name, username, email, phone_number, birth_year, password, address, gender}) // Gửi thêm address
         });
 
         if (response.ok) {

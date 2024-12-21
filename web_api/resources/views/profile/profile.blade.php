@@ -28,10 +28,7 @@
                             <div class="row">
                                 <!-- Avatar -->
                                 <div class="col-md-12 text-center mb-4">
-                                    <img id="avatar" src="default-avatar.png" alt="Avatar" class="img-thumbnail rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
-                                    <div class="mt-2">
-                                        <button type="submit" id="change-avatar" class="btn btn-secondary">Thay Đổi Avatar</button>
-                                    </div>
+                                    <img id="avatar" src="assets/images/meme-meo-bua-6.png" alt="Avatar" class="img-thumbnail rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
                                 </div>
 
                                 <!-- Full Name -->
@@ -122,9 +119,7 @@ async function fetchProfile() {
         document.getElementById('avatar').value = data.avatar || '';
 
         // Cập nhật ảnh avatar nếu có
-        if (data.avatar) {
-            document.getElementById('avatar').src = data.avatar; // Cập nhật ảnh từ URL
-        }
+
         } catch (error) {
             showAlert('danger', 'Không thể tải thông tin hồ sơ. Vui lòng thử lại.');
         }
@@ -143,7 +138,6 @@ async function saveProfile() {
         birth_year: document.getElementById('birth_year').value,
         address: document.getElementById('address').value,
         gender: document.getElementById('gender').value,
-        avatar: document.getElementById('avatar').value 
     };
 
     try {
@@ -164,28 +158,7 @@ async function saveProfile() {
     }
 }
 
-// Xử lý sự kiện thay đổi avatar
-document.getElementById('change-avatar').addEventListener('click', function() {
-    // Tạo một input file để người dùng chọn ảnh mới
-    const fileInput = document.createElement('input');
-    fileInput.type = 'file';
-    fileInput.accept = 'image/*';
-    
-    fileInput.addEventListener('change', function(event) {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                // Cập nhật ảnh avatar mới cho người dùng
-                const avatarImage = document.getElementById('avatar');
-                avatarImage.src = e.target.result;  // Hiển thị ảnh mới
-            };
-            reader.readAsDataURL(file);
-        }
-    });
 
-    fileInput.click();  // Mở hộp thoại chọn file
-});
 
 // Hiển thị thông báo
 function showAlert(type, message) {
