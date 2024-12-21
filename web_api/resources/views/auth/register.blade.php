@@ -27,9 +27,15 @@
                             <h4 class="login-title text-center">Đăng Ký</h4>
                             <div class="row">
                                 <!-- Họ và tên -->
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <label for="full_name">Họ và tên*</label>
                                     <input type="text" id="full_name" name="full_name" placeholder="Họ và tên" required />
+                                </div>
+
+                                <!-- Avatar -->
+                                <div class="col-md-6">
+                                    <label for="avatar">Ảnh đại diện</label>
+                                    <input type="file" id="avatar" name="avatar" accept="image/*" class="form-control" onchange="previewAvatar()" />
                                 </div>
 
                                 <!-- Username -->
@@ -39,21 +45,31 @@
                                 </div>
 
                                 <!-- Email -->
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <label for="email">Email*</label>
                                     <input type="email" id="email" name="email" placeholder="Nhập địa chỉ email" required />
-                                </div>
-
-                                <!-- Ngày sinh -->
-                                <div class="col-md-6">
-                                    <label for="birth_year">Ngày sinh*</label>
-                                    <input type="date" id="birth_year" name="birth_year" required />
                                 </div>
 
                                 <!-- Số điện thoại -->
                                 <div class="col-md-6">
                                     <label for="phone_number">Số điện thoại*</label>
                                     <input type="tel" id="phone_number" name="phone_number" placeholder="Nhập số điện thoại" required />
+                                </div>
+
+                                <!-- Giới tính -->
+                                <div class="col-md-6">
+                                    <label for="gender">Giới tính*</label>
+                                    <select name="gender" class="form-select" id="gender" name="gender">
+                                        <option value="male">Nam</option>
+                                        <option value="female">Nữ</option>
+                                        <option value="other">Khác</option>
+                                    </select>
+                                </div>
+
+                                <!-- Ngày sinh -->
+                                <div class="col-md-6">
+                                    <label for="birth_year">Ngày sinh*</label>
+                                    <input type="date" id="birth_year" name="birth_year" required />
                                 </div>
 
                                 <!-- Địa chỉ -->
@@ -107,7 +123,9 @@
     const birth_year = document.getElementById('birth_year').value;
     const password = document.getElementById('password').value.trim();
     const password_confirmation = document.getElementById('password_confirm').value.trim();
-    const address = document.getElementById('address').value.trim(); // Lấy dữ liệu từ trường address
+    const address = document.getElementById('address').value.trim(); 
+    const gender = document.getElementById('gender').value.trim(); 
+    const avatar = document.getElementById('avatar').value.trim(); 
 
     const errorMessage = document.getElementById('errorMessage'); 
 
@@ -133,7 +151,7 @@
                 'Accept': 'application/json',
                 // Authorization: 'Bearer ' + localStorage.getItem('token')  // Token nếu cần
             },
-            body: JSON.stringify({ full_name, username, email, phone_number, birth_year, password, address }) // Gửi thêm address
+            body: JSON.stringify({ full_name, username, email, phone_number, birth_year, password, address, gender, avatar }) // Gửi thêm address
         });
 
         if (response.ok) {

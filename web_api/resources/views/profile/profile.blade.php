@@ -26,20 +26,28 @@
 
                         <div class="login-form">
                             <div class="row">
+                                <!-- Avatar -->
+                                <div class="col-md-12 text-center mb-4">
+                                    <img id="avatar" src="default-avatar.png" alt="Avatar" class="img-thumbnail rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
+                                    <div class="mt-2">
+                                        <button type="submit" id="change-avatar" class="btn btn-secondary">Thay Đổi Avatar</button>
+                                    </div>
+                                </div>
+
                                 <!-- Full Name -->
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <label for="full_name">Họ và tên</label>
                                     <input type="text" id="full_name" name="full_name" class="form-control" disabled />
                                 </div>
 
                                 <!-- Username -->
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <label for="username">Username</label>
                                     <input type="text" id="username" name="username" class="form-control" disabled />
                                 </div>
 
                                 <!-- Email -->
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <label for="email">Email</label>
                                     <input type="email" id="email" name="email" class="form-control" disabled />
                                 </div>
@@ -48,6 +56,16 @@
                                 <div class="col-md-6">
                                     <label for="phone_number">Số điện thoại</label>
                                     <input type="text" id="phone_number" name="phone_number" class="form-control" disabled />
+                                </div>
+
+                                <!-- Giới tính -->
+                                <div class="col-md-6">
+                                    <label for="gender">Giới tính</label>
+                                    <select name="gender" class="form-select" id="gender" disabled >
+                                        <option value="male">Nam</option>
+                                        <option value="female">Nữ</option>
+                                        <option value="other">Khác</option>
+                                    </select>
                                 </div>
 
                                 <!-- Birth Year -->
@@ -76,104 +94,122 @@
     </div>
 </main>
 <script>
-   // Hàm lấy thông tin người dùng từ backend và đổ vào form
-   async function fetchProfile() {
-        const token = localStorage.getItem('token');
+// Hàm lấy thông tin người dùng từ backend và đổ vào form
+async function fetchProfile() {
+    const token = localStorage.getItem('token');
 
-        try {
-            const response = await fetch('http://127.0.0.1:8000/api/auth/profile', {
-                method: 'GET',
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    'Content-Type': 'application/json'
-                }
-            });
-            if (!response.ok) throw new Error('Không thể tải dữ liệu hồ sơ');
-            const data = await response.json();
+    try {
+        const response = await fetch('http://127.0.0.1:8000/api/auth/profile', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        });
 
-            // Gán dữ liệu vào form
-            document.getElementById('full_name').value = data.full_name || '';
-            document.getElementById('username').value = data.username || '';
-            document.getElementById('email').value = data.email || '';
-            document.getElementById('phone_number').value = data.phone_number || '';
-            document.getElementById('birth_year').value = data.birth_year || '';
-            document.getElementById('address').value = data.address || '';
+        if (!response.ok) throw new Error('Không thể tải dữ liệu hồ sơ');
+        
+        const data = await response.json();
+
+        // Gán dữ liệu vào form
+        document.getElementById('full_name').value = data.full_name || '';
+        document.getElementById('username').value = data.username || '';
+        document.getElementById('email').value = data.email || '';
+        document.getElementById('phone_number').value = data.phone_number || '';
+        document.getElementById('birth_year').value = data.birth_year || '';
+        document.getElementById('address').value = data.address || '';
+        document.getElementById('gender').value = data.gender || '';
+        document.getElementById('avatar').value = data.avatar || '';
+
+        // Cập nhật ảnh avatar nếu có
+        if (data.avatar) {
+            document.getElementById('avatar').src = data.avatar; // Cập nhật ảnh từ URL
+        }
         } catch (error) {
             showAlert('danger', 'Không thể tải thông tin hồ sơ. Vui lòng thử lại.');
         }
+}
+
+// Hàm lưu hồ sơ người dùng sau khi chỉnh sửa
+async function saveProfile() {
+    const token = localStorage.getItem('token');
+
+    // Lấy dữ liệu từ form
+    const formData = {
+        full_name: document.getElementById('full_name').value,
+        username: document.getElementById('username').value,
+        email: document.getElementById('email').value,
+        phone_number: document.getElementById('phone_number').value,
+        birth_year: document.getElementById('birth_year').value,
+        address: document.getElementById('address').value,
+        gender: document.getElementById('gender').value,
+        avatar: document.getElementById('avatar').value 
+    };
+
+    try {
+        const response = await fetch('http://127.0.0.1:8000/api/auth/update-profile', {
+            method: 'PATCH',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData) // stringify object formData
+        });
+
+        const responseData = await response.json();
+        if (!response.ok) throw new Error(responseData.message || 'Cập nhật thất bại');
+        showAlert('success', 'Hồ sơ đã được cập nhật thành công.');
+    } catch (error) {
+        showAlert('danger', error.message || 'Cập nhật hồ sơ thất bại. Vui lòng thử lại.');
     }
+}
 
-    // Hàm lưu hồ sơ người dùng sau khi chỉnh sửa
-    async function saveProfile() {
-        const token = localStorage.getItem('token');
-
-        // Lấy dữ liệu từ form
-        const formData = {
-            full_name: document.getElementById('full_name').value,
-            username: document.getElementById('username').value,
-            email: document.getElementById('email').value,
-            phone_number: document.getElementById('phone_number').value,
-            birth_year: document.getElementById('birth_year').value,
-            address: document.getElementById('address').value
-        };
-
-        try {
-            const response = await fetch('http://127.0.0.1:8000/api/auth/update-profile', {
-                method: 'PATCH',
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData) // stringify object formData
-            });
-
-            const responseData = await response.json();
-            if (!response.ok) throw new Error(responseData.message || 'Cập nhật thất bại');
-            showAlert('success', 'Hồ sơ đã được cập nhật thành công.');
-        } catch (error) {
-            showAlert('danger', error.message || 'Cập nhật hồ sơ thất bại. Vui lòng thử lại.');
+// Xử lý sự kiện thay đổi avatar
+document.getElementById('change-avatar').addEventListener('click', function() {
+    // Tạo một input file để người dùng chọn ảnh mới
+    const fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.accept = 'image/*';
+    
+    fileInput.addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                // Cập nhật ảnh avatar mới cho người dùng
+                const avatarImage = document.getElementById('avatar');
+                avatarImage.src = e.target.result;  // Hiển thị ảnh mới
+            };
+            reader.readAsDataURL(file);
         }
-    }
+    });
 
-
-    document.getElementById('change-password').addEventListener('click', function () {
-    window.location.href = '/change-password'; // URL của trang đổi mật khẩu
+    fileInput.click();  // Mở hộp thoại chọn file
 });
 
-    // Xử lý nút "Sửa Thông Tin"
-    document.getElementById('edit-profile').addEventListener('click', function () {
-        const isEditing = this.textContent === 'Lưu Thay Đổi';
-        const fields = document.querySelectorAll('#profile-form input, #profile-form textarea');
+// Hiển thị thông báo
+function showAlert(type, message) {
+    const alertBox = document.getElementById('alert');
+    alertBox.className = `alert alert-${type}`;
+    alertBox.textContent = message;
+    alertBox.classList.remove('d-none');
+}
 
-        // Chuyển đổi trạng thái chỉnh sửa
-        fields.forEach(field => field.disabled = isEditing);
-        this.textContent = isEditing ? 'Sửa Thông Tin' : 'Lưu Thay Đổi';
+// Tải dữ liệu hồ sơ khi trang được load
+document.addEventListener('DOMContentLoaded', fetchProfile);
 
-        // Nếu đang lưu thay đổi, gọi hàm saveProfile
-        if (isEditing) saveProfile();
-    });
+// Xử lý nút "Sửa Thông Tin"
+document.getElementById('edit-profile').addEventListener('click', function() {
+    const isEditing = this.textContent === 'Lưu Thay Đổi';
+    const fields = document.querySelectorAll('#profile-form input, #profile-form textarea,  #profile-form select');
 
-    // Hiển thị thông báo
-    function showAlert(type, message) {
-        const alertBox = document.getElementById('alert');
-        alertBox.className = `alert alert-${type}`;
-        alertBox.textContent = message;
-        alertBox.classList.remove('d-none');
-    }
+    // Chuyển đổi trạng thái chỉnh sửa
+    fields.forEach(field => field.disabled = isEditing);
+    this.textContent = isEditing ? 'Sửa Thông Tin' : 'Lưu Thay Đổi';
 
-
-    // Tải dữ liệu hồ sơ khi trang được load
-    document.addEventListener('DOMContentLoaded', fetchProfile);
-
-    document.getElementById('change-password').addEventListener('click', function () {
-        document.getElementById('password-section').classList.remove('d-none');
-    });
-
-    document.getElementById('save-password').addEventListener('click', changePassword);
-
-    document.getElementById('cancel-password').addEventListener('click', function () {
-        document.getElementById('password-section').classList.add('d-none');
-    });
+    // Nếu đang lưu thay đổi, gọi hàm saveProfile
+    if (isEditing) saveProfile();
+});
 
     </script>
 

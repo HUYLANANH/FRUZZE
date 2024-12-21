@@ -30,9 +30,9 @@
           <div class="col-lg-3 order-lg-1 order-2 pt-10 pt-lg-0">
             <div class="sidebar-area">
               <div class="widgets-area mb-9">
-                <h2 class="widgets-title mb-5"><b>Lọc Theo</b></h2>
+                <h2 class="widgets-title mb-5"><b style="color: #bac34e; font-size: 25px;">LỌC SẢN PHẨM</b></h2>
                 <div class="widgets-area mb-9">
-                  <h2 class="widgets-title mb-5">Danh mục sản phẩm</h2>
+                  <h2 class="widgets-title mb-5" style="color: #bac34e">Danh mục sản phẩm</h2>
                   <div class="widgets-item">
                     <ul class="widgets-checkbox">
                       <li>
@@ -68,7 +68,7 @@
               </div>
 
               <div class="widgets-area mb-9">
-                <h2 class="widgets-title mb-5">Trọng Lượng</h2>
+                <h2 class="widgets-title mb-5" style="color: #bac34e">Trọng Lượng</h2>
                 <div class="widgets-item">
                   <ul class="widgets-checkbox">
                     <li>
@@ -101,7 +101,7 @@
               </div>
 
               <div class="widgets-area">
-                <h2 class="widgets-title mb-5">Thẻ</h2>
+                <h2 class="widgets-title mb-5" style="color: #bac34e">Thẻ</h2>
                 <div class="widgets-item">
                   <ul class="widgets-tags">
                     <li><a href="javascript:void(0)">Sầu riêng</a></li>
@@ -226,13 +226,14 @@ function fetchProducts(page = 1) {
                   </div>
                 </div>
                 <div class="product-content align-self-center">
-                  <a class="product-name pb-2" href="/shop/${product.id}"><b>${product.name}</b></a>
+                  <a class="product-name pb-2" href="/shop/${product.id}"><b style="color: #bac34e">${product.name}</b></a>
                   <div class="price-box pb-1">
-                  <b>Giá tiền:</b>
                     <span class="old-price" style="color: red;"> ${formattedOldPrice}</span>
                     <span class="new-price">${formattedNewPrice}</span>
                   </div>
-                  <p class="short-desc mb-0"><b>Mô tả:</b> ${product.description}</p>
+                  <div>
+                    <span class="short-desc mb-0">${product.description}</span>
+                  </div>
                 </div>
               </div>
             </div>
