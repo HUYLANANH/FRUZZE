@@ -56,7 +56,6 @@ class AuthController extends Controller
         $user->phone_number = $request->phone_number;
         $user->address = $request->address;
         $user->gender = $request->gender;
-        $user->avatar = $request->avatar;
 
         $result = $user->save();
 
@@ -94,7 +93,6 @@ class AuthController extends Controller
             'phone_number' => $request->phone_number,
             'address' => $request->address,
             'gender'=> $request->gender,
-            'avatar'=> $request->avatar,
         ]);
 
         return response()->json(['user' => $user], 201);
@@ -125,7 +123,6 @@ class AuthController extends Controller
             'phone_number' => $request->phone_number,
             'address' => $request->address,
             'gender'=> $request->gender,
-            'avatar'=> $request->avatar,
         ]);
 
         return response()->json(['user' => $admin], 201);
