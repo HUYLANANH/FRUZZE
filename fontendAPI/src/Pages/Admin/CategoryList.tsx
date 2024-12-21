@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 interface Category {
   id: string;
-  categorName: string;
+  name: string;
 }
 
 const CategoryList: React.FC = () => {
@@ -22,7 +22,7 @@ const CategoryList: React.FC = () => {
   const fetchCategories = async () => {
 
     try {
-      const response = await axios.get('/v4/api/Category');
+      const response = await axios.get('http://127.0.0.1:8000/api/Category');
       if (response.data && Array.isArray(response.data.data)) {
         setCategories(response.data.data);
       } else {
@@ -49,7 +49,7 @@ const CategoryList: React.FC = () => {
       const newCategory = { categorName: newCategoryName };
 
       await axios.post(
-        '/v4/api/Category',
+        'http://127.0.0.1:8000/api/Category',
         newCategory,
         {
           headers: {
@@ -84,7 +84,7 @@ const CategoryList: React.FC = () => {
     }
 
     try {
-      await axios.delete(`/v4/api/Category/${id}`);
+      await axios.delete(`http://127.0.0.1:8000/api/Category/${id}`);
       alert('Xóa thành công!');
       fetchCategories();
     } catch (error) {
@@ -171,10 +171,10 @@ const CategoryList: React.FC = () => {
                       value={editCategoryName}
                       onChange={(e) => setEditCategoryName(e.target.value)}
                       className="w-full py-1 px-2 border border-gray-300 rounded-sm"
-                      placeholder={category.categorName} // Giữ chiều ngang ổn định
+                      placeholder={category.name} // Giữ chiều ngang ổn định
                     />
                   ) : (
-                    <span>{category.categorName}</span>
+                    <span>{category.name}</span>
                   )}
                 </td>
 
@@ -198,7 +198,7 @@ const CategoryList: React.FC = () => {
                   ) : (
                     <>
                       <button
-                        onClick={() => handleEdit(category.id, category.categorName)}
+                        onClick={() => handleEdit(category.id, category.name)}
                         className="bg-yellow-500 text-white py-1 px-3 mr-2 rounded-lg hover:bg-yellow-600"
                       >
                         <FontAwesomeIcon icon={faEdit} />
