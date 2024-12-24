@@ -14,6 +14,12 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::paginate(6);
+
+        foreach ($products->items() as $product) {
+            $product->category_name = $product->category ? $product->category->name : null;
+            unset($product->category); // Loại bỏ category_id nếu không cần
+        }
+
         return response()->json($products);
     }
 

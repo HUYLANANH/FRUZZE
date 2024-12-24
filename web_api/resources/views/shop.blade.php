@@ -154,7 +154,7 @@
               </nav>
             </div>
           </div>
-        </div>  
+        </div>
       </div>
     </div>
   </main>
@@ -170,11 +170,11 @@ let allProducts = []; // Mảng lưu trữ tất cả sản phẩm
 function fetchProducts(page = 1) {
   currentPage = page;  // Cập nhật currentPage mỗi khi người dùng thay đổi trang
   const token = localStorage.getItem('token');
-  
+
   // Thêm filter category vào URL nếu có
   const categoryFilter = selectedCategories.length > 0 ? `&product.category_id=${selectedCategories.join(',')}` : '';
-  
-  fetch(`http://127.0.0.1:8000/api/product?page=${page}`, {  
+
+  fetch(`http://127.0.0.1:8000/api/product?page=${page}`, {
     method: 'GET',
     headers: {
       'Authorization': `Bearer ${token}`,
