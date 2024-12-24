@@ -78,4 +78,14 @@ Route::group([
     Route::delete('product/{id}', [ProductController::class, 'destroy'])->middleware(['admin', 'check_login']);
 });
 
-Route::post('order', [OrderController::class, 'store']);
+
+Route::group([
+
+], function ($router) {
+    // lấy danh sách danh mục sản phẩm
+    Route::get('order', [OrderController::class, 'index']);
+    //lấy 1 danh mục cụ thể
+    Route::get('order/{id}', [OrderController::class, 'show']);
+    //thêm mới danh mục
+    Route::post('order', [OrderController::class, 'store']);
+});
