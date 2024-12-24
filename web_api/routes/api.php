@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\GaleryController;
 
 
 Route::group([
@@ -77,3 +78,4 @@ Route::group([
     Route::delete('product/{id}', [ProductController::class, 'destroy'])->middleware(['admin', 'check_login']);
 });
 
+Route::post('product/galery/{id}', [GaleryController::class, 'addImage']);
