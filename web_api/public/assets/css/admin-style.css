@@ -1,7 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
+/* Reset các thành phần cơ bản */
 *,
 *::before,
 *::after {
@@ -26,6 +23,7 @@ body {
   background-color: #f8fafc;
 }
 
+/* Phong cách cho liên kết active */
 .active-link {
   background-color: #C8FBCD;
   transform: scale(0.95);

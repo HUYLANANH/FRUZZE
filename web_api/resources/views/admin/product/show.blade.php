@@ -1,41 +1,161 @@
-<!-- resources/views/admin/products/show.blade.php -->
-@extends('layouts.admin')
+@include('layouts.admin')
+<main>
+<div class="admin-wrapper">
+  <div class="container my-5">
+    <h2 class="text-center mb-4">Quản lý sản phẩm</h2>
 
-@section('content')
-<div class="container mx-auto p-4">
-    <h1 class="text-3xl font-bold mb-4">Product Details</h1>
-
-    <div class="bg-white shadow-md rounded-lg mb-6 p-4">
-        <div class="flex flex-wrap -mx-2">
-            <div class="w-full md:w-1/2 px-2 mb-4 md:mb-0">
-                <img src="{{ $product->thumbnail }}" alt="{{ $product->name }}" class="rounded-lg shadow-lg w-full">
-            </div>
-            <div class="w-full md:w-1/2 px-2">
-                <h2 class="text-2xl font-semibold">Name: {{ $product->name }}</h2>
-                <h4 class="text-xl font-bold mb-2">Price: {{ number_format($product->price, 0, ',', '.') }}₫</h4>
-                <p class="text-lg mb-4"><strong>Description:</strong> {{ $product->description }}</p>
-                <p class="text-sm text-text-normal"><strong>Created at:</strong> {{ $product->created_at->format('d/m/Y H:i') }}</p>
-                <p class="text-sm text-text-normal"><strong>Updated at:</strong> {{ $product->updated_at->format('d/m/Y H:i') }}</p>
-            </div>
-        </div>
+    <div class="mb-3">
+      <button class="btn btn-success" onclick="addProduct()">Thêm sản phẩm</button>
     </div>
 
-    <div class="flex space-x-2">
-        <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-primary bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Edit Product
-        </a>
-        <button type="submit" form="destroy" class="btn btn-danger bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" 
-                onclick="return confirm('Bạn muốn xóa sản phẩm?');">
-            Delete Product
-        </button>
-        <a href="{{ route('admin.products.index') }}" class="btn btn-secondary bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
-            Back to Products
-        </a>
-    </div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Hình ảnh</th>
+          <th>Tên sản phẩm</th>
+          <th>Danh mục</th>
+          <th>Giá</th>
+          <th>Trọng lượng</th>
+          <th>Hành động</th>
+        </tr>
+      </thead>
+      <tbody id="product-list">
+        <!-- Danh sách sản phẩm sẽ được render tại đây -->
+      </tbody>
+    </table>
+
+    <nav>
+      <ul class="pagination justify-content-center">
+        <!-- Pagination sẽ được render tại đây -->
+      </ul>
+    </nav>
+  </div>
 </div>
+</main>
+<script>
+let currentPage = 1;
 
-<form action="{{ route('admin.products.destroy', $product->id) }}" id="destroy" method="POST" class="hidden">
-    @csrf
-    @method('DELETE')
-</form>
-@endsection
+// Fetch product data from the API
+function fetchProducts(page = 1) {
+  currentPage = page;
+  const token = localStorage.getItem('token');
+
+  fetch(`http://127.0.0.1:8000/api/product?page=${page}`, {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Lỗi khi lấy dữ liệu: ' + response.status);
+    }
+    return response.json();
+  })
+  .then(data => {
+    renderProductList(data.data);
+    renderPagination(data);
+  })
+  .catch(error => console.error('Lỗi:', error));
+}
+
+// Render product list
+function renderProductList(products) {
+  const productList = document.getElementById('product-list');
+  productList.innerHTML = '';
+
+  if (products && products.length > 0) {
+    products.forEach(product => {
+      const productRow = `
+        <tr>
+          <td>${product.id}</td>
+          <td><img src="${product.thumbnail}" alt="${product.name}" style="width: 50px; height: 50px;"></td>
+          <td>${product.name}</td>
+          <td>${product.category ? product.category.name : 'Không có danh mục'}</td>
+          <td>${parseFloat(product.price).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</td>
+          <td>${product.weight} Gram</td>
+          <td>
+            <button class="btn btn-primary btn-sm" onclick="editProduct(${product.id})">Sửa</button>
+            <button class="btn btn-danger btn-sm" onclick="deleteProduct(${product.id})">Xóa</button>
+          </td>
+        </tr>
+      `;
+      productList.innerHTML += productRow;
+    });
+  } else {
+    productList.innerHTML = '<tr><td colspan="7" class="text-center">Không có sản phẩm nào</td></tr>';
+  }
+}
+
+// Render pagination
+function renderPagination(data) {
+  const pagination = document.querySelector('.pagination');
+  pagination.innerHTML = '';
+
+  if (data.prev_page_url) {
+    pagination.innerHTML += `
+      <li class="page-item">
+        <a class="page-link" href="javascript:void(0)" onclick="fetchProducts(${currentPage - 1})">&laquo;</a>
+      </li>
+    `;
+  }
+
+  for (let i = 1; i <= data.last_page; i++) {
+    pagination.innerHTML += `
+      <li class="page-item ${i === currentPage ? 'active' : ''}">
+        <a class="page-link" href="javascript:void(0)" onclick="fetchProducts(${i})">${i}</a>
+      </li>
+    `;
+  }
+
+  if (data.next_page_url) {
+    pagination.innerHTML += `
+      <li class="page-item">
+        <a class="page-link" href="javascript:void(0)" onclick="fetchProducts(${currentPage + 1})">&raquo;</a>
+      </li>
+    `;
+  }
+}
+
+// Add product
+function addProduct() {
+  alert('Thêm sản phẩm: Chức năng đang phát triển');
+}
+
+// Edit product
+function editProduct(productId) {
+  alert(`Sửa sản phẩm ID: ${productId}`);
+}
+
+// Delete product
+function deleteProduct(productId) {
+  const confirmDelete = confirm('Bạn có chắc chắn muốn xóa sản phẩm này?');
+  if (confirmDelete) {
+    const token = localStorage.getItem('token');
+
+    fetch(`http://127.0.0.1:8000/api/product/${productId}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Lỗi khi xóa sản phẩm: ' + response.status);
+      }
+      alert('Xóa sản phẩm thành công');
+      fetchProducts(currentPage);
+    })
+    .catch(error => console.error('Lỗi:', error));
+  }
+}
+
+// Fetch products on page load
+document.addEventListener('DOMContentLoaded', function() {
+  fetchProducts();
+});
+</script>
+
