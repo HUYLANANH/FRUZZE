@@ -78,4 +78,4 @@ Route::group([
     Route::delete('product/{id}', [ProductController::class, 'destroy'])->middleware(['admin', 'check_login']);
 });
 
-Route::post('product/galery/{id}', [GaleryController::class, 'addImage']);
+Route::post('product/galery/{id}', [GaleryController::class, 'addGalery']);
