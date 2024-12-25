@@ -13,8 +13,14 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $order = Order::all();
-        return response()->json($order);
+        $orders = Order::paginate(6);
+
+        foreach ($orders->items() as $order) {
+            $order->username = $order->user ? $order->user->username : null;
+            unset($order->user); // Loại bỏ category_id nếu không cần
+        }
+
+        return response()->json($orders);
     }
 
     /**
@@ -60,18 +66,18 @@ class OrderController extends Controller
      * Display the specified resource.
      */
     public function show(string $id)
-{
-    // Tìm đơn hàng theo ID, kèm theo chi tiết sản phẩm
-    $order = Order::with('orderDetails')->find($id);
+    {
+        // Tìm đơn hàng theo ID, kèm theo chi tiết sản phẩm
+        $order = Order::with('orderDetails')->find($id);
 
-    // Kiểm tra nếu đơn hàng không tồn tại
-    if (!$order) {
-        return response()->json(['message' => 'Order not found'], 404);
+        // Kiểm tra nếu đơn hàng không tồn tại
+        if (!$order) {
+            return response()->json(['message' => 'Order not found'], 404);
+        }
+
+        // Trả về thông tin đơn hàng và chi tiết sản phẩm
+        return response()->json($order, 200);
     }
-
-    // Trả về thông tin đơn hàng và chi tiết sản phẩm
-    return response()->json($order, 200);
-}
 
 
     /**
