@@ -70,6 +70,20 @@ Route::get('profile', function () {
     return view('profile.profile');
 })->name('profile');
 
-Route::get('show', function() {
-    return view('admin.product.show'); // Hiển thị sản phẩm
+Route::prefix('product')->group(function () {
+    // Lấy danh sách sản phẩm
+    Route::get('get', function () {
+        return view('admin.product.show');
+    })->name('get');
+
+    // Tạo sản phẩm mới
+    Route::get('add', function () {
+        return view('admin.product.create');
+    })->name('add');
+
+    // Cập nhật sản phẩm
+   // Route::put('/{id}', [ProductController::class, 'update'])->name('api.products.update');
+
+    // Xóa sản phẩm
+   // Route::delete('/{id}', [ProductController::class, 'destroy'])->name('api.products.destroy');
 });
