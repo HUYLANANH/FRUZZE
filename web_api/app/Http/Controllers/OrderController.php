@@ -60,9 +60,19 @@ class OrderController extends Controller
      * Display the specified resource.
      */
     public function show(string $id)
-    {
-        //
+{
+    // Tìm đơn hàng theo ID, kèm theo chi tiết sản phẩm
+    $order = Order::with('orderDetails')->find($id);
+
+    // Kiểm tra nếu đơn hàng không tồn tại
+    if (!$order) {
+        return response()->json(['message' => 'Order not found'], 404);
     }
+
+    // Trả về thông tin đơn hàng và chi tiết sản phẩm
+    return response()->json($order, 200);
+}
+
 
     /**
      * Remove the specified resource from storage.
