@@ -1,6 +1,7 @@
 @include('layouts.admin')
-<main>
-<div class="admin-wrapper">
+<div class="main-wrapper">
+  <!-- Begin Main Content Area -->
+  <main class="main-content">
   <div class="container my-5">
     <h2 class="text-center mb-4">Quản lý sản phẩm</h2>
 
@@ -65,15 +66,14 @@ function fetchProducts(page = 1) {
 function renderProductList(products) {
   const productList = document.getElementById('product-list');
   productList.innerHTML = '';
-
   if (products && products.length > 0) {
     products.forEach(product => {
       const productRow = `
         <tr>
           <td>${product.id}</td>
-          <td><img src="${product.thumbnail}" alt="${product.name}" style="width: 50px; height: 50px;"></td>
+          <td><img src="/${product.thumbnail}" alt="${product.name}" style="width: 50px; height: 50px;"></td>
           <td>${product.name}</td>
-          <td>${product.category ? product.category.name : 'Không có danh mục'}</td>
+          <td>${ product.category_id}</td>
           <td>${parseFloat(product.price).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</td>
           <td>${product.weight} Gram</td>
           <td>
@@ -121,9 +121,8 @@ function renderPagination(data) {
 
 // Add product
 function addProduct() {
-  alert('Thêm sản phẩm: Chức năng đang phát triển');
+  window.location.href = '/product/add'; // Đường dẫn đến trang tạo sản phẩm
 }
-
 // Edit product
 function editProduct(productId) {
   alert(`Sửa sản phẩm ID: ${productId}`);
