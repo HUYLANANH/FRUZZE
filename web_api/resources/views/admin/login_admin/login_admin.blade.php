@@ -79,7 +79,7 @@
         const password = document.getElementById('password-user').value;
 
         try {
-            const response = await fetch('http://127.0.0.1:8000/api/auth/admin/login', {
+            const response = await fetch('http://127.0.0.1:8000/api/auth/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -113,7 +113,7 @@
         const email = document.getElementById('email').value;
 
         try {
-            const response = await fetch('http://127.0.0.1:8000/api/auth/admin/forgot-password', {
+            const response = await fetch('http://127.0.0.1:8000/api/auth/forgot-password', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

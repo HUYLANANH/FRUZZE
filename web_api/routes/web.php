@@ -30,7 +30,6 @@ Route::get('detail-shop/{id}', function ($id) {
     return view('detail-shop', ['id' => $id]);
 });
 
-Route::get('/product/{id}', [ProductController::class, 'show']);
 
 Route::get('blog', function () {
     return view('blog');
