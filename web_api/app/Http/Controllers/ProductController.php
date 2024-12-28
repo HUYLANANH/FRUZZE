@@ -65,8 +65,8 @@ class ProductController extends Controller
 
         if ($request->hasFile('image')) {
             $imageName = $request->file('image')->getClientOriginalName(); // Tạo tên file
-            $request->file('image')->move(public_path('assets/images/galery'), $imageName); // Lưu file vào public/assets/images/galery
-            $validatedData['thumbnail'] = $imageName;
+            $request->file('image')->move(public_path('assets/images/sản phẩm tách nền'), $imageName); // Lưu file vào public/assets/images/galery
+            $validatedData['thumbnail'] ='assets/images/sản phẩm tách nền/' . $imageName;
         }
 
         // Tạo sản phẩm mới
