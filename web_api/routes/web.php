@@ -87,3 +87,6 @@ Route::prefix('product')->group(function () {
     // Xóa sản phẩm
    // Route::delete('/{id}', [ProductController::class, 'destroy'])->name('api.products.destroy');
 });
+Route::get('orders', function () {
+    return view('admin.orders.index');
+})->name('orders');
