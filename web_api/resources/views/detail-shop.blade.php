@@ -4,8 +4,8 @@
       <main class="main-content">
         <div
           class="breadcrumb-area breadcrumb-height"
-          data-bg-image="assets/images/breadcrumb/bg/bg.png"
-        >
+          data-bg-image="/assets/images/breadcrumb/bg/bg.png"
+          >
           <div class="container h-100">
             <div class="row h-100">
               <div class="col-lg-12">
@@ -26,129 +26,49 @@
         </div>
         <div class="single-product-area section-space-top-100">
           <div class="container">
-            <div class="row">
-              <div class="col-lg-6">
-                <div class="single-product-img h-100">
-                  <div class="swiper-container single-product-slider">
-                    <div class="swiper-wrapper">
-                      <div class="swiper-slide">
-                        <a
-                          href="assets/images/product/large-size/2-1-555x645.jpg"
-                          class="single-img gallery-popup"
-                        >
-                          <img
-                            class="img-full"
-                            src="assets/images/product/large-size/2-1-555x645.jpg"
-                            alt="Product Image"
-                          />
-                        </a>
-                      </div>
-                      <div class="swiper-slide">
-                        <a
-                          href="assets/images/product/large-size/2-2-555x645.jpg"
-                          class="single-img gallery-popup"
-                        >
-                          <img
-                            class="img-full"
-                            src="assets/images/product/large-size/2-2-555x645.jpg"
-                            alt="Product Image"
-                          />
-                        </a>
-                      </div>
-                      <div class="swiper-slide">
-                        <a
-                          href="assets/images/product/large-size/2-3-555x645.jpg"
-                          class="single-img gallery-popup"
-                        >
-                          <img
-                            class="img-full"
-                            src="assets/images/product/large-size/2-3-555x645.jpg"
-                            alt="Product Image"
-                          />
-                        </a>
-                      </div>
-                      <div class="swiper-slide">
-                        <a
-                          href="assets/images/product/large-size/2-4-555x645.jpg"
-                          class="single-img gallery-popup"
-                        >
-                          <img
-                            class="img-full"
-                            src="assets/images/product/large-size/2-4-555x645.jpg"
-                            alt="Product Image"
-                          />
-                        </a>
-                      </div>
-                    </div>
-                    <!-- Add Pagination -->
-                    <div class="swiper-pagination"></div>
-                  </div>
+          <div class="row">
+    <!-- Hình ảnh sản phẩm -->
+    <div class="col-lg-6">
+        <div class="single-product-img h-100">
+            <div class="swiper-container single-product-slider">
+                <div class="image-container">
+                    <img id="product-thumbnail" src="/" alt="Product Image">
                 </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="product-thumb-with-content row">
-                  <div class="col-12 order-lg-1 order-2 pt-10 pt-lg-0">
-                    <div class="single-product-content">
-                      <h2 class="title">Tên sản phẩm</h2>
-                      <div class="price-box pb-1">
-                        <span class="new-price text-danger">giá đã giảm</span>
-                        <span class="old-price text-primary">giá chưa giảm</span>
-                      </div>
-                      <p class="short-desc mb-6">
-                        Mô tả description
-                      </p>
-                      <ul class="quantity-with-btn pb-7">
-                        <li class="quantity">
-                          <div class="cart-plus-minus">
-                            <input
-                              class="cart-plus-minus-box"
-                              value="1"
-                              type="text"
-                            />
-                          </div>
-                        </li>
-                        <li class="add-to-cart">
-                          <a
-                            class="btn btn-custom-size lg-size btn-primary btn-secondary-hover rounded-0"
-                            href="cart.html"
-                            >Thêm vào giỏ hàng</a
-                          >
-                        </li>
-                        <li class="wishlist-btn-wrap">
-                          <a class="btn rounded-0" href="wishlist.html">
-                            <i class="pe-7s-like"></i>
-                          </a>
-                        </li>
-                      </ul>
-                      <div class="social-link align-items-center pb-lg-8">
-                        <span class="title pe-3">Chia sẻ:</span>
-                        <ul>
-                          <li>
-                            <a href="https://www.facebook.com/profile.php?id=61554393290754">
-                              <i class="fab fa-facebook"></i>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="https://www.instagram.com/ours.fruzze">
-                              <i class="fab fa-instagram"></i>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="https://www.tiktok.com/@ours.fruzze">
-                              <i class="fab fa-tiktok"></i>
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12 order-lg-2 order-1 pt-10 pt-lg-0">
-                    <div class="swiper-container single-product-thumbs">
-                    </div>
-                  </div>
-                </div>
-              </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
             </div>
+        </div>
+    </div>
+    <!-- Thông tin sản phẩm và nút thêm giỏ hàng -->
+    <div class="col-lg-6">
+        <div class="product-thumb-with-content">
+            <div class="product-details">
+                <h2 id="product-name" class="title">Tên sản phẩm</h2>
+                <div class="price-box pb-1">
+                    <span id="new-price" class="new-price text-danger">giá đã giảm</span>
+                    <span id="old-price" class="old-price text-primary">giá chưa giảm</span>
+                </div>
+                <p id="product-description" class="short-desc mb-6">Mô tả description</p>
+                <ul class="quantity-with-btn pb-7">
+                    <li class="quantity">
+                        <div class="cart-plus-minus">
+                            <input class="cart-plus-minus-box" value="1" type="text" />
+                        </div>
+                    </li>
+                    <li class="add-to-cart">
+                        <a class="btn btn-custom-size lg-size btn-primary btn-secondary-hover rounded-0" href="cart.html">Thêm vào giỏ hàng</a>
+                    </li>
+                    <li class="wishlist-btn-wrap">
+                        <a class="btn rounded-0" href="wishlist.html">
+                            <i class="pe-7s-like"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
           </div>
         </div>
         <div class="product-tab-area section-space-top-100">
@@ -321,7 +241,7 @@
       </main>
       <!-- Main Content Area End Here  -->
 
-<script>
+      <script>
 // Lấy ID sản phẩm từ URL
 const productId = window.location.pathname.split('/').pop();
 
@@ -333,31 +253,54 @@ function fetchProductDetail() {
     method: 'GET',
     headers: {
       'Authorization': `Bearer ${token}`,
-      'Content-Type': 'application/json'
-    }
+      'Content-Type': 'application/json',
+    },
   })
-  .then(response => {
-    if (!response.ok) throw new Error('Lỗi khi lấy dữ liệu sản phẩm');
-    return response.json();
-  })
-  .then(data => {
-    // Hiển thị thông tin sản phẩm
-    document.getElementById('product-thumbnail').src = data.thumbnail;
-    document.getElementById('product-name').textContent = data.name;
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      if (!data || !data.id) {
+        // Nếu phản hồi không hợp lệ hoặc không có sản phẩm
+        console.error('Không tìm thấy sản phẩm hoặc dữ liệu không hợp lệ!');
+        alert('Không tìm thấy sản phẩm hoặc dữ liệu không hợp lệ!');
+        return;
+      }
 
-    const oldPrice = parseFloat(data.price);
-    const discountRate = 10;
-    const newPrice = oldPrice - (oldPrice * discountRate / 100);
+      // Hiển thị thông tin sản phẩm
+      document.getElementById('product-thumbnail').src = `/${data.thumbnail}`;
+      document.getElementById('product-name').textContent = data.name;
 
-    document.getElementById('old-price').textContent = oldPrice.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
-    document.getElementById('new-price').textContent = newPrice.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
-    document.getElementById('product-description').textContent = data.description;
-  })
-  .catch(error => console.error('Lỗi:', error));
+      const oldPrice = parseFloat(data.price);
+      const discountRate = 10; // % giảm giá (nếu có)
+      const newPrice = oldPrice - (oldPrice * discountRate / 100);
+
+      document.getElementById('old-price').textContent = oldPrice.toLocaleString('vi-VN', {
+        style: 'currency',
+        currency: 'VND',
+      });
+      document.getElementById('new-price').textContent = newPrice.toLocaleString('vi-VN', {
+        style: 'currency',
+        currency: 'VND',
+      });
+      document.getElementById('product-description').textContent = data.description;   
+      document.getElementById('product-thumbnail').style.maxWidth = "100%";
+      document.getElementById('product-thumbnail').style.maxHeight = "500px";
+      document.getElementById('product-thumbnail').style.objectFit = "cover";
+      document.getElementById('product-thumbnail').style.objectPosition = "center center";
+    })
+    .catch(error => {
+      console.error('Lỗi không mong muốn:', error.message);
+      alert('Đã xảy ra lỗi khi tải thông tin sản phẩm.');
+    });
 }
 
 // Tải chi tiết sản phẩm khi trang được tải
 document.addEventListener('DOMContentLoaded', fetchProductDetail);
+
 </script>
 
 @include('layouts.footer')

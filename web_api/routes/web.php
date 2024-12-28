@@ -26,19 +26,14 @@ Route::get('shop', function () {
     return view('shop');
 });
 
-Route::get('detail-shop', function () {
-    return view('detail-shop');
+Route::get('detail-shop/{id}', function ($id) {
+    return view('detail-shop', ['id' => $id]);
 });
 
-Route::get('/detail-shop/{id}', [ProductController::class, 'show']);
-
+Route::get('/product/{id}', [ProductController::class, 'show']);
 
 Route::get('blog', function () {
     return view('blog');
-});
-
-Route::get('detail-blog', function () {
-    return view('detail-blog');
 });
 
 Route::get('404', function () {
@@ -92,7 +87,13 @@ Route::prefix('product')->group(function () {
    // Route::delete('/{id}', [ProductController::class, 'destroy'])->name('api.products.destroy');
 });
 Route::prefix('admin')->group(function () {
+
 Route::get('getusers', function () {
     return view('admin.getusers');
 })->name('getusers');
+
+Route::get('login', function () {
+    return view('admin.login_admin.login_admin');
+})->name('login');
+
 });

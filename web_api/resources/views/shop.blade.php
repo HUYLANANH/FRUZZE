@@ -221,7 +221,7 @@ function fetchProducts(page = 1) {
                   </div>
                 </div>
                 <div class="product-content align-self-center">
-                  <a class="product-name pb-2" href="/shop/${product.id}"><b style="color: #bac34e">${product.name}</b></a>
+                  <a class="product-name pb-2" href="/detail-shop/${product.id}"><b style="color: #bac34e">${product.name}</b></a>
                   <div class="price-box pb-1">
                     <span class="old-price" style="color: red;"> ${formattedOldPrice}</span>
                     <span class="new-price">${formattedNewPrice}</span>
