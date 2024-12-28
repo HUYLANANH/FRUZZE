@@ -125,7 +125,7 @@ function addProduct() {
 }
 // Edit product
 function editProduct(productId) {
-  alert(`Sửa sản phẩm ID: ${productId}`);
+  window.location.href = '/product/update'; // Đường dẫn đến trang tạo sản phẩm
 }
 
 // Delete product
