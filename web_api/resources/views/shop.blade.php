@@ -71,29 +71,25 @@
                 <h2 class="widgets-title mb-5" style="color: #bac34e">Trọng Lượng</h2>
                 <div class="widgets-item">
                   <ul class="widgets-checkbox">
-                    <li>
-                      <input
-                        class="input-checkbox"
-                        type="checkbox"
-                        id="size-selection-1"
-                      />
-                      <label
-                        class="label-checkbox mb-0"
-                        for="size-selection-1"
-                      >50 Gram</label>
-                    </li>
-                    <li>
-                      <input
-                        class="input-checkbox"
-                        type="checkbox"
-                        id="size-selection-2"
-                      />
-                      <label
-                        class="label-checkbox mb-0"
-                        for="size-selection-2"
-                      >100 Gram</label>
-                    </li>
-                    <button class="btn btn-primary btn-secondary-hover" type="submit">
+                  <li>
+                    <input
+                      class="input-checkbox"
+                      type="checkbox"
+                      id="size-selection-1"
+                      data-weight="50"
+                    />
+                    <label class="label-checkbox mb-0" for="size-selection-1">50 Gram</label>
+                  </li>
+                  <li>
+                    <input
+                      class="input-checkbox"
+                      type="checkbox"
+                      id="size-selection-2"
+                      data-weight="100"
+                    />
+                    <label class="label-checkbox mb-0" for="size-selection-2">100 Gram</label>
+                  </li>
+                    <button id="filter-btn" class="btn btn-primary btn-secondary-hover" type="button">
                       Lọc
                     </button>
                   </ul>
@@ -168,13 +164,20 @@ let allProducts = []; // Mảng lưu trữ tất cả sản phẩm
 
 // Fetch product data from the API with filters
 function fetchProducts(page = 1) {
-  currentPage = page;  // Cập nhật currentPage mỗi khi người dùng thay đổi trang
+  currentPage = page; // Cập nhật trang hiện tại
   const token = localStorage.getItem('token');
 
-  // Thêm filter category vào URL nếu có
-  const categoryFilter = selectedCategories.length > 0 ? `&product.category_id=${selectedCategories.join(',')}` : '';
+  // Tạo chuỗi query cho category và weight filter
+  const categoryFilter = selectedCategories.length > 0 
+  ? `&category_id=${encodeURIComponent(selectedCategories.join(','))}` 
+  : '';  
 
-  fetch(`http://127.0.0.1:8000/api/product?page=${page}`, {
+  const weightFilter = selectedWeights.length > 0 
+  ? `&weight=${encodeURIComponent(selectedWeights.join(','))}` 
+  : '';
+
+  // Gọi API với các bộ lọc
+  fetch(`http://127.0.0.1:8000/api/product?page=${page}${categoryFilter}${weightFilter}`, {
     method: 'GET',
     headers: {
       'Authorization': `Bearer ${token}`,
@@ -185,20 +188,20 @@ function fetchProducts(page = 1) {
     if (!response.ok) {
       throw new Error('Lỗi khi lấy dữ liệu: ' + response.status);
     }
-    return response.json();  // Chuyển body thành JSON
+    return response.json();
   })
   .then(data => {
-    console.log('Dữ liệu trả về từ backend: ', data);  // Kiểm tra dữ liệu trả về
+    console.log('Dữ liệu trả về từ backend: ', data);
 
     if (data && data.data && Array.isArray(data.data)) {
       let productListHTML = '';
       data.data.forEach(product => {
-        // Tính giá sau khi giảm 15%
+        // Tính giá sau khi giảm giá
         const discountRate = 10;
         const oldPrice = parseFloat(product.price);
         const newPrice = oldPrice - (oldPrice * discountRate / 100);
 
-        // Định dạng giá với đơn vị VNĐ
+        // Định dạng giá
         const formattedOldPrice = oldPrice.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
         const formattedNewPrice = newPrice.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
 
@@ -207,33 +210,23 @@ function fetchProducts(page = 1) {
             <div class="col-12 pt-6">
               <div class="product-item">
                 <div class="product-img img-zoom-effect">
-                  <a href="/shop/${product.id}">
+                  <a href="/detail-shop/${product.id}">
                     <img class="img-full" src="${product.thumbnail}" alt="${product.name}" />
                   </a>
                   <div class="product-add-action">
                     <ul>
-                      <li>
-                        <a href="/cart">
-                          <i class="pe-7s-cart"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/wishlist">
-                          <i class="pe-7s-like"></i>
-                        </a>
-                      </li>
+                      <li><a href="/cart"><i class="pe-7s-cart"></i></a></li>
+                      <li><a href="/wishlist"><i class="pe-7s-like"></i></a></li>
                     </ul>
                   </div>
                 </div>
                 <div class="product-content align-self-center">
-                  <a class="product-name pb-2" href="/shop/${product.id}"><b style="color: #bac34e">${product.name}</b></a>
+                  <a class="product-name pb-2" href="/detail-shop/${product.id}"><b style="color: #bac34e">${product.name}</b></a>
                   <div class="price-box pb-1">
                     <span class="old-price" style="color: red;"> ${formattedOldPrice}</span>
                     <span class="new-price">${formattedNewPrice}</span>
                   </div>
-                  <div>
-                    <span class="short-desc mb-0">${product.description}</span>
-                  </div>
+                  <div><span class="short-desc mb-0">${product.description}</span></div>
                 </div>
               </div>
             </div>
@@ -246,7 +239,7 @@ function fetchProducts(page = 1) {
       document.getElementById('product-list').innerHTML = "<p>Không tìm thấy sản phẩm nào</p>";
     }
 
-    renderPagination(data);  // Gọi hàm phân trang sau khi tải dữ liệu
+    renderPagination(data); // Gọi hàm phân trang
   })
   .catch(error => console.error('Lỗi:', error));
 }
@@ -285,6 +278,23 @@ function renderPagination(data) {
 
   document.querySelector('.pagination').innerHTML = paginationHTML.join('');
 }
+
+document.getElementById('filter-btn').addEventListener('click', function () {
+  // Thu thập các category được chọn
+  selectedCategories = Array.from(document.querySelectorAll('.input-checkbox[data-category-id]:checked'))
+    .map(checkbox => checkbox.dataset.category_id);
+
+  // Thu thập các trọng lượng được chọn
+  selectedWeights = Array.from(
+    document.querySelectorAll('.input-checkbox[data-weight]:checked')
+  ).map(checkbox => checkbox.getAttribute('data-weight'));
+
+  console.log('Danh mục đã chọn:', selectedCategories);
+  console.log('Trọng lượng đã chọn:', selectedWeights);
+
+  // Gọi API để lấy sản phẩm với các bộ lọc
+  fetchProducts(currentPage);
+});
 
 // Load sản phẩm khi DOM được tải
 document.addEventListener("DOMContentLoaded", function() {
