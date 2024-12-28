@@ -15,6 +15,8 @@ class ProductController extends Controller
     {
         $categoryIds = $request->get('category_id'); // Danh sách category_id (có thể là mảng)
         $weights = $request->get('weight'); // Danh sách trọng lượng (có thể là mảng)
+        $sortBy = $request->get('sort_by', 'id'); // Cột cần sắp xếp (mặc định là 'id')
+        $sortOrder = $request->get('sort_order', 'asc'); // Thứ tự sắp xếp (mặc định là 'asc')
 
         // Khởi tạo query
         $query = Product::query();
@@ -29,6 +31,11 @@ class ProductController extends Controller
         if ($weights) {
             $weightsArray = explode(',', $weights); // Chuyển chuỗi thành mảng
             $query->whereIn('weight', $weightsArray);
+        }
+
+        $allowedSortColumns = ['id', 'price', 'created_at']; // Các cột được phép sắp xếp
+        if (in_array($sortBy, $allowedSortColumns)) {
+            $query->orderBy($sortBy, $sortOrder);
         }
 
         // Phân trang sản phẩm (10 sản phẩm mỗi trang)
