@@ -24,9 +24,10 @@
   margin-right: 10px; /* Khoảng cách bên phải logo */
 }
 
-.sidebar-nav h3 {
+.sidebar-nav h2 {
   font-size: 1.5rem; /* Kích thước chữ cho tiêu đề nav */
   color: #010101; /* Màu chữ tiêu đề nav */
+  background-color:#dff6db ;
   margin-bottom: 10px; /* Khoảng cách dưới tiêu đề */
   text-align: center;
 }
@@ -136,8 +137,8 @@
 
 .btn-danger {
   color: #fff;
-  background-color: #d9534f;
-  border-color: #d43f3a;
+  background-color: #d9534f !important;
+  border-color: #d43f3a !important;
 }
 
 /* Pagination Styles */
