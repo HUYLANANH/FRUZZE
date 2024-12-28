@@ -11,9 +11,28 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::paginate(6);
+        $categoryIds = $request->get('category_id'); // Danh sách category_id (có thể là mảng)
+        $weights = $request->get('weight'); // Danh sách trọng lượng (có thể là mảng)
+
+        // Khởi tạo query
+        $query = Product::query();
+
+        // Áp dụng bộ lọc category_id nếu có
+        if ($categoryIds) {
+            $categoryIdsArray = explode(',', $categoryIds); // Chuyển chuỗi thành mảng
+            $query->whereIn('category_id', $categoryIdsArray);
+        }
+
+        // Áp dụng bộ lọc weight nếu có
+        if ($weights) {
+            $weightsArray = explode(',', $weights); // Chuyển chuỗi thành mảng
+            $query->whereIn('weight', $weightsArray);
+        }
+
+        // Phân trang sản phẩm (10 sản phẩm mỗi trang)
+        $products = $query->paginate(6);
 
         foreach ($products->items() as $product) {
             $product->category_name = $product->category ? $product->category->name : null;

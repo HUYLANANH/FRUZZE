@@ -17,7 +17,7 @@ class OrderController extends Controller
 
         foreach ($orders->items() as $order) {
             $order->username = $order->user ? $order->user->username : null;
-            unset($order->user); // Loại bỏ category_id nếu không cần
+            unset($order->user); // Loại bỏ user id nếu không cần
         }
 
         return response()->json($orders);
@@ -79,12 +79,33 @@ class OrderController extends Controller
         return response()->json($order, 200);
     }
 
+    public function myOrder()
+    {
+        $user = auth('api')->user();
 
+        // Tìm đơn hàng theo ID, kèm theo chi tiết sản phẩm
+        $order = Order::where('user_id', $user->id)->first();
+
+        // Kiểm tra nếu đơn hàng không tồn tại
+        if (!$order) {
+            return response()->json(['message' => 'Order not found'], 404);
+        }
+
+        // Trả về thông tin đơn hàng và chi tiết sản phẩm
+        return response()->json($order, 200);
+    }
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        //
+        $order = Order::find($id);
+
+        if (!$order) {
+            return response()->json(['message' => 'Product not found'], 404);
+        }
+
+        $order->delete();
+        return response()->json(['message' => 'Product deleted successfully'], 200);
     }
 }
