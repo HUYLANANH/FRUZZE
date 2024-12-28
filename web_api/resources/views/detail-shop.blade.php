@@ -4,8 +4,8 @@
       <main class="main-content">
         <div
           class="breadcrumb-area breadcrumb-height"
-          data-bg-image="assets/images/breadcrumb/bg/bg.png"
-        >
+          data-bg-image="/assets/images/breadcrumb/bg/bg.png"
+          >
           <div class="container h-100">
             <div class="row h-100">
               <div class="col-lg-12">
@@ -26,145 +26,41 @@
         </div>
         <div class="single-product-area section-space-top-100">
           <div class="container">
-            <div class="row">
-              <div class="col-lg-6">
-                <div class="single-product-img h-100">
-                  <div class="swiper-container single-product-slider">
-                    <div class="swiper-wrapper">
-                      <div class="swiper-slide">
-                        <a
-                          href="assets/images/product/large-size/2-1-555x645.jpg"
-                          class="single-img gallery-popup"
-                        >
-                          <img
-                            class="img-full"
-                            src="assets/images/product/large-size/2-1-555x645.jpg"
-                            alt="Product Image"
-                          />
-                        </a>
-                      </div>
-                    </div>
-                    <!-- Add Pagination -->
-                    <div class="swiper-pagination"></div>
-                  </div>
+          <div class="row">
+    <!-- Hình ảnh sản phẩm -->
+    <div class="col-lg-6">
+        <div class="single-product-img h-100">
+            <div class="swiper-container single-product-slider">
+                <div class="image-container">
+                    <img id="product-thumbnail" src="/" alt="Product Image">
                 </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="product-thumb-with-content row">
-                  <div class="col-12 order-lg-1 order-2 pt-10 pt-lg-0">
-                    <div class="single-product-content">
-                      <h2 class="title">Tên sp</h2>
-                      <div class="price-box pb-1">
-                        <span class="new-price text-danger">Giá tiền đã giảm 10%</span>
-                        <span class="old-price text-primary">Giá tiền ban đầu</span>
-                      </div>
-                      <p class="short-desc mb-6">
-                        Description
-                      </p>
-                      <ul class="quantity-with-btn pb-7">
-                        <li class="quantity">
-                          <div class="cart-plus-minus">
-                            <input
-                              class="cart-plus-minus-box"
-                              value="1"
-                              type="text"
-                            />
-                          </div>
-                        </li>
-                        <li class="add-to-cart">
-                          <a
-                            class="btn btn-custom-size lg-size btn-primary btn-secondary-hover rounded-0"
-                            href="cart.html"
-                            >Thêm vào giỏ hàng</a
-                          >
-                        </li>
-                        <li class="wishlist-btn-wrap">
-                          <a class="btn rounded-0" href="wishlist.html">
-                            <i class="pe-7s-like"></i>
-                          </a>
-                        </li>
-                      </ul>
-                      <div class="product-category text-matterhorn pb-2">
-                        <span class="title">Danh mục sản phẩm :</span>
-                        <ul>
-                          <li>
-                            <a href="javascript:void(0)">Trái cây sấy thăng hoa,</a>
-                          </li>
-                          <li>
-                            <a href="javascript:void(0)">Mix,</a>
-                          </li>
-                          <li>
-                            <a href="javascript:void(0)">Sữa chua sấy thăng hoa</a>
-                          </li>
-                        </ul>
-                      </div>
-                      <div
-                        class="product-category product-tags text-matterhorn pb-4"
-                      >
-                        <span class="title">Thẻ :</span>
-                        <ul>
-                          <li>
-                            <a href="javascript:void(0)">Sầu riêng, </a>
-                          </li>
-                          <li>
-                            <a href="javascript:void(0)">Thanh long,</a>
-                          </li>
-                          <li>
-                            <a href="javascript:void(0)">Mít,</a>
-                          </li>
-                          <li>
-                            <a href="javascript:void(0)">Chuối,</a>
-                          </li>
-                          <li>
-                            <a href="javascript:void(0)">Dứa,</a>
-                          </li>
-                          <li>
-                            <a href="javascript:void(0)">Xoài,</a>
-                          </li>
-                          <li>
-                            <a href="javascript:void(0)">Đào,</a>
-                          </li>
-                          <li>
-                            <a href="javascript:void(0)">Măng cụt,</a>
-                          </li>
-                          <li>
-                            <a href="javascript:void(0)">Dâu,</a>
-                          </li>
-                          <li>
-                            <a href="javascript:void(0)">Sữa chua,</a>
-                          </li>
-                          <li>
-                            <a href="javascript:void(0)">Kiwi</a>
-                          </li>
-                        </ul>
-                      </div>
-                      <div class="social-link align-items-center pb-lg-8">
-                        <span class="title pe-3">Share:</span>
-                        <ul>
-                          <li>
-                            <a href="https://www.facebook.com/profile.php?id=61554393290754">
-                              <i class="fab fa-facebook"></i>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="https://www.instagram.com/ours.fruzze">
-                              <i class="fab fa-instagram"></i>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="https://www.tiktok.com/@ours.fruzze">
-                              <i class="fab fa-tiktok"></i>
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
             </div>
-          </div>
         </div>
+    </div>
+<!-- Thông tin sản phẩm và nút thêm giỏ hàng -->
+<div class="col-lg-6">
+    <div class="single-product-content">
+        <div class="product-details">
+            <h2 id="product-name" class="title">Tên sản phẩm</h2>
+            <div class="price-box pb-1">
+                <span id="new-price" class="new-price text-danger">giá đã giảm</span>
+                <span id="old-price" class="old-price text-primary">giá chưa giảm</span>
+            </div>
+            <p id="product-description" class="short-desc mb-6">Mô tả description</p>
+            <div class="quantity-with-btn">
+                <div class="quantity">
+                    <button class="btn quantity-btn" id="decrease">-</button>
+                    <span class="quantity-number">1</span>
+                    <button class="btn quantity-btn" id="increase">+</button>
+                </div>
+                <button class="btn add-to-cart">Thêm vào giỏ hàng</button>
+                <button class="btn wishlist-btn">Yêu thích</button>
+            </div>
+        </div>
+    </div>
+</div>
         <div class="product-tab-area section-space-top-100">
           <div class="container">
             <div class="row">
@@ -183,7 +79,7 @@
                       aria-controls="description"
                       aria-selected="true"
                     >
-                      Mô tả
+                      Mô Tả
                     </a>
                   </li>
                   <li class="nav-item" role="presentation">
@@ -196,7 +92,7 @@
                       aria-controls="reviews"
                       aria-selected="false"
                     >
-                    Đánh giá
+                      Đánh Giá
                     </a>
                   </li>
                 </ul>
@@ -209,56 +105,40 @@
                   >
                     <div class="product-description-body">
                       <p class="short-desc mb-0">
-<div class="section">
-  <h4>Công Dụng</h4>
-  <ul>
-    <li>Là nguồn cung cấp năng lượng nhanh, giàu carbohydrate tự nhiên.</li>
-    <li>Chứa chất chống oxy hóa giúp bảo vệ cơ thể khỏi tác hại của các gốc tự do.</li>
-    <li>Giàu vitamin C, hỗ trợ tăng cường hệ miễn dịch.</li>
-    <li>Tốt cho sức khỏe xương nhờ chứa các khoáng chất như kali và magie.</li>
-    <li>Giúp cải thiện tiêu hóa nhờ hàm lượng chất xơ tự nhiên.</li>
-    <li>Tăng cường sức khỏe làn da và tóc.</li>
-  </ul>
-</div>
-<div class="section">
-  <h4>Thông Tin Sản Phẩm</h4>
-  <ul>
-    <li><strong>Xuất xứ:</strong> Việt Nam</li>
-    <li><strong>Đóng gói:</strong> Khối lượng sản phẩm: 50g, 100g</li>
-    <li>Túi giấy có khóa zip và cán màng bạc bên trong, giúp bảo quản sản phẩm lâu hơn.</li>
-    <li><strong>Hạn sử dụng:</strong> 6 tháng kể từ ngày sản xuất</li>
-  </ul>
-</div>
-<div class="section">
-  <h4>Bảo Quản</h4>
-  <ul>
-    <li>Nơi khô ráo, thoáng mát ở nhiệt độ từ -50°C đến -30°C, tránh ánh nắng trực tiếp.</li>
-    <li>Đóng kín miệng bao bì sau khi sử dụng.</li>
-  </ul>
-</div>
-<div class="section">
-  <h4>Hướng Dẫn Sử Dụng</h4>
-  <ul>
-    <li>Ăn trực tiếp như món ăn vặt.</li>
-    <li>Kết hợp với các loại trái cây khô, sữa chua, hoặc làm nguyên liệu trong các món bánh, chè.</li>
-    <li>Trang trí bánh ngọt hoặc làm topping cho các món tráng miệng.</li>
-  </ul>
-</div>
-<div class="section note">
-  <h4>Lưu Ý</h4>
-  <ul>
-    <li>Không nên ăn quá 100g/ngày để tránh gây khó tiêu.</li>
-    <li>Không sử dụng nếu sản phẩm có dấu hiệu hư hỏng, mốc hoặc đã hết hạn.</li>
-  </ul>
-</div>
-<div class="section">
-  <h4>Khuyến Cáo (Những Đối Tượng Không Nên Sử Dụng)</h4>
-  <ul>
-    <li>Người bị tiểu đường hoặc béo phì nên hạn chế vì sầu riêng có hàm lượng đường và năng lượng cao.</li>
-    <li>Người bị dị ứng với sầu riêng hoặc các loại trái cây nhiệt đới.</li>
-    <li>Người có hệ tiêu hóa yếu hoặc mắc các bệnh liên quan đến dạ dày, cần dùng lượng vừa phải.</li>
-    <li>Trẻ nhỏ dưới 2 tuổi nên sử dụng với liều lượng nhỏ, phù hợp với độ tuổi.</li>
-  </ul>
+                      <div class="product-info-box" style="border: 1px solid #ddd; border-radius: 10px; padding: 20px; background-color: #f9f9f9; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    <h4 style="color: #bac34e;">Công dụng:</h4>
+    <ul style="line-height: 1.8; padding-left: 20px;">
+                <li><strong>Giữ nguyên dưỡng chất:</strong> Trái cây sấy được chế biến để bảo toàn phần lớn các vitamin và khoáng chất tự nhiên.</li>
+                <li><strong>Tiện lợi:</strong> Là món ăn nhẹ gọn nhẹ, dễ bảo quản, phù hợp cho các chuyến đi xa hoặc khi cần bổ sung năng lượng nhanh chóng.</li>
+                <li><strong>Hỗ trợ tiêu hóa:</strong> Hàm lượng chất xơ cao trong trái cây sấy giúp duy trì hệ tiêu hóa khỏe mạnh và ngăn ngừa táo bón.</li>
+                <li><strong>Tốt cho sức khỏe:</strong> Là nguồn bổ sung vitamin, khoáng chất và chất chống oxy hóa, hỗ trợ hệ miễn dịch và sức khỏe tổng thể.</li>
+                <li><strong>Đa dạng trong chế biến:</strong> Trái cây sấy có thể ăn trực tiếp hoặc kết hợp trong các món ăn như ngũ cốc, bánh, hoặc smoothie.</li>
+            </ul>
+    <h4 style="color: #bac34e;">Xuất xứ:</h4>
+    <p style="line-height: 1.8; padding-left: 20px;">Việt Nam</p>
+    <h4 style="color: #bac34e;">Đóng gói:</h4>
+    <ul style="line-height: 1.8; padding-left: 20px;">
+        <li><strong>Khối lượng:</strong> 50g, 100g(Tùy chỉnh theo nhu cầu).</li>
+        <li><strong>Bao bì:</strong> Túi zip bạc, đảm bảo kín khí, giữ nguyên hương vị và chất lượng sản phẩm.</li>
+        <li><strong>Hạn sử dụng:</strong> 12 tháng kể từ ngày sản xuất (in trên bao bì).</li>
+    </ul>
+    <h4 style="color: #bac34e;">Bảo quản:</h4>
+    <ul style="line-height: 1.8; padding-left: 20px;">
+        <li>Nơi khô ráo, thoáng mát, tránh ánh nắng trực tiếp.</li>
+        <li><strong>Nhiệt độ bảo quản lý tưởng:</strong> 18-25°C.</li>
+    </ul>
+    <h4 style="color: #bac34e;">Hướng dẫn sử dụng:</h4>
+    <ul style="line-height: 1.8; padding-left: 20px;">
+        <li>Ăn trực tiếp như một món ăn vặt giàu dinh dưỡng.</li>
+        <li>Kết hợp với các loại hạt, trái cây sấy khác để tạo ra hỗn hợp ăn sáng hoặc bữa phụ giàu năng lượng.</li>
+        <li>Sử dụng làm nguyên liệu cho các loại bánh, granola, smoothie.</li>
+    </ul>
+    <h4 style="color: #bac34e;">Lưu ý:</h4>
+    <ul style="line-height: 1.8; padding-left: 20px;">
+        <li>Mặc dù tốt cho sức khỏe, không nên ăn quá nhiều trong một lần.</li>
+        <li>Người bị tiểu đường nên tham khảo ý kiến bác sĩ trước khi sử dụng.</li>
+        <li>Sản phẩm có thể gây dị ứng ở một số người.</li>
+    </ul>
 </div>
                       </p>
                     </div>
@@ -270,154 +150,61 @@
                     aria-labelledby="reviews-tab"
                   >
                     <div class="product-review-body">
-                      <h4 class="heading mb-5">3 Review Items</h4>
+                      <h4 class="heading mb-5">Các Đánh Giá Của Người Dùng</h4>
                       <ul class="user-info-wrap">
-                        <li>
-                          <ul class="user-info">
-                            <li class="user-avatar">
-                              <img
-                                src="assets/images/testimonial/user/1.png"
-                                alt="User Image"
-                              />
-                            </li>
                             <li class="user-comment">
-                              <div class="rating-box">
-                                <ul>
-                                  <li><i class="pe-7s-star"></i></li>
-                                  <li><i class="pe-7s-star"></i></li>
-                                  <li><i class="pe-7s-star"></i></li>
-                                  <li><i class="pe-7s-star"></i></li>
-                                  <li><i class="pe-7s-star"></i></li>
-                                </ul>
-                              </div>
                               <div class="meta">
                                 <span
-                                  ><strong>Oscar -</strong> March 15, 2021</span
+                                  ><strong>full_name - </strong> ngày viết note</span
                                 >
                               </div>
                               <p class="short-desc mb-0">
-                                “Sed ligula sapien, fermentum id est eget,
-                                viverra auctor sem. Vivamus maximus enim vitae
-                                urna porta, ut euismod nibh lacinia ellentesque
-                                at diam voluptas quas nisi, culpa in
-                                accusantium“
-                              </p>
-                            </li>
-                          </ul>
-                        </li>
-                        <li>
-                          <ul class="user-info">
-                            <li class="user-avatar">
-                              <img
-                                src="assets/images/testimonial/user/1.png"
-                                alt="User Image"
-                              />
-                            </li>
-                            <li class="user-comment">
-                              <div class="rating-box">
-                                <ul>
-                                  <li><i class="pe-7s-star"></i></li>
-                                  <li><i class="pe-7s-star"></i></li>
-                                  <li><i class="pe-7s-star"></i></li>
-                                  <li><i class="pe-7s-star"></i></li>
-                                  <li><i class="pe-7s-star"></i></li>
-                                </ul>
-                              </div>
-                              <div class="meta">
-                                <span
-                                  ><strong>Oscar -</strong> March 15, 2021</span
-                                >
-                              </div>
-                              <p class="short-desc mb-0">
-                                “Sed ligula sapien, fermentum id est eget,
-                                viverra auctor sem. Vivamus maximus enim vitae
-                                urna porta, ut euismod nibh lacinia ellentesque
-                                at diam voluptas quas nisi, culpa in
-                                accusantium“
-                              </p>
-                            </li>
-                          </ul>
-                        </li>
-                        <li>
-                          <ul class="user-info">
-                            <li class="user-avatar">
-                              <img
-                                src="assets/images/testimonial/user/1.png"
-                                alt="User Image"
-                              />
-                            </li>
-                            <li class="user-comment">
-                              <div class="rating-box">
-                                <ul>
-                                  <li><i class="pe-7s-star"></i></li>
-                                  <li><i class="pe-7s-star"></i></li>
-                                  <li><i class="pe-7s-star"></i></li>
-                                  <li><i class="pe-7s-star"></i></li>
-                                  <li><i class="pe-7s-star"></i></li>
-                                </ul>
-                              </div>
-                              <div class="meta">
-                                <span
-                                  ><strong>Oscar -</strong> March 15, 2021</span
-                                >
-                              </div>
-                              <p class="short-desc mb-0">
-                                “Sed ligula sapien, fermentum id est eget,
-                                viverra auctor sem. Vivamus maximus enim vitae
-                                urna porta, ut euismod nibh lacinia ellentesque
-                                at diam voluptas quas nisi, culpa in
-                                accusantium“
+                                note
                               </p>
                             </li>
                           </ul>
                         </li>
                       </ul>
                       <div class="feedback-area pt-5">
-                        <h2 class="heading mb-1">Add a review</h2>
+                        <h2 class="heading mb-1">Viết Đánh Giá</h2>
                         <p class="short-desc mb-3">
-                          Your email address will not be published.
+                          Địa chỉ email và số điện thoại của bạn sẽ không bị công khai !
                         </p>
-                        <div class="rating-box">
-                          <span>Your rating</span>
-                          <ul class="ps-4">
-                            <li><i class="pe-7s-star"></i></li>
-                            <li><i class="pe-7s-star"></i></li>
-                            <li><i class="pe-7s-star"></i></li>
-                            <li><i class="pe-7s-star"></i></li>
-                            <li><i class="pe-7s-star"></i></li>
-                          </ul>
-                        </div>
                         <form class="feedback-form pt-8" action="#">
                           <div class="group-input">
                             <div class="form-field me-md-6 mb-6 mb-md-0">
                               <input
+                                id="full_name"
                                 type="text"
                                 name="name"
-                                placeholder="Your Name*"
+                                placeholder="Tên của bạn là gì ?(Bắt buộc)"
                                 class="input-field"
                               />
                             </div>
                             <div class="form-field me-md-6 mb-6 mb-md-0">
                               <input
+                                id="email"
                                 type="text"
                                 name="email"
-                                placeholder="Your Email*"
+                                placeholder="Địa chỉ email của bạn là gì ?(Bắt buộc)"
                                 class="input-field"
                               />
                             </div>
                             <div class="form-field">
                               <input
+                                id="phone_number"
                                 type="text"
                                 name="number"
-                                placeholder="Phone number"
+                                placeholder="Số điện thoại của bạn là gì ?(Bắt buộc)"
                                 class="input-field"
                               />
                             </div>
                           </div>
                           <div class="form-field mt-6">
                             <textarea
+                              id="note"
                               name="message"
-                              placeholder="Message"
+                              placeholder="Viết đánh giá ở đây nhé !(Bắt buộc)"
                               class="textarea-field"
                             ></textarea>
                           </div>
@@ -428,43 +215,11 @@
                               class="btn btn-custom-size lg-size btn-secondary btn-primary-hover btn-lg rounded-0"
                               name="submit"
                             >
-                              Submit
+                              Gửi
                             </button>
                           </div>
                         </form>
                       </div>
-                    </div>
-                  </div>
-                  <div
-                    class="tab-pane fade"
-                    id="shipping"
-                    role="tabpanel"
-                    aria-labelledby="shipping-tab"
-                  >
-                    <div class="product-shipping-body">
-                      <h4 class="title">Shipping</h4>
-                      <p class="short-desc mb-4">
-                        The item will be shipped from China. So it need 15-20
-                        days to deliver. Our product is good with reasonable
-                        price and we believe you will worth it. So please wait
-                        for it patiently! Thanks.Any question please kindly to
-                        contact us and we promise to work hard to help you to
-                        solve the problem
-                      </p>
-                      <h4 class="title">About return request</h4>
-                      <p class="short-desc mb-4">
-                        If you don't need the item with worry, you can contact
-                        us then we will help you to solve the problem, so please
-                        close the return request! Thanks
-                      </p>
-                      <h4 class="title">Guarantee</h4>
-                      <p class="short-desc mb-0">
-                        If it is the quality question, we will resend or refund
-                        to you; If you receive damaged or wrong items, please
-                        contact us and attach some pictures about product, we
-                        will exchange a new correct item to you after the
-                        confirmation.
-                      </p>
                     </div>
                   </div>
                 </div>
@@ -472,8 +227,70 @@
             </div>
           </div>
         </div>
+
       </main>
       <!-- Main Content Area End Here  -->
 
+      <script>
+// Lấy ID sản phẩm từ URL
+const productId = window.location.pathname.split('/').pop();
+
+// Fetch chi tiết sản phẩm
+function fetchProductDetail() {
+  const token = localStorage.getItem('token');
+
+  fetch(`http://127.0.0.1:8000/api/product/${productId}`, {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      if (!data || !data.id) {
+        // Nếu phản hồi không hợp lệ hoặc không có sản phẩm
+        console.error('Không tìm thấy sản phẩm hoặc dữ liệu không hợp lệ!');
+        alert('Không tìm thấy sản phẩm hoặc dữ liệu không hợp lệ!');
+        return;
+      }
+
+      // Hiển thị thông tin sản phẩm
+      document.getElementById('product-thumbnail').src = `/${data.thumbnail}`;
+      document.getElementById('product-name').textContent = data.name;
+
+      const oldPrice = parseFloat(data.price);
+      const discountRate = 10; // % giảm giá (nếu có)
+      const newPrice = oldPrice - (oldPrice * discountRate / 100);
+
+      document.getElementById('old-price').textContent = oldPrice.toLocaleString('vi-VN', {
+        style: 'currency',
+        currency: 'VND',
+      });
+      document.getElementById('new-price').textContent = newPrice.toLocaleString('vi-VN', {
+        style: 'currency',
+        currency: 'VND',
+      });
+      document.getElementById('product-description').textContent = data.description;   
+      document.getElementById('product-thumbnail').style.maxWidth = "100%";
+      document.getElementById('product-thumbnail').style.maxHeight = "500px";
+      document.getElementById('product-thumbnail').style.objectFit = "cover";
+      document.getElementById('product-thumbnail').style.objectPosition = "center center";
+    })
+    .catch(error => {
+      console.error('Lỗi không mong muốn:', error.message);
+      alert('Đã xảy ra lỗi khi tải thông tin sản phẩm.');
+    });
+}
+
+// Tải chi tiết sản phẩm khi trang được tải
+document.addEventListener('DOMContentLoaded', fetchProductDetail);
+
+</script>
 
 @include('layouts.footer')
