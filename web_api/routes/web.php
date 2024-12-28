@@ -85,8 +85,14 @@ Route::prefix('product')->group(function () {
     })->name('add');
 
     // Cập nhật sản phẩm
-   // Route::put('/{id}', [ProductController::class, 'update'])->name('api.products.update');
-
+    Route::get('update', function () {
+        return view('admin.product.update');
+    })->name('update');
     // Xóa sản phẩm
    // Route::delete('/{id}', [ProductController::class, 'destroy'])->name('api.products.destroy');
+});
+Route::prefix('admin')->group(function () {
+Route::get('getusers', function () {
+    return view('admin.getusers');
+})->name('getusers');
 });
