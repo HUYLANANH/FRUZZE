@@ -9,22 +9,22 @@
       <form id="product-form">
         <div class="mb-3">
           <label for="productName" class="form-label">Tên sản phẩm</label>
-          <input type="text" class="form-control" id="productName" required>
+          <input type="text" class="form-control" id="productName" placeholder="Loading..." required>
         </div>
 
         <div class="mb-3">
           <label for="productCategory" class="form-label">Danh mục</label>
-          <input type="text" class="form-control" id="productCategory" required>
+          <input type="text" class="form-control" id="productCategory" placeholder="Loading..." required>
         </div>
 
         <div class="mb-3">
           <label for="productPrice" class="form-label">Giá</label>
-          <input type="number" class="form-control" id="productPrice" required>
+          <input type="number" class="form-control" id="productPrice" placeholder="Loading..." required>
         </div>
 
         <div class="mb-3">
           <label for="productWeight" class="form-label">Trọng lượng (Gram)</label>
-          <input type="number" class="form-control" id="productWeight" required>
+          <input type="number" class="form-control" id="productWeight" placeholder="Loading..." required>
         </div>
 
         <div class="mb-3">
@@ -41,10 +41,10 @@
 
 <script>
   // Lấy thông tin sản phẩm cần sửa từ URL
-  const urlParams = new URLSearchParams(window.location.search);
-  const productId = urlParams.get('id');
-
-  // Lấy thông tin sản phẩm từ API và hiển thị lên form
+  const pathArray = window.location.pathname.split('/');
+  const productId = pathArray[pathArray.length - 1];
+console.log(productId);
+  // Lấy thông tin sản phẩm từ API và hiển thị placeholder
   fetch(`http://127.0.0.1:8000/api/product/${productId}`, {
     headers: {
       'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -52,10 +52,11 @@
   })
   .then(response => response.json())
   .then(data => {
-    document.getElementById('productName').value = data.name;
-    document.getElementById('productCategory').value = data.category_id;
-    document.getElementById('productPrice').value = data.price;
-    document.getElementById('productWeight').value = data.weight;
+    console.log(data.name);
+    document.getElementById('productName').placeholder = data.name;
+    document.getElementById('productCategory').placeholder = data.category_id; // Nếu muốn hiển thị tên danh mục, cần thay đổi API trả về
+    document.getElementById('productPrice').placeholder = data.price;
+    document.getElementById('productWeight').placeholder = data.weight;
     document.getElementById('productId').value = data.id;
   })
   .catch(error => console.error('Lỗi:', error));
@@ -65,19 +66,26 @@
     event.preventDefault();
 
     const token = localStorage.getItem('token');
+    console.log("toekn",token);
     const formData = new FormData();
     formData.append('name', document.getElementById('productName').value);
     formData.append('category_id', document.getElementById('productCategory').value);
     formData.append('price', document.getElementById('productPrice').value);
     formData.append('weight', document.getElementById('productWeight').value);
-    formData.append('thumbnail', document.getElementById('productThumbnail').files[0]);
 
-    fetch(`http://127.0.0.1:8000/api/product/${document.getElementById('productId').value}`, {
+    const productId = document.getElementById('productId').value; // Đảm bảo bạn lấy đúng productId
+
+    fetch(`http://127.0.0.1:8000/api/product/${productId}`, {
       method: 'PATCH',
       headers: {
-        'Authorization': `Bearer ${token}`
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
       },
-      body: formData
+      body: JSON.stringify({
+        name: document.getElementById('productName').value,
+        category_id: document.getElementById('productCategory').value,
+        price: document.getElementById('productPrice').value,
+        weight: document.getElementById('productWeight').value
     })
     .then(response => {
       if (!response.ok) {

@@ -1,156 +1,157 @@
 @include('layouts.admin')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Thống Kê</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f9;
+            color: #333;
+        }
 
-<div class="main-wrapper">
-  <!-- Begin Main Content Area -->
-  <main class="main-content">
-    <div class="container my-5">
-      <h2 class="text-center mb-4">Bảng điều khiển Admin</h2>
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
 
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card card-stat">
-            <div class="stat-label">Đơn hàng mới</div>
-            <div class="stat-value" id="new-orders">0</div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card card-stat">
-            <div class="stat-label">Đơn hàng đang xử lý</div>
-            <div class="stat-value" id="processing-orders">0</div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card card-stat">
-            <div class="stat-label">Đơn hàng hoàn thành</div>
-            <div class="stat-value" id="completed-orders">0</div>
-          </div>
-        </div>
-      </div>
+        .dashboard-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #04702c;
+            margin-bottom: 20px;
+        }
 
-      <div class="row mt-4">
-        <div class="col-md-6">
-          <div class="card">
-            <div class="card-header">Biểu đồ trạng thái đơn hàng</div>
-            <div class="card-body">
-              <canvas id="orderStatusChart"></canvas>
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            width: 100%;
+        }
+
+        .stat-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .stat-card p {
+            font-size: 24px;
+            font-weight: bold;
+            color: #04702c;
+        }
+
+        .chart-container {
+            width: 100%;
+            margin-top: 30px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        canvas {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1 class="dashboard-title">Dashboard Thống Kê</h1>
+
+        <div class="stat-grid">
+            <div class="stat-card">
+                <h3>Tổng Đơn Hàng</h3>
+                <p id="total-orders">0</p>
             </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="card">
-            <div class="card-header">Danh sách đơn hàng mới</div>
-            <div class="card-body">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Khách hàng</th>
-                    <th>Tổng tiền</th>
-                    <th>Trạng thái</th>
-                  </tr>
-                </thead>
-                <tbody id="new-orders-table">
-                </tbody>
-              </table>
+            <div class="stat-card">
+                <h3>Tổng Doanh Thu</h3>
+                <p id="total-revenue">0 VND</p>
             </div>
-          </div>
+            <div class="stat-card">
+                <h3>Khách Hàng</h3>
+                <p id="total-customers">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Đơn Hàng Thành Công</h3>
+                <p id="completed-orders">0</p>
+            </div>
         </div>
-      </div>
-    </div>
-  </main>
-</div>
 
+        <div class="chart-container">
+            <canvas id="orderChart"></canvas>
+        </div>
+    </main>
+</body>
+</html>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-  async function isAdmin() {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      return false;
-    }
+    document.addEventListener('DOMContentLoaded', function () {
+        loadDashboardStats();
+    });
 
-    try {
-      const response = await fetch('/api/auth/check-admin', {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
-      const data = await response.json();
-      return data.is_admin;
-    } catch (error) {
-      console.error('Lỗi khi xác thực quyền:', error);
-      return false;
-    }
-  }
+    function loadDashboardStats() {
+        fetch('http://127.0.0.1:8000/api/dashboard/stats', {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to fetch dashboard stats');
+            }
+            return response.json();
+        })
+        .then(data => {
+            document.getElementById('total-orders').innerText = data.total_orders || 0;
+            document.getElementById('total-revenue').innerText = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(data.total_revenue || 0);
+            document.getElementById('total-customers').innerText = data.total_customers || 0;
+            document.getElementById('completed-orders').innerText = data.completed_orders || 0;
 
-  async function fetchOrderStats() {
-    const token = localStorage.getItem('token');
-    try {
-      const response = await fetch('/api/orders/stats', {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error('Lỗi khi lấy thống kê đơn hàng:', error);
-      return null;
-    }
-  }
-
-  async function fetchNewOrders() {
-    const token = localStorage.getItem('token');
-    try {
-      const response = await fetch('/api/orders?status=new', {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error('Lỗi khi lấy danh sách đơn hàng mới:', error);
-      return null;
-    }
-  }
-
-  async function renderDashboard() {
-    if (await isAdmin()) {
-      const orderStats = await fetchOrderStats();
-      const newOrders = await fetchNewOrders();
-
-      if (orderStats && newOrders) {
-        document.getElementById('new-orders').textContent = orderStats.new_orders;
-        document.getElementById('processing-orders').textContent = orderStats.processing_orders;
-        document.getElementById('completed-orders').textContent = orderStats.completed_orders;
-
-        const orderStatusChart = new Chart(document.getElementById('orderStatusChart'), {
-          type: 'pie',
-          data: {
-            labels: ['Mới', 'Đang xử lý', 'Hoàn thành'],
-            datasets: [{
-              data: [orderStats.new_orders, orderStats.processing_orders, orderStats.completed_orders],
-              backgroundColor: ['#ff6b6b', '#ffa94d', '#51cf66']
-            }]
-          }
+            renderOrderChart(data.order_stats);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Failed to load dashboard stats. Please try again later.');
         });
-
-        const newOrdersTable = document.getElementById('new-orders-table');
-        newOrders.forEach(order => {
-          const row = document.createElement('tr');
-          row.innerHTML = `
-            <td>${order.id}</td>
-            <td>${order.customer_name}</td>
-            <td>${order.total_amount} VND</td>
-            <td>${order.status}</td>
-          `;
-          newOrdersTable.appendChild(row);
-        });
-      }
-    } else {
-      alert('Bạn không có quyền truy cập trang này. Vui lòng đăng nhập với tài khoản admin.');
-      window.location.href = '/admin/login';
     }
-  }
 
-  renderDashboard();
+    function renderOrderChart(orderStats) {
+        const ctx = document.getElementById('orderChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: orderStats.map(stat => stat.date),
+                datasets: [{
+                    label: 'Đơn Hàng Mỗi Ngày',
+                    data: orderStats.map(stat => stat.order_count),
+                    backgroundColor: 'rgba(4, 112, 44, 0.2)',
+                    borderColor: 'rgba(4, 112, 44, 1)',
+                    borderWidth: 2,
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: true },
+                }
+            }
+        });
+    }
 </script>

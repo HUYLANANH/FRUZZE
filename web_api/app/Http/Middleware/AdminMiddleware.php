@@ -19,6 +19,6 @@ class AdminMiddleware
             return $next($request);
         }
 
-        return response()->json(['error' => 'Không có quyền truy cập'], 403);
+        return redirect('/admin/login');
     }
 }

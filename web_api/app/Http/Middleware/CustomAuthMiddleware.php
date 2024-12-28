@@ -17,7 +17,7 @@ class CustomAuthMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if (!Auth::guard('api')->check()) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return redirect('/login');
         }
 
 

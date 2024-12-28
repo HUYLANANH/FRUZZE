@@ -94,7 +94,7 @@
                 console.log('Login success:', data);
                 const token = data.token
                 console.log(token)
-                localStorage.setItem('token', data.token);
+                localStorage.setItem('token', token);
                 window.location.href = '/admin/dashboard';
             } else {
                 document.getElementById('errorMessage').style.display = 'block';
