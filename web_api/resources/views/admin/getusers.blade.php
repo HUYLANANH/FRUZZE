@@ -1,152 +1,208 @@
 @include('layouts.admin')
 
 <div class="main-wrapper">
-    <!-- Begin Main Content Area -->
-    <main class="main-content">
-        <div class="container my-5">
-            <h2 class="text-center mb-4">Quản Lý Người Dùng</h2>
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Tên đăng nhập</th>
-                        <th>Email</th>
-                        <th>Họ và tên</th>
-                        <th>Năm sinh</th>
-                        <th>Số điện thoại</th>
-                        <th>Địa chỉ</th>
-                        <th>Giới tính</th>
-                        <th>Vai trò</th>
-                        <th>Hành động</th>
-                    </tr>
-                </thead>
-                <tbody id="user-list">
-                    <!-- Danh sách người dùng sẽ được render tại đây -->
-                </tbody>
-            </table>
+  <!-- Begin Main Content Area -->
+  <main class="main-content">
+    <div class="container my-5">
+      <h2 class="text-center mb-4">Danh sách người dùng</h2>
 
-            <nav>
-                <ul class="pagination justify-content-center">
-                    <!-- Pagination sẽ được render tại đây -->
-                </ul>
-            </nav>
-        </div>
-    </main>
+      <div class="mb-3">
+        <button class="btn btn-success" onclick="checkAdminAndAddUser()">Thêm người dùng</button>
+      </div>
+
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Tên đăng nhập</th>
+            <th>Email</th>
+            <th>Họ và tên</th>
+            <th>Năm sinh</th>
+            <th>Số điện thoại</th>
+            <th>Địa chỉ</th>
+            <th>Giới tính</th>
+            <th>Vai trò</th>
+            <th>Hành động</th>
+          </tr>
+        </thead>
+        <tbody id="user-list">
+          <!-- Danh sách người dùng sẽ được render tại đây -->
+        </tbody>
+      </table>
+
+      <nav>
+        <ul class="pagination justify-content-center">
+          <!-- Pagination sẽ được render tại đây -->
+        </ul>
+      </nav>
+    </div>
+  </main>
 </div>
 
 <script>
-    let currentPage = 1;
+let currentPage = 1;
 
-    // Fetch user data from the API
-    function fetchUsers(page = 1) {
-        currentPage = page;
-        const token = localStorage.getItem('token');
-
-        fetch(`http://127.0.0.1:8000/api/users?page=${page}`, {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Lỗi khi lấy dữ liệu: ' + response.status);
-            }
-            return response.json();
-        })
-        .then(data => {
-            renderUserList(data.data);
-            renderPagination(data);
-        })
-        .catch(error => console.error('Lỗi:', error));
-    }
-
-    // Render user list
-    function renderUserList(users) {
-        const userList = document.getElementById('user-list');
-        userList.innerHTML = '';
-        if (users && users.length > 0) {
-            users.forEach(user => {
-                const userRow = `
-                    <tr>
-                        <td>${user.id}</td>
-                        <td>${user.username}</td>
-                        <td>${user.email}</td>
-                        <td>${user.full_name}</td>
-                        <td>${user.birth_year}</td>
-                        <td>${user.phone_number}</td>
-                        <td>${user.address}</td>
-                        <td>${user.gender}</td>
-                        <td>${user.role.name}</td>
-                        <td>
-                            <button class="btn btn-danger btn-sm" onclick="deleteUser(${user.id})">Xóa</button>
-                        </td>
-                    </tr>
-                `;
-                userList.innerHTML += userRow;
-            });
-        } else {
-            userList.innerHTML = '<tr><td colspan="10" class="text-center">Không có người dùng nào</td></tr>';
-        }
-    }
-
-    // Render pagination
-    function renderPagination(data) {
-        const pagination = document.querySelector('.pagination');
-        pagination.innerHTML = '';
-
-        if (data.prev_page_url) {
-            pagination.innerHTML += `
-                <li class="page-item">
-                    <a class="page-link" href="javascript:void(0)" onclick="fetchUsers(${currentPage - 1})">&laquo;</a>
-                </li>
-            `;
-        }
-
-        for (let i = 1; i <= data.last_page; i++) {
-            pagination.innerHTML += `
-                <li class="page-item ${i === currentPage ? 'active' : ''}">
-                    <a class="page-link" href="javascript:void(0)" onclick="fetchUsers(${i})">${i}</a>
-                </li>
-            `;
-        }
-
-        if (data.next_page_url) {
-            pagination.innerHTML += `
-                <li class="page-item">
-                    <a class="page-link" href="javascript:void(0)" onclick="fetchUsers(${currentPage + 1})">&raquo;</a>
-                </li>
-            `;
-        }
-    }
-
-    // Delete user
-    function deleteUser(userId) {
-        const confirmDelete = confirm('Bạn có chắc chắn muốn xóa người dùng này?');
-        if (confirmDelete) {
-            const token = localStorage.getItem('token');
-
-            fetch(`http://127.0.0.1:8000/api/users/${userId}`, {
-                method: 'DELETE',
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Lỗi khi xóa người dùng: ' + response.status);
-                }
-                alert('Xóa người dùng thành công');
-                fetchUsers(currentPage);
-            })
-            .catch(error => console.error('Lỗi:', error));
-        }
-    }
-
-    // Fetch users on page load
-    document.addEventListener('DOMContentLoaded', function() {
-        fetchUsers();
+// Kiểm tra quyền admin
+async function checkAdmin() {
+  const token = localStorage.getItem('token');
+  if (!token) {
+    return false;
+  }
+  
+  try {
+    const response = await fetch('/api/auth/check-admin', {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
     });
+    const data = await response.json();
+    return data.is_admin;
+  } catch (error) {
+    console.error('Lỗi khi xác thực quyền:', error);
+    return false;
+  }
+}
+
+// Fetch user data from the API
+async function fetchUsers(page = 1) {
+  currentPage = page;
+  const token = localStorage.getItem('token');
+
+  try {
+    const response = await fetch(`http://127.0.0.1:8000/api/auth/profile?page=${page}`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error('Lỗi khi lấy dữ liệu: ' + response.status);
+    }
+
+    const data = await response.json();
+    renderUserList(data.data);
+    renderPagination(data);
+  } catch (error) {
+    console.error('Lỗi:', error);
+  }
+}
+
+// Render user list
+function renderUserList(users) {
+  const userList = document.getElementById('user-list');
+  userList.innerHTML = '';
+  if (users && users.length > 0) {
+    users.forEach(user => {
+      const userRow = `
+        <tr>
+          <td>${user.id}</td>
+          <td>${user.username}</td>
+          <td>${user.email}</td>
+          <td>${user.full_name}</td>
+          <td>${user.birth_year}</td>
+          <td>${user.phone_number}</td>
+          <td>${user.address}</td>
+          <td>${user.gender}</td>
+          <td>${user.role_id === 1 ? 'Admin' : 'Người dùng'}</td>
+          <td>
+            <button class="btn btn-primary btn-sm" onclick="checkAdminAndEditUser(${user.id})">Sửa</button>
+            <button class="btn btn-danger btn-sm" onclick="checkAdminAndDeleteUser(${user.id})">Xóa</button>
+          </td>
+        </tr>
+      `;
+      userList.innerHTML += userRow;
+    });
+  } else {
+    userList.innerHTML = '<tr><td colspan="10" class="text-center">Không có người dùng nào</td></tr>';
+  }
+}
+
+// Render pagination
+function renderPagination(data) {
+  const pagination = document.querySelector('.pagination');
+  pagination.innerHTML = '';
+
+  if (data.prev_page_url) {
+    pagination.innerHTML += `
+      <li class="page-item">
+        <a class="page-link" href="javascript:void(0)" onclick="fetchUsers(${currentPage - 1})">&laquo;</a>
+      </li>
+    `;
+  }
+
+  for (let i = 1; i <= data.last_page; i++) {
+    pagination.innerHTML += `
+      <li class="page-item ${i === currentPage ? 'active' : ''}">
+        <a class="page-link" href="javascript:void(0)" onclick="fetchUsers(${i})">${i}</a>
+      </li>
+    `;
+  }
+
+  if (data.next_page_url) {
+    pagination.innerHTML += `
+      <li class="page-item">
+        <a class="page-link" href="javascript:void(0)" onclick="fetchUsers(${currentPage + 1})">&raquo;</a>
+      </li>
+    `;
+  }
+}
+
+// Kiểm tra quyền admin và thêm người dùng
+async function checkAdminAndAddUser() {
+  const isAdmin = await checkAdmin();
+  if (isAdmin) {
+    window.location.href = '/user/add'; // Đường dẫn đến trang tạo người dùng
+  } else {
+    alert('Bạn không có quyền thực hiện hành động này.');
+    window.location.href = '/admin/login'; // Đường dẫn đến trang đăng nhập admin
+  }
+}
+
+// Kiểm tra quyền admin và sửa người dùng
+async function checkAdminAndEditUser(userId) {
+  const isAdmin = await checkAdmin();
+  if (isAdmin) {
+    window.location.href = `/user/update/${userId}`; // Đường dẫn đến trang sửa người dùng
+  } else {
+    alert('Bạn không có quyền thực hiện hành động này.');
+    window.location.href = '/admin/login'; // Đường dẫn đến trang đăng nhập admin
+  }
+}
+
+// Kiểm tra quyền admin và xóa người dùng
+async function checkAdminAndDeleteUser(userId) {
+  const isAdmin = await checkAdmin();
+  if (isAdmin) {
+    const confirmDelete = confirm('Bạn có chắc chắn muốn xóa người dùng này?');
+    if (confirmDelete) {
+      const token = localStorage.getItem('token');
+
+      fetch(`http://127.0.0.1:8000/api/auth/profile/${userId}`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Lỗi khi xóa người dùng: ' + response.status);
+        }
+        alert('Xóa người dùng thành công');
+        fetchUsers(currentPage);
+      })
+      .catch(error => console.error('Lỗi:', error));
+    }
+  } else {
+    alert('Bạn không có quyền thực hiện hành động này.');
+    window.location.href = '/admin/login'; // Đường dẫn đến trang đăng nhập admin
+  }
+}
+
+// Fetch users on page load
+document.addEventListener('DOMContentLoaded', function() {
+  fetchUsers(currentPage);
+});
 </script>
