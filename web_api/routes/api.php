@@ -8,7 +8,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\GaleryController;
-
+use App\Http\Controllers\OrderController;
 
 Route::group([
     'prefix' => 'auth'
@@ -78,4 +78,14 @@ Route::group([
     Route::delete('product/{id}', [ProductController::class, 'destroy'])->middleware(['admin', 'check_login']);
 });
 
-Route::post('product/galery/{id}', [GaleryController::class, 'addImage']);
+
+Route::group([
+
+], function ($router) {
+    // lấy danh sách danh mục sản phẩm
+    Route::get('order', [OrderController::class, 'index']);
+    //lấy 1 danh mục cụ thể
+    Route::get('order/{id}', [OrderController::class, 'show']);
+    //thêm mới danh mục
+    Route::post('order', [OrderController::class, 'store']);
+});
