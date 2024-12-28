@@ -418,7 +418,7 @@
                   <div class="scene fill">
                     <div class="expand-width" data-depth="0.2">
                       <img
-                        src="assets/images/Banner giáng sinh FRUZZE.png"
+                        src="assets/images/Banner Tết.png"
                         alt="Banner Images"
                       />
                     </div>
@@ -429,13 +429,13 @@
             <div class="col-md-6 align-self-center">
               <div class="banner-content text-white text-center text-md-start">
                 <div class="section-title">
-                  <span class="sub-title">Siêu Sale Giáng Sinh</span>
+                  <span class="sub-title">Siêu Sale Tết Nguyên Đán</span>
                   <h2 class="title font-size-60 mb-6">GIẢM GIÁ 10% </h2>
                 </div>
                 <div class="countdown-wrap">
                   <div
                     class="countdown item-4"
-                    data-countdown="2024/12/26"
+                    data-countdown="2025/01/19"
                     data-format="short"
                   >
                     <div class="countdown__item me-3">
@@ -633,131 +633,119 @@
       </div>
       <!-- Blog Area End Here -->
 
-      <script>
-function initializeSwiper() {
+<script>
   // Khởi tạo Swiper
-  new Swiper('.swiper-container', {
-    slidesPerView: 4, // Số lượng sản phẩm hiển thị cùng lúc
-    spaceBetween: 20, // Khoảng cách giữa các sản phẩm
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    loop: true, // Bật chế độ lặp
-    breakpoints: {
-      640: {
-        slidesPerView: 1,
+  function initializeSwiper() {
+    new Swiper('.swiper-container', {
+      slidesPerView: 4, // Số lượng sản phẩm hiển thị cùng lúc
+      spaceBetween: 20, // Khoảng cách giữa các sản phẩm
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
       },
-      768: {
-        slidesPerView: 2,
-      },
-      1024: {
-        slidesPerView: 4,
-      },
-    },
-  });
-}
-
-async function fetchAllProducts() {
-  const token = localStorage.getItem('token'); // Lấy token nếu có
-  let page = 1; // Bắt đầu từ trang 1
-  let allProducts = []; // Mảng chứa tất cả sản phẩm
-  let hasMore = true; // Kiểm tra còn trang tiếp theo không
-
-  try {
-    while (hasMore) {
-      const response = await fetch(`http://127.0.0.1:8000/api/product?page=${page}`, {
-        method: 'GET',
-        headers: {
-          'Authorization': token ? `Bearer ${token}` : '', // Nếu có token thì thêm vào header
-          'Content-Type': 'application/json',
+      loop: true, // Bật chế độ lặp
+      breakpoints: {
+        640: {
+          slidesPerView: 1,
         },
-      });
-
-      if (!response.ok) {
-        throw new Error('Lỗi khi lấy dữ liệu: ' + response.status);
-      }
-
-      const data = await response.json();
-      console.log(`Dữ liệu trang ${page}:`, data);
-
-      // Gộp dữ liệu sản phẩm
-      if (data && data.data && Array.isArray(data.data)) {
-        allProducts = allProducts.concat(data.data);
-        hasMore = data.meta && data.meta.has_more; // Backend cung cấp thông tin còn trang không
-        page++; // Tăng trang nếu còn sản phẩm
-      } else {
-        hasMore = false;
-      }
-    }
-
-    // Hiển thị tất cả sản phẩm
-    renderProducts(allProducts);
-    initializeSwiper(); // Khởi tạo Swiper sau khi thêm sản phẩm
-  } catch (error) {
-    console.error('Error fetching all products:', error);
+        768: {
+          slidesPerView: 2,
+        },
+        1024: {
+          slidesPerView: 4,
+        },
+      },
+    });
   }
-}
 
-function renderProducts(products) {
-  if (products && products.length > 0) {
-    let productListHTML = '';
-    products.forEach((product) => {
-      const discountRate = 10; // Tỷ lệ giảm giá
-      const oldPrice = parseFloat(product.price); // Lấy giá gốc
-      const newPrice = oldPrice - (oldPrice * discountRate) / 100; // Tính giá mới
+  // Hàm lấy tất cả sản phẩm và hiển thị
+  async function fetchAllProducts() {
+    const token = localStorage.getItem('token');
+    let currentPage = 1;  // Khởi tạo giá trị currentPage
+    let allProducts = [];  // Mảng chứa tất cả sản phẩm
+    let hasMore = true;  // Kiểm tra còn trang tiếp theo không
 
-      // Định dạng giá
-      const formattedOldPrice = oldPrice.toLocaleString('vi-VN', {
-        style: 'currency',
-        currency: 'VND',
-      });
-      const formattedNewPrice = newPrice.toLocaleString('vi-VN', {
-        style: 'currency',
-        currency: 'VND',
-      });
+    try {
+      while (hasMore) {
+        const response = await fetch(`http://127.0.0.1:8000/api/product?page=${currentPage}`, {
+          method: 'GET',
+          headers: {
+            'Authorization': token ? `Bearer ${token}` : '',
+            'Content-Type': 'application/json',
+          },
+        });
 
-      productListHTML += `
-        <div class="swiper-slide">
-          <div class="product-item">
-            <div class="product-img img-zoom-effect">
-              <a href="/detail-shop/${product.id}">
-                <img class="img-full" src="${product.thumbnail}" alt="${product.name}" />
-              </a>
-              <div class="product-add-action">
-                <ul>
-                  <li>
-                    <a href="/cart">
-                      <i class="pe-7s-cart"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/wishlist">
-                      <i class="pe-7s-like"></i>
-                    </a>
-                  </li>
-                </ul>
+        if (!response.ok) {
+          throw new Error('Lỗi khi lấy dữ liệu: ' + response.status);
+        }
+
+        const data = await response.json();
+        console.log(`Dữ liệu trang ${currentPage}:`, data);
+
+        // Gộp dữ liệu sản phẩm
+        if (data && data.data && Array.isArray(data.data)) {
+          allProducts = allProducts.concat(data.data); // Thêm sản phẩm vào mảng tổng
+          hasMore = data.meta && data.meta.has_more; // Kiểm tra nếu còn trang tiếp theo
+          currentPage++; // Tăng trang nếu còn sản phẩm
+        } else {
+          hasMore = false; // Nếu không có dữ liệu nữa, dừng lại
+        }
+      }
+
+      // Hiển thị tất cả sản phẩm
+      renderProducts(allProducts); // Render tất cả sản phẩm
+      initializeSwiper(); // Khởi tạo Swiper sau khi thêm sản phẩm
+    } catch (error) {
+      console.error('Error fetching all products:', error);
+    }
+  }
+
+  // Hàm render sản phẩm
+  function renderProducts(products) {
+    if (products && products.length > 0) {
+      let productListHTML = '';
+      products.forEach((product) => {
+        const discountRate = 10; // Tỷ lệ giảm giá
+        const oldPrice = parseFloat(product.price); // Lấy giá gốc
+        const newPrice = oldPrice - (oldPrice * discountRate) / 100; // Tính giá mới
+
+        // Định dạng giá
+        const formattedOldPrice = oldPrice.toLocaleString('vi-VN', {
+          style: 'currency',
+          currency: 'VND',
+        });
+        const formattedNewPrice = newPrice.toLocaleString('vi-VN', {
+          style: 'currency',
+          currency: 'VND',
+        });
+
+        productListHTML += `
+          <div class="swiper-slide">
+            <div class="product-item">
+              <div class="product-img img-zoom-effect">
+                <a href="/detail-shop/${product.id}">
+                  <img class="img-full" src="${product.thumbnail}" alt="${product.name}" />
+                </a>
               </div>
-            </div>
-            <div class="product-content">
-              <a class="product-name" href="/detail-shop/${product.id}">${product.name}</a>
-              <div class="price-box pb-1">
-                <span class="old-price" style="color: red;"> ${formattedOldPrice}</span>
-                <span class="new-price">${formattedNewPrice}</span>
+              <div class="product-content">
+                <a class="product-name" href="/detail-shop/${product.id}"><b>${product.name}</b></a>
+                <div class="price-box pb-1">
+                  <span class="old-price" style="color: red;"> ${formattedOldPrice}</span>
+                  <span class="new-price">${formattedNewPrice}</span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      `;
-    });
-    document.getElementById('product-list').innerHTML = productListHTML;
-  } else {
-    document.getElementById('product-list').innerHTML = "<p>Không tìm thấy sản phẩm nào</p>";
+        `;
+      });
+      document.getElementById('product-list').innerHTML = productListHTML;
+    } else {
+      document.getElementById('product-list').innerHTML = "<p>Không tìm thấy sản phẩm nào</p>";
+    }
   }
-}
 
-// Gọi hàm fetchAllProducts khi trang tải
-document.addEventListener('DOMContentLoaded', fetchAllProducts);
+  // Gọi hàm fetchAllProducts khi trang tải
+  document.addEventListener('DOMContentLoaded', fetchAllProducts);
 </script>
 
     @include('layouts.footer')

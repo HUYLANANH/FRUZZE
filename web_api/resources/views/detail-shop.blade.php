@@ -7,26 +7,25 @@
           data-bg-image="/assets/images/breadcrumb/bg/bg.png"
           >
           <div class="container h-100">
-            <div class="row h-100">
-              <div class="col-lg-12">
-                <div class="breadcrumb-item">
-                  <h2 class="breadcrumb-heading">CHI TIẾT SẢN PHẨM</h2>
-                  <ul>
-                    <li>
-                      <a href="/"
-                        >Trang Chủ <i class="pe-7s-angle-right"></i
-                      ></a>
-                    </li>
-                    <li>Chi Tiết Sản Phẩm</li>
-                  </ul>
-                </div>
-              </div>
+        <div class="row h-100">
+          <div class="col-lg-12">
+            <div class="breadcrumb-item">
+              <h2 class="breadcrumb-heading">CHI TIẾT SẢN PHẨM</h2>
+              <ul>
+                <li>
+                  <a href="/">Trang Chủ <i class="pe-7s-angle-right"></i></a>
+                </li>
+                <li>Cửa Hàng</li>
+              </ul>
             </div>
           </div>
+        </div>
+      </div>
         </div>
         <div class="single-product-area section-space-top-100">
           <div class="container">
           <div class="row">
+          <div class="product-row row">
     <!-- Hình ảnh sản phẩm -->
     <div class="col-lg-6">
         <div class="single-product-img h-100">
@@ -39,28 +38,31 @@
             </div>
         </div>
     </div>
-<!-- Thông tin sản phẩm và nút thêm giỏ hàng -->
-<div class="col-lg-6">
-    <div class="single-product-content">
-        <div class="product-details">
-            <h2 id="product-name" class="title">Tên sản phẩm</h2>
-            <div class="price-box pb-1">
-                <span id="new-price" class="new-price text-danger">giá đã giảm</span>
-                <span id="old-price" class="old-price text-primary">giá chưa giảm</span>
-            </div>
-            <p id="product-description" class="short-desc mb-6">Mô tả description</p>
-            <div class="quantity-with-btn">
-                <div class="quantity">
-                    <button class="btn quantity-btn" id="decrease">-</button>
-                    <span class="quantity-number">1</span>
-                    <button class="btn quantity-btn" id="increase">+</button>
+    
+    <!-- Thông tin sản phẩm và nút thêm giỏ hàng -->
+    <div class="col-lg-6">
+        <div class="single-product-content">
+            <div class="product-details">
+                <h2 id="product-name" class="title">Tên sản phẩm</h2>
+                <div class="price-box pb-1">
+                    <span id="new-price" class="new-price text-danger">giá đã giảm</span>
+                    <span id="old-price" class="old-price text-primary">giá chưa giảm</span>
                 </div>
-                <button class="btn add-to-cart">Thêm vào giỏ hàng</button>
-                <button class="btn wishlist-btn">Yêu thích</button>
+                <p id="product-description" class="short-desc mb-6">Mô tả description</p>
+                <div class="quantity-with-btn">
+                    <div class="quantity">
+                        <button class="btn quantity-btn" id="decrease">-</button>
+                        <span class="quantity-number">1</span>
+                        <button class="btn quantity-btn" id="increase">+</button>
+                    </div>
+                    <button class="btn add-to-cart">THÊM VÀO GIỎ HÀNG</button>
+                    <button class="btn wishlist-btn">YÊU THÍCH</button>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
         <div class="product-tab-area section-space-top-100">
           <div class="container">
             <div class="row">
