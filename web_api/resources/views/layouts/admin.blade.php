@@ -36,9 +36,9 @@
                             <nav class="sidebar-nav">
                                 <h3 >ADMIN</h3>
                                 <ul>
-                                    <li><a href="admin/"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                                    <li><a href="/admin/dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
                                     <li><a href="/product/get"><i class="fas fa-cubes"></i> Sản phẩm</a></li>
-                                    <li><a href="/order"><i class="fas fa-box"></i> Đơn hàng</a></li>
+                                    <li><a href="/orders"><i class="fas fa-box"></i> Đơn hàng</a></li>
                                     <li><a href="/admin/getusers"><i class="fas fa-users"></i> Người dùng</a></li>
                                 </ul>
                             </nav>

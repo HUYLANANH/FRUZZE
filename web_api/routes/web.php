@@ -79,11 +79,10 @@ Route::prefix('product')->group(function () {
     })->name('add');
 
     // Cập nhật sản phẩm
-    Route::get('update', function () {
-        return view('admin.product.update');
+    Route::get('update/{id}', function ($id) {
+        return view('admin.product.update', ['id' => $id]);
     })->name('update');
-    // Xóa sản phẩm
-   // Route::delete('/{id}', [ProductController::class, 'destroy'])->name('api.products.destroy');
+    
 });
 
 Route::get('orders', function () {
@@ -100,4 +99,7 @@ Route::get('login', function () {
     return view('admin.login_admin.login_admin');
 })->name('login');
 
+Route::get('dashboard', function () {
+    return view('admin.login_admin.dashboard');
+})->name('dashboard');
 });
