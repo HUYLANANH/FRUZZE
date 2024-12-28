@@ -39,38 +39,28 @@
             </div>
         </div>
     </div>
-    <!-- Thông tin sản phẩm và nút thêm giỏ hàng -->
-    <div class="col-lg-6">
-        <div class="product-thumb-with-content">
-            <div class="product-details">
-                <h2 id="product-name" class="title">Tên sản phẩm</h2>
-                <div class="price-box pb-1">
-                    <span id="new-price" class="new-price text-danger">giá đã giảm</span>
-                    <span id="old-price" class="old-price text-primary">giá chưa giảm</span>
+<!-- Thông tin sản phẩm và nút thêm giỏ hàng -->
+<div class="col-lg-6">
+    <div class="single-product-content">
+        <div class="product-details">
+            <h2 id="product-name" class="title">Tên sản phẩm</h2>
+            <div class="price-box pb-1">
+                <span id="new-price" class="new-price text-danger">giá đã giảm</span>
+                <span id="old-price" class="old-price text-primary">giá chưa giảm</span>
+            </div>
+            <p id="product-description" class="short-desc mb-6">Mô tả description</p>
+            <div class="quantity-with-btn">
+                <div class="quantity">
+                    <button class="btn quantity-btn" id="decrease">-</button>
+                    <span class="quantity-number">1</span>
+                    <button class="btn quantity-btn" id="increase">+</button>
                 </div>
-                <p id="product-description" class="short-desc mb-6">Mô tả description</p>
-                <ul class="quantity-with-btn pb-7">
-                    <li class="quantity">
-                        <div class="cart-plus-minus">
-                            <input class="cart-plus-minus-box" value="1" type="text" />
-                        </div>
-                    </li>
-                    <li class="add-to-cart">
-                        <a class="btn btn-custom-size lg-size btn-primary btn-secondary-hover rounded-0" href="cart.html">Thêm vào giỏ hàng</a>
-                    </li>
-                    <li class="wishlist-btn-wrap">
-                        <a class="btn rounded-0" href="wishlist.html">
-                            <i class="pe-7s-like"></i>
-                        </a>
-                    </li>
-                </ul>
+                <button class="btn add-to-cart">Thêm vào giỏ hàng</button>
+                <button class="btn wishlist-btn">Yêu thích</button>
             </div>
         </div>
     </div>
 </div>
-
-          </div>
-        </div>
         <div class="product-tab-area section-space-top-100">
           <div class="container">
             <div class="row">
