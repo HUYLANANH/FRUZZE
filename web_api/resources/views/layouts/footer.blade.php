@@ -132,5 +132,11 @@
 
 <script src="{{ asset('assets/js/404.js') }}"></script>
 
+<!-- Thêm CSS Swiper -->
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+<!-- Thêm JavaScript Swiper -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
   </body>
 </html>

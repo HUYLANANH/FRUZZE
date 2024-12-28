@@ -15932,7 +15932,6 @@ img {
 }
 
 .countdown-wrap.with-dark-border .countdown__time:before {
-    content: url("../images/shape/2.png");
 }
 
 .countdown-wrap.with-secondary-border .countdown__item {
@@ -15944,7 +15943,6 @@ img {
 }
 
 .countdown-wrap.with-secondary-border .countdown__time:before {
-    content: url("../images/shape/2.png");
 }
 
 .countdown__item {
@@ -15978,7 +15976,6 @@ img {
 }
 
 .countdown__time:before {
-    content: url("../images/shape/1.png");
     position: absolute;
     bottom: -10px;
     left: 50%;

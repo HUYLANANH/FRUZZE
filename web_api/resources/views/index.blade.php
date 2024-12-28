@@ -148,8 +148,6 @@
         <!-- Shipping Area End Here -->
 
       <!-- Begin Product Area -->
-        <div class="container">
-          <div class="row">
             <div class="col-lg-12">
               <ul class="nav product-tab-nav pb-10" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
@@ -333,13 +331,8 @@
                   </a>
                 </li>
               </ul>
-            </div>
-          </div>
-        </div>
-      <!-- Product Area End Here -->
-
+            </div>            
       <!-- Begin Banner Area -->
-      <div class="banner-area section-space-top-100">
         <div class="container">
           <div class="row">
             <div class="col-lg-4 col-md-6">
@@ -347,20 +340,9 @@
                 <div class="banner-img img-zoom-effect">
                   <img
                     class="img-full"
-                    src="assets/images/banner/1-1-370x250.jpg"
+                    src="assets/images/1.png"
                     alt="Banner Image"
                   />
-                  <div class="inner-content">
-                    <h5 class="offer">-10% Off</h5>
-                    <h4 class="title mb-5">Bell Pepper<br />Orange</h4>
-                    <div class="button-wrap">
-                      <a
-                        class="btn btn-primary btn-white-hover rounded-0"
-                        href="shop.html"
-                        >Shop Now</a
-                      >
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -369,20 +351,9 @@
                 <div class="banner-img img-zoom-effect">
                   <img
                     class="img-full"
-                    src="assets/images/banner/1-2-370x250.jpg"
+                    src="assets/images/2.png"
                     alt="Banner Image"
                   />
-                  <div class="inner-content">
-                    <h5 class="offer">-20% Off</h5>
-                    <h4 class="title mb-5">Fruit Juice<br />Package</h4>
-                    <div class="button-wrap">
-                      <a
-                        class="btn btn-custom-size btn-primary btn-white-hover rounded-0"
-                        href="shop.html"
-                        >Shop Now</a
-                      >
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -391,217 +362,36 @@
                 <div class="banner-img img-zoom-effect">
                   <img
                     class="img-full"
-                    src="assets/images/banner/1-3-370x250.jpg"
+                    src="assets/images/3.png"
                     alt="Banner Image"
                   />
-                  <div class="inner-content">
-                    <h5 class="offer">-30% Off</h5>
-                    <h4 class="title mb-5">Full Fresh<br />Vegetable</h4>
-                    <div class="button-wrap">
+                </div>
+              </div>
+            </div>
+            <div class="button-wrap" style="text-align: center; margin-top: 20px;">
                       <a
-                        class="btn btn-custom-size btn-primary btn-white-hover rounded-0"
+                        class="btn btn-primary btn-white-hover rounded-0"
                         href="shop.html"
                         >Shop Now</a
                       >
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
-      </div>
       <!-- Banner Area End Here -->
+      <!-- Product Area End Here -->
 
       <!-- Begin Product Area -->
       <div class="product-area section-space-y-axis-100">
         <div class="container">
           <div class="section-title text-center pb-55">
             <span class="sub-title text-primary">Ghé FRUZZE để</span>
-            <h2 class="title mb-0">Xem các sản phẩm mới nhất</h2>
+            <h2 class="title mb-0">Xem các sản phẩm của chúng tôi</h2>
           </div>
           <div class="row">
             <div class="col-lg-12">
-              <div
-                class="swiper-container product-slider swiper-arrow with-radius border-issue"
-              >
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide">
-                    <div class="product-item">
-                      <div class="product-img img-zoom-effect">
-                        <a href="single-product.html">
-                          <img
-                            class="img-full"
-                            src="assets/images/product/medium-size/1-9-270x300.jpg"
-                            alt="Product Images"
-                          />
-                        </a>
-                        <div class="product-add-action">
-                          <ul>
-                            <li>
-                              <a href="cart.html">
-                                <i class="pe-7s-cart"></i>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="wishlist.html">
-                                <i class="pe-7s-like"></i>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div class="product-content">
-                        <a class="product-name" href="single-product.html"
-                          >Black Pepper Grains</a
-                        >
-                        <div class="price-box pb-1">
-                          <span class="new-price">$80.00</span>
-                        </div>
-                        <div class="rating-box">
-                          <ul>
-                            <li><i class="pe-7s-star"></i></li>
-                            <li><i class="pe-7s-star"></i></li>
-                            <li><i class="pe-7s-star"></i></li>
-                            <li><i class="pe-7s-star"></i></li>
-                            <li><i class="pe-7s-star"></i></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="product-item">
-                      <div class="product-img img-zoom-effect">
-                        <a href="single-product.html">
-                          <img
-                            class="img-full"
-                            src="assets/images/product/medium-size/1-10-270x300.jpg"
-                            alt="Product Images"
-                          />
-                        </a>
-                        <div class="product-add-action">
-                          <ul>
-                            <li>
-                              <a href="cart.html">
-                                <i class="pe-7s-cart"></i>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="wishlist.html">
-                                <i class="pe-7s-like"></i>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div class="product-content">
-                        <a class="product-name" href="single-product.html"
-                          >Peanut Big Bean</a
-                        >
-                        <div class="price-box pb-1">
-                          <span class="new-price">$80.00</span>
-                        </div>
-                        <div class="rating-box">
-                          <ul>
-                            <li><i class="pe-7s-star"></i></li>
-                            <li><i class="pe-7s-star"></i></li>
-                            <li><i class="pe-7s-star"></i></li>
-                            <li><i class="pe-7s-star"></i></li>
-                            <li><i class="pe-7s-star"></i></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="product-item">
-                      <div class="product-img img-zoom-effect">
-                        <a href="single-product.html">
-                          <img
-                            class="img-full"
-                            src="assets/images/product/medium-size/1-11-270x300.jpg"
-                            alt="Product Images"
-                          />
-                        </a>
-                        <div class="product-add-action">
-                          <ul>
-                            <li>
-                              <a href="cart.html">
-                                <i class="pe-7s-cart"></i>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="wishlist.html">
-                                <i class="pe-7s-like"></i>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div class="product-content">
-                        <a class="product-name" href="single-product.html"
-                          >Dried Lemon Green</a
-                        >
-                        <div class="price-box pb-1">
-                          <span class="new-price">$80.00</span>
-                        </div>
-                        <div class="rating-box">
-                          <ul>
-                            <li><i class="pe-7s-star"></i></li>
-                            <li><i class="pe-7s-star"></i></li>
-                            <li><i class="pe-7s-star"></i></li>
-                            <li><i class="pe-7s-star"></i></li>
-                            <li><i class="pe-7s-star"></i></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="product-item">
-                      <div class="product-img img-zoom-effect">
-                        <a href="single-product.html">
-                          <img
-                            class="img-full"
-                            src="assets/images/product/medium-size/1-12-270x300.jpg"
-                            alt="Product Images"
-                          />
-                        </a>
-                        <div class="product-add-action">
-                          <ul>
-                            <li>
-                              <a href="cart.html">
-                                <i class="pe-7s-cart"></i>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="wishlist.html">
-                                <i class="pe-7s-like"></i>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div class="product-content">
-                        <a class="product-name" href="single-product.html"
-                          >Natural Coconut</a
-                        >
-                        <div class="price-box pb-1">
-                          <span class="new-price">$80.00</span>
-                        </div>
-                        <div class="rating-box">
-                          <ul>
-                            <li><i class="pe-7s-star"></i></li>
-                            <li><i class="pe-7s-star"></i></li>
-                            <li><i class="pe-7s-star"></i></li>
-                            <li><i class="pe-7s-star"></i></li>
-                            <li><i class="pe-7s-star"></i></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+              <div class="swiper-container product-slider swiper-arrow with-radius border-issue">
+                <div class="swiper-wrapper" id="product-list">
+                  <!-- Products will be injected here via JavaScript -->
                 </div>
                 <!-- Add Arrows -->
                 <div class="swiper-nav-wrap">
@@ -628,7 +418,7 @@
                   <div class="scene fill">
                     <div class="expand-width" data-depth="0.2">
                       <img
-                        src="assets/images/banner/inner-img/2-1-503x430.png"
+                        src="assets/images/Banner giáng sinh FRUZZE.png"
                         alt="Banner Images"
                       />
                     </div>
@@ -843,4 +633,131 @@
       </div>
       <!-- Blog Area End Here -->
 
-      @include('layouts.footer')
+      <script>
+function initializeSwiper() {
+  // Khởi tạo Swiper
+  new Swiper('.swiper-container', {
+    slidesPerView: 4, // Số lượng sản phẩm hiển thị cùng lúc
+    spaceBetween: 20, // Khoảng cách giữa các sản phẩm
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    loop: true, // Bật chế độ lặp
+    breakpoints: {
+      640: {
+        slidesPerView: 1,
+      },
+      768: {
+        slidesPerView: 2,
+      },
+      1024: {
+        slidesPerView: 4,
+      },
+    },
+  });
+}
+
+async function fetchAllProducts() {
+  const token = localStorage.getItem('token'); // Lấy token nếu có
+  let page = 1; // Bắt đầu từ trang 1
+  let allProducts = []; // Mảng chứa tất cả sản phẩm
+  let hasMore = true; // Kiểm tra còn trang tiếp theo không
+
+  try {
+    while (hasMore) {
+      const response = await fetch(`http://127.0.0.1:8000/api/product?page=${page}`, {
+        method: 'GET',
+        headers: {
+          'Authorization': token ? `Bearer ${token}` : '', // Nếu có token thì thêm vào header
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('Lỗi khi lấy dữ liệu: ' + response.status);
+      }
+
+      const data = await response.json();
+      console.log(`Dữ liệu trang ${page}:`, data);
+
+      // Gộp dữ liệu sản phẩm
+      if (data && data.data && Array.isArray(data.data)) {
+        allProducts = allProducts.concat(data.data);
+        hasMore = data.meta && data.meta.has_more; // Backend cung cấp thông tin còn trang không
+        page++; // Tăng trang nếu còn sản phẩm
+      } else {
+        hasMore = false;
+      }
+    }
+
+    // Hiển thị tất cả sản phẩm
+    renderProducts(allProducts);
+    initializeSwiper(); // Khởi tạo Swiper sau khi thêm sản phẩm
+  } catch (error) {
+    console.error('Error fetching all products:', error);
+  }
+}
+
+function renderProducts(products) {
+  if (products && products.length > 0) {
+    let productListHTML = '';
+    products.forEach((product) => {
+      const discountRate = 10; // Tỷ lệ giảm giá
+      const oldPrice = parseFloat(product.price); // Lấy giá gốc
+      const newPrice = oldPrice - (oldPrice * discountRate) / 100; // Tính giá mới
+
+      // Định dạng giá
+      const formattedOldPrice = oldPrice.toLocaleString('vi-VN', {
+        style: 'currency',
+        currency: 'VND',
+      });
+      const formattedNewPrice = newPrice.toLocaleString('vi-VN', {
+        style: 'currency',
+        currency: 'VND',
+      });
+
+      productListHTML += `
+        <div class="swiper-slide">
+          <div class="product-item">
+            <div class="product-img img-zoom-effect">
+              <a href="/detail-shop/${product.id}">
+                <img class="img-full" src="${product.thumbnail}" alt="${product.name}" />
+              </a>
+              <div class="product-add-action">
+                <ul>
+                  <li>
+                    <a href="/cart">
+                      <i class="pe-7s-cart"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/wishlist">
+                      <i class="pe-7s-like"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="product-content">
+              <a class="product-name" href="/detail-shop/${product.id}">${product.name}</a>
+              <div class="price-box pb-1">
+                <span class="old-price" style="color: red;"> ${formattedOldPrice}</span>
+                <span class="new-price">${formattedNewPrice}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+    document.getElementById('product-list').innerHTML = productListHTML;
+  } else {
+    document.getElementById('product-list').innerHTML = "<p>Không tìm thấy sản phẩm nào</p>";
+  }
+}
+
+// Gọi hàm fetchAllProducts khi trang tải
+document.addEventListener('DOMContentLoaded', fetchAllProducts);
+</script>
+
+    @include('layouts.footer')
