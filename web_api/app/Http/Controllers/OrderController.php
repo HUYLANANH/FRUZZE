@@ -108,4 +108,6 @@ class OrderController extends Controller
         $order->delete();
         return response()->json(['message' => 'Product deleted successfully'], 200);
     }
+
+
 }

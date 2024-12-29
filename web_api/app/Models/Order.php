@@ -31,6 +31,7 @@ class Order extends Model
     const STATUS_CONFIRMED = 'Đã xác nhận';
     const STATUS_SHIPPING = 'Đang vận chuyển';
     const STATUS_COMPLETED = 'Hoàn tất';
+    const STATUS_CANCEL = "Đã hủy";
 
     public static $validStatuses = [
         self::STATUS_PENDING,
