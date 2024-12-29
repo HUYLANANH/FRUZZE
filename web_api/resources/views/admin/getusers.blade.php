@@ -1,4 +1,5 @@
 @include('layouts.admin')
+<link rel="stylesheet" href="/assets/css/show.css">
 
 <div class="main-wrapper">
   <!-- Begin Main Content Area -->

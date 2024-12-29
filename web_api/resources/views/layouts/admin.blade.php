@@ -13,7 +13,8 @@
     <!-- Vendor CSS (Contain Bootstrap, Icon Fonts) -->
     <link rel="stylesheet" href="{{ asset('assets/css/vendor/font-awesome.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/vendor/Pe-icon-7-stroke.css') }}" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
 
     <!-- Plugin CSS (Global Plugins Files) -->
     <link rel="stylesheet" href="{{ asset('assets/css/plugins/animate.css') }}" />
@@ -40,6 +41,7 @@
                                     <li><a href="/product/get"><i class="fas fa-cubes"></i> Sản phẩm</a></li>
                                     <li><a href="/orders"><i class="fas fa-box"></i> Đơn hàng</a></li>
                                     <li><a href="/admin/getusers"><i class="fas fa-users"></i> Người dùng</a></li>
+                                    <li><a href="/warehouse/show"><i class="fas fa-warehouse"></i> Kho hàng</a></li>
                                 </ul>
                             </nav>
                             <div class="bt-logout">
