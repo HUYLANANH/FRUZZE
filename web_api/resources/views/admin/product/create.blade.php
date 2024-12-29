@@ -16,9 +16,9 @@
           <label for="productCategory" class="form-label">Danh mục</label>
           <select class="form-control" id="productCategory" required>
             <option value="">Chọn danh mục</option>
-            <option value="1">yenmy</option>
-            <option value="2">anh hong</option>
-            <option value="3">hi</option>
+            <option value="1">trái cây sấy</option>
+            <option value="2">sữa chua sấy</option>
+            <option value="3">trái cây mix sấy</option>
           </select>
         </div>
 
