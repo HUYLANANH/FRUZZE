@@ -43,7 +43,7 @@
   // Lấy thông tin sản phẩm cần sửa từ URL
   const pathArray = window.location.pathname.split('/');
   const productId = pathArray[pathArray.length - 1];
-console.log(productId);
+
   // Lấy thông tin sản phẩm từ API và hiển thị placeholder
   fetch(`http://127.0.0.1:8000/api/product/${productId}`, {
     headers: {
@@ -52,7 +52,6 @@ console.log(productId);
   })
   .then(response => response.json())
   .then(data => {
-    console.log(data.name);
     document.getElementById('productName').placeholder = data.name;
     document.getElementById('productCategory').placeholder = data.category_id; // Nếu muốn hiển thị tên danh mục, cần thay đổi API trả về
     document.getElementById('productPrice').placeholder = data.price;
@@ -66,37 +65,69 @@ console.log(productId);
     event.preventDefault();
 
     const token = localStorage.getItem('token');
-    console.log("toekn",token);
-    const formData = new FormData();
-    formData.append('name', document.getElementById('productName').value);
-    formData.append('category_id', document.getElementById('productCategory').value);
-    formData.append('price', document.getElementById('productPrice').value);
-    formData.append('weight', document.getElementById('productWeight').value);
+    console.log("token", token);
 
     const productId = document.getElementById('productId').value; // Đảm bảo bạn lấy đúng productId
 
+    // Gọi fetch để cập nhật sản phẩm
     fetch(`http://127.0.0.1:8000/api/product/${productId}`, {
-      method: 'PATCH',
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        name: document.getElementById('productName').value,
-        category_id: document.getElementById('productCategory').value,
-        price: document.getElementById('productPrice').value,
-        weight: document.getElementById('productWeight').value
+        method: 'PATCH',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            name: document.getElementById('productName').value,
+            category_id: document.getElementById('productCategory').value,
+            price: document.getElementById('productPrice').value,
+            weight: document.getElementById('productWeight').value
+        })
     })
     .then(response => {
-      if (!response.ok) {
-        throw new Error('Lỗi khi sửa sản phẩm: ' + response.status);
-      }
-      return response.json();
+        if (!response.ok) {
+            throw new Error('Lỗi khi sửa sản phẩm: ' + response.status);
+        }
+        return response.json();
     })
     .then(data => {
-      alert('Sản phẩm đã được sửa thành công!');
-      window.location.href = '/product/get'; // Điều hướng đến trang danh sách sản phẩm
+        alert('Sản phẩm đã được sửa thành công!');
+
+        // Tiếp tục xử lý cập nhật ảnh nếu có
+        const imageInput = document.getElementById('productThumbnail'); // Giả sử bạn có input cho ảnh
+        if (imageInput.files.length > 0) {
+            const formData = new FormData();
+            formData.append('image', imageInput.files[0]);
+
+            return fetch(`http://127.0.0.1:8000/api/product/thumbnail/${productId}`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                },
+                body: formData
+            });
+        } else {
+            // Nếu không có ảnh mới, chuyển hướng đến danh sách sản phẩm
+            window.location.href = '/';
+            return Promise.resolve(); // Đảm bảo trả về một Promise
+        }
+    })
+    .then(response => {
+        if (response && !response.ok) {
+            throw new Error('Lỗi khi cập nhật ảnh: ' + response.status);
+        }
+        if (response) {
+            return response.json();
+        }
+    })
+    .then(data => {
+        if (data) {
+            alert('Ảnh đã được cập nhật thành công!');
+        }
+        window.location.href = '/product/get'; // Điều hướng đến trang danh sách sản phẩm
     })
     .catch(error => console.error('Lỗi:', error));
-  });
+});
+
+
 </script>
+

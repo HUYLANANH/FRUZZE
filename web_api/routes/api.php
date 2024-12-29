@@ -72,9 +72,11 @@ Route::group([
     //lấy 1 sản phẩm cụ thể
     Route::get('product/{id}', [ProductController::class, 'show']);
     //thêm mới sản phẩm
-    Route::post('product', [ProductController::class, 'store'])->middleware(['admin', 'check_login']);
+    Route::post('product', [ProductController::class, 'store'])->middleware(['admin']);
     //sửa sản phẩm
-    Route::patch('product/{id}', [ProductController::class, 'update'])->middleware(['admin', 'check_login']);
+    Route::patch('product/{id}', [ProductController::class, 'update'])->middleware(['admin']);
+    //sửa sản phẩm
+    Route::post('product/thumbnail/{id}', [ProductController::class, 'updateThumbnail'])->middleware(['admin']);
     //xóa sản phẩm
     Route::delete('product/{id}', [ProductController::class, 'destroy'])->middleware(['admin', 'check_login']);
 });
