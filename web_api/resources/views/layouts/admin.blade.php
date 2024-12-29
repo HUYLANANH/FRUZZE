@@ -43,8 +43,9 @@
                                 </ul>
                             </nav>
                             <div class="bt-logout">
-                         <button class="btn btn-success" onclick="logout()">Đăng xuất</button>
-                        </div>
+                                 <button class="btn btn-success" id="logout">Đăng Xuất</button>
+                            </div>
                         </aside>
                     </div>
 </header>
+

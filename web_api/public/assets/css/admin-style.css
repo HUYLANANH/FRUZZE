@@ -24,7 +24,7 @@
   margin-right: 10px; /* Khoảng cách bên phải logo */
 }
 
-.sidebar-nav h2 {
+.sidebar-nav h3 {
   font-size: 1.5rem; /* Kích thước chữ cho tiêu đề nav */
   color: #010101; /* Màu chữ tiêu đề nav */
   background-color:#dff6db ;
