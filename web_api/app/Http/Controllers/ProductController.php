@@ -49,6 +49,13 @@ class ProductController extends Controller
         return response()->json($products);
     }
 
+    public function showAll()
+    {
+        $products = Product::all();
+
+        return response()->json($products);
+    }
+
     /**
      * Store a newly created resource in storage.
      */

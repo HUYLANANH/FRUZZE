@@ -69,6 +69,8 @@ Route::group([
 ], function ($router) {
     // lấy danh sách sản phẩm
     Route::get('product', [ProductController::class, 'index']);
+    // lấy full danh sách sản phẩm
+    Route::get('all-product', [ProductController::class, 'showAll']);
     //lấy 1 sản phẩm cụ thể
     Route::get('product/{id}', [ProductController::class, 'show']);
     //thêm mới sản phẩm
