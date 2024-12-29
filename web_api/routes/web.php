@@ -63,6 +63,10 @@ Route::get('check-out', function () {
     return view('check-out');
 });
 
+Route::get('invoice', function () {
+    return view('invoice');
+});
+
 Route::get('login', function () {
     return view('auth.login');
 })->name('login');
