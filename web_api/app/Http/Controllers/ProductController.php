@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Warehouse;
 
 
 class ProductController extends Controller
@@ -78,6 +79,11 @@ class ProductController extends Controller
 
         // Tạo sản phẩm mới
         $product = Product::create($validatedData);
+
+        $warehouse = Warehouse::create([
+            'quantity' => 0,
+            'product_id' => $product->id, // Lưu ID sản phẩm vào kho hàng
+        ]);
 
         if ($product) {
             return response()->json($product, 201);
