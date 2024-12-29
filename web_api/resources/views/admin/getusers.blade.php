@@ -206,3 +206,4 @@ document.addEventListener('DOMContentLoaded', function() {
   fetchUsers(currentPage);
 });
 </script>
+@include('layouts.endadmin')
