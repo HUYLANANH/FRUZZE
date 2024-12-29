@@ -81,6 +81,64 @@
             color: #fff;
             border-color: #04702c;
         }
+        .order-status {
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+        color: #333;
+        background-color: #fff;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+        appearance: none;
+    }
+    .order-status {
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+        color: #fff; /* Màu chữ trắng */
+        background-color: #ccc; /* Màu mặc định */
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+        appearance: none;
+    }
+
+    /* Màu sắc cho từng trạng thái */
+    .order-status option[value="preparing"] {
+        background-color:rgb(101, 171, 212); /* Cam - Đang chuẩn bị */
+        color: #fff;
+    }
+
+    .order-status option[value="shipping"] {
+        background-color:rgb(237, 182, 119); /* Xanh da trời - Đang vận chuyển */
+        color: #fff;
+    }
+
+    .order-status option[value="delivered"] {
+        background-color:rgb(111, 210, 111); /* Xanh lá cây - Giao hàng thành công */
+        color: #fff;
+    }
+
+    /* Thay đổi màu nền dropdown dựa trên giá trị */
+    .order-status.preparing {
+        background-color:rgb(84, 198, 230);
+    }
+
+    .order-status.shipping {
+        background-color:rgb(219, 178, 106);
+    }
+
+    .order-status.delivered {
+        background-color:rgb(106, 206, 106);
+    }
+    .order-status:hover,
+    .order-status:focus {
+        border-color: #04702c;
+        outline: none;
+    }
     </style>
 </head>
 <body>
@@ -128,7 +186,9 @@
         {
             currentPage = page;
             fetch(`http://127.0.0.1:8000/api/order?page=${page}`, 
-            {
+            
+                
+            {method: 'GET',
                 headers: 
                 {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -154,7 +214,7 @@
                 alert('Failed to load orders. Please try again later.');
             });
         }
-function renderOrderList(orders) {
+        function renderOrderList(orders) {
   const orderList = document.getElementById('order-list');
   orderList.innerHTML = '';
 
@@ -178,7 +238,7 @@ function renderOrderList(orders) {
                                 ${new Date(order.created_at).toLocaleDateString()}
                             </td>
                             <td class="border border-gray-300 px-6 py-4">
-                                <button class="btn btn-danger" onclick="deleteOrder(${order.id})">Delete</button>
+                                <button class="btn btn-primary" onclick="confirmOrder(${order.id})">Xác nhận</button>
                             </td>
                         </tr>
                     `;
@@ -188,6 +248,34 @@ function renderOrderList(orders) {
     orderList.innerHTML = '<tr><td colspan="7" class="text-center">Không có sản phẩm nào</td></tr>';
   }
 }
+
+function confirmOrder(orderId) {
+  if (confirm('Bạn có chắc muốn xác nhận đơn hàng này không?')) {
+    fetch(`http://127.0.0.1:8000/api/order/confirm/${orderId}`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ status: 'confirmed' })
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to confirm order');
+      }
+      return response.json();
+    })
+    .then(data => {
+      alert('Đơn hàng đã được xác nhận thành công!');
+      loadOrders(currentPage); // Tải lại danh sách đơn hàng
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('Không thể xác nhận đơn hàng. Vui lòng thử lại.');
+    });
+  }
+}
+
 
 function renderPagination(data) {
   const pagination = document.querySelector('.pagination');
