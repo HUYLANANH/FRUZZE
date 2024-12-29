@@ -157,4 +157,4 @@ document.addEventListener('DOMContentLoaded', function() {
   fetchProducts();
 });
 </script>
-
+@include('layouts.endadmin')

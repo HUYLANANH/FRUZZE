@@ -74,3 +74,4 @@ document.getElementById('product-form').addEventListener('submit', function(even
   .catch(error => console.error('Lỗi:', error));
 });
 </script>
+@include('layouts.endadmin')
