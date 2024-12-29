@@ -53,12 +53,14 @@
                       value=""
                       placeholder="Mã Voucher"
                       type="text"
+                      disabled
                     />
                     <input
                       class="button mt-xxs-30"
                       name="apply_coupon"
                       value="Tự động thêm Voucher"
-                      type="submit"
+                      type="button"
+                      onclick="applyVoucher()"
                     />
                   </div>
                 </div>
@@ -72,8 +74,8 @@
                     <li>Tạm tính <span id="cartTotal">0 VNĐ</span></li>
                     <li>Tổng cộng <span id="cartTotalFinal">0 VNĐ</span></li>
                   </ul>
-                  <a href="/check-out" class="checkout-btn">Tiến hành thanh toán</a>
-                </div>
+                  <a href="javascript:void(0)" class="checkout-btn" onclick="proceedToCheckout()">Tiến hành thanh toán</a>
+                  </div>
               </div>
             </div>
           </form>
@@ -264,6 +266,60 @@
 
     // Khởi động lấy dữ liệu giỏ hàng
     fetchCartData();
+
+    function proceedToCheckout() {
+    const cartItems = Array.from(document.querySelectorAll('#cartItemsBody tr')).map((row) => {
+        const productId = row.getAttribute('data-product-id');
+        const productName = row.querySelector('.product-name a').textContent.trim();
+        const quantity = parseInt(row.querySelector('.cart-plus-minus-box').value) || 0;
+        const price = parseFloat(row.querySelector('.product-price .amount').textContent.replace(/[^0-9]/g, '')) || 0;
+        const subtotal = price * quantity;
+
+        return {
+            product_id: productId,
+            name: productName,
+            quantity: quantity,
+            price: price,
+            subtotal: subtotal,
+        };
+    });
+
+    const totalBeforeVoucher = parseFloat(document.getElementById('cartTotal').textContent.replace(/[^0-9]/g, '')) || 0;
+    const totalAfterVoucher = parseFloat(document.getElementById('cartTotalFinal').textContent.replace(/[^0-9]/g, '')) || totalBeforeVoucher;
+
+    const checkoutData = {
+        items: cartItems,
+        totalBeforeVoucher: totalBeforeVoucher,
+        totalAfterVoucher: totalAfterVoucher,
+    };
+
+    // Lưu dữ liệu vào localStorage để sử dụng trên trang checkout
+    localStorage.setItem('checkoutData', JSON.stringify(checkoutData));
+
+    // Chuyển hướng đến trang checkout
+    window.location.href = '/check-out';
+}
+
+// Hàm xử lý khi nhấn nút "Cập nhật Voucher"
+function applyVoucher() {
+    const couponCode = document.getElementById('coupon_code');
+    const cartTotal = parseFloat(document.getElementById('cartTotal').textContent.replace(/[^0-9]/g, ''));
+
+    // Giả sử voucher có mã "10%OFF"
+    const discountPercentage = 10;
+
+    // Nếu mã voucher hợp lệ
+    couponCode.value = `${discountPercentage}%OFF`;  // Hiển thị mã voucher vào input
+
+    // Giảm 10% cho giỏ hàng
+    const discount = cartTotal * (discountPercentage / 100);
+    const newTotal = cartTotal - discount;
+
+    // Cập nhật tổng tiền sau khi giảm
+    document.getElementById('cartTotalFinal').textContent = newTotal.toLocaleString('vi-VN') + ' VNĐ';
+    alert('Áp dụng voucher thành công! Giảm ' + discountPercentage + '% cho tổng tiền.');
+}
+
 </script>
 
 @include('layouts.footer')
