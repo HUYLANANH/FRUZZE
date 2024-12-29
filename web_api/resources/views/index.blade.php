@@ -2,7 +2,6 @@
 
       <!-- Begin Slider Area -->
       <div class="slider-area">
-        <!-- Main Slider -->
         <div class="swiper-container main-slider swiper-arrow with-bg_white">
           <div class="swiper-wrapper">
             <div class="swiper-slide animation-style-01">
@@ -487,7 +486,7 @@
                         <a href="blog-detail-left-sidebar.html">
                           <img
                             class="img-full"
-                            src="assets/images/blog/medium-size/1-1-370x315.jpg"
+                            src=""
                             alt="Blog Image"
                           />
                         </a>
@@ -534,7 +533,7 @@
                         <a href="blog-detail-left-sidebar.html">
                           <img
                             class="img-full"
-                            src="assets/images/blog/medium-size/1-2-370x315.jpg"
+                            src=""
                             alt="Blog Image"
                           />
                         </a>
@@ -581,7 +580,7 @@
                         <a href="blog-detail-left-sidebar.html">
                           <img
                             class="img-full"
-                            src="assets/images/blog/medium-size/1-3-370x315.jpg"
+                            src=""
                             alt="Blog Image"
                           />
                         </a>
@@ -637,68 +636,55 @@
   // Khởi tạo Swiper
   function initializeSwiper() {
     new Swiper('.swiper-container', {
-      slidesPerView: 4, // Số lượng sản phẩm hiển thị cùng lúc
-      spaceBetween: 20, // Khoảng cách giữa các sản phẩm
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      loop: true, // Bật chế độ lặp
-      breakpoints: {
-        640: {
-          slidesPerView: 1,
-        },
-        768: {
-          slidesPerView: 2,
-        },
-        1024: {
-          slidesPerView: 4,
-        },
-      },
-    });
+  slidesPerView: 4,
+  spaceBetween: 20,
+  loop: false, // Tắt lặp để giảm tải
+  virtual: {
+    slides: products.map((product) => renderProductHTML(product)),
+  },
+  });
   }
 
-  // Hàm lấy tất cả sản phẩm và hiển thị
-  async function fetchAllProducts() {
-    const token = localStorage.getItem('token');
-    let currentPage = 1;  // Khởi tạo giá trị currentPage
-    let allProducts = [];  // Mảng chứa tất cả sản phẩm
-    let hasMore = true;  // Kiểm tra còn trang tiếp theo không
+// Trong fetchAllProducts
+async function fetchAllProducts() {
+  // Không cần khai báo lại `allProducts`, sử dụng biến toàn cục
+  products = []; 
+  let currentPage = 1;
+  let hasMore = true;
+  const token = localStorage.getItem('token');
 
-    try {
-      while (hasMore) {
-        const response = await fetch(`http://127.0.0.1:8000/api/product?page=${currentPage}`, {
-          method: 'GET',
-          headers: {
-            'Authorization': token ? `Bearer ${token}` : '',
-            'Content-Type': 'application/json',
-          },
-        });
+  try {
+    while (hasMore) {
+      const response = await fetch(`http://127.0.0.1:8000/api/product?page=${currentPage}`, {
+        method: 'GET',
+        headers: {
+          'Authorization': token ? `Bearer ${token}` : '',
+          'Content-Type': 'application/json',
+        },
+      });
 
-        if (!response.ok) {
-          throw new Error('Lỗi khi lấy dữ liệu: ' + response.status);
-        }
-
-        const data = await response.json();
-        console.log(`Dữ liệu trang ${currentPage}:`, data);
-
-        // Gộp dữ liệu sản phẩm
-        if (data && data.data && Array.isArray(data.data)) {
-          allProducts = allProducts.concat(data.data); // Thêm sản phẩm vào mảng tổng
-          hasMore = data.meta && data.meta.has_more; // Kiểm tra nếu còn trang tiếp theo
-          currentPage++; // Tăng trang nếu còn sản phẩm
-        } else {
-          hasMore = false; // Nếu không có dữ liệu nữa, dừng lại
-        }
+      if (!response.ok) {
+        throw new Error('Lỗi khi lấy dữ liệu: ' + response.status);
       }
 
-      // Hiển thị tất cả sản phẩm
-      renderProducts(allProducts); // Render tất cả sản phẩm
-      initializeSwiper(); // Khởi tạo Swiper sau khi thêm sản phẩm
-    } catch (error) {
-      console.error('Error fetching all products:', error);
+      const data = await response.json();
+      console.log(`Dữ liệu trang ${currentPage}:`, data);
+
+      if (data && data.data && Array.isArray(data.data)) {
+        products = products.concat(data.data); // Lưu toàn bộ sản phẩm vào biến toàn cục
+        hasMore = data.meta && data.meta.has_more;
+        currentPage++;
+      } else {
+        hasMore = false;
+      }
     }
+
+    renderProducts(products); // Render sản phẩm
+    initializeSwiper(products); // Khởi tạo Swiper với biến toàn cục
+  } catch (error) {
+    console.error('Error fetching all products:', error);
   }
+}
 
   // Hàm render sản phẩm
   function renderProducts(products) {

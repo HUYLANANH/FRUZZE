@@ -29,13 +29,9 @@
     <!-- Hình ảnh sản phẩm -->
     <div class="col-lg-6">
         <div class="single-product-img h-100">
-            <div class="swiper-container single-product-slider">
                 <div class="image-container">
                     <img id="product-thumbnail" src="/" alt="Product Image">
                 </div>
-                <!-- Add Pagination -->
-                <div class="swiper-pagination"></div>
-            </div>
         </div>
     </div>
     
@@ -55,7 +51,11 @@
                         <span class="quantity-number">1</span>
                         <button class="btn quantity-btn" id="increase">+</button>
                     </div>
-                    <button class="btn add-to-cart">THÊM VÀO GIỎ HÀNG</button>
+                    <button class="btn add-to-cart" id="add-to-cart-button"
+                        
+                    >
+                        THÊM VÀO GIỎ HÀNG
+                    </button>
                     <button class="btn wishlist-btn">YÊU THÍCH</button>
                 </div>
             </div>
@@ -233,8 +233,8 @@
       </main>
       <!-- Main Content Area End Here  -->
 
-      <script>
-// Lấy ID sản phẩm từ URL
+<script>
+// Lấy ID sản phẩm từ URL và gán vào biến toàn cục productId
 const productId = window.location.pathname.split('/').pop();
 
 // Fetch chi tiết sản phẩm
@@ -266,23 +266,36 @@ function fetchProductDetail() {
       document.getElementById('product-thumbnail').src = `/${data.thumbnail}`;
       document.getElementById('product-name').textContent = data.name;
 
-      const oldPrice = parseFloat(data.price);
+      const oldPrice = parseFloat(data.price.replace(/,/g, ''));  // Xóa dấu phẩy nếu có
       const discountRate = 10; // % giảm giá (nếu có)
       const newPrice = oldPrice - (oldPrice * discountRate / 100);
 
+      // Kiểm tra và hiển thị giá mới và giá cũ
+      if (isNaN(newPrice)) {
+        console.error('Lỗi tính giá mới!');
+        alert('Lỗi tính giá mới!');
+      } else {
+        document.getElementById('new-price').textContent = newPrice.toLocaleString('vi-VN', {
+          style: 'currency',
+          currency: 'VND',
+        });
+      }
+
+      // Hiển thị giá cũ
       document.getElementById('old-price').textContent = oldPrice.toLocaleString('vi-VN', {
         style: 'currency',
         currency: 'VND',
       });
-      document.getElementById('new-price').textContent = newPrice.toLocaleString('vi-VN', {
-        style: 'currency',
-        currency: 'VND',
-      });
-      document.getElementById('product-description').textContent = data.description;   
-      document.getElementById('product-thumbnail').style.maxWidth = "100%";
-      document.getElementById('product-thumbnail').style.maxHeight = "500px";
-      document.getElementById('product-thumbnail').style.objectFit = "cover";
-      document.getElementById('product-thumbnail').style.objectPosition = "center center";
+
+      // Hiển thị mô tả sản phẩm
+      document.getElementById('product-description').textContent = data.description;
+
+      // Cập nhật ảnh sản phẩm
+      const productThumbnail = document.getElementById('product-thumbnail');
+      productThumbnail.style.maxWidth = "100%";
+      productThumbnail.style.maxHeight = "500px";
+      productThumbnail.style.objectFit = "cover";
+      productThumbnail.style.objectPosition = "center center";
     })
     .catch(error => {
       console.error('Lỗi không mong muốn:', error.message);
@@ -292,6 +305,96 @@ function fetchProductDetail() {
 
 // Tải chi tiết sản phẩm khi trang được tải
 document.addEventListener('DOMContentLoaded', fetchProductDetail);
+
+// Hàm thêm sản phẩm vào giỏ hàng
+function addToCart(productId, productName, productPrice, productThumbnail) {
+  const token = localStorage.getItem('token');
+  if (!token) {
+    alert('Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng.');
+    return;
+  }
+
+  // Kiểm tra giá trị của productPrice trước khi xử lý
+  console.log("Raw productPrice:", productPrice); // Xem giá trị raw của productPrice
+
+  // Loại bỏ ký tự không phải số từ productPrice
+  const cleanedPrice = productPrice.replace(/[^\d.-]/g, '');
+  console.log("Cleaned productPrice:", cleanedPrice); // Kiểm tra giá trị sau khi loại bỏ ký tự không phải số
+
+  // Chuyển giá thành số, lưu ý rằng nếu có dấu phẩy, ta cần phải thay đổi cách xử lý
+  const price = parseFloat(cleanedPrice.replace(',', '.')); // Thay dấu phẩy thành dấu chấm nếu có
+  console.log("Parsed Price:", price); // In giá sau khi chuyển thành số
+
+  if (isNaN(price)) {
+    console.error('Giá sản phẩm không hợp lệ!');
+    alert('Giá sản phẩm không hợp lệ!');
+    return;
+  }
+
+  const cartData = {
+    product_id: productId,
+    quantity: 1, // Mặc định thêm 1 sản phẩm
+    price: price * 1000, // Cần gửi giá sản phẩm vì backend yêu cầu
+  };
+
+  fetch('http://127.0.0.1:8000/api/cart', {
+    method: 'POST',
+    body: JSON.stringify(cartData),
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`, // Gửi token để xác thực
+    },
+  })
+    .then(response => {
+      if (!response.ok) {
+        return response.json().then(err => {
+          throw new Error(err.message || 'Không thể thêm sản phẩm vào giỏ hàng');
+        });
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('Sản phẩm đã thêm vào giỏ hàng:', data);
+      showSuccessMessage();
+    })
+    .catch(error => {
+      console.error('Lỗi:', error);
+      alert(error.message || 'Lỗi khi thêm sản phẩm vào giỏ hàng. Vui lòng thử lại.');
+    });
+}
+
+// Hàm hiển thị thông báo thành công với liên kết
+function showSuccessMessage() {
+  const messageContainer = document.createElement('div');
+  messageContainer.innerHTML = `
+      <div class="success-message" style="padding: 15px; background-color: #4CAF50; color: white; text-align: center; border-radius: 5px;">
+          <p>Thêm sản phẩm vào giỏ hàng thành công! 
+              <a href="/cart" class="btn btn-primary" style="color: white; text-decoration: underline;">Xem giỏ hàng</a>
+          </p>
+      </div>
+  `;
+  document.body.appendChild(messageContainer); // Thêm thông báo vào body hoặc container mong muốn
+
+  // Tự động ẩn thông báo sau 5 giây
+  setTimeout(() => {
+    messageContainer.remove();
+  }, 5000);
+}
+
+// Gắn sự kiện vào các nút "Thêm vào giỏ hàng"
+document.addEventListener('DOMContentLoaded', function () {
+  const addToCartButton = document.getElementById('add-to-cart-button');
+  if (addToCartButton) {
+    addToCartButton.addEventListener('click', function () {
+      const productName = document.getElementById('product-name').textContent;
+      const productPrice = document.getElementById('old-price').textContent;
+      const productThumbnail = document.getElementById('product-thumbnail').src;
+
+      // Gọi hàm thêm sản phẩm vào giỏ hàng
+      addToCart(productId, productName, productPrice, productThumbnail);
+    });
+  }
+});
 
 </script>
 

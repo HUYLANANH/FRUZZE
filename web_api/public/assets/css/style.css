@@ -16416,43 +16416,6 @@ blockquote .inner-content .user-name:before {
 }
 
 /* ---Quantity--- */
-.quantity .cart-plus-minus {
-    background-color: #f6f6f6;
-    position: relative;
-    width: 76px;
-    text-align: left;
-}
-
-.quantity .cart-plus-minus .cart-plus-minus-box {
-    border: 1px solid #f6f6f6;
-    background-color: #f6f6f6;
-    text-align: center;
-    width: 75px;
-    height: 50px;
-}
-
-.quantity .cart-plus-minus .qtybutton {
-    cursor: pointer;
-    position: absolute;
-    -webkit-transition: all 0.3s ease 0s;
-    -o-transition: all 0.3s ease 0s;
-    transition: all 0.3s ease 0s;
-    font-size: 10px;
-    color: inherit;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-}
-
-.quantity .cart-plus-minus .qtybutton.dec {
-    left: 15px;
-}
-
-.quantity .cart-plus-minus .qtybutton.inc {
-    left: auto;
-    right: 15px;
-}
 
 /* ---Price Box--- */
 .price-box span {
@@ -20351,7 +20314,7 @@ blockquote .inner-content .user-name:before {
     justify-content: center; /* Căn giữa theo chiều ngang */
     align-items: center; /* Căn giữa theo chiều dọc */
     overflow: hidden; /* Ẩn phần ảnh vượt ra ngoài khung */
-    width: 120px; /* Đặt chiều rộng khung ảnh */
+    width: auto; /* Đặt chiều rộng khung ảnh */
     height: 200px; /* Đặt chiều cao khung ảnh */
 }
 
@@ -20385,13 +20348,10 @@ blockquote .inner-content .user-name:before {
     text-decoration: underline;
     margin-left: 10px; /* Thêm khoảng cách giữa link và text */
 }
+
 .table-content table td.product-subtotal {
     font-size: 16px;
     font-weight: 700;
-}
-
-.table-content table td.quantity .cart-plus-minus {
-    margin: 0 auto;
 }
 
 /* Cấu hình cho phần tử điều chỉnh số lượng */
@@ -20416,7 +20376,7 @@ blockquote .inner-content .user-name:before {
 /* Hiệu ứng khi ô nhập liệu được focus */
 .cart-plus-minus input.cart-plus-minus-box:focus {
     outline: none;
-    border-color: #5cb85c; /* Đổi màu viền khi focus */
+    border-color: #bac34e; /* Đổi màu viền khi focus */
 }
 
 /* Căn giữa cột trong bảng mà không làm lệch hàng */
