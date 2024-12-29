@@ -54,9 +54,9 @@
                     <button class="btn add-to-cart" id="add-to-cart-button"
                         
                     >
-                        THÊM VÀO GIỎ HÀNG
+                        Thêm vào giỏ hàng
                     </button>
-                    <button class="btn wishlist-btn">YÊU THÍCH</button>
+                    <button class="btn wishlist-btn">Yêu thích</button>
                 </div>
             </div>
         </div>
@@ -81,20 +81,7 @@
                       aria-controls="description"
                       aria-selected="true"
                     >
-                      Mô Tả
-                    </a>
-                  </li>
-                  <li class="nav-item" role="presentation">
-                    <a
-                      class="btn btn-custom-size"
-                      id="reviews-tab"
-                      data-bs-toggle="tab"
-                      href="#reviews"
-                      role="tab"
-                      aria-controls="reviews"
-                      aria-selected="false"
-                    >
-                      Đánh Giá
+                    <B>MÔ TẢ</B>  
                     </a>
                   </li>
                 </ul>
@@ -143,85 +130,6 @@
     </ul>
 </div>
                       </p>
-                    </div>
-                  </div>
-                  <div
-                    class="tab-pane fade"
-                    id="reviews"
-                    role="tabpanel"
-                    aria-labelledby="reviews-tab"
-                  >
-                    <div class="product-review-body">
-                      <h4 class="heading mb-5">Các Đánh Giá Của Người Dùng</h4>
-                      <ul class="user-info-wrap">
-                            <li class="user-comment">
-                              <div class="meta">
-                                <span
-                                  ><strong>full_name - </strong> ngày viết note</span
-                                >
-                              </div>
-                              <p class="short-desc mb-0">
-                                note
-                              </p>
-                            </li>
-                          </ul>
-                        </li>
-                      </ul>
-                      <div class="feedback-area pt-5">
-                        <h2 class="heading mb-1">Viết Đánh Giá</h2>
-                        <p class="short-desc mb-3">
-                          Địa chỉ email và số điện thoại của bạn sẽ không bị công khai !
-                        </p>
-                        <form class="feedback-form pt-8" action="#">
-                          <div class="group-input">
-                            <div class="form-field me-md-6 mb-6 mb-md-0">
-                              <input
-                                id="full_name"
-                                type="text"
-                                name="name"
-                                placeholder="Tên của bạn là gì ?(Bắt buộc)"
-                                class="input-field"
-                              />
-                            </div>
-                            <div class="form-field me-md-6 mb-6 mb-md-0">
-                              <input
-                                id="email"
-                                type="text"
-                                name="email"
-                                placeholder="Địa chỉ email của bạn là gì ?(Bắt buộc)"
-                                class="input-field"
-                              />
-                            </div>
-                            <div class="form-field">
-                              <input
-                                id="phone_number"
-                                type="text"
-                                name="number"
-                                placeholder="Số điện thoại của bạn là gì ?(Bắt buộc)"
-                                class="input-field"
-                              />
-                            </div>
-                          </div>
-                          <div class="form-field mt-6">
-                            <textarea
-                              id="note"
-                              name="message"
-                              placeholder="Viết đánh giá ở đây nhé !(Bắt buộc)"
-                              class="textarea-field"
-                            ></textarea>
-                          </div>
-                          <div class="button-wrap mt-8">
-                            <button
-                              type="submit"
-                              value="submit"
-                              class="btn btn-custom-size lg-size btn-secondary btn-primary-hover btn-lg rounded-0"
-                              name="submit"
-                            >
-                              Gửi
-                            </button>
-                          </div>
-                        </form>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -303,27 +211,57 @@ function fetchProductDetail() {
     });
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+    const decreaseButton = document.getElementById('decrease');
+    const increaseButton = document.getElementById('increase');
+    const quantityDisplay = document.querySelector('.quantity-number');
+
+    let quantity = 1; // Số lượng mặc định
+
+    // Hàm cập nhật hiển thị số lượng
+    function updateQuantityDisplay() {
+        quantityDisplay.textContent = quantity;
+    }
+
+    // Sự kiện giảm số lượng
+    decreaseButton.addEventListener('click', function () {
+        if (quantity > 1) {
+            quantity -= 1;
+            updateQuantityDisplay();
+        }
+    });
+
+    // Sự kiện tăng số lượng
+    increaseButton.addEventListener('click', function () {
+        quantity += 1;
+        updateQuantityDisplay();
+    });
+
+    // Cập nhật số lượng khi thêm vào giỏ hàng
+    const addToCartButton = document.getElementById('add-to-cart-button');
+    addToCartButton.addEventListener('click', function () {
+        const productName = document.getElementById('product-name').textContent;
+        const productPrice = document.getElementById('old-price').textContent;
+        const productThumbnail = document.getElementById('product-thumbnail').src;
+
+        // Gọi hàm thêm sản phẩm vào giỏ hàng với số lượng hiện tại
+        addToCart(productId, productName, productPrice, productThumbnail, quantity);
+    });
+});
+
 // Tải chi tiết sản phẩm khi trang được tải
 document.addEventListener('DOMContentLoaded', fetchProductDetail);
 
 // Hàm thêm sản phẩm vào giỏ hàng
-function addToCart(productId, productName, productPrice, productThumbnail) {
+function addToCart(productId, productName, productPrice, productThumbnail, quantity) {
   const token = localStorage.getItem('token');
   if (!token) {
     alert('Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng.');
     return;
   }
 
-  // Kiểm tra giá trị của productPrice trước khi xử lý
-  console.log("Raw productPrice:", productPrice); // Xem giá trị raw của productPrice
-
-  // Loại bỏ ký tự không phải số từ productPrice
   const cleanedPrice = productPrice.replace(/[^\d.-]/g, '');
-  console.log("Cleaned productPrice:", cleanedPrice); // Kiểm tra giá trị sau khi loại bỏ ký tự không phải số
-
-  // Chuyển giá thành số, lưu ý rằng nếu có dấu phẩy, ta cần phải thay đổi cách xử lý
-  const price = parseFloat(cleanedPrice.replace(',', '.')); // Thay dấu phẩy thành dấu chấm nếu có
-  console.log("Parsed Price:", price); // In giá sau khi chuyển thành số
+  const price = parseFloat(cleanedPrice.replace(',', '.'));
 
   if (isNaN(price)) {
     console.error('Giá sản phẩm không hợp lệ!');
@@ -333,8 +271,8 @@ function addToCart(productId, productName, productPrice, productThumbnail) {
 
   const cartData = {
     product_id: productId,
-    quantity: 1, // Mặc định thêm 1 sản phẩm
-    price: price * 1000, // Cần gửi giá sản phẩm vì backend yêu cầu
+    quantity: quantity, // Cập nhật số lượng đã chọn
+    price: price * 1000, // Chuyển giá sang đúng định dạng nếu cần
   };
 
   fetch('http://127.0.0.1:8000/api/cart', {
@@ -391,7 +329,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const productThumbnail = document.getElementById('product-thumbnail').src;
 
       // Gọi hàm thêm sản phẩm vào giỏ hàng
-      addToCart(productId, productName, productPrice, productThumbnail);
+      addToCart(productId, productName, productPrice, productThumbnail, quantity);
     });
   }
 });

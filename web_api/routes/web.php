@@ -59,6 +59,10 @@ Route::get('cart', function () {
     return view('cart');
 });
 
+Route::get('check-out', function () {
+    return view('check-out');
+});
+
 Route::get('login', function () {
     return view('auth.login');
 })->name('login');
