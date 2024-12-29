@@ -72,7 +72,7 @@
                     <li>Tạm tính <span id="cartTotal">0 VNĐ</span></li>
                     <li>Tổng cộng <span id="cartTotalFinal">0 VNĐ</span></li>
                   </ul>
-                  <a href="/checkout" class="checkout-btn">Tiến hành thanh toán</a>
+                  <a href="/check-out" class="checkout-btn">Tiến hành thanh toán</a>
                 </div>
               </div>
             </div>
@@ -135,7 +135,10 @@
                         <td class="product-thumbnail">
                             <img src="${product.thumbnail || ''}" alt="Cart Thumbnail" style="width: 50px; height: 50px;" />
                         </td>
-                        <td class="product-name">${product.name || 'Sản phẩm không xác định'}</td>
+                        <td class="product-name">
+                            <a href="/detail-shop/${product.id}">${product.name || 'Sản phẩm không xác định'}
+                            </a>
+                        </td>
                         <td class="product-price item-price">
                             <span class="amount">${formattedPrice}</span>
                         </td>
