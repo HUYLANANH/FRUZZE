@@ -10,7 +10,7 @@ class AdminController extends Controller
     public function getUsers($role_id)
     {
         $users = User::where('role_id', $role_id)
-                 ->get(['id', 'full_name', 'username', 'email', 'birth_year', 'phone_number', 'address']);
+                    ->paginate(10, ['id', 'full_name', 'username', 'email', 'birth_year', 'phone_number', 'address']);
 
         return response()->json($users);
     }
