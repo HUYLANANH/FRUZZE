@@ -22,7 +22,6 @@
             <th>Địa chỉ</th>
             <th>Giới tính</th>
             <th>Vai trò</th>
-            <th>Hành động</th>
           </tr>
         </thead>
         <tbody id="user-list">
@@ -50,7 +49,7 @@ async function checkAdmin() {
   }
   
   try {
-    const response = await fetch('/api/auth/check-admin', {
+    const response = await fetch('/api/auth/login', {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -69,7 +68,7 @@ async function fetchUsers(page = 1) {
   const token = localStorage.getItem('token');
 
   try {
-    const response = await fetch(`http://127.0.0.1:8000/api/auth/profile?page=${page}`, {
+    const response = await fetch(`http://127.0.0.1:8000/api/admin/all-users/2?page=${page}`, {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -106,16 +105,12 @@ function renderUserList(users) {
           <td>${user.address}</td>
           <td>${user.gender}</td>
           <td>${user.role_id === 1 ? 'Admin' : 'Người dùng'}</td>
-          <td>
-            <button class="btn btn-primary btn-sm" onclick="checkAdminAndEditUser(${user.id})">Sửa</button>
-            <button class="btn btn-danger btn-sm" onclick="checkAdminAndDeleteUser(${user.id})">Xóa</button>
-          </td>
         </tr>
       `;
       userList.innerHTML += userRow;
     });
   } else {
-    userList.innerHTML = '<tr><td colspan="10" class="text-center">Không có người dùng nào</td></tr>';
+    userList.innerHTML = '<tr><td colspan="9" class="text-center">Không có người dùng nào</td></tr>';
   }
 }
 
@@ -160,50 +155,10 @@ async function checkAdminAndAddUser() {
   }
 }
 
-// Kiểm tra quyền admin và sửa người dùng
-async function checkAdminAndEditUser(userId) {
-  const isAdmin = await checkAdmin();
-  if (isAdmin) {
-    window.location.href = `/user/update/${userId}`; // Đường dẫn đến trang sửa người dùng
-  } else {
-    alert('Bạn không có quyền thực hiện hành động này.');
-    window.location.href = '/admin/login'; // Đường dẫn đến trang đăng nhập admin
-  }
-}
-
-// Kiểm tra quyền admin và xóa người dùng
-async function checkAdminAndDeleteUser(userId) {
-  const isAdmin = await checkAdmin();
-  if (isAdmin) {
-    const confirmDelete = confirm('Bạn có chắc chắn muốn xóa người dùng này?');
-    if (confirmDelete) {
-      const token = localStorage.getItem('token');
-
-      fetch(`http://127.0.0.1:8000/api/auth/profile/${userId}`, {
-        method: 'DELETE',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        }
-      })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Lỗi khi xóa người dùng: ' + response.status);
-        }
-        alert('Xóa người dùng thành công');
-        fetchUsers(currentPage);
-      })
-      .catch(error => console.error('Lỗi:', error));
-    }
-  } else {
-    alert('Bạn không có quyền thực hiện hành động này.');
-    window.location.href = '/admin/login'; // Đường dẫn đến trang đăng nhập admin
-  }
-}
-
 // Fetch users on page load
 document.addEventListener('DOMContentLoaded', function() {
   fetchUsers(currentPage);
 });
 </script>
+
 @include('layouts.endadmin')
