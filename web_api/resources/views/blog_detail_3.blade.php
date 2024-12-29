@@ -49,11 +49,8 @@
                         >Món ăn vặt healthy dành cho genZ</a>
                     </h5>
                     <p class="short-desc mb-4 mb-7">
-                    Cuộc sống hiện đại ngày nay không chỉ mang lại nhiều cơ hội mà còn đầy thách thức cho thế hệ Gen Z. Họ không chỉ bận rộn với việc học hành, công việc mà còn phải duy trì lối sống lành mạnh. 
-
-Trong những buổi tụ tập cùng bạn bè, lựa chọn những món ăn vặt lành mạnh để bảo vệ sức khỏe mà vẫn tận hưởng niềm vui không còn là xu hướng của giới trẻ ngày nay mà thậm chí đã trở thành một thói quen.
-
-Bài viết này sẽ giới thiệu các sản phẩm của we’natur, với các gợi ý từ những món ăn vặt healthy đa dạng, thơm ngon, giúp GenZ vừa có thể chém gió vừa không lo tăng cân.                    </p>
+                    Trong những năm gần đây, trái cây sấy đã trở thành một lựa chọn phổ biến cho những người yêu thích thực phẩm lành mạnh. Không chỉ giữ được hương vị thơm ngon tự nhiên, trái cây sấy còn mang lại nhiều lợi ích về sức khỏe và sự tiện lợi trong phong cách sống hiện đại.
+                    </p>
                 <a style="font-style: italic;text-decoration: underline;"><b>Lợi ích của trái cây sấy
                 </b></a>
                     <p class="short-desc mb-4 mb-9">
