@@ -138,5 +138,7 @@
 <!-- Thêm JavaScript Swiper -->
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
+<!--<script src="{{ asset('assets/js/button-remove.js') }}"></script> -->
+
   </body>
 </html>
