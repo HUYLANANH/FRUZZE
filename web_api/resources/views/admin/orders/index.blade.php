@@ -226,7 +226,7 @@
                                 <input type="checkbox">
                             </td>
                             <td class="border border-gray-300 px-6 py-4">
-                                <a href="/admin/orders/${order.id}" class="text-blue-600 hover:underline">
+                                <a href="detail-orders/${order.id}" class="text-blue-600 hover:underline">
                                     ${order.id}
                                 </a>
                             </td>
@@ -247,6 +247,9 @@
   } else {
     orderList.innerHTML = '<tr><td colspan="7" class="text-center">Không có sản phẩm nào</td></tr>';
   }
+}
+function Detail(orderId) {
+  window.location.href = `/detail-orders/${order.id}${orderId}`; // Đường dẫn đến trang sửa sản phẩm
 }
 
 function confirmOrder(orderId) {

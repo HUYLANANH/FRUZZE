@@ -105,6 +105,10 @@ Route::get('orders', function () {
     return view('admin.orders.index');
 })->name('orders');
 
+Route::get('detail-orders/{id}', function ($id) {
+    return view('admin.orders.detail-orders', ['id' => $id]);
+})->name('detail-orders');
+
 Route::prefix('admin')->group(function () {
 
 Route::get('getusers', function () {
