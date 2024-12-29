@@ -58,7 +58,7 @@ class WarehouseController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $warehouse = Warehouse::findOrFail($id);
+        $warehouse = Warehouse::where('product_id', $id)->firstOrFail();
 
         // Cập nhật số lượng
         $warehouse->quantity = $warehouse->quantity + $request->quantity;
