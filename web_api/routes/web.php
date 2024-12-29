@@ -34,6 +34,18 @@ Route::get('detail-shop/{id}', function ($id) {
 Route::get('blog', function () {
     return view('blog');
 });
+Route::get('blog_detail_1', function () {
+    return view('blog_detail_1');
+});
+Route::get('blog_detail_2', function () {
+    return view('blog_detail_2');
+});
+Route::get('blog_detail_3', function () {
+    return view('blog_detail_3');
+});
+Route::get('blog_detail_4', function () {
+    return view('blog_detail_4');
+});
 
 Route::get('404', function () {
     return view('404');

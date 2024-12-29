@@ -30,10 +30,10 @@
               <div class="col-md-6">
                 <div class="blog-item">
                   <div class="blog-img img-zoom-effect">
-                    <a href="blog-detail-left-sidebar.html">
+                    <a href="/blog_detail_1">
                       <img
                         class="img-full"
-                        src="assets/images/blog/medium-size/2-1-570x485.jpg"
+                        src="assets\images\blog\medium-size\trai-cay-say-thang-hoa-2-1.jpg"
                         alt="Blog Image"
                       />
                     </a>
@@ -42,235 +42,74 @@
                     <div class="blog-meta text-dim-gray pb-3">
                       <ul>
                         <li class="date">
-                          <i class="fa fa-calendar-o me-2"></i>May 21, 2021
+                          <i class="fa fa-calendar-o me-2"></i>september 21, 2024
                         </li>
-                        <li>
-                          <span class="comments me-3">
-                            <a href="javascript:void(0)">2 Comments</a>
-                          </span>
-                          <span class="link-share">
-                            <a href="javascript:void(0)">Share</a>
-                          </span>
-                        </li>
+        
                       </ul>
                     </div>
                     <h5 class="title mb-4">
-                      <a href="blog-detail-left-sidebar.html"
-                        >Blog Image Post</a
+                  <a href="/blog_detail_1"
+                        >Quy trình sản xuất trái cây sấy lạnh</a
                       >
                     </h5>
                     <p class="short-desc mb-5">
-                      Lorem ipsum dolor sit amet, consectet adipi elit, sed do
-                      eius tempor incididunt ut labore gthydolore magna aliqua.
+                      Quy trình sản xuất trái cây sấy không chỉ giúp bảo quản trái 
+                      cây lâu dài mà còn giữ nguyên hương vị và dinh dưỡng.
                     </p>
                     <div class="button-wrap">
                       <a
                         class="btn btn-custom-size lg-size btn-dark rounded-0"
-                        href="blog-detail-left-sidebar.html"
+                        href="/blog_detail_1"
                         >Read More</a
                       >
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-md-6 pt-6 pt-md-0">
-                <div class="swiper-container single-blog-slider">
-                  <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                      <div class="blog-item">
-                        <div class="blog-img img-zoom-effect">
-                          <a href="blog-detail-left-sidebar.html">
-                            <img
-                              class="img-full"
-                              src="assets/images/blog/medium-size/2-3-570x485.jpg"
-                              alt="Blog Image"
-                            />
-                          </a>
-                        </div>
-                        <div class="blog-content">
-                          <div class="blog-meta text-dim-gray pb-3">
-                            <ul>
-                              <li class="date">
-                                <i class="fa fa-calendar-o me-2"></i>May 21,
-                                2021
-                              </li>
-                              <li>
-                                <span class="comments me-3">
-                                  <a href="javascript:void(0)">2 Comments</a>
-                                </span>
-                                <span class="link-share">
-                                  <a href="javascript:void(0)">Share</a>
-                                </span>
-                              </li>
-                            </ul>
-                          </div>
-                          <h5 class="title mb-4">
-                            <a href="blog-detail-left-sidebar.html"
-                             >Blog Gallery Post</a
-                            >
-                          </h5>
-                          <p class="short-desc mb-5">
-                            Lorem ipsum dolor sit amet, consectet adipi elit,
-                            sed do eius tempor incididunt ut labore gthydolore
-                            magna aliqua.
-                          </p>
-                          <div class="button-wrap">
-                            <a
-                              class="btn btn-custom-size lg-size btn-dark rounded-0"
-                              href="blog-detail-left-sidebar.html"
-                              >Read More</a
-                            >
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="swiper-slide">
-                      <div class="blog-item">
-                        <div class="blog-img img-zoom-effect">
-                          <a href="blog-detail-left-sidebar.html">
-                            <img
-                              class="img-full"
-                              src="assets/images/blog/medium-size/2-2-570x485.jpg"
-                              alt="Blog Image"
-                            />
-                          </a>
-                        </div>
-                        <div class="blog-content">
-                          <div class="blog-meta text-dim-gray pb-3">
-                            <ul>
-                            <li class="date">
-                                <i class="fa fa-calendar-o me-2"></i>May 21,
-                                2021
-                              </li>
-                              <li>
-                                <span class="comments me-3">
-                                  <a href="javascript:void(0)">2 Comments</a>
-                                </span>
-                                <span class="link-share">
-                                  <a href="javascript:void(0)">Share</a>
-                                </span>
-                              </li>
-                            </ul>
-                          </div>
-                          <h5 class="title mb-4">
-                            <a href="blog-detail-left-sidebar.html"
-                              >Blog Second Gallery Post</a
-                            >
-                          </h5>
-                          <p class="short-desc mb-5">
-                            Lorem ipsum dolor sit amet, consectet adipi elit,
-                            sed do eius tempor incididunt ut labore gthydolore
-                            magna aliqua.
-                          </p>
-                          <div class="button-wrap">
-                            <a
-                             class="btn btn-custom-size lg-size btn-dark rounded-0"
-                              href="blog-detail-left-sidebar.html"
-                              >Read More</a
-                            >
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="swiper-slide">
-                      <div class="blog-item">
-                        <div class="blog-img img-zoom-effect">
-                          <a href="blog-detail-left-sidebar.html">
-                            <img
-                              class="img-full"
-                              src="assets/images/blog/medium-size/2-1-570x485.jpg"
-                             alt="Blog Image"
-                            />
-                          </a>
-                        </div>
-                        <div class="blog-content">
-                          <div class="blog-meta text-dim-gray pb-3">
-                            <ul>
-                              <li class="date">
-                                <i class="fa fa-calendar-o me-2"></i>May 21,
-                                2021
-                              </li>
-                              <li>
-                                <span class="comments me-3">
-                                  <a href="javascript:void(0)">2 Comments</a>
-                                </span>
-                                <span class="link-share">
-                                  <a href="javascript:void(0)">Share</a>
-                                </span>
-                              </li>
-                            </ul>
-                          </div>
-                          <h5 class="title mb-4">
-                           <a href="blog-detail-left-sidebar.html"
-                              >Blog Third Gallery Post</a
-                            >
-                          </h5>
-                          <p class="short-desc mb-5">
-                            Lorem ipsum dolor sit amet, consectet adipi elit,
-                            sed do eius tempor incididunt ut labore gthydolore
-                            magna aliqua.
-                          </p>
-                          <div class="button-wrap">
-                            <a
-                              class="btn btn-custom-size lg-size btn-dark rounded-0"
-                              href="blog-detail-left-sidebar.html"
-                              >Read More</a
-                            >
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-               </div>
-              </div>
-              <div class="col-md-6 pt-6">
+           <div class="col-md-6">
                 <div class="blog-item">
-                  <div class="ratio ratio-16x9">
-                    <iframe
-                      allow="autoplay"
-                      src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/182537870&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true"
-                    ></iframe>
+                  <div class="blog-img img-zoom-effect">
+                    <a href="/blog_detail_2">
+                      <img
+                        class="img-full"
+                        src="assets/images/blog/medium-size/so-sanh-say-lanh-va-say-nong.jpg"
+                        alt="Blog Image"
+                      />
+                    </a>
                   </div>
                   <div class="blog-content">
                     <div class="blog-meta text-dim-gray pb-3">
                       <ul>
                         <li class="date">
-                          <i class="fa fa-calendar-o me-2"></i>May 21, 2021
+                          <i class="fa fa-calendar-o me-2"></i>september 30, 2024
                         </li>
-                        <li>
-                          <span class="comments me-3">
-                            <a href="javascript:void(0)">2 Comments</a>
-                          </span>
-                          <span class="link-share">
-                            <a href="javascript:void(0)">Share</a>
-                          </span>
-                        </li>
+        
                       </ul>
                     </div>
                     <h5 class="title mb-4">
-                      <a href="blog-detail-left-sidebar.html"
-                        >Blog Audio Post</a
+                  <a href="/blog_detail_2"
+                        >Trái cây sấy lạnh khác trái cây sấy nhiệt như thế nào?</a
                       >
                     </h5>
                     <p class="short-desc mb-5">
-                      Lorem ipsum dolor sit amet, consectet adipi elit, sed do
-                      eius tempor incididunt ut labore gthydolore magna aliqua.
+                    Trái cây sấy lạnh đảm bảo hương vị và hàm lượng dinh dưỡng cao đến 95% của
+                    từng loại trái cây.
                     </p>
                     <div class="button-wrap">
                       <a
                         class="btn btn-custom-size lg-size btn-dark rounded-0"
-                        href="blog-detail-left-sidebar.html"
+                        href="/blog_detail_2"
                         >Read More</a
                       >
                     </div>
                   </div>
-                </div>
               </div>
+             </div>
               <div class="col-md-6 pt-6">
-                <div class="blog-item">
+              <div class="blog-item">
                   <div class="ratio ratio-16x9">
                     <iframe
-                      src="https://www.youtube.com/embed/fkoEj95puX0"
+                      src="https://www.youtube.com/embed/YjKDb2Gr3yY"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowfullscreen
                     >
@@ -280,44 +119,54 @@
                     <div class="blog-meta text-dim-gray pb-3">
                       <ul>
                         <li class="date">
-                          <i class="fa fa-calendar-o me-2"></i>May 21, 2021
-                        </li>
-                        <li>
-                          <span class="comments me-3">
-                            <a href="javascript:void(0)">2 Comments</a>
-                          </span>
-                          <span class="link-share">
-                            <a href="javascript:void(0)">Share</a>
-                          </span>
+                          <i class="fa fa-calendar-o me-2"></i>September 25, 2024
                         </li>
                       </ul>
                     </div>
                     <h5 class="title mb-4">
-                      <a href="blog-detail-left-sidebar.html"
-                        >Blog Video Post</a
-                      >
+            
+                        <a>Làm trái cây sấy tại nhà</a>
                     </h5>
                     <p class="short-desc mb-5">
-                      Lorem ipsum dolor sit amet, consectet adipi elit, sed do
-                      eius tempor incididunt ut labore gthydolore magna aliqua.
+                    Bên trên là video không có bản quyền được nhóm lấy về làm mẫu.
                     </p>
-                    <div class="button-wrap">
-                      <a
-                        class="btn btn-custom-size lg-size btn-dark rounded-0"
-                        href="blog-detail-left-sidebar.html"
-                        >Read More</a
-                      >
-                   </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 pt-6">
+                <div class="blog-item">
+                  <div class="ratio ratio-16x9">
+                    <iframe
+                      src="https://www.youtube.com/embed/QdkKvjMfv1U"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen
+                    >
+                    </iframe>
+                  </div>
+                  <div class="blog-content">
+                    <div class="blog-meta text-dim-gray pb-3">
+                      <ul>
+                        <li class="date">
+                          <i class="fa fa-calendar-o me-2"></i>September 20, 2024
+                        </li>
+                      </ul>
+                    </div>
+                    <h5 class="title mb-4">
+                        <a>Review hương vị trái cây sấy lạnh</a>
+                    </h5>
+                    <p class="short-desc mb-5">
+                    Bên trên là video không có bản quyền được nhóm lấy về làm mẫu.
+                    </p>
                   </div>
                 </div>
               </div>
               <div class="col-md-6 pt-6">
                 <div class="blog-item">
                   <div class="blog-img img-zoom-effect">
-                    <a href="blog-detail-left-sidebar.html">
+                    <a href="/blog_detail_3">
                       <img
                         class="img-full"
-                        src="assets/images/blog/medium-size/2-3-570x485.jpg"
+                        src="assets\images\blog\medium-size\trai-cay-say-lanh-la-gi-5-1.jpg"
                         alt="Blog Image"
                       />
                     </a>
@@ -326,31 +175,25 @@
                     <div class="blog-meta text-dim-gray pb-3">
                       <ul>
                         <li class="date">
-                          <i class="fa fa-calendar-o me-2"></i>May 21, 2021
+                          <i class="fa fa-calendar-o me-2"></i>November 5, 2024
                         </li>
-                        <li>
-                          <span class="comments me-3">
-                            <a href="javascript:void(0)">2 Comments</a>
-                          </span>
-                          <span class="link-share">
-                            <a href="javascript:void(0)">Share</a>
-                          </span>
-                        </li>
+                        
                       </ul>
                     </div>
                     <h5 class="title mb-4">
-                      <a href="blog-detail-left-sidebar.html"
-                        >Lorem ipsum dolor sit amet consecte</a
+                      <a href="/blog_detail_3"
+                        >Trái cây sấy lạnh-lựa chọn cho phong cách sống hiện đại</a
                       >
                     </h5>
                     <p class="short-desc mb-5">
-                      Lorem ipsum dolor sit amet, consectet adipi elit, sed do
-                      eius tempor incididunt ut labore gthydolore magna aliqua.
+                       Khám khá lợi ích sức khỏe và sự tiện lợi của trái cây sấy lạnh. 
+                       Tìm hiểu các loại trái cây sấy lạnh thơm ngon cho phong cách 
+                       sống hiện đại của bạn.
                     </p>
                     <div class="button-wrap">
                       <a
                         class="btn btn-custom-size lg-size btn-dark rounded-0"
-                        href="blog-detail-left-sidebar.html"
+                        href="/blog_detail_3"
                         >Read More</a
                       >
                     </div>
@@ -360,10 +203,10 @@
               <div class="col-md-6 pt-6">
                 <div class="blog-item">
                   <div class="blog-img img-zoom-effect">
-                    <a href="blog-detail-left-sidebar.html">
+                    <a href="/blog_detail_4">
                       <img
                         class="img-full"
-                        src="assets/images/blog/medium-size/2-4-570x485.jpg"
+                        src="assets\images\blog\medium-size\tu-tap.jpg"
                         alt="Blog Image"
                       />
                     </a>
@@ -372,31 +215,25 @@
                     <div class="blog-meta text-dim-gray pb-3">
                      <ul>
                         <li class="date">
-                          <i class="fa fa-calendar-o me-2"></i>May 21, 2021
+                          <i class="fa fa-calendar-o me-2"></i>November 29, 2024
                         </li>
-                        <li>
-                          <span class="comments me-3">
-                            <a href="javascript:void(0)">2 Comments</a>
-                          </span>
-                          <span class="link-share">
-                            <a href="javascript:void(0)">Share</a>
-                          </span>
-                        </li>
+
                       </ul>
                     </div>
                     <h5 class="title mb-4">
-                      <a href="blog-detail-left-sidebar.html"
-                        >Lorem ipsum dolor sit amet consecte</a
+                      <a href="/blog_detail_4"
+                        >Món ăn vặt healthy dành cho genZ </a
                       >
                     </h5>
                     <p class="short-desc mb-5">
-                      Lorem ipsum dolor sit amet, consectet adipi elit, sed do
-                      eius tempor incididunt ut labore gthydolore magna aliqua.
+                    Trong những buổi tụ tập cùng bạn bè, lựa chọn những món ăn vặt lành mạnh để bảo vệ 
+                    sức khỏe mà vẫn tận hưởng niềm vui không còn là xu hướng của giới trẻ ngày nay mà 
+                    thậm chí đã trở thành một thói quen.
                     </p>
                     <div class="button-wrap">
                       <a
                         class="btn btn-custom-size lg-size btn-dark rounded-0"
-                        href="blog-detail-left-sidebar.html"
+                        href="/blog_detail_4"
                         >Read More</a
                       >
                     </div>
