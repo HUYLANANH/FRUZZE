@@ -130,12 +130,12 @@
                   </ul>
                 </li>
                 <li class="short">
-                  <select class="nice-select wide rounded-0">
-                    <option value="1">Sắp xếp theo mặc định</option>
-                    <option value="4">Sắp xếp theo mới nhất</option>
-                    <option value="5">Sắp xếp theo giá cao đến thấp</option>
-                    <option value="6">Sắp xếp theo giá thấp đến cao</option>
-                  </select>
+                <select id="sort-options" class="nice-select wide rounded-0" onchange="handleSortChange()">
+                  <option value="default">Mặc định</option>
+                  <option value="price_asc">Giá: Thấp đến Cao</option>
+                  <option value="price_desc">Giá: Cao đến Thấp</option>
+                  <option value="newest">Mới nhất</option>
+                </select>
                 </li>
               </ul>
             </div>
@@ -161,6 +161,13 @@ let currentPage = 1;  // Khởi tạo giá trị currentPage
 let selectedCategories = []; // Mảng chứa các category_id đã chọn
 let selectedWeights = []; // Mảng chứa trọng lượng đã chọn
 let allProducts = []; // Mảng lưu trữ tất cả sản phẩm
+let currentSort = 'default'; // Tiêu chí sắp xếp hiện tại
+
+function handleSortChange() {
+  const sortDropdown = document.getElementById('sort-options');
+  currentSort = sortDropdown.value; // Lấy giá trị sắp xếp từ dropdown
+  fetchProducts(); // Gọi lại API với tiêu chí sắp xếp mới
+}
 
 // Fetch product data from the API with filters
 function fetchProducts(page = 1) {
@@ -176,8 +183,19 @@ function fetchProducts(page = 1) {
   ? `&weight=${encodeURIComponent(selectedWeights.join(','))}` 
   : '';
 
-  // Gọi API với các bộ lọc
-  fetch(`http://127.0.0.1:8000/api/product?page=${page}${categoryFilter}${weightFilter}`, {
+  // Tạo chuỗi query cho sắp xếp
+  // Xác định trường để sắp xếp (sort_by)
+  const sort_by = currentSort === 'price_asc' ? 'price' :
+                  currentSort === 'price_desc' ? 'price' :
+                  currentSort === 'newest' ? 'created_at' : 'id'; // 'id' cho mặc định
+
+  // Xác định thứ tự sắp xếp (sort_order)
+  const sort_order = currentSort === 'price_asc' ? 'asc' : // Giá từ thấp đến cao
+                     currentSort === 'price_desc' ? 'desc' : // Giá từ cao đến thấp
+                     currentSort === 'newest' ? 'desc' : 'asc'; // 'newest' mặc định là 'desc', vì thông thường mới nhất sẽ giảm dần
+
+  // Cập nhật URL với các tham số sắp xếp
+  fetch(`http://127.0.0.1:8000/api/product?page=${page}${categoryFilter}${weightFilter}&sort_by=${sort_by}&sort_order=${sort_order}`, {
     method: 'GET',
     headers: {
       'Authorization': `Bearer ${token}`,
@@ -215,8 +233,22 @@ function fetchProducts(page = 1) {
                   </a>
                   <div class="product-add-action">
                     <ul>
-                      <li><a href="/cart"><i class="pe-7s-cart"></i></a></li>
-                      <li><a href="/wishlist"><i class="pe-7s-like"></i></a></li>
+                      <li>
+                        <a href="javascript:void(0)" 
+                          data-product-id="${product.id}" 
+                          data-product-name="${product.name}" 
+                          data-product-price="${product.price}" 
+                          data-product-thumbnail="${product.thumbnail}">
+                          <i class="pe-7s-cart"></i>
+                        </a>
+                      </li>
+                      <li><a href="javascript:void(0)" 
+                          data-product-id="${product.id}" 
+                          data-product-name="${product.name}" 
+                          data-product-price="${product.price}" 
+                          data-product-thumbnail="${product.thumbnail}">
+                          <i class="pe-7s-like"></i></li>
+                        </a>
                     </ul>
                   </div>
                 </div>
@@ -233,10 +265,9 @@ function fetchProducts(page = 1) {
           </div>
         `;
       });
-
       document.getElementById('product-list').innerHTML = productListHTML;
     } else {
-      document.getElementById('product-list').innerHTML = "<p>Không tìm thấy sản phẩm nào</p>";
+      productListHTML = "<p style='text-align: center; color: red; font-weight: bold;'>Không tìm thấy sản phẩm nào!</p>";    
     }
 
     renderPagination(data); // Gọi hàm phân trang
@@ -281,8 +312,10 @@ function renderPagination(data) {
 
 document.getElementById('filter-btn').addEventListener('click', function () {
   // Thu thập các category được chọn
-  selectedCategories = Array.from(document.querySelectorAll('.input-checkbox[data-category-id]:checked'))
-    .map(checkbox => checkbox.dataset.category_id);
+ // Thu thập các trọng lượng được chọn
+ selectedCategories = Array.from(
+    document.querySelectorAll('.input-checkbox[data-category-id]:checked')
+  ).map(checkbox => checkbox.getAttribute('data-category-id'));
 
   // Thu thập các trọng lượng được chọn
   selectedWeights = Array.from(
@@ -299,6 +332,92 @@ document.getElementById('filter-btn').addEventListener('click', function () {
 // Load sản phẩm khi DOM được tải
 document.addEventListener("DOMContentLoaded", function() {
   fetchProducts(currentPage);
+});
+// Sự kiện thêm sản phẩm vào giỏ hàng
+document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const productId = this.dataset.productId;
+        const productName = this.dataset.productName;
+        const productPrice = parseFloat(this.dataset.productPrice);
+        const productThumbnail = this.dataset.productThumbnail;
+
+        // Thêm sản phẩm vào giỏ hàng
+        addToCart(productId, productName, productPrice, productThumbnail);
+    });
+});
+
+// Hàm thêm sản phẩm vào giỏ hàng
+function addToCart(productId, productName, productPrice, productThumbnail) {
+    const token = localStorage.getItem('token');
+    if (!token) {
+        alert('Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng.');
+        return;
+    }
+
+    const cartData = {
+        product_id: productId,
+        quantity: 1, // Mặc định thêm 1 sản phẩm
+        price: productPrice, // Cần gửi giá sản phẩm vì backend yêu cầu
+    };
+
+    fetch('http://127.0.0.1:8000/api/cart', {
+        method: 'POST',
+        body: JSON.stringify(cartData),
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`, // Gửi token để xác thực
+        },
+    })
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(err => {
+                    throw new Error(err.message || 'Không thể thêm sản phẩm vào giỏ hàng');
+                });
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Sản phẩm đã thêm vào giỏ hàng:', data);
+            showSuccessMessage();
+        })
+        .catch(error => {
+            console.error('Lỗi:', error);
+            alert(error.message || 'Lỗi khi thêm sản phẩm vào giỏ hàng. Vui lòng thử lại.');
+        });
+}
+
+// Hàm hiển thị thông báo thành công với liên kết
+function showSuccessMessage() {
+    const messageContainer = document.createElement('div');
+    messageContainer.innerHTML = `
+        <div class="success-message">
+            <p>Thêm sản phẩm vào giỏ hàng thành công! 
+                <a href="/cart" class="btn btn-primary">Xem giỏ hàng</a>
+            </p>
+        </div>
+    `;
+    document.body.appendChild(messageContainer); // Thêm thông báo vào body hoặc container mong muốn
+
+    // Tự động ẩn thông báo sau 5 giây
+    setTimeout(() => {
+        messageContainer.remove();
+    }, 5000);
+}
+
+// Gắn sự kiện vào các nút "Thêm vào giỏ hàng"
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('product-list').addEventListener('click', function (event) {
+        const target = event.target.closest('[data-product-id]');
+        if (target) {
+            const productId = target.dataset.productId;
+            const productName = target.dataset.productName;
+            const productPrice = parseFloat(target.dataset.productPrice);
+            const productThumbnail = target.dataset.productThumbnail;
+
+            // Gọi hàm thêm sản phẩm vào giỏ hàng
+            addToCart(productId, productName, productPrice, productThumbnail);
+        }
+    });
 });
 
 </script>
