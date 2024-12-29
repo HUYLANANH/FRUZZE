@@ -123,7 +123,5 @@ Route::group([
     //thêm mới đơn hàng
     Route::post('warehouse', [WarehouseController::class, 'store']);
     //sửa sản phẩm
-    Route::patch('warehouse', [WarehouseController::class, 'update']);
-    //xóa sản phẩm
-    Route::delete('warehouse/{id}', [WarehouseController::class, 'destroy']);
+    Route::patch('warehouse/{id}', [WarehouseController::class, 'update']);
 });
