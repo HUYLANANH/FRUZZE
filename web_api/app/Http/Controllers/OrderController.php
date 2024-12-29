@@ -53,10 +53,6 @@ class OrderController extends Controller
 
     private function removeProductsFromCart($cartId, $orderDetails)
     {
-        if(!$cartID)
-        {
-
-        }
         foreach ($orderDetails as $detail) {
             // Kiểm tra xem sản phẩm có trong cart_items không
             $cartItem = CartItem::where('cart_id', $cartId)
