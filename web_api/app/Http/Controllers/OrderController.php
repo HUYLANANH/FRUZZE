@@ -109,5 +109,27 @@ class OrderController extends Controller
         return response()->json(['message' => 'Product deleted successfully'], 200);
     }
 
+    public function updateStatus(Request $request, string $id)
+    {
+        // Xác thực dữ liệu đầu vào
+        $request->validate([
+            'status' => 'required|string', // Thay đổi điều kiện xác thực nếu cần
+        ]);
 
+        // Tìm đơn hàng theo ID
+        $order = Order::findOrFail($id);
+
+        // Cập nhật trạng thái thông qua phương thức setStatus
+        try {
+            $order->setStatus($request->input('status'));
+            return response()->json([
+                'message' => 'Trạng thái đơn hàng đã được cập nhật.',
+                'order' => $order,
+            ]);
+        } catch (\InvalidArgumentException $e) {
+            return response()->json([
+                'message' => $e->getMessage(),
+            ], 400);
+        }
+    }
 }

@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('bills', function (Blueprint $table) {
+        Schema::create('payment_methods', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('order_id')->nullable()->constrained('users')->onDelete('set null');
-            $table->decimal('pay_price', 10, 3);
+            $table->string('name'); // Tên phương thức thanh toán
             $table->timestamps();
         });
     }
@@ -24,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('bills');
+        Schema::dropIfExists('payment_methods');
     }
 };

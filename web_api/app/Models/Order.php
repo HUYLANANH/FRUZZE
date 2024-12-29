@@ -27,6 +27,11 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function paymentMethod()
+    {
+        return $this->belongsTo(PaymentMethod::class);
+    }
+
     const STATUS_PENDING = 'Chưa xác nhận';
     const STATUS_CONFIRMED = 'Đã xác nhận';
     const STATUS_SHIPPING = 'Đang vận chuyển';
