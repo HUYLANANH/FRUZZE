@@ -130,4 +130,4 @@
 
 
 </script>
-
+@include('layouts.endadmin')
