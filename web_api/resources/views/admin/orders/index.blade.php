@@ -15,7 +15,8 @@
         }
 
         main {
-            display: flex;
+            margin-left: 200px;
+            display: flex; 
             justify-content: center;
             padding: 20px;
         }
@@ -34,6 +35,8 @@
             border-collapse: collapse;
             margin: 20px 0;
             background-color: #fff;
+                table-layout: flex;
+
         }
 
         thead th {

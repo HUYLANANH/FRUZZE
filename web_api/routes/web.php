@@ -136,7 +136,7 @@ Route::prefix('warehouse')->group(function () {
         return view('admin.warehouse.warehouse');
     })->name('show');
     // Cập nhật hàng tồn kho
-    Route::get('update', function () {
-        return view('admin.warehouse.updatewh');
+    Route::get('update/{id}', function ($id) {
+        return view('admin.warehouse.updatewh', ['id' => $id]);
     })->name('update');
 });

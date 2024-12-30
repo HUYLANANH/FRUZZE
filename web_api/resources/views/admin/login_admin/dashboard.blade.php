@@ -15,7 +15,7 @@
         }
 
         main {
-            display: flex;
+            margin-left: 200px; 
             flex-direction: column;
             align-items: center;
             padding: 20px;

@@ -19,13 +19,15 @@ body {
     border-collapse: collapse;
     width: 100%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    table-layout: flex;
   }
   
   .table th,
   .table td {
-    padding: 12px;
+    padding: 8px;
     text-align: left;
     border: 1px solid #dee2e6;
+    white-space: nowrap;
   }
   
   .table th {
@@ -33,7 +35,9 @@ body {
     color: #fff;
     font-weight: bold;
   }
-  
+  td {
+    word-wrap: break-word; /* Allows long words to break */
+}
   .table tr:nth-child(even) {
     background-color: #f2f2f2;
   }

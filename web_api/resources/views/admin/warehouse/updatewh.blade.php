@@ -1,90 +1,64 @@
 @include('layouts.admin')
+
 <div class="main-wrapper">
   <!-- Begin Main Content Area -->
   <main class="main-content">
-    <div class="container my-5">
-      <h2 class="text-center mb-4">Cập nhật số lượng sản phẩm</h2>
-
-      <form id="update-warehouse-form">
-        <div class="mb-3">
-          <label for="product_id" class="form-label">ID Sản phẩm</label>
-          <input type="text" class="form-control" id="product_id" name="product_id" readonly>
-        </div>
-        <div class="mb-3">
-          <label for="name" class="form-label">Tên sản phẩm</label>
-          <input type="text" class="form-control" id="name" name="name" readonly>
-        </div>
-        <div class="mb-3">
-          <label for="quantity" class="form-label">Số lượng tồn kho</label>
-          <input type="number" class="form-control" id="quantity" name="quantity" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Cập nhật</button>
-      </form>
-    </div>
-  </main>
+  <div class="container my-5">
+    <h2 class="text-center mb-4">Cập nhật số lượng sản phẩm</h2>
+    <form id="update-quantity-form" class="w-50 mx-auto">
+      <div class="form-group mb-3">
+        <label for="product-id">ID Sản phẩm</label>
+        <input type="text" id="product-id" class="form-control" disabled>
+      </div>
+      <div class="form-group mb-3">
+        <label for="product-quantity">Số lượng</label>
+        <input type="number" id="product-quantity" class="form-control" required>
+      </div>
+      <button type="submit" class="btn btn-success">Cập nhật</button>
+    </form>
+  </div>
 </div>
+</main>
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-  const urlParams = new URLSearchParams(window.location.search);
-  const productId = urlParams.get('product_id');
+// Extract product ID from URL
+function getProductIdFromUrl() {
+  const urlPath = window.location.pathname;
+  const segments = urlPath.split('/');
+  return segments[segments.length - 1];
+}
 
-  if (!productId) {
-    alert('Không tìm thấy ID sản phẩm.');
-    window.location.href = '/warehouse/show'; // Quay về trang quản lý kho
-  }
-
-  // Fetch product details
+// Update product quantity
+function updateProductQuantity() {
   const token = localStorage.getItem('token');
+  const quantity = document.getElementById('product-quantity').value;
+  const productId = document.getElementById('product-id').value;
+
   fetch(`http://127.0.0.1:8000/api/warehouse/${productId}`, {
-    method: 'GET',
+    method: 'PATCH',
     headers: {
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json'
-    }
+    },
+    body: JSON.stringify({ quantity })
   })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Lỗi khi lấy thông tin sản phẩm: ' + response.status);
-      }
-      return response.json();
-    })
-    .then(data => {
-      document.getElementById('product_id').value = data.product_id;
-      document.getElementById('name').value = data.name;
-      document.getElementById('quantity').value = data.quantity;
-    })
-    .catch(error => {
-      console.error('Lỗi:', error);
-      alert('Không thể tải thông tin sản phẩm.');
-      window.location.href = '/warehouse/show'; // Quay về trang quản lý kho
-    });
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Lỗi khi cập nhật số lượng: ' + response.status);
+    }
+    alert('Cập nhật thành công!');
+    window.location.href = '/warehouse/show';
+  })
+  .catch(error => console.error('Lỗi:', error));
+}
 
-  // Handle update form submission
-  document.getElementById('update-warehouse-form').addEventListener('submit', function (e) {
-    e.preventDefault();
-    const updatedQuantity = document.getElementById('quantity').value;
+// Handle form initialization
+const productId = getProductIdFromUrl();
+document.getElementById('product-id').value = productId;
 
-    fetch(`http://127.0.0.1:8000/api/warehouse/${productId}`, {
-      method: 'PUT',
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ quantity: parseInt(updatedQuantity) })
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Lỗi khi cập nhật số lượng: ' + response.status);
-        }
-        alert('Cập nhật số lượng thành công!');
-        window.location.href = '/warehouse/show'; // Quay về trang quản lý kho
-      })
-      .catch(error => {
-        console.error('Lỗi:', error);
-        alert('Đã xảy ra lỗi khi cập nhật số lượng.');
-      });
-  });
+// Attach event listener
+document.getElementById('update-quantity-form').addEventListener('submit', function(event) {
+  event.preventDefault();
+  updateProductQuantity();
 });
 </script>
-@include('layouts.endadmin')
