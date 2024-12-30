@@ -127,3 +127,16 @@ Route::get('dashboard', function () {
     return view('admin.login_admin.dashboard');
 })->name('dashboard');
 });
+
+//Warehouse
+
+Route::prefix('warehouse')->group(function () {
+    // Hiển thị hàng tồn kho
+    Route::get('show', function () {
+        return view('admin.warehouse.warehouse');
+    })->name('show');
+    // Cập nhật hàng tồn kho
+    Route::get('update/{id}', function ($id) {
+        return view('admin.warehouse.updatewh', ['id' => $id]);
+    })->name('update');
+});
