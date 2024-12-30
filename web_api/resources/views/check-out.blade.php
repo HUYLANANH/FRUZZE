@@ -34,7 +34,7 @@
                 <div class="col-md-12">
                   <div class="checkout-form-list">
                     <label>ĐỊA CHỈ<span class="required">*</span></label>
-                    <input id="address" placeholder="Nhập địa chỉ nhận hàng" type="text" required />
+                    <input id="address_ship" placeholder="Nhập địa chỉ nhận hàng" type="text" required />
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -95,27 +95,27 @@
               <div class="payment-options">
                 <div class="row">
                   <div class="col-md-6">
-                  <label>
-                    <input type="radio" name="payment-method" value="cash" checked />
-                    Thanh toán bằng tiền mặt
-                  </label>
+                    <label>
+                      <input type="radio" name="payment-method" value="cash" checked />
+                      Thanh toán bằng tiền mặt
+                    </label>
                   </div>
                   <div class="col-md-6">
-                  <label>
-                    <input type="radio" name="payment-method" value="bank-transfer" />
-                    Chuyển khoản ngân hàng
-                  </label>
+                    <label>
+                      <input type="radio" name="payment-method" value="bank-transfer" />
+                      Chuyển khoản ngân hàng
+                    </label>
                   </div>
                 </div>
               </div>
               <div class="group-btn_wrap d-grid gap-2" style="padding-top: 10px; padding-bottom: 10px;">
-                <a href="/cart" class="btn btn-secondary btn-primary-hover" style="padding-top: 10px; padding-bottom: 10px;">
-                  Xem giỏ hàng
-                </a>
-                <a href="" id="confirm-order" type="button" class="btn btn-secondary btn-primary-hover" style="padding-top: 10px; padding-bottom: 10px;">
-                  Đặt hàng
-                </a>
-              </div>
+              <a href="/cart" class="btn btn-secondary btn-primary-hover" style="padding-top: 10px; padding-bottom: 10px;">
+                Xem giỏ hàng
+              </a>
+              <a href="" id="confirm-order" type="button" class="btn btn-secondary btn-primary-hover" style="padding-top: 10px; padding-bottom: 10px;">
+                Đặt hàng
+              </a>
+            </div>
             </div>
           </div>
         </div>
@@ -123,8 +123,6 @@
     </div>
   </div>
 </main>
-
-@include('layouts.footer')
 
 <script>
 document.addEventListener("DOMContentLoaded", async () => {
@@ -139,8 +137,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
 
         let subtotal = 0;
+        let total = 0;
+        const discountRate = 0.1;
 
-        // Lấy dữ liệu giỏ hàng và tính toán giá trị
+        // Tính toán giá trị giỏ hàng
         const cartItemsHtml = cartData.items.map((item) => {
             const itemTotal = item.price * item.quantity; // Tổng tiền cho sản phẩm
             subtotal += itemTotal;
@@ -154,60 +154,75 @@ document.addEventListener("DOMContentLoaded", async () => {
             `;
         }).join('');
 
-        // Tính tổng tiền và giảm giá
-        const discount = subtotal * 0.1; // Giảm giá 10%
-        const totalAfterDiscount = subtotal - discount;
+        total = subtotal - subtotal * discountRate;
 
-        // Hiển thị thông tin giỏ hàng và số tiền trên giao diện
+        // Hiển thị thông tin giỏ hàng trên giao diện
         document.getElementById("cart-items").innerHTML = cartItemsHtml;
         document.getElementById("subtotal").textContent = `${subtotal.toFixed(0)} VNĐ`;
-        document.getElementById("total").textContent = `${totalAfterDiscount.toFixed(0)} VNĐ`;
+        document.getElementById("total").textContent = `${total.toFixed(0)} VNĐ`;
     } catch (error) {
         console.error("Lỗi khi tải giỏ hàng:", error);
         alert("Đã xảy ra lỗi khi tải giỏ hàng. Vui lòng thử lại.");
     }
 });
-
 document.getElementById("confirm-order").addEventListener("click", async () => {
-    const name = document.getElementById("name").value;
-    const address = document.getElementById("address").value;
-    const email = document.getElementById("email").value;
-    const phone = document.getElementById("phone").value;
-    const paymentMethod = document.querySelector('input[name="payment-method"]:checked').value;
+  const customerInfo = {
+    name: document.getElementById("name").value,
+    address_ship: document.getElementById("address_ship").value, // Đảm bảo là chuỗi
+    email: document.getElementById("email").value,
+    phone: document.getElementById("phone").value,
+    paymentMethod: document.querySelector('input[name="payment-method"]:checked').value,
+};
 
-    if (!name || !address || !email || !phone) {
+    // Kiểm tra thông tin người dùng
+    if (!customerInfo.name || !customerInfo.address_ship || !customerInfo.email || !customerInfo.phone) {
         alert("Vui lòng điền đầy đủ thông tin!");
         return;
     }
 
+    const cartData = JSON.parse(localStorage.getItem("checkoutData"));
+    if (!cartData || !cartData.items || cartData.items.length === 0) {
+        alert("Giỏ hàng của bạn đang trống.");
+        window.location.href = "/cart"; 
+        return;
+    }
+
+    const orderData = {
+    address_ship: customerInfo.address_ship, // Đảm bảo là chuỗi
+    order_details: cartData.items.map(item => ({
+        product_id: item.id,  // Đảm bảo không phải mảng, chỉ là giá trị id đơn
+        quantity: item.quantity,
+        price: item.price
+    }))
+};
+
+
     try {
-        // Lấy dữ liệu giỏ hàng từ localStorage
-        const cartData = JSON.parse(localStorage.getItem("checkoutData"));
-        if (!cartData || !cartData.items || cartData.items.length === 0) {
-            alert("Giỏ hàng của bạn đang trống.");
+        const response = await fetch("/api/order", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(orderData),
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            console.error("Lỗi từ server:", errorData.error || errorData.errors);
+            alert("Đặt hàng không thành công. Vui lòng thử lại.");
             return;
         }
 
-        // Chuẩn bị dữ liệu hóa đơn
-        const invoiceData = {
-            name,
-            address,
-            email,
-            phone,
-            paymentMethod: paymentMethod === "cash" ? "Tiền mặt" : "Chuyển khoản",
-            items: cartData.items,
-            subtotal: parseFloat(document.getElementById("subtotal").textContent.replace(" VNĐ", "").replace(/,/g, "")),
-            total: parseFloat(document.getElementById("total").textContent.replace(" VNĐ", "").replace(/,/g, ""))
-        };
+        const result = await response.json();
+        alert("Đặt hàng thành công! Mã đơn hàng: " + result.orderId);
+        window.location.href = "/thank-you"; 
 
-        // Lưu dữ liệu hóa đơn vào localStorage
-        localStorage.setItem("invoiceData", JSON.stringify(invoiceData));
-
-        // Chuyển hướng tới trang hóa đơn
-        window.location.href = "/invoice";
     } catch (error) {
-        console.error("Lỗi xử lý đặt hàng:", error);
+        console.error("Lỗi khi đặt hàng:", error);
         alert("Đã xảy ra lỗi khi đặt hàng. Vui lòng thử lại.");
     }
 });
+
 </script>
+
+@include('layouts.footer')
