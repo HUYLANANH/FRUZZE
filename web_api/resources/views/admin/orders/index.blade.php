@@ -243,6 +243,7 @@
                             <td class="border border-gray-300 px-6 py-4">
                                 <button class="btn btn-primary" onclick="confirmOrder(${order.id})">Xác nhận</button>
                             </td>
+                            <td class="border border-gray-300 px-6 py-4">${order.status || 'N/A'}</td>
                         </tr>
                     `;
                     orderList.innerHTML += row;
