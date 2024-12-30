@@ -95,17 +95,11 @@ class OrderController extends Controller
             return response()->json(['error' => $checkResult], 422);
         }
 
-        // Tính tổng tiền
-        $totalPrice = collect($request->order_details)->sum(function ($detail)
-        {
-            return $detail['quantity'] * $detail['price'];
-        });
-
         // Tạo đơn hàng
         $order = Order::create([
             'user_id' => $user->id,
             'address_ship' => $request->address_ship,
-            'total_price' => $totalPrice,
+            'total_price' => $request->total_price,
         ]);
 
         // Tạo chi tiết đơn hàng

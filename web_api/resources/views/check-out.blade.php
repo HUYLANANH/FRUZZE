@@ -16,6 +16,7 @@
       </div>
     </div>
   </div>
+
   <div class="checkout-area section-space-y-axis-100">
     <div class="container">
       <div class="row">
@@ -95,16 +96,16 @@
               <div class="payment-options">
                 <div class="row">
                   <div class="col-md-6">
-                  <label>
-                    <input type="radio" name="payment-method" value="cash" checked />
-                    Thanh toán bằng tiền mặt
-                  </label>
+                    <label>
+                      <input type="radio" name="payment-method" value="cash" checked />
+                      Thanh toán bằng tiền mặt
+                    </label>
                   </div>
                   <div class="col-md-6">
-                  <label>
-                    <input type="radio" name="payment-method" value="bank-transfer" />
-                    Chuyển khoản ngân hàng
-                  </label>
+                    <label>
+                      <input type="radio" name="payment-method" value="bank-transfer" />
+                      Chuyển khoản ngân hàng
+                    </label>
                   </div>
                 </div>
               </div>
@@ -112,7 +113,7 @@
                 <a href="/cart" class="btn btn-secondary btn-primary-hover" style="padding-top: 10px; padding-bottom: 10px;">
                   Xem giỏ hàng
                 </a>
-                <a href="" id="confirm-order" type="button" class="btn btn-secondary btn-primary-hover" style="padding-top: 10px; padding-bottom: 10px;">
+                <a href="#" id="confirm-order" class="btn btn-secondary btn-primary-hover" style="padding-top: 10px; padding-bottom: 10px;">
                   Đặt hàng
                 </a>
               </div>
@@ -154,14 +155,10 @@ document.addEventListener("DOMContentLoaded", async () => {
             `;
         }).join('');
 
-        // Tính tổng tiền và giảm giá
-        const discount = subtotal * 0.1; // Giảm giá 10%
-        const totalAfterDiscount = subtotal - discount;
-
         // Hiển thị thông tin giỏ hàng và số tiền trên giao diện
         document.getElementById("cart-items").innerHTML = cartItemsHtml;
         document.getElementById("subtotal").textContent = `${subtotal.toFixed(0)} VNĐ`;
-        document.getElementById("total").textContent = `${totalAfterDiscount.toFixed(0)} VNĐ`;
+        document.getElementById("total").textContent = `${subtotal.toFixed(0)} VNĐ`; // Cập nhật tổng tiền
     } catch (error) {
         console.error("Lỗi khi tải giỏ hàng:", error);
         alert("Đã xảy ra lỗi khi tải giỏ hàng. Vui lòng thử lại.");
@@ -188,20 +185,36 @@ document.getElementById("confirm-order").addEventListener("click", async () => {
             return;
         }
 
-        // Chuẩn bị dữ liệu hóa đơn
-        const invoiceData = {
-            name,
-            address,
-            email,
-            phone,
-            paymentMethod: paymentMethod === "cash" ? "Tiền mặt" : "Chuyển khoản",
-            items: cartData.items,
-            subtotal: parseFloat(document.getElementById("subtotal").textContent.replace(" VNĐ", "").replace(/,/g, "")),
-            total: parseFloat(document.getElementById("total").textContent.replace(" VNĐ", "").replace(/,/g, ""))
+        // Chuẩn bị dữ liệu đơn hàng
+        const orderData = {
+            address_ship: address,
+            total_price : cartData.totalAfterVoucher,
+            order_details: cartData.items.map(item => ({
+                product_id: item.product_id,
+                quantity: item.quantity,
+                price: item.price
+            }))
         };
 
-        // Lưu dữ liệu hóa đơn vào localStorage
-        localStorage.setItem("invoiceData", JSON.stringify(invoiceData));
+        // Gửi yêu cầu đặt hàng
+        const response = await fetch('/api/order', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify(orderData)
+        });
+        const responseText = await response.text(); // Lấy phản hồi dưới dạng văn bản
+        console.log(responseText);
+        if (!response.ok) {
+            const errorData = await response.json();
+            alert(`Đặt hàng thất bại: ${errorData.message}`);
+            return;
+        }
+
+        // Xóa dữ liệu giỏ hàng sau khi đặt hàng thành công
+        localStorage.removeItem("checkoutData");
 
         // Chuyển hướng tới trang hóa đơn
         window.location.href = "/invoice";

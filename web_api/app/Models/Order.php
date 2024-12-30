@@ -14,6 +14,7 @@ class Order extends Model
         'address_ship',
         'total_price',
         'status',
+        'payment_method'
     ];
 
     // Quan hệ với bảng order_details
