@@ -89,65 +89,13 @@
       </div>
       <!-- Slider Area End Here -->
 
-        <!-- Begin Shipping Area -->
-        <div class="shipping-area section-space-y-axis-100">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-4 col-md-6">
-                <div class="shipping-item">
-                  <div class="shipping-img">
-                    <img
-                      src="assets/images/shipping/icon/plane.png"
-                      alt="Shipping Icon"
-                    />
-                  </div>
-                  <div class="shipping-content">
-                    <h5 class="title">Miễn Phí Vận Chuyển</h5>
-                    <p class="short-desc mb-0">
-                      FRUZZE cung cấp dịch cụ vận chuyển miễn phí
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6 pt-6 pt-md-0">
-                <div class="shipping-item">
-                  <div class="shipping-img">
-                    <img
-                      src="assets/images/shipping/icon/earphones.png"
-                      alt="Shipping Icon"
-                    />
-                  </div>
-                  <div class="shipping-content">
-                    <h5 class="title">Hỗ Trợ Online</h5>
-                    <p class="short-desc mb-0">
-                      FRUZZE cung cấp dịch vụ hỗ trợ 24/7
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6 pt-6 pt-lg-0">
-                <div class="shipping-item">
-                  <div class="shipping-img">
-                    <img
-                      src="assets/images/shipping/icon/shield.png"
-                      alt="Shipping Icon"
-                    />
-                  </div>
-                  <div class="shipping-content">
-                    <h5 class="title">Thanh Toán An Toàn</h5>
-                    <p class="short-desc mb-0">
-                      FRUZZE cam kết thanh toán an toàn, bảo mật
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Shipping Area End Here -->
+      <!-- Begin Product Area -->
+             
+      <!-- Product Area End Here -->
 
       <!-- Begin Product Area -->
-            <div class="col-lg-12">
+      <div class="product-area section-space-y-axis-100">
+      <div class="col-lg-12">
               <ul class="nav product-tab-nav pb-10" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <a
@@ -330,57 +278,7 @@
                   </a>
                 </li>
               </ul>
-            </div>            
-      <!-- Begin Banner Area -->
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-4 col-md-6">
-              <div class="banner-item">
-                <div class="banner-img img-zoom-effect">
-                  <img
-                    class="img-full"
-                    src="assets/images/1.png"
-                    alt="Banner Image"
-                  />
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6 pt-6 pt-md-0">
-              <div class="banner-item">
-                <div class="banner-img img-zoom-effect">
-                  <img
-                    class="img-full"
-                    src="assets/images/2.png"
-                    alt="Banner Image"
-                  />
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6 pt-6 pt-lg-0">
-              <div class="banner-item">
-                <div class="banner-img img-zoom-effect">
-                  <img
-                    class="img-full"
-                    src="assets/images/3.png"
-                    alt="Banner Image"
-                  />
-                </div>
-              </div>
-            </div>
-            <div class="button-wrap" style="text-align: center; margin-top: 20px;">
-                      <a
-                        class="btn btn-primary btn-white-hover rounded-0"
-                        href="shop.html"
-                        >Shop Now</a
-                      >
-                    </div>
-          </div>
-        </div>
-      <!-- Banner Area End Here -->
-      <!-- Product Area End Here -->
-
-      <!-- Begin Product Area -->
-      <div class="product-area section-space-y-axis-100">
+            </div>  
         <div class="container">
           <div class="section-title text-center pb-55">
             <span class="sub-title text-primary">Ghé FRUZZE để</span>
@@ -463,6 +361,111 @@
           </div>
         </div>
       </div>
+      <!-- Banner Area End Here -->
+
+              <!-- Begin Shipping Area -->
+              <div class="shipping-area section-space-y-axis-100">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-4 col-md-6">
+                <div class="shipping-item">
+                  <div class="shipping-img">
+                    <img
+                      src="assets/images/shipping/icon/plane.png"
+                      alt="Shipping Icon"
+                    />
+                  </div>
+                  <div class="shipping-content">
+                    <h5 class="title">Miễn Phí Vận Chuyển</h5>
+                    <p class="short-desc mb-0">
+                      FRUZZE cung cấp dịch cụ vận chuyển miễn phí
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 pt-6 pt-md-0">
+                <div class="shipping-item">
+                  <div class="shipping-img">
+                    <img
+                      src="assets/images/shipping/icon/earphones.png"
+                      alt="Shipping Icon"
+                    />
+                  </div>
+                  <div class="shipping-content">
+                    <h5 class="title">Hỗ Trợ Online</h5>
+                    <p class="short-desc mb-0">
+                      FRUZZE cung cấp dịch vụ hỗ trợ 24/7
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 pt-6 pt-lg-0">
+                <div class="shipping-item">
+                  <div class="shipping-img">
+                    <img
+                      src="assets/images/shipping/icon/shield.png"
+                      alt="Shipping Icon"
+                    />
+                  </div>
+                  <div class="shipping-content">
+                    <h5 class="title">Thanh Toán An Toàn</h5>
+                    <p class="short-desc mb-0">
+                      FRUZZE cam kết thanh toán an toàn, bảo mật
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Shipping Area End Here -->
+
+                   
+      <!-- Begin Banner Area -->
+      <div class="container">
+          <div class="row">
+            <div class="col-lg-4 col-md-6">
+              <div class="banner-item">
+                <div class="banner-img img-zoom-effect">
+                  <img
+                    class="img-full"
+                    src="assets/images/1.png"
+                    alt="Banner Image"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 pt-6 pt-md-0">
+              <div class="banner-item">
+                <div class="banner-img img-zoom-effect">
+                  <img
+                    class="img-full"
+                    src="assets/images/2.png"
+                    alt="Banner Image"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 pt-6 pt-lg-0">
+              <div class="banner-item">
+                <div class="banner-img img-zoom-effect">
+                  <img
+                    class="img-full"
+                    src="assets/images/3.png"
+                    alt="Banner Image"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="button-wrap" style="text-align: center; margin-top: 20px;">
+                      <a
+                        class="btn btn-primary btn-white-hover rounded-0"
+                        href="/shop"
+                        >Ghé cửa hàng</a
+                      >
+                    </div>
+          </div>
+        </div>
       <!-- Banner Area End Here -->
 
       <!-- Begin Blog Area -->
@@ -627,6 +630,7 @@
         </div>
       </div>
       <!-- Blog Area End Here -->
+
 
 <script>
 // Hàm fetch sản phẩm từ API

@@ -15,7 +15,8 @@
         }
 
         main {
-            display: flex;
+            margin-left: 200px;
+            display: flex; 
             justify-content: center;
             padding: 20px;
         }
@@ -34,6 +35,8 @@
             border-collapse: collapse;
             margin: 20px 0;
             background-color: #fff;
+                table-layout: flex;
+
         }
 
         thead th {
@@ -240,6 +243,7 @@
                             <td class="border border-gray-300 px-6 py-4">
                                 <button class="btn btn-primary" onclick="confirmOrder(${order.id})">Xác nhận</button>
                             </td>
+                            <td class="border border-gray-300 px-6 py-4">${order.status || 'N/A'}</td>
                         </tr>
                     `;
                     orderList.innerHTML += row;

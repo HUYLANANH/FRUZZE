@@ -35,7 +35,7 @@
                 <div class="col-md-12">
                   <div class="checkout-form-list">
                     <label>ĐỊA CHỈ<span class="required">*</span></label>
-                    <input id="address" placeholder="Nhập địa chỉ nhận hàng" type="text" required />
+                    <input id="address_ship" placeholder="Nhập địa chỉ nhận hàng" type="text" required />
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -125,8 +125,6 @@
   </div>
 </main>
 
-@include('layouts.footer')
-
 <script>
 document.addEventListener("DOMContentLoaded", async () => {
     try {
@@ -140,8 +138,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
 
         let subtotal = 0;
+        let total = 0;
+        const discountRate = 0.1;
 
-        // Lấy dữ liệu giỏ hàng và tính toán giá trị
+        // Tính toán giá trị giỏ hàng
         const cartItemsHtml = cartData.items.map((item) => {
             const itemTotal = item.price * item.quantity; // Tổng tiền cho sản phẩm
             subtotal += itemTotal;
@@ -154,11 +154,12 @@ document.addEventListener("DOMContentLoaded", async () => {
                 </tr>
             `;
         }).join('');
+        total = subtotal - subtotal * discountRate;
 
-        // Hiển thị thông tin giỏ hàng và số tiền trên giao diện
+        // Hiển thị thông tin giỏ hàng trên giao diện
         document.getElementById("cart-items").innerHTML = cartItemsHtml;
         document.getElementById("subtotal").textContent = `${subtotal.toFixed(0)} VNĐ`;
-        document.getElementById("total").textContent = `${subtotal.toFixed(0)} VNĐ`; // Cập nhật tổng tiền
+        document.getElementById("total").textContent = `${total.toFixed(0)} VNĐ`;
     } catch (error) {
         console.error("Lỗi khi tải giỏ hàng:", error);
         alert("Đã xảy ra lỗi khi tải giỏ hàng. Vui lòng thử lại.");
@@ -166,29 +167,32 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 document.getElementById("confirm-order").addEventListener("click", async () => {
-    const name = document.getElementById("name").value;
-    const address = document.getElementById("address").value;
-    const email = document.getElementById("email").value;
-    const phone = document.getElementById("phone").value;
-    const paymentMethod = document.querySelector('input[name="payment-method"]:checked').value;
-
-    if (!name || !address || !email || !phone) {
-        alert("Vui lòng điền đầy đủ thông tin!");
-        return;
-    }
-
     try {
-        // Lấy dữ liệu giỏ hàng từ localStorage
+        const customerInfo = {
+            name: document.getElementById("name").value,
+            address_ship: document.getElementById("address_ship").value,
+            email: document.getElementById("email").value,
+            phone: document.getElementById("phone").value,
+            paymentMethod: document.querySelector('input[name="payment-method"]:checked').value,
+        };
+
+        // Kiểm tra thông tin người dùng
+        if (!customerInfo.name || !customerInfo.address_ship || !customerInfo.email || !customerInfo.phone) {
+            alert("Vui lòng điền đầy đủ thông tin!");
+            return;
+        }
+
         const cartData = JSON.parse(localStorage.getItem("checkoutData"));
         if (!cartData || !cartData.items || cartData.items.length === 0) {
             alert("Giỏ hàng của bạn đang trống.");
+            window.location.href = "/cart";
             return;
         }
 
         // Chuẩn bị dữ liệu đơn hàng
         const orderData = {
-            address_ship: address,
-            total_price : cartData.totalAfterVoucher,
+            address_ship: customerInfo.address_ship,
+            total_price: cartData.totalAfterVoucher,
             order_details: cartData.items.map(item => ({
                 product_id: item.product_id,
                 quantity: item.quantity,
@@ -205,10 +209,12 @@ document.getElementById("confirm-order").addEventListener("click", async () => {
             },
             body: JSON.stringify(orderData)
         });
+
         const responseText = await response.text(); // Lấy phản hồi dưới dạng văn bản
         console.log(responseText);
+
         if (!response.ok) {
-            const errorData = await response.json();
+            const errorData = JSON.parse(responseText);
             alert(`Đặt hàng thất bại: ${errorData.message}`);
             return;
         }
@@ -219,8 +225,10 @@ document.getElementById("confirm-order").addEventListener("click", async () => {
         // Chuyển hướng tới trang hóa đơn
         window.location.href = "/invoice";
     } catch (error) {
-        console.error("Lỗi xử lý đặt hàng:", error);
+        console.error("Lỗi khi đặt hàng:", error);
         alert("Đã xảy ra lỗi khi đặt hàng. Vui lòng thử lại.");
     }
 });
 </script>
+
+@include('layouts.footer')
