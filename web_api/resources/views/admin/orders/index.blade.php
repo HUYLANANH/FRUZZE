@@ -137,6 +137,15 @@
     .order-status.delivered {
         background-color:rgb(106, 206, 106);
     }
+    .btn-success {
+        background-color:rgb(17, 88, 33); /* Màu xanh lá */
+        border-color:rgb(13, 71, 27);
+    }
+
+    .btn-warning {
+        background-color: #fd7e14; /* Màu cam */
+        border-color: #fd7e14;
+    }
     .order-status:hover,
     .order-status:focus {
         border-color: #04702c;
@@ -184,87 +193,98 @@
 
 <script>
     let currentPage = 1;
-        // Load orders dynamically from API
-        function loadOrders(page = 1) 
-        {
-            currentPage = page;
-            fetch(`http://127.0.0.1:8000/api/order?page=${page}`, 
-            
-                
-            {method: 'GET',
-                headers: 
-                {
-                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
-                        'Content-Type': 'application/json'
-                }
-            })
-            .then(response => 
-            {
-                if (!response.ok) 
-                {
-                    throw new Error('Failed to fetch orders');
-                }
-                return response.json();
-            })
-            .then(data => 
-            {
-                renderOrderList(data.data);  // Hàm renderOrderList để hiển thị đơn hàng
-                renderPagination(data);
-                
-            }).catch(error => 
-            {
-                console.error('Error:', error);
-                alert('Failed to load orders. Please try again later.');
-            });
-        }
-        function renderOrderList(orders) {
-  const orderList = document.getElementById('order-list');
-  orderList.innerHTML = '';
 
-  if (orders && orders.length > 0) {
-    orders.forEach(order => {
-        const row = `
-                        <tr class="border border-gray-300 text-center">
-                            <td class="border border-gray-300 px-6 py-4">
-                                <input type="checkbox">
-                            </td>
-                            <td class="border border-gray-300 px-6 py-4">
-                                <a href="detail-orders/${order.id}" class="text-blue-600 hover:underline">
-                                    ${order.id}
-                                </a>
-                            </td>
-                            <td class="border border-gray-300 px-6 py-4">${order.username || 'N/A'}</td>
-                            <td class="border border-gray-300 px-6 py-4">
-                                ${new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(order.total_price)}
-                            </td>
-                            <td class="border border-gray-300 px-6 py-4">
-                                ${new Date(order.created_at).toLocaleDateString()}
-                            </td>
-                            <td class="border border-gray-300 px-6 py-4">
-                                <button class="btn btn-primary" onclick="confirmOrder(${order.id})">Xác nhận</button>
-                            </td>
-                            <td class="border border-gray-300 px-6 py-4">${order.status || 'N/A'}</td>
-                        </tr>
-                    `;
-                    orderList.innerHTML += row;
-    });
-  } else {
-    orderList.innerHTML = '<tr><td colspan="7" class="text-center">Không có sản phẩm nào</td></tr>';
-  }
+    function loadOrders(page = 1) {
+        currentPage = page;
+        fetch(`http://127.0.0.1:8000/api/order?page=${page}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to fetch orders');
+            }
+            return response.json();
+        })
+        .then(data => {
+            renderOrderList(data.data);
+            renderPagination(data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Failed to load orders. Please try again later.');
+        });
+    }
+
+    function renderOrderList(orders) {
+    const orderList = document.getElementById('order-list');
+    orderList.innerHTML = '';
+
+    if (orders && orders.length > 0) {
+        orders.forEach(order => {
+            let actionButton = '';
+            // Kiểm tra trạng thái đơn hàng để quyết định nút hành động
+            if (order.status === 'Chưa xác nhận') {
+                actionButton = `<button class="btn btn-primary" onclick="confirmOrder(${order.id})">Xác nhận</button>`;
+            } else if (order.status === 'Đã xác nhận' && order.status !== 'Đang vận chuyển') {
+                actionButton = `<button class="btn btn-warning" onclick="shipOrder(${order.id})" id="shipButton${order.id}">Xuất kho</button>`;
+            }
+            // Nếu trạng thái là 'Đang vận chuyển', không hiển thị nút 'Xuất kho' nữa
+            else if (order.status === 'Đang vận chuyển') {
+                actionButton = `<button class="btn btn-warning" disabled>Đã xuất kho</button>`;
+            }
+
+            const row = `
+                <tr class="border border-gray-300 text-center">
+                    <td class="border border-gray-300 px-6 py-4">
+                        <input type="checkbox">
+                    </td>
+                    <td class="border border-gray-300 px-6 py-4">
+                        <a href="detail-orders/${order.id}" class="text-blue-600 hover:underline">
+                            ${order.id}
+                        </a>
+                    </td>
+                    <td class="border border-gray-300 px-6 py-4">${order.username || 'N/A'}</td>
+                    <td class="border border-gray-300 px-6 py-4">
+                        ${new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(order.total_price)}
+                    </td>
+                    <td class="border border-gray-300 px-6 py-4">
+                        ${new Date(order.created_at).toLocaleDateString()}
+                    </td>
+                    <td class="border border-gray-300 px-6 py-4">
+                        ${actionButton}
+                    </td>
+                    <td class="border border-gray-300 px-6 py-4">${order.status || 'N/A'}</td>
+                </tr>
+            `;
+            orderList.innerHTML += row;
+        });
+    } else {
+        orderList.innerHTML = '<tr><td colspan="7" class="text-center">Không có đơn hàng nào</td></tr>';
+    }
 }
-function Detail(orderId) {
-  window.location.href = `/detail-orders/${order.id}${orderId}`; // Đường dẫn đến trang sửa sản phẩm
+    function getActionButton(order) {
+    // Điều kiện để hiển thị nút
+    if (order.status === 'Chưa xác nhận') {
+        return `<button class="btn btn-success" onclick="confirmOrder(${order.id})">Xác nhận</button>`; // Màu xanh lá
+    } else if (order.status === 'Đã xác nhận') {
+        return `<button class="btn btn-warning" onclick="shipOrder(${order.id})">Xuất kho</button>`; // Màu cam
+    }
+    return ''; // Không hiển thị nút nếu trạng thái không phải là 'Chưa xác nhận' hoặc 'Đang vận chuyển'
 }
 
-function confirmOrder(orderId) {
+    function confirmOrder(orderId) {
   if (confirm('Bạn có chắc muốn xác nhận đơn hàng này không?')) {
-    fetch(`http://127.0.0.1:8000/api/order/confirm/${orderId}`, {
-      method: 'POST',
+    fetch(`http://127.0.0.1:8000/api/order/${orderId}`, {
+        method: 'PATCH',
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ status: 'confirmed' })
+      body: JSON.stringify({ status: 'Đã xác nhận' })
     })
     .then(response => {
       if (!response.ok) {
@@ -283,37 +303,64 @@ function confirmOrder(orderId) {
   }
 }
 
+    function shipOrder(orderId) {
+        if (confirm('Bạn có chắc muốn xuất kho đơn hàng này không?')) {
+            fetch(`http://127.0.0.1:8000/api/order/${orderId}`, {
+                method: 'PATCH',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ status: 'Đang vận chuyển' })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to ship order');
+                }
+                return response.json();
+            })
+            .then(data => {
+                alert('Đơn hàng đã được chuyển sang trạng thái "Đang vận chuyển"!');
+                loadOrders(currentPage);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Không thể xuất kho đơn hàng. Vui lòng thử lại.');
+            });
+        }
+    }
 
-function renderPagination(data) {
-  const pagination = document.querySelector('.pagination');
-  pagination.innerHTML = '';
+    function renderPagination(data) {
+        const pagination = document.querySelector('.pagination');
+        pagination.innerHTML = '';
 
-  if (data.prev_page_url) {
-    pagination.innerHTML += `
-      <li class="page-item">
-        <a class="page-link" href="javascript:void(0)" onclick="loadOrders(${currentPage - 1})">&laquo;</a>
-      </li>
-    `;
-  }
+        if (data.prev_page_url) {
+            pagination.innerHTML += `
+                <li class="page-item">
+                    <a class="page-link" href="javascript:void(0)" onclick="loadOrders(${currentPage - 1})">&laquo;</a>
+                </li>
+            `;
+        }
 
-  for (let i = 1; i <= data.last_page; i++) {
-    pagination.innerHTML += `
-      <li class="page-item ${i === currentPage ? 'active' : ''}">
-        <a class="page-link" href="javascript:void(0)" onclick="loadOrders(${i})">${i}</a>
-      </li>
-    `;
-  }
+        for (let i = 1; i <= data.last_page; i++) {
+            pagination.innerHTML += `
+                <li class="page-item ${i === currentPage ? 'active' : ''}">
+                    <a class="page-link" href="javascript:void(0)" onclick="loadOrders(${i})">${i}</a>
+                </li>
+            `;
+        }
 
-  if (data.next_page_url) {
-    pagination.innerHTML += `
-      <li class="page-item">
-        <a class="page-link" href="javascript:void(0)" onclick="loadOrders(${currentPage + 1})">&raquo;</a>
-      </li>
-    `;
-  }
-}
-document.addEventListener('DOMContentLoaded', function() {
-  loadOrders();
-});
+        if (data.next_page_url) {
+            pagination.innerHTML += `
+                <li class="page-item">
+                    <a class="page-link" href="javascript:void(0)" onclick="loadOrders(${currentPage + 1})">&raquo;</a>
+                </li>
+            `;
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        loadOrders();
+    });
 </script>
 @include('layouts.endadmin')
