@@ -111,7 +111,7 @@
 
     /* Màu sắc cho từng trạng thái */
     .order-status option[value="preparing"] {
-        background-color:rgb(101, 171, 212); /* Cam - Đang chuẩn bị */
+        background-color:rgb(21, 79, 39); /* Cam - Đang chuẩn bị */
         color: #fff;
     }
 
@@ -124,22 +124,40 @@
         background-color:rgb(111, 210, 111); /* Xanh lá cây - Giao hàng thành công */
         color: #fff;
     }
+    .btn-primary {
+    background-color: #04702c; /* Thay đổi màu nền thành màu xanh lá */
+    border-color: #04702c; /* Thay đổi màu viền thành màu xanh lá */
+}
 
-    /* Thay đổi màu nền dropdown dựa trên giá trị */
-    .order-status.preparing {
-        background-color:rgb(84, 198, 230);
-    }
+.btn-primary:hover {
+    background-color: #035c25; /* Màu nền khi hover */
+    border-color: #035c25; /* Màu viền khi hover */
+}
+/* Màu cho nút 'Xuất kho' */
+.btn-warning {
+    background-color: #fd7e14; /* Màu cam */
+    border-color: #fd7e14; /* Màu cam */
+}
 
-    .order-status.shipping {
-        background-color:rgb(219, 178, 106);
-    }
+.btn-warning:hover {
+    background-color: #e67e22; /* Màu cam đậm khi hover */
+    border-color: #e67e22; /* Màu cam đậm khi hover */
+}
 
-    .order-status.delivered {
-        background-color:rgb(106, 206, 106);
-    }
+/* Màu cho nút 'Đã xuất kho' */
+.btn-disabled {
+    background-color: #d6d6d6; /* Màu xám */
+    border-color: #d6d6d6; /* Màu xám */
+    cursor: not-allowed; /* Chỉ thị rằng nút không thể nhấn */
+}
+
+.btn-disabled:hover {
+    background-color:rgb(30, 29, 29); /* Không thay đổi khi hover */
+    border-color:rgb(41, 40, 40); /* Không thay đổi khi hover */
+}
     .btn-success {
         background-color:rgb(17, 88, 33); /* Màu xanh lá */
-        border-color:rgb(13, 71, 27);
+        border-color:rgb(15, 83, 31);
     }
 
     .btn-warning {
@@ -232,9 +250,9 @@
             } else if (order.status === 'Đã xác nhận' && order.status !== 'Đang vận chuyển') {
                 actionButton = `<button class="btn btn-warning" onclick="shipOrder(${order.id})" id="shipButton${order.id}">Xuất kho</button>`;
             }
-            // Nếu trạng thái là 'Đang vận chuyển', không hiển thị nút 'Xuất kho' nữa
+            // Nếu trạng thái là 'Đang vận chuyển', thay đổi nút thành 'Đã xuất kho' với màu xám
             else if (order.status === 'Đang vận chuyển') {
-                actionButton = `<button class="btn btn-warning" disabled>Đã xuất kho</button>`;
+                actionButton = `<button class="btn btn-disabled" disabled>Đã xuất kho</button>`;
             }
 
             const row = `
@@ -266,6 +284,7 @@
         orderList.innerHTML = '<tr><td colspan="7" class="text-center">Không có đơn hàng nào</td></tr>';
     }
 }
+
     function getActionButton(order) {
     // Điều kiện để hiển thị nút
     if (order.status === 'Chưa xác nhận') {
