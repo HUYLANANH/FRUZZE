@@ -305,7 +305,7 @@ function addToCart(productId, productName, productPrice, productThumbnail, quant
 function showSuccessMessage() {
   const messageContainer = document.createElement('div');
   messageContainer.innerHTML = `
-      <div class="success-message" style="padding: 15px; background-color: #4CAF50; color: white; text-align: center; border-radius: 5px;">
+      <div class="success-message">
           <p>Thêm sản phẩm vào giỏ hàng thành công! 
               <a href="/cart" class="btn btn-primary" style="color: white; text-decoration: underline;">Xem giỏ hàng</a>
           </p>

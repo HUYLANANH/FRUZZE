@@ -219,16 +219,96 @@ document.getElementById("confirm-order").addEventListener("click", async () => {
             return;
         }
 
+        
         // Xóa dữ liệu giỏ hàng sau khi đặt hàng thành công
         localStorage.removeItem("checkoutData");
 
-        // Chuyển hướng tới trang hóa đơn
-        window.location.href = "/invoice";
+   // Hiển thị hóa đơn cho khách hàng
+   const invoiceHtml = `
+              <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    margin: 0;
+                    padding: 0;
+                    background-color: #f9f9f9;
+                }
+
+                .invoice {
+                    max-width: 800px;
+                    margin: 50px auto;
+                    padding: 20px;
+                    background: #fff;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                }
+
+                h3 {
+                    text-align: center;
+                    margin-bottom: 20px;
+                }
+
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    margin-top: 10px;
+                }
+
+                table th, table td {
+                    border: 1px solid #ddd;
+                    padding: 8px;
+                    text-align: center;
+                }
+            </style>
+            <div class="invoice">
+                <h3>Hóa Đơn</h3>
+                <p><strong>Họ và tên:</strong> ${customerInfo.name}</p>
+                <p><strong>Địa chỉ:</strong> ${customerInfo.address_ship}</p>
+                <p><strong>Email:</strong> ${customerInfo.email}</p>
+                <p><strong>Số điện thoại:</strong> ${customerInfo.phone}</p>
+                <p><strong>Phương thức thanh toán:</strong> Thanh toán bằng tiền mặt</p>
+                <table border="1" style="width: 100%; text-align: center;">
+                    <thead>
+                        <tr>
+                            <th>Sản phẩm</th>
+                            <th>Số lượng</th>
+                            <th>Giá</th>
+                            <th>Thành tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${cartData.items.map(item => `
+                            <tr>
+                                <td>${item.name}</td>
+                                <td>${item.quantity}</td>
+                                <td>${item.price.toFixed(0)} VNĐ</td>
+                                <td>${(item.price * item.quantity).toFixed(0)} VNĐ</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3">Tổng cộng</td>
+                            <td>${cartData.totalAfterVoucher.toFixed(0)} VNĐ</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        `;
+
+        // Hiển thị hóa đơn lên giao diện
+        document.body.innerHTML = invoiceHtml;
+
+        // Chuyển hướng sang trang cảm ơn sau 5 giây
+        setTimeout(() => {
+            window.location.href = "/thank-you";
+        }, 10000);
+
     } catch (error) {
         console.error("Lỗi khi đặt hàng:", error);
         alert("Đã xảy ra lỗi khi đặt hàng. Vui lòng thử lại.");
     }
 });
+
 </script>
 
 @include('layouts.footer')
