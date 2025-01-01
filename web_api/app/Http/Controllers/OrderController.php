@@ -100,6 +100,7 @@ class OrderController extends Controller
             'user_id' => $user->id,
             'address_ship' => $request->address_ship,
             'total_price' => $request->total_price,
+            "payment_method"=> $request->payment_method,
         ]);
 
         // Tạo chi tiết đơn hàng
