@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\OrderTrackingController;
 
 Route::get('/', function () {
     return view('index');
@@ -86,6 +87,11 @@ Route::get('change-password', function () {
 Route::get('profile', function () {
     return view('profile.profile');
 })->name('profile');
+
+Route::get('track-order', function () {
+    return view('track-order');
+})->name('track-order');
+Route::get('my-orders', [OrderTrackingController::class, 'trackOrders'])->name('my-orders')->middleware('auth');
 
 Route::prefix('product')->group(function () {
     // Lấy danh sách sản phẩm
