@@ -192,6 +192,7 @@ document.getElementById("confirm-order").addEventListener("click", async () => {
         // Chuẩn bị dữ liệu đơn hàng
         const orderData = {
             address_ship: customerInfo.address_ship,
+            subtotal_price: cartData.totalBeforeVoucher,
             total_price: cartData.totalAfterVoucher,
             order_details: cartData.items.map(item => ({
                 product_id: item.product_id,
@@ -272,7 +273,7 @@ document.getElementById("confirm-order").addEventListener("click", async () => {
                             <th>Sản phẩm</th>
                             <th>Số lượng</th>
                             <th>Giá</th>
-                            <th>Thành tiền</th>
+                            <th>Tạm tính</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -286,8 +287,12 @@ document.getElementById("confirm-order").addEventListener("click", async () => {
                         `).join('')}
                     </tbody>
                     <tfoot>
+                    <tr>
+                            <th colspan="3">Voucher</th>
+                            <td><b>10%</b></td>
+                        </tr>
                         <tr>
-                            <td colspan="3">Tổng cộng</td>
+                            <th colspan="3">Thành tiền</th>
                             <td>${cartData.totalAfterVoucher.toFixed(0)} VNĐ</td>
                         </tr>
                     </tfoot>
