@@ -8,7 +8,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\GaleryController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\WarehouseController;
 
@@ -124,4 +124,15 @@ Route::group([
     Route::post('warehouse', [WarehouseController::class, 'store']);
     //sửa sản phẩm
     Route::patch('warehouse/{id}', [WarehouseController::class, 'update']);
+});
+
+Route::group([
+    'prefix' => 'dashboard',
+], function ($router) {
+    // lấy tổng doanh thu
+    Route::get('total_revenue', [DashboardController::class, 'getTotalRevenue']);
+    //lấy doanh thu hôm nay
+    Route::get('today-revenue', [DashboardController::class, 'getTodayRevenue']);
+    //lấy phần trăm trạng thái
+    Route::get('order-status-percentages', [DashboardController::class, 'getOrderStatusPercentages']);
 });
