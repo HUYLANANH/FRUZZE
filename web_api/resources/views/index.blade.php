@@ -506,7 +506,7 @@
                     </h5>
                     <p class="short-desc mb-5">
                     Trái cây sấy lạnh đảm bảo hương vị và hàm lượng dinh dưỡng cao đến 95% của
-                    từng loại trái cây.
+                    từng...
                     </p>
                     <div class="button-wrap">
                       <a
