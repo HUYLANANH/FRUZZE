@@ -81,6 +81,7 @@
                                 <div class="col-12 d-flex justify-content-between mt-3">
                                     <button type="button" id="edit-profile" class="btn btn-primary">Sửa Thông Tin</button>
                                     <button type="button" id="change-password" class="btn btn-secondary">Đổi mật khẩu</button>
+                                    <a href="{{ route('track-order') }}" class="btn btn-info">Theo dõi đơn hàng</a>
                                 </div>
                             </div>
                         </div>
