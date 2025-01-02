@@ -10,6 +10,7 @@ use App\Http\Controllers\EmailController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\GaleryController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\WarehouseController;
 
 Route::group([
     'prefix' => 'auth'
@@ -69,16 +70,18 @@ Route::group([
 ], function ($router) {
     // lấy danh sách sản phẩm
     Route::get('product', [ProductController::class, 'index']);
+    // lấy full danh sách sản phẩm
+    Route::get('all-product', [ProductController::class, 'showAll']);
     //lấy 1 sản phẩm cụ thể
     Route::get('product/{id}', [ProductController::class, 'show']);
     //thêm mới sản phẩm
-    Route::post('product', [ProductController::class, 'store'])->middleware(['admin']);
+    Route::post('product', [ProductController::class, 'store']);
     //sửa sản phẩm
-    Route::patch('product/{id}', [ProductController::class, 'update'])->middleware(['admin']);
+    Route::patch('product/{id}', [ProductController::class, 'update']);
     //sửa sản phẩm
-    Route::post('product/thumbnail/{id}', [ProductController::class, 'updateThumbnail'])->middleware(['admin']);
+    Route::post('product/thumbnail/{id}', [ProductController::class, 'updateThumbnail']);
     //xóa sản phẩm
-    Route::delete('product/{id}', [ProductController::class, 'destroy'])->middleware(['admin', 'check_login']);
+    Route::delete('product/{id}', [ProductController::class, 'destroy']);
 });
 
 
@@ -86,26 +89,39 @@ Route::group([
 
 ], function ($router) {
     // lấy danh sách đơn hàng
-    Route::get('order', [OrderController::class, 'index'])->middleware(['admin', 'check_login']);
+    Route::get('order', [OrderController::class, 'index']);
     //lấy 1 đơn hàng cụ thể
-    Route::get('order/{id}', [OrderController::class, 'show'])->middleware(['admin', 'check_login']);
+    Route::get('order/{id}', [OrderController::class, 'show']);
     //lấy đơn hàng của bản thân
-    Route::get('my-order', [OrderController::class, 'myOrder'])->middleware(['check_login']);
+    Route::get('my-order', [OrderController::class, 'myOrder']);
     //thêm mới đơn hàng
-    Route::post('order', [OrderController::class, 'store'])->middleware(['admin', 'check_login']);
+    Route::post('order', [OrderController::class, 'store']);
     //xóa sản phẩm
-    Route::delete('order/{id}', [OrderController::class, 'destroy'])->middleware(['admin', 'check_login']);
+    Route::delete('order/{id}', [OrderController::class, 'destroy']);
+    //cập nhật trạng thái
+    Route::patch('order/{id}', [OrderController::class, 'updateStatus']);
 });
 
 Route::group([
 
 ], function ($router) {
     // lấy danh sách đơn hàng
-    Route::get('cart', [CartController::class, 'index'])->middleware(['check_login']);
+    Route::get('cart', [CartController::class, 'index']);
     //thêm mới đơn hàng
-    Route::post('cart', [CartController::class, 'store'])->middleware(['check_login']);
+    Route::post('cart', [CartController::class, 'store']);
     //sửa sản phẩm
-    Route::patch('cart', [CartController::class, 'update'])->middleware(['check_login']);
+    Route::patch('cart', [CartController::class, 'update']);
     //xóa sản phẩm
-    Route::delete('cart/{id}', [CartController::class, 'destroy'])->middleware(['check_login']);
+    Route::delete('cart/{id}', [CartController::class, 'destroy']);
+});
+
+Route::group([
+
+], function ($router) {
+    // lấy danh sách đơn hàng
+    Route::get('warehouse', [WarehouseController::class, 'index']);
+    //thêm mới đơn hàng
+    Route::post('warehouse', [WarehouseController::class, 'store']);
+    //sửa sản phẩm
+    Route::patch('warehouse/{id}', [WarehouseController::class, 'update']);
 });

@@ -59,6 +59,14 @@ Route::get('cart', function () {
     return view('cart');
 });
 
+Route::get('check-out', function () {
+    return view('check-out');
+});
+
+Route::get('thank-you', function () {
+    return view('thank-you');
+});
+
 Route::get('login', function () {
     return view('auth.login');
 })->name('login');
@@ -101,6 +109,10 @@ Route::get('orders', function () {
     return view('admin.orders.index');
 })->name('orders');
 
+Route::get('detail-orders/{id}', function ($id) {
+    return view('admin.orders.detail-orders', ['id' => $id]);
+})->name('detail-orders');
+
 Route::prefix('admin')->group(function () {
 
 Route::get('getusers', function () {
@@ -114,4 +126,17 @@ Route::get('login', function () {
 Route::get('dashboard', function () {
     return view('admin.login_admin.dashboard');
 })->name('dashboard');
+});
+
+//Warehouse
+
+Route::prefix('warehouse')->group(function () {
+    // Hiển thị hàng tồn kho
+    Route::get('show', function () {
+        return view('admin.warehouse.warehouse');
+    })->name('show');
+    // Cập nhật hàng tồn kho
+    Route::get('update/{id}', function ($id) {
+        return view('admin.warehouse.updatewh', ['id' => $id]);
+    })->name('update');
 });

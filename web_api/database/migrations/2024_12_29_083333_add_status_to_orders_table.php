@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('bills', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('order_id')->nullable()->constrained('users')->onDelete('set null');
-            $table->decimal('pay_price', 10, 3);
-            $table->timestamps();
+        Schema::table('orders', function (Blueprint $table) {
+            $table->string('status')->default('Chưa xác nhận');
         });
     }
 
@@ -24,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('bills');
+        Schema::table('orders', function (Blueprint $table) {
+            $table->dropColumn('status');
+        });
     }
 };

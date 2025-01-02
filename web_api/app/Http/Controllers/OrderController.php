@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\Warehouse;
+use App\Models\Cart;
+use App\Models\CartItem;
 use Illuminate\Support\Facades\Validator;
 
 class OrderController extends Controller
@@ -23,13 +26,59 @@ class OrderController extends Controller
         return response()->json($orders);
     }
 
+    private function checkStockAvailability($orderDetails)
+    {
+        foreach ($orderDetails as $detail) {
+            $warehouse = Warehouse::where('product_id', $detail['product_id'])->first();
+
+            if (!$warehouse || $warehouse->quantity < $detail['quantity']) {
+                return "Sản phẩm ID {$detail['product_id']} không đủ trong kho.";
+            }
+        }
+        return true; // Nếu tất cả sản phẩm đều đủ trong kho
+    }
+
+    private function updateStockQuantities($orderDetails)
+    {
+        foreach ($orderDetails as $detail) {
+            $warehouse = Warehouse::where('product_id', $detail['product_id'])->first();
+
+            // Trừ số lượng trong kho
+            if ($warehouse) {
+                $warehouse->quantity -= $detail['quantity'];
+                $warehouse->save();
+            }
+        }
+    }
+
+    private function removeProductsFromCart($cartId, $orderDetails)
+    {
+        foreach ($orderDetails as $detail) {
+            // Kiểm tra xem sản phẩm có trong cart_items không
+            $cartItem = CartItem::where('cart_id', $cartId)
+                ->where('product_id', $detail['product_id'])
+                ->first();
+
+            // Nếu sản phẩm tồn tại trong giỏ hàng, xóa nó
+            if ($cartItem) {
+                $cartItem->delete();
+            }
+            // Nếu không tìm thấy sản phẩm, có thể log hoặc xử lý tùy ý
+            else {
+                // Bạn có thể log hoặc thực hiện hành động khác nếu cần
+                // ví dụ: Log::info("Sản phẩm ID {$detail['product_id']} không có trong giỏ hàng với cart ID {$cartId}.");
+            }
+        }
+    }
+
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
+        $user = auth('api')->user();
+
         $validator = Validator::make($request->all(), [
-            'user_id' => 'required|exists:users,id',
             'address_ship' => 'required|string',
             'order_details' => 'required|array',
             'order_details.*.product_id' => 'required|exists:products,id',
@@ -41,22 +90,29 @@ class OrderController extends Controller
             return response()->json(['errors' => $validator->errors()], 422);
         }
 
-        // Tính tổng tiền
-        $totalPrice = collect($request->order_details)->sum(function ($detail)
-        {
-            return $detail['quantity'] * $detail['price'];
-        });
+        $checkResult = $this->checkStockAvailability($request->order_details);
+        if ($checkResult !== true) {
+            return response()->json(['error' => $checkResult], 422);
+        }
 
         // Tạo đơn hàng
         $order = Order::create([
-            'user_id' => $request->user_id,
+            'user_id' => $user->id,
             'address_ship' => $request->address_ship,
-            'total_price' => $totalPrice,
+            'total_price' => $request->total_price,
         ]);
 
         // Tạo chi tiết đơn hàng
         foreach ($request->order_details as $detail) {
             $order->orderDetails()->create($detail);
+        }
+
+        $this->updateStockQuantities($request->order_details);
+
+        $cart = Cart::where('user_id', $user->id)->first();
+        if ($cart) {
+            // Nếu giỏ hàng tồn tại, gọi hàm xóa sản phẩm
+            $this->removeProductsFromCart($cart->id, $request->order_details);
         }
 
         return response()->json($order->load('orderDetails'), 201);
@@ -107,5 +163,29 @@ class OrderController extends Controller
 
         $order->delete();
         return response()->json(['message' => 'Product deleted successfully'], 200);
+    }
+
+    public function updateStatus(Request $request, string $id)
+    {
+        // Xác thực dữ liệu đầu vào
+        $request->validate([
+            'status' => 'required|string', // Thay đổi điều kiện xác thực nếu cần
+        ]);
+
+        // Tìm đơn hàng theo ID
+        $order = Order::findOrFail($id);
+
+        // Cập nhật trạng thái thông qua phương thức setStatus
+        try {
+            $order->setStatus($request->input('status'));
+            return response()->json([
+                'message' => 'Trạng thái đơn hàng đã được cập nhật.',
+                'order' => $order,
+            ]);
+        } catch (\InvalidArgumentException $e) {
+            return response()->json([
+                'message' => $e->getMessage(),
+            ], 400);
+        }
     }
 }
