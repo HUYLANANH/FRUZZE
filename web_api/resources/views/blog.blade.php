@@ -182,7 +182,7 @@
                     </div>
                     <h5 class="title mb-4">
                       <a href="/blog_detail_3"
-                        >Trái cây sấy lạnh-lựa chọn cho phong cách sống hiện đại</a
+                        >Trái cây sấy lạnh - lựa chọn cho phong cách sống hiện đại</a
                       >
                     </h5>
                     <p class="short-desc mb-5">

@@ -113,5 +113,133 @@ Hy vọng bài viết đã giúp bạn có thêm thông tin hữu ích để l�
 Để biết thêm về cách ăn chuối sấy và các loại trái cây sấy khác có lợi cho cơ thể, bạn có thể xem thêm trên Facebook của Beefood hoặc tìm hiểu chi tiết hơn trong bài viết này.
 </p>
                       </div>
+<!-- Begin Blog Area -->
+<div class="blog-area section-space-y-axis-100">
+        <div class="container">
+          <div class="section-title text-center pb-55">
+            <span class="sub-title text-primary">Xem Các</span>
+            <h2 class="title mb-0">Bài Viết Liên quan</h2>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="swiper-container blog-slider">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <div class="blog-item">
+                    <div class="blog-img img-zoom-effect">
+                    <a href="/blog_detail_1">
+                      <img
+                        class="img-full"
+                        src="assets\images\blog\medium-size\trai-cay-say-thang-hoa-2-1.jpg"
+                        alt="Blog Image"
+                      />
+                    </a>
+                  </div>
+                  <div class="blog-content">
+                    <div class="blog-meta text-dim-gray pb-3">
+                      <ul>
+                        <li class="date">
+                          <i class="fa fa-calendar-o me-2"></i>september 21, 2024
+                        </li>
+        
+                      </ul>
+                    </div>
+                    <h5 class="title mb-4">
+                  <a href="/blog_detail_1"
+                        >Quy trình sản xuất trái cây sấy lạnh</a
+                      >
+                    </h5>
+                    <p class="short-desc mb-5">
+                    Quy trình sản xuất trái cây sấy không chỉ giúp bảo quản trái 
+                    cây lâu dài...
+                    </p>
+                    <div class="button-wrap">
+                      <a
+                        class="btn btn-custom-size lg-size btn-dark rounded-0"
+                        href="/blog_detail_1"
+                        >Chi tiết</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+                  <div class="swiper-slide">
+                    <div class="blog-item">
+                      <div class="blog-img img-zoom-effect">
+                      <a href="/blog_detail_3">
+                      <img
+                        class="img-full"
+                        src="assets\images\blog\medium-size\trai-cay-say-lanh-la-gi-5-1.jpg"
+                        alt="Blog Image"
+                      />
+                    </a>
+                  </div>
+                  <div class="blog-content">
+                    <div class="blog-meta text-dim-gray pb-3">
+                      <ul>
+                        <li class="date">
+                          <i class="fa fa-calendar-o me-2"></i>November 5, 2024
+                        </li>
+                        
+                      </ul>
+                    </div>
+                    <h5 class="title mb-4">
+                      <a href="/blog_detail_3"
+                        >Trái cây sấy lạnh - lựa chọn cho phong cách sống hiện đại</a
+                      >
+                    </h5>
+                    <p class="short-desc mb-5">
+                       Khám khá lợi ích sức khỏe và sự tiện lợi của trái cây sấy lạnh. 
+                       
+                    </p>
+                    <div class="button-wrap">
+                      <a
+                        class="btn btn-custom-size lg-size btn-dark rounded-0"
+                        href="/blog_detail_3"
+                        >Chi tiết</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+                  <div class="swiper-slide">
+                    <div class="blog-item">
+                      <div class="blog-img img-zoom-effect">
+                      <a href="/blog_detail_4">
+                      <img
+                        class="img-full"
+                        src="assets\images\blog\medium-size\tu-tap.jpg"
+                        alt="Blog Image"
+                      />
+                    </a>
+                  </div>
+                  <div class="blog-content">
+                    <div class="blog-meta text-dim-gray pb-3">
+                     <ul>
+                        <li class="date">
+                          <i class="fa fa-calendar-o me-2"></i>November 29, 2024
+                        </li>
+
+                      </ul>
+                    </div>
+                    <h5 class="title mb-4">
+                      <a href="/blog_detail_4"
+                        >Món ăn vặt healthy dành cho genZ </a
+                      >
+                    </h5>
+                    <p class="short-desc mb-5">
+                    Trong những buổi tụ tập cùng bạn bè, lựa chọn những món ăn vặt lành mạnh để bảo vệ 
+                    ...
+                    </p>
+                    <div class="button-wrap">
+                      <a
+                        class="btn btn-custom-size lg-size btn-dark rounded-0"
+                        href="/blog_detail_4"
+                        >Chi tiết</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
 </main>
 @include('layouts.footer')
