@@ -141,7 +141,8 @@ class OrderController extends Controller
         $user = auth('api')->user();
 
         // Tìm đơn hàng theo ID, kèm theo chi tiết sản phẩm
-        $order = Order::where('user_id', $user->id)->first();
+        $order = Order::where('user_id', $user->id)
+                   ->paginate(10); // Số lượng đơn hàng trên mỗi trang (có thể thay đổi)
 
         // Kiểm tra nếu đơn hàng không tồn tại
         if (!$order) {

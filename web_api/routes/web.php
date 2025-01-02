@@ -147,3 +147,7 @@ Route::prefix('warehouse')->group(function () {
     })->name('update');
 });
 
+Route::get('vnpay_return', function () {
+    return view('vnpay.vnpay_return');
+})->name('vnpay_return');
+
