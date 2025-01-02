@@ -73,6 +73,7 @@
     box-sizing: border-box;
 }
 
+
 @media (prefers-reduced-motion: no-preference) {
     :root {
         scroll-behavior: smooth;
@@ -16265,7 +16266,7 @@ blockquote .inner-content:before {
 blockquote .inner-content p {
     font-family: "VietFont", serif;
     font-style: italic;
-    font-size: 24px;
+    font-size: 18px;
     line-height: 44px;
     padding-left: 45px;
 }

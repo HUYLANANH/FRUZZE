@@ -60,7 +60,7 @@
                       <a
                         class="btn btn-custom-size lg-size btn-dark rounded-0"
                         href="/blog_detail_1"
-                        >Read More</a
+                        >Chi tiết</a
                       >
                     </div>
                   </div>
@@ -99,7 +99,7 @@
                       <a
                         class="btn btn-custom-size lg-size btn-dark rounded-0"
                         href="/blog_detail_2"
-                        >Read More</a
+                        >Chi tiết</a
                       >
                     </div>
                   </div>
@@ -182,7 +182,7 @@
                     </div>
                     <h5 class="title mb-4">
                       <a href="/blog_detail_3"
-                        >Trái cây sấy lạnh-lựa chọn cho phong cách sống hiện đại</a
+                        >Trái cây sấy lạnh - lựa chọn cho phong cách sống hiện đại</a
                       >
                     </h5>
                     <p class="short-desc mb-5">
@@ -194,7 +194,7 @@
                       <a
                         class="btn btn-custom-size lg-size btn-dark rounded-0"
                         href="/blog_detail_3"
-                        >Read More</a
+                        >Chi tiết</a
                       >
                     </div>
                   </div>
@@ -234,7 +234,7 @@
                       <a
                         class="btn btn-custom-size lg-size btn-dark rounded-0"
                         href="/blog_detail_4"
-                        >Read More</a
+                        >Chi tiết</a
                       >
                     </div>
                   </div>

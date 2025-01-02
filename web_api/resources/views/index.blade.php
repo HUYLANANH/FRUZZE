@@ -469,11 +469,11 @@
       <!-- Banner Area End Here -->
 
       <!-- Begin Blog Area -->
-      <div class="blog-area section-space-y-axis-100">
+<div class="blog-area section-space-y-axis-100">
         <div class="container">
           <div class="section-title text-center pb-55">
             <span class="sub-title text-primary">Xem Các</span>
-            <h2 class="title mb-0">Bài Viết Mới Nhất Của Chúng Tôi</h2>
+            <h2 class="title mb-0">Bài Viết mới nhất của chúng tôi</h2>
           </div>
           <div class="row">
             <div class="col-lg-12">
@@ -481,146 +481,160 @@
                 <div class="swiper-wrapper">
                   <div class="swiper-slide">
                     <div class="blog-item">
-                      <div class="blog-img img-zoom-effect">
-                        <a href="blog-detail-left-sidebar.html">
-                          <img
-                            class="img-full"
-                            src=""
-                            alt="Blog Image"
-                          />
-                        </a>
-                      </div>
-                      <div class="blog-content">
-                        <div class="blog-meta text-dim-gray pb-3">
-                          <ul>
-                            <li class="date">
-                              <i class="fa fa-calendar-o me-2"></i>May 21, 2021
-                            </li>
-                            <li>
-                              <span class="comments me-3">
-                                <a href="javascript:void(0)">2 Comments</a>
-                              </span>
-                              <span class="link-share">
-                                <a href="javascript:void(0)">Share</a>
-                              </span>
-                            </li>
-                          </ul>
-                        </div>
-                        <h5 class="title mb-4">
-                          <a href="blog-detail-left-sidebar.html"
-                            >Lorem ipsum dolor consec adipisicing elit</a
-                          >
-                        </h5>
-                        <p class="short-desc mb-5">
-                          Lorem ipsum dolor sit amet, consectet adipi elit, sed
-                          do eius tempor incididunt ut labore gthydolore magna
-                          aliqua.
-                        </p>
-                        <div class="button-wrap">
-                          <a
-                            class="btn btn-custom-size btn-dark btn-lg rounded-0"
-                            href="blog-detail-left-sidebar.html"
-                            >Read More</a
-                          >
-                        </div>
-                      </div>
+                    <div class="blog-img img-zoom-effect">
+                    <a href="/blog_detail_2">
+                      <img
+                        class="img-full"
+                        src="assets/images/blog/medium-size/so-sanh-say-lanh-va-say-nong.jpg"
+                        alt="Blog Image"
+                      />
+                    </a>
+                  </div>
+                  <div class="blog-content">
+                    <div class="blog-meta text-dim-gray pb-3">
+                      <ul>
+                        <li class="date">
+                          <i class="fa fa-calendar-o me-2"></i>september 30, 2024
+                        </li>
+        
+                      </ul>
+                    </div>
+                    <h5 class="title mb-4">
+                  <a href="/blog_detail_2"
+                        >Trái cây sấy lạnh khác trái cây sấy nhiệt như thế nào?</a
+                      >
+                    </h5>
+                    <p class="short-desc mb-5">
+                    Trái cây sấy lạnh đảm bảo hương vị và hàm lượng dinh dưỡng cao đến 95% của
+                    từng loại trái cây.
+                    </p>
+                    <div class="button-wrap">
+                      <a
+                        class="btn btn-custom-size lg-size btn-dark rounded-0"
+                        href="/blog_detail_2"
+                        >Chi tiết</a
+                      >
                     </div>
                   </div>
+              </div>
+             </div>
                   <div class="swiper-slide">
                     <div class="blog-item">
                       <div class="blog-img img-zoom-effect">
-                        <a href="blog-detail-left-sidebar.html">
-                          <img
-                            class="img-full"
-                            src=""
-                            alt="Blog Image"
-                          />
-                        </a>
-                      </div>
-                      <div class="blog-content">
-                        <div class="blog-meta text-dim-gray pb-3">
-                          <ul>
-                            <li class="date">
-                              <i class="fa fa-calendar-o me-2"></i>May 21, 2021
-                            </li>
-                            <li>
-                              <span class="comments me-3">
-                                <a href="javascript:void(0)">2 Comments</a>
-                              </span>
-                              <span class="link-share">
-                                <a href="javascript:void(0)">Share</a>
-                              </span>
-                            </li>
-                          </ul>
-                        </div>
-                        <h5 class="title mb-4">
-                          <a href="blog-detail-left-sidebar.html"
-                            >Voluptate minus temporibus nostrum adipi</a
-                          >
-                        </h5>
-                        <p class="short-desc mb-5">
-                          Lorem ipsum dolor sit amet, consectet adipi elit, sed
-                          do eius tempor incididunt ut labore gthydolore magna
-                          aliqua.
-                        </p>
-                        <div class="button-wrap">
-                          <a
-                            class="btn btn-custom-size btn-dark btn-lg rounded-0"
-                            href="blog-detail-left-sidebar.html"
-                            >Read More</a
-                          >
-                        </div>
-                      </div>
-                    </div>
+                      <a href="/blog_detail_1">
+                      <img
+                        class="img-full"
+                        src="assets\images\blog\medium-size\trai-cay-say-thang-hoa-2-1.jpg"
+                        alt="Blog Image"
+                      />
+                    </a>
                   </div>
-                  <div class="swiper-slide">
-                    <div class="blog-item">
-                      <div class="blog-img img-zoom-effect">
-                        <a href="blog-detail-left-sidebar.html">
-                          <img
-                            class="img-full"
-                            src=""
-                            alt="Blog Image"
-                          />
-                        </a>
-                      </div>
-                      <div class="blog-content">
-                        <div class="blog-meta text-dim-gray pb-3">
-                          <ul>
-                            <li class="date">
-                              <i class="fa fa-calendar-o me-2"></i>May 21, 2021
-                            </li>
-                            <li>
-                              <span class="comments me-3">
-                                <a href="javascript:void(0)">2 Comments</a>
-                              </span>
-                              <span class="link-share">
-                                <a href="javascript:void(0)">Share</a>
-                              </span>
-                            </li>
-                          </ul>
-                        </div>
-                        <h5 class="title mb-4">
-                          <a href="blog-detail-left-sidebar.html"
-                            >Corporis tempora molestiae nulla esse ipsam</a
-                          >
-                        </h5>
-                        <p class="short-desc mb-5">
-                          Lorem ipsum dolor sit amet, consectet adipi elit, sed
-                          do eius tempor incididunt ut labore gthydolore magna
-                          aliqua.
-                        </p>
-                        <div class="button-wrap">
-                          <a
-                            class="btn btn-custom-size btn-dark btn-lg rounded-0"
-                            href="blog-detail-left-sidebar.html"
-                            >Read More</a
-                          >
-                        </div>
-                      </div>
+                  <div class="blog-content">
+                    <div class="blog-meta text-dim-gray pb-3">
+                      <ul>
+                        <li class="date">
+                          <i class="fa fa-calendar-o me-2"></i>september 21, 2024
+                        </li>
+        
+                      </ul>
+                    </div>
+                    <h5 class="title mb-4">
+                  <a href="/blog_detail_1"
+                        >Quy trình sản xuất trái cây sấy lạnh</a
+                      >
+                    </h5>
+                    <p class="short-desc mb-5">
+                      Quy trình sản xuất trái cây sấy không chỉ giúp bảo quản trái 
+                      cây lâu dài...
+                    </p>
+                    <div class="button-wrap">
+                      <a
+                        class="btn btn-custom-size lg-size btn-dark rounded-0"
+                        href="/blog_detail_1"
+                        >Chi tiết</a
+                      >
                     </div>
                   </div>
                 </div>
+              </div>
+                  <div class="swiper-slide">
+                    <div class="blog-item">
+                      <div class="blog-img img-zoom-effect">
+                      <a href="/blog_detail_3">
+                      <img
+                        class="img-full"
+                        src="assets\images\blog\medium-size\trai-cay-say-lanh-la-gi-5-1.jpg"
+                        alt="Blog Image"
+                      />
+                    </a>
+                  </div>
+                  <div class="blog-content">
+                    <div class="blog-meta text-dim-gray pb-3">
+                      <ul>
+                        <li class="date">
+                          <i class="fa fa-calendar-o me-2"></i>November 5, 2024
+                        </li>
+                        
+                      </ul>
+                    </div>
+                    <h5 class="title mb-4">
+                      <a href="/blog_detail_3"
+                        >Trái cây sấy lạnh - lựa chọn cho phong cách sống hiện đại</a
+                      >
+                    </h5>
+                    <p class="short-desc mb-5">
+                       Khám khá lợi ích sức khỏe và sự tiện lợi của trái cây sấy lạnh. 
+                       
+                    </p>
+                    <div class="button-wrap">
+                      <a
+                        class="btn btn-custom-size lg-size btn-dark rounded-0"
+                        href="/blog_detail_3"
+                        >Chi tiết</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                    <div class="blog-item">
+                      <div class="blog-img img-zoom-effect">
+                      <a href="/blog_detail_4">
+                      <img
+                        class="img-full"
+                        src="assets\images\blog\medium-size\tu-tap.jpg"
+                        alt="Blog Image"
+                      />
+                    </a>
+                  </div>
+                  <div class="blog-content">
+                    <div class="blog-meta text-dim-gray pb-3">
+                     <ul>
+                        <li class="date">
+                          <i class="fa fa-calendar-o me-2"></i>November 29, 2024
+                        </li>
+
+                      </ul>
+                    </div>
+                    <h5 class="title mb-4">
+                      <a href="/blog_detail_4"
+                        >Món ăn vặt healthy dành cho genZ </a
+                      >
+                    </h5>
+                    <p class="short-desc mb-5">
+                    Trong những buổi tụ tập cùng bạn bè, lựa chọn những món ăn vặt lành mạnh để bảo vệ 
+                    ...
+                    </p>
+                    <div class="button-wrap">
+                      <a
+                        class="btn btn-custom-size lg-size btn-dark rounded-0"
+                        href="/blog_detail_4"
+                        >Chi tiết</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
                 <!-- Add Arrows -->
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
