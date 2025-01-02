@@ -73,7 +73,6 @@
     box-sizing: border-box;
 }
 
-
 @media (prefers-reduced-motion: no-preference) {
     :root {
         scroll-behavior: smooth;
@@ -3778,8 +3777,8 @@ fieldset:disabled .btn {
 }
 
 .btn-secondary:hover {
-    color: #fff;
-    background-color: #010101;
+    color: #010101;
+    background-color: #fff;
     border-color: #010101;
 }
 

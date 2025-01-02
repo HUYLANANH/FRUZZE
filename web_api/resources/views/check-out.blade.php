@@ -97,13 +97,13 @@
                 <div class="row">
                   <div class="col-md-6">
                     <label>
-                      <input type="radio" name="payment-method" value="cash" checked />
+                      <input type="radio" name="payment-method" value="1" checked />
                       Thanh toán bằng tiền mặt
                     </label>
                   </div>
                   <div class="col-md-6">
                     <label>
-                      <input type="radio" name="payment-method" value="bank-transfer" />
+                      <input type="radio" name="payment-method" value="2" />
                       Chuyển khoản ngân hàng
                     </label>
                   </div>
@@ -191,6 +191,7 @@ document.getElementById("confirm-order").addEventListener("click", async () => {
 
         // Chuẩn bị dữ liệu đơn hàng
         const orderData = {
+            payment_method: parseInt(customerInfo.paymentMethod),
             address_ship: customerInfo.address_ship,
             subtotal_price: cartData.totalBeforeVoucher,
             total_price: cartData.totalAfterVoucher,
@@ -213,6 +214,8 @@ document.getElementById("confirm-order").addEventListener("click", async () => {
 
         const responseText = await response.text(); // Lấy phản hồi dưới dạng văn bản
         console.log(responseText);
+        console.log("Order Data: ", orderData);
+
 
         if (!response.ok) {
             const errorData = JSON.parse(responseText);
@@ -220,12 +223,11 @@ document.getElementById("confirm-order").addEventListener("click", async () => {
             return;
         }
 
-        
         // Xóa dữ liệu giỏ hàng sau khi đặt hàng thành công
         localStorage.removeItem("checkoutData");
 
-   // Hiển thị hóa đơn cho khách hàng
-   const invoiceHtml = `
+        // Hiển thị hóa đơn cho khách hàng
+        const invoiceHtml = `
               <style>
                 body {
                     font-family: Arial, sans-serif;
@@ -266,7 +268,7 @@ document.getElementById("confirm-order").addEventListener("click", async () => {
                 <p><strong>Địa chỉ:</strong> ${customerInfo.address_ship}</p>
                 <p><strong>Email:</strong> ${customerInfo.email}</p>
                 <p><strong>Số điện thoại:</strong> ${customerInfo.phone}</p>
-                <p><strong>Phương thức thanh toán:</strong> Thanh toán bằng tiền mặt</p>
+                <p><strong>Phương thức thanh toán:</strong> ${customerInfo.paymentMethod === "1" ? "Thanh toán bằng tiền mặt" : "Chuyển khoản ngân hàng"}</p>
                 <table border="1" style="width: 100%; text-align: center;">
                     <thead>
                         <tr>
@@ -308,6 +310,74 @@ document.getElementById("confirm-order").addEventListener("click", async () => {
             window.location.href = "/thank-you";
         }, 10000);
 
+    } catch (error) {
+        console.error("Lỗi khi đặt hàng:", error);
+        alert("Đã xảy ra lỗi khi đặt hàng. Vui lòng thử lại.");
+    }
+});
+
+document.getElementById("confirm-order").addEventListener("click", async () => {
+    try {
+        const customerInfo = {
+            name: document.getElementById("name").value,
+            address_ship: document.getElementById("address_ship").value,
+            email: document.getElementById("email").value,
+            phone: document.getElementById("phone").value,
+            paymentMethod: document.querySelector('input[name="payment-method"]:checked').value,
+        };
+
+        // Kiểm tra thông tin người dùng
+        if (!customerInfo.name || !customerInfo.address_ship || !customerInfo.email || !customerInfo.phone) {
+            alert("Vui lòng điền đầy đủ thông tin!");
+            return;
+        }
+
+        const cartData = JSON.parse(localStorage.getItem("checkoutData"));
+        if (!cartData || !cartData.items || cartData.items.length === 0) {
+            alert("Giỏ hàng của bạn đang trống.");
+            window.location.href = "/cart";
+            return;
+        }
+
+        // Chuẩn bị dữ liệu đơn hàng
+        const orderData = {
+            payment_method: parseInt(customerInfo.paymentMethod),
+            address_ship: customerInfo.address_ship,
+            subtotal_price: cartData.totalBeforeVoucher,
+            total_price: cartData.totalAfterVoucher,
+            order_details: cartData.items.map(item => ({
+                product_id: item.product_id,
+                quantity: item.quantity,
+                price: item.price
+            }))
+        };
+
+        // Nếu chọn phương thức thanh toán chuyển khoản ngân hàng (VNPAY)
+        if (customerInfo.paymentMethod == "2") {
+            const response = await fetch('/api/vnpay', {
+                method: 'GET', // Gửi request với phương thức POST
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                },
+                body: JSON.stringify({
+                    order_id: cartData.order_id, // order_id
+                    total_price: cartData.totalAfterVoucher // total_price
+                })
+            });
+
+            const responseText = await response.json(); // Đọc response dưới dạng JSON
+
+            if (!response.ok) {
+                const errorData = responseText;
+                alert(`Thanh toán VNPAY thất bại: ${errorData.message}`);
+                return;
+            }
+
+            // Lấy link thanh toán từ backend và điều hướng người dùng đến link này
+            const paymentUrl = responseText.data;
+            window.location.href = paymentUrl; // Redirect đến trang thanh toán VNPAY
+        } 
     } catch (error) {
         console.error("Lỗi khi đặt hàng:", error);
         alert("Đã xảy ra lỗi khi đặt hàng. Vui lòng thử lại.");
