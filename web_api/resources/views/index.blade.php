@@ -467,9 +467,8 @@
           </div>
         </div>
       <!-- Banner Area End Here -->
-
       <!-- Begin Blog Area -->
-<div class="blog-area section-space-y-axis-100">
+      <div class="blog-area section-space-y-axis-100">
         <div class="container">
           <div class="section-title text-center pb-55">
             <span class="sub-title text-primary">Xem Các</span>
@@ -635,6 +634,8 @@
                   </div>
                 </div>
               </div>
+</div>
+
                 <!-- Add Arrows -->
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
