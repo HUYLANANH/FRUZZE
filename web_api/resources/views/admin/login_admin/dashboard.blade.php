@@ -55,20 +55,53 @@
             color: #04702c;
         }
 
-        .chart-container {
-            width: 100%;
-            margin-top: 30px;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+.chart-container {
+    width: 20%;
+    margin-top: 30px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-        canvas {
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
+.dashboard-title {
+    font-size: 24px; /* Tiêu đề nhỏ hơn */
+    font-weight: bold;
+    color: #04702c;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.legend-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    gap: 10px; /* Khoảng cách giữa các chú thích */
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.legend-item span {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+    border-radius: 4px; /* Góc bo tròn cho ô màu */
+}
+
+canvas {
+    max-width: 100%;
+    height: auto;
+}
+</style>
 </head>
 <body>
     <main>
@@ -84,17 +117,14 @@
                 <p id="total-revenue">0 VND</p>
             </div>
             <div class="stat-card">
-                <h3>Khách Hàng</h3>
-                <p id="total-customers">0</p>
-            </div>
-            <div class="stat-card">
-                <h3>Đơn Hàng Thành Công</h3>
-                <p id="completed-orders">0</p>
+                <h3>Doanh Thu Hôm Nay</h3>
+                <p id="today-revenue">0 VND</p>
             </div>
         </div>
 
         <div class="chart-container">
-            <canvas id="orderChart"></canvas>
+            <h3 class="dashboard-title">Biểu Đồ Trạng Thái Đơn Hàng</h3>
+            <canvas id="orderStatusChart"></canvas>
         </div>
     </main>
 </body>
@@ -107,51 +137,85 @@
     });
 
     function loadDashboardStats() {
-        fetch('http://127.0.0.1:8000/api/dashboard/stats', {
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
-            }
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Failed to fetch dashboard stats');
-            }
-            return response.json();
-        })
+        const headers = {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+        };
+
+        // Gọi API để lấy tổng doanh thu
+        fetch('http://127.0.0.1:8000/api/dashboard/total_revenue', { headers })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('total-revenue').innerText = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(data.total_revenue || 0);
+            })
+            .catch(error => console.error('Failed to fetch total revenue:', error));
+
+        // Gọi API để lấy doanh thu hôm nay
+        fetch('http://127.0.0.1:8000/api/dashboard/today-revenue', { headers })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('today-revenue').innerText = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(data.today_revenue || 0);
+            })
+            .catch(error => console.error('Failed to fetch today revenue:', error));
+
+        // Gọi API để lấy phần trăm trạng thái đơn hàng
+        fetch('http://127.0.0.1:8000/api/dashboard/order-status-percentages', { headers })
+            .then(response => response.json())
+            .then(data => {
+                renderOrderStatusChart(data);
+            })
+            .catch(error => console.error('Failed to fetch order status percentages:', error));
+        // Gọi API để lấy tổng doanh thu
+        fetch('http://127.0.0.1:8000/api/dashboard/total-orders', { headers })
+        .then(response => response.json())
         .then(data => {
             document.getElementById('total-orders').innerText = data.total_orders || 0;
-            document.getElementById('total-revenue').innerText = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(data.total_revenue || 0);
-            document.getElementById('total-customers').innerText = data.total_customers || 0;
-            document.getElementById('completed-orders').innerText = data.completed_orders || 0;
-
-            renderOrderChart(data.order_stats);
         })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Failed to load dashboard stats. Please try again later.');
-        });
+        .catch(error => console.error('Failed to fetch total orders:', error));
     }
 
-    function renderOrderChart(orderStats) {
-        const ctx = document.getElementById('orderChart').getContext('2d');
+    function renderOrderStatusChart(statusPercentages) {
+        const ctx = document.getElementById('orderStatusChart').getContext('2d');
+        const labels = Object.keys(statusPercentages);
+        const data = Object.values(statusPercentages);
+
         new Chart(ctx, {
-            type: 'line',
+            type: 'doughnut',
             data: {
-                labels: orderStats.map(stat => stat.date),
+                labels: labels,
                 datasets: [{
-                    label: 'Đơn Hàng Mỗi Ngày',
-                    data: orderStats.map(stat => stat.order_count),
-                    backgroundColor: 'rgba(4, 112, 44, 0.2)',
-                    borderColor: 'rgba(4, 112, 44, 1)',
-                    borderWidth: 2,
+                    data: data,
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.6)',
+                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(255, 206, 86, 0.6)',
+                        'rgba(54, 162, 235, 0.6)'
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(54, 162, 235, 1)'
+                    ],
+                    borderWidth: 1
                 }]
             },
             options: {
                 responsive: true,
                 plugins: {
-                    legend: { display: true },
+                    legend: {
+                        display: true,
+                        position: 'top'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function (tooltipItem) {
+                                return `${tooltipItem.label}: ${tooltipItem.raw}%`;
+                            }
+                        }
+                    }
                 }
             }
         });
     }
 </script>
+@include('layouts.endadmin')
