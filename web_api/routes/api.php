@@ -101,8 +101,6 @@ Route::group([
     Route::delete('order/{id}', [OrderController::class, 'destroy']);
     //cập nhật trạng thái
     Route::patch('order/{id}', [OrderController::class, 'updateStatus']);
-    //vnpay
-    Route::get('vnpay', [VNPayController::class, 'vnpay_payment']);
 });
 
 Route::group([
@@ -140,4 +138,11 @@ Route::group([
     Route::get('order-status-percentages', [DashboardController::class, 'getOrderStatusPercentages']);
 });
 
-
+Route::group([
+    'prefix' => 'payment',
+], function ($router) {
+    // lấy tổng doanh thu
+    Route::get('vnpay', [VNPayController::class, 'vnpay_payment']);
+    //lấy doanh thu hôm nay
+    Route::get('vnpay_return', [VNPayController::class, 'return']);
+});

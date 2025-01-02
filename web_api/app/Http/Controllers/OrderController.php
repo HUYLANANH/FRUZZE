@@ -26,7 +26,7 @@ class OrderController extends Controller
         return response()->json($orders);
     }
 
-    private function checkStockAvailability($orderDetails)
+    public function checkStockAvailability($orderDetails)
     {
         foreach ($orderDetails as $detail) {
             $warehouse = Warehouse::where('product_id', $detail['product_id'])->first();
@@ -38,7 +38,7 @@ class OrderController extends Controller
         return true; // Nếu tất cả sản phẩm đều đủ trong kho
     }
 
-    private function updateStockQuantities($orderDetails)
+    public function updateStockQuantities($orderDetails)
     {
         foreach ($orderDetails as $detail) {
             $warehouse = Warehouse::where('product_id', $detail['product_id'])->first();
@@ -51,7 +51,7 @@ class OrderController extends Controller
         }
     }
 
-    private function removeProductsFromCart($cartId, $orderDetails)
+    public function removeProductsFromCart($cartId, $orderDetails)
     {
         foreach ($orderDetails as $detail) {
             // Kiểm tra xem sản phẩm có trong cart_items không
