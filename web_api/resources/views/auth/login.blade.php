@@ -43,7 +43,7 @@
                       </div>
 
             <!-- Error Message -->
-            <span id="errorMessage" style="color: red; display: none;">Sai email hoặc mật khẩu</span>
+            <span id="errorMessage" style="color: red; display: none;">Sai username hoặc mật khẩu</span>
 
                       <div class="col-md-8">
                       <div class="create-acc txt-center">

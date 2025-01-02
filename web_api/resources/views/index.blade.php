@@ -7,7 +7,7 @@
             <div class="swiper-slide animation-style-01">
               <div
                 class="slide-inner bg-height"
-                data-bg-image="assets/images/slider/bg/1-1.jpg"
+                data-bg-image="assets/images/slider/bg/1-4.jpg"
               >
                 <div class="container">
                   <div class="parallax-with-content">
@@ -30,7 +30,7 @@
                         <div class="scene fill">
                           <div class="expand-width" data-depth="0.5">
                             <img
-                              src="assets/images/Ảnh trang chủ/Claudia Alves.png"
+                              src="assets/images/Claudia Alves (1).png"
                               alt="Inner Image"
                             />
                           </div>
@@ -44,7 +44,7 @@
             <div class="swiper-slide animation-style-01">
               <div
                 class="slide-inner bg-height"
-                data-bg-image="assets/images/slider/bg/1-1.jpg"
+                data-bg-image="assets/images/slider/bg/1-4.jpg"
               >
                 <div class="container">
                   <div class="parallax-with-content">
@@ -67,7 +67,7 @@
                         <div class="scene fill">
                           <div class="expand-width" data-depth="0.5">
                             <img
-                              src="assets/images/Ảnh trang chủ/Screenshot 2024-11-14 192759.png"
+                              src="assets/images/Claudia Alves.png"
                               alt="Inner Image"
                             />
                           </div>
@@ -300,8 +300,8 @@
 
       <!-- Begin Banner Area -->
       <div
-        class="banner-area banner-with-parallax py-10"
-        data-bg-image="assets/images/banner/2-1-1920x523.jpg"
+        class="banner-area banner-with-parallax py-1"
+        data-bg-image="assets/images/banner/2-1.jpg"
       >
         <div class="container">
           <div class="row">
