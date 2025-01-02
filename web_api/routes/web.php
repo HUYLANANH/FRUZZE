@@ -108,7 +108,7 @@ Route::prefix('product')->group(function () {
     Route::get('update/{id}', function ($id) {
         return view('admin.product.update', ['id' => $id]);
     })->name('update');
-    
+
 });
 
 Route::get('orders', function () {
@@ -146,3 +146,8 @@ Route::prefix('warehouse')->group(function () {
         return view('admin.warehouse.updatewh', ['id' => $id]);
     })->name('update');
 });
+
+Route::get('vnpay_return', function () {
+    return view('vnpay.vnpay_return');
+})->name('vnpay_return');
+

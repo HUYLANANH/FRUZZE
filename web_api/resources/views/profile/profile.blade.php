@@ -28,7 +28,7 @@
                             <div class="row">
                                 <!-- Avatar -->
                                 <div class="col-md-12 text-center mb-4">
-                                    <img id="avatar" src="assets/images/meme-meo-bua-6.png" alt="Avatar" class="img-thumbnail rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
+                                    <img id="avatar" src="assets/images/meme-meo-cuoi-1.png" alt="Avatar" class="img-thumbnail rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
                                 </div>
 
                                 <!-- Full Name -->
@@ -81,7 +81,7 @@
                                 <div class="col-12 d-flex justify-content-between mt-3">
                                     <button type="button" id="edit-profile" class="btn btn-primary">Sửa Thông Tin</button>
                                     <button type="button" id="change-password" class="btn btn-secondary">Đổi mật khẩu</button>
-                                    <a href="{{ route('track-order') }}" class="btn btn-info">Theo dõi đơn hàng</a>
+                                    <a href="{{ route('track-order') }}" class="btn btn-primary">Theo dõi đơn hàng</a>
                                 </div>
                             </div>
                         </div>
@@ -183,6 +183,11 @@ document.getElementById('edit-profile').addEventListener('click', function() {
 
     // Nếu đang lưu thay đổi, gọi hàm saveProfile
     if (isEditing) saveProfile();
+});
+
+// Sự kiện khi nhấn nút "Đổi mật khẩu"
+document.getElementById('change-password').addEventListener('click', function () {
+    window.location.href = '/change-password';  // Chuyển hướng đến trang đổi mật khẩu
 });
 
     </script>

@@ -10,6 +10,7 @@ use App\Http\Controllers\EmailController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\VNPayController;
 use App\Http\Controllers\WarehouseController;
 
 Route::group([
@@ -100,6 +101,8 @@ Route::group([
     Route::delete('order/{id}', [OrderController::class, 'destroy']);
     //cập nhật trạng thái
     Route::patch('order/{id}', [OrderController::class, 'updateStatus']);
+    //vnpay
+    Route::get('vnpay', [VNPayController::class, 'vnpay_payment']);
 });
 
 Route::group([
@@ -136,3 +139,5 @@ Route::group([
     //lấy phần trăm trạng thái
     Route::get('order-status-percentages', [DashboardController::class, 'getOrderStatusPercentages']);
 });
+
+

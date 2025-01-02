@@ -39,10 +39,19 @@
                         <input
                           class="input-checkbox"
                           type="checkbox"
+                          id="1"
+                          data-category-id="1"
+                        />
+                        <label class="label-checkbox mb-0" for="1">Trái Cây Sấy Lạnh Thăng Hoa</label>
+                      </li>
+                      <li>
+                        <input
+                          class="input-checkbox"
+                          type="checkbox"
                           id="2"
                           data-category-id="2"
                         />
-                        <label class="label-checkbox mb-0" for="2">Trái Cây Sấy Lạnh Thăng Hoa</label>
+                        <label class="label-checkbox mb-0" for="2">Sữa Chua Sấy Lạnh Thăng Hoa</label>
                       </li>
                       <li>
                         <input
@@ -51,16 +60,7 @@
                           id="3"
                           data-category-id="3"
                         />
-                        <label class="label-checkbox mb-0" for="3">Sữa Chua Sấy Lạnh Thăng Hoa</label>
-                      </li>
-                      <li>
-                        <input
-                          class="input-checkbox"
-                          type="checkbox"
-                          id="4"
-                          data-category-id="4"
-                        />
-                        <label class="label-checkbox mb-0" for="4">Mix</label>
+                        <label class="label-checkbox mb-0" for="3">Mix</label>
                       </li>
                     </ul>
                   </div>

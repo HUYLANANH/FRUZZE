@@ -47,11 +47,12 @@
                   </a>
                   <div class="header-search-area d-none d-lg-block">
                     <form action="#" class="header-searchbox">
-                      <select class="nice-select select-search-category wide">
-                        <option value="all">Tất Cả Sản Phẩm</option>
-                        <option value="product-item">Trái Cây Sấy Lạnh</option>
-                        <option value="product-item-2">Combo</option>
-                      </select>
+                    <select id="categorySelect" class="nice-select select-search-category wide">
+                      <option value="all" href="/shop">Tất Cả Sản Phẩm</option>
+                      <option value="1" href="/shop">Trái Cây Sấy Lạnh</option>
+                      <option value="2" href="/shop">Sữa Chua Sấy Lạnh</option>
+                      <option value="3" href="/shop">Mix</option>
+                    </select>
                       <input
                         class="input-field"
                         type="text"
