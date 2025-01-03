@@ -45,6 +45,17 @@ Route::group([
 });
 
 Route::group([
+    'prefix' => 'mail'
+], function ($router) {
+    // API gửi OTP
+    Route::post('send-order-email', [EmailController::class, 'sendOrderEmail']);
+    //API xác nhận OTOP
+    Route::post('verify-otp', [EmailController::class, 'verifyOtp']);
+    //API đổi mk
+    Route::patch('reset-password', [AuthController::class, 'resetPassword']);
+});
+
+Route::group([
     'prefix' => 'admin',
 ], function ($router) {
     // lấy danh sách theo role
