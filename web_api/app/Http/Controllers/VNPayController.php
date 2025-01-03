@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Cache;
 use App\Models\Order;
 use App\Models\Cart;
 use App\Http\Controllers\OrderController;
+use App\Models\User;
 
 class VNPayController extends Controller
 {
@@ -135,6 +136,11 @@ class VNPayController extends Controller
 
         // Xóa dữ liệu khỏi cache sau khi xử lý
         Cache::forget($cacheKey);
+
+        $user = User::where('id', $order->user_id)->first();
+
+        $emailController = new EmailController();
+        $emailController->sendOrderEmail($order->id,$user->email);
 
         return response()->json($order->load('orderDetails'), 201);
     }
