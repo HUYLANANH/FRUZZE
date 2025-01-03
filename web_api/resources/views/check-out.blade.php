@@ -72,11 +72,11 @@
                 <tfoot>
                   <tr>
                     <th colspan="2">Tổng giá trị sản phẩm</th>
-                    <td id="subtotal">0 VNĐ</td>
+                    <td id="subtotal" style="text-align: center; vertical-align: middle;">0 VNĐ</td>
                   </tr>
                   <tr>
                     <th colspan="2">Số tiền phải thanh toán</th>
-                    <td id="total">0 VNĐ</td>
+                    <td id="total" style="text-align: center; vertical-align: middle;">0 VNĐ</td>
                   </tr>
                 </tfoot>
               </table>
