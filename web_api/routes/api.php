@@ -137,7 +137,9 @@ Route::group([
     //lấy phần trăm trạng thái
     Route::get('order-status-percentages', [DashboardController::class, 'getOrderStatusPercentages'])->middleware('admin');
     //lấy top 5 người dùng chi tiêu nhiều nhất
-    Route::get('top-5-spending', [DashboardController::class, 'getTop5SpendingUsers']);
+    Route::get('top-5-spending', [DashboardController::class, 'getTop5SpendingUsers'])->middleware('admin');
+    //lấy top 5 người dùng chi tiêu nhiều nhất
+    Route::get('top-5-selling', [DashboardController::class, 'getTop5SellingProducts']);
 });
 
 Route::group([

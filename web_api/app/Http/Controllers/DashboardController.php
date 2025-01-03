@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use Carbon\Carbon;
+use App\Models\OrderDetail;
 
 class DashboardController extends Controller
 {
@@ -104,13 +105,19 @@ class DashboardController extends Controller
         return response()->json($topUsers, 200);
     }
 
-
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function getTop5SellingProducts()
     {
-        //
+        $topProducts = OrderDetail::select('products.name', 'products.price', 'warehouses.quantity') // Chọn tên, giá và số lượng tồn kho
+            ->selectRaw('SUM(order_details.quantity) as total_sold') // Tính tổng số lượng đã bán
+            ->join('orders', 'order_details.order_id', '=', 'orders.id') // Join với bảng orders
+            ->join('products', 'order_details.product_id', '=', 'products.id') // Join với bảng products
+            ->join('warehouses', 'products.id', '=', 'warehouses.product_id') // Join với bảng warehouse
+            ->where('orders.status', 'Hoàn tất') // Chỉ tính cho các đơn hàng đã hoàn tất
+            ->groupBy('order_details.product_id', 'products.name', 'products.price', 'warehouses.quantity') // Nhóm theo product_id
+            ->orderBy('total_sold', 'desc') // Sắp xếp theo tổng số lượng bán
+            ->take(5) // Lấy 5 sản phẩm
+            ->get(['products.name', 'products.price', 'total_sold', 'warehouses.quantity']); // Chọn các trường cần thiết
+
+        return response()->json($topProducts, 200);
     }
 }
