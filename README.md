@@ -19,7 +19,7 @@
 
 -    **Đề tài:** Trang web bán trái cây sấy
 -    **Repository:** [PHÁT TRIỂN ỨNG DỤNG WEB - IS207](https://github.com/HUYLANANH/FRUZZE)
--    **Behance:** [FRUZZE Website]()
+-    **Behance:** [FRUZZE Website](https://www.behance.net/gallery/215955007/WEBSITETRAI-CAY-SY-LNH-FRUZZE)
 -    **Trang giới thiệu nhóm:** [FRUZZE](https://elderly-card-72d.notion.site/PH-T-TRI-N-NG-D-NG-WEB-IS207-P13-NH-M-10-146775a8506780bb83a1ecc5261e7dc9)
 
 ## CÔNG NGHỆ SỬ DỤNG
