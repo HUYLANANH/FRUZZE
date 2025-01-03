@@ -15,102 +15,103 @@
         }
 
         main {
-            display: flex;
-            justify-content: center;
+            margin-left: 200px;
             padding: 20px;
         }
 
-        .widgets-title {
-            font-size: 28px;
+        .detail-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .detail-title {
+            font-size: 24px;
             font-weight: bold;
-            text-align: center;
-            color: rgb(4, 46, 27);
             margin-bottom: 20px;
-            line-height: 1.5;
+            color: #04702c;
+        }
+
+        .detail-item {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .detail-item span {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #04702c;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-back:hover {
+            background-color: #035c25;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
-            background-color: #fff;
+            margin-top: 20px;
         }
 
-        thead th {
-            background-color: #04702c;
-            color: #fff;
-            padding: 12px;
-            text-transform: uppercase;
+        table, th, td {
+            border: 1px solid #ddd;
         }
 
-        tbody td {
-            padding: 12px;
-            border-bottom: 1px solid #ddd;
+        th, td {
+            padding: 10px;
+            text-align: left;
         }
 
-        tbody tr:hover {
-            background-color: #f1f5f9;
-        }
-
-        th,
-        td {
-            text-align: center;
-        }
-
-        .btn {
-            padding: 8px 12px;
-            border: none;
-            border-radius: 4px;
-            color: #fff;
-            background-color: #04702c;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .btn:hover {
-            background-color: #035b1f;
-        }
-
-        a {
-            color: #04702c;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
+        th {
+            background-color: #f4f6f9;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
     <main>
-        <div class="flex flex-col items-center justify-start gap-6 p-6">
-            <h1 class="widgets-title">CHI TIẾT ĐƠN HÀNG</h1>
+        <div class="detail-container">
+            <h1 class="detail-title">Chi Tiết Đơn Hàng</h1>
 
-            <div class="w-full rounded-lg border border-gray-300 bg-white shadow-xl p-6">
-                <div class="w-full overflow-x-auto">
-                    <table class="w-full table-auto text-sm text-center">
-                        <thead>
-                            <tr>
-                                <th>Mã Chi Tiết</th>
-                                <th>Mã Đơn Hàng</th>
-                                <th>Tên Sản Phẩm</th>
-                                <th>Số Lượng</th>
-                                <th>Giá</th>
-                                <th>Hành Động</th>
-                            </tr>
-                        </thead>
-                        <tbody id="detail-order-list">
-                            <!-- Dữ liệu sẽ được load từ API -->
-                        </tbody>
-                    </table>
-                </div>
+            <div class="detail-item">
+                <span>Mã đơn hàng:</span> <span id="order-id"></span>
             </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Product Name</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Created At</th>
+                    </tr>
+                </thead>
+                <tbody id="order-details"></tbody>
+            </table>
+
+            <a href="javascript:history.back()" class="btn-back">Quay lại</a>
         </div>
     </main>
 
     <script>
-        // Load order details dynamically from API
-        function loadOrderDetails(orderId) {
+document.addEventListener('DOMContentLoaded', function() {
+    const orderId = window.location.pathname.split('/').pop();
+
     fetch(`http://127.0.0.1:8000/api/order/${orderId}`, {
         method: 'GET',
         headers: {
@@ -120,63 +121,67 @@
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error('Failed to fetch order details');
+            throw new Error('Không thể tải chi tiết đơn hàng');
         }
         return response.json();
     })
-    .then(data => {
-        if (!data || !data.orderDetails || data.orderDetails.length === 0) {
-            document.getElementById('detail-order-list').innerHTML = '<tr><td colspan="6" class="text-center">Không có chi tiết nào</td></tr>';
-            return;
+    .then(order => {
+        // Hiển thị thông tin đơn hàng
+        document.getElementById('order-id').textContent = order.id || 'N/A';
+
+        const orderDetails = document.getElementById('order-details');
+        if (Array.isArray(order.order_details)) {
+            if (order.order_details.length === 0) {
+                const emptyRow = document.createElement('tr');
+                const emptyCell = document.createElement('td');
+                emptyCell.colSpan = 5;
+                emptyCell.textContent = 'Không có sản phẩm nào trong đơn hàng';
+                emptyRow.appendChild(emptyCell);
+                orderDetails.appendChild(emptyRow);
+            } else {
+                order.order_details.forEach(detail => {
+                    const row = document.createElement('tr');
+
+                    const orderIdCell = document.createElement('td');
+                    orderIdCell.textContent = detail.order_id || 'N/A';
+                    row.appendChild(orderIdCell);
+
+                    const productNameCell = document.createElement('td');
+                    productNameCell.textContent = detail.product_name || 'N/A';
+                    row.appendChild(productNameCell);
+
+                    const quantityCell = document.createElement('td');
+                    quantityCell.textContent = detail.quantity || 'N/A';
+                    row.appendChild(quantityCell);
+
+                    const priceCell = document.createElement('td');
+                    priceCell.textContent = detail.price ? new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(detail.price) : 'N/A';
+                    row.appendChild(priceCell);
+
+                    const createdAtCell = document.createElement('td');
+                    createdAtCell.textContent = detail.created_at ? new Date(detail.created_at).toLocaleDateString() : 'N/A';
+                    row.appendChild(createdAtCell);
+
+                    orderDetails.appendChild(row);
+                });
+            }
+        } else {
+            console.error('Dữ liệu chi tiết đơn hàng không hợp lệ');
+            const errorRow = document.createElement('tr');
+            const errorCell = document.createElement('td');
+            errorCell.colSpan = 5;
+            errorCell.textContent = 'Lỗi: Dữ liệu chi tiết đơn hàng không hợp lệ';
+            errorRow.appendChild(errorCell);
+            orderDetails.appendChild(errorRow);
         }
-        renderOrderDetails(data.orderDetails);
     })
     .catch(error => {
-    console.error('Error:', error);
-    document.getElementById('detail-order-list').innerHTML = '<tr><td colspan="6" class="text-center">Không tìm thấy đơn hàng</td></tr>';
+        console.error('Lỗi:', error);
+        alert('Không thể tải chi tiết đơn hàng. Vui lòng thử lại sau.');
+    });
 });
 
-}
 
-        function renderOrderDetails(details) {
-            const detailOrderList = document.getElementById('detail-order-list');
-            detailOrderList.innerHTML = '';
-
-            if (details && details.length > 0) {
-                details.forEach(detail => {
-                    const row = `
-                        <tr class="border border-gray-300 text-center">
-                            <td class="border border-gray-300 px-6 py-4">${detail.id}</td>
-                            <td class="border border-gray-300 px-6 py-4">
-                                <a href="/orders/${detail.order_id}/details">${detail.order_id}</a>
-                            </td>
-                            <td class="border border-gray-300 px-6 py-4">${detail.product_name}</td>
-                            <td class="border border-gray-300 px-6 py-4">${detail.quantity}</td>
-                            <td class="border border-gray-300 px-6 py-4">
-                                ${new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(detail.price)}
-                            </td>
-                            <td class="border border-gray-300 px-6 py-4">
-                                <button class="btn" onclick="viewInvoice(${detail.id})">Xem Hóa Đơn</button>
-                            </td>
-                        </tr>
-                    `;
-                    detailOrderList.innerHTML += row;
-                });
-            } else {
-                detailOrderList.innerHTML = '<tr><td colspan="6" class="text-center">Không có chi tiết nào</td></tr>';
-            }
-        }
-
-        function viewInvoice(detailId) {
-            alert(`Xem hóa đơn cho chi tiết ID: ${detailId}`);
-            // Implement your logic to view the invoice here
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const orderId = 1; // Replace with dynamic order ID if needed
-            loadOrderDetails(orderId);
-        });
     </script>
 </body>
 </html>
-@include('layouts.endadmin')

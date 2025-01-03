@@ -55,53 +55,79 @@
             color: #04702c;
         }
 
-.chart-container {
-    width: 20%;
-    margin-top: 30px;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+        .chart-container {
+            width: 20%;
+            margin-top: 30px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-.dashboard-title {
-    font-size: 24px; /* Tiêu đề nhỏ hơn */
-    font-weight: bold;
-    color: #04702c;
-    margin-bottom: 20px;
-    text-align: center;
-}
+        .dashboard-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #04702c;
+            margin-bottom: 20px;
+            text-align: center;
+        }
 
-.legend-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 20px;
-    gap: 10px; /* Khoảng cách giữa các chú thích */
-}
+        .legend-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            gap: 10px;
+        }
 
-.legend-item {
-    display: flex;
-    align-items: center;
-    margin-right: 15px;
-}
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-right: 15px;
+        }
 
-.legend-item span {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    margin-right: 5px;
-    border-radius: 4px; /* Góc bo tròn cho ô màu */
-}
+        .legend-item span {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            margin-right: 5px;
+            border-radius: 4px;
+        }
 
-canvas {
-    max-width: 100%;
-    height: auto;
-}
-</style>
+        canvas {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .top-users-table {
+            width: 100%;
+            margin-top: 30px;
+            background-color: #fff;
+            border-collapse: collapse;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .top-users-table th, .top-users-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .top-users-table th {
+            background-color: #04702c;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .top-users-table tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
 </head>
 <body>
     <main>
@@ -126,6 +152,21 @@ canvas {
             <h3 class="dashboard-title">Biểu Đồ Trạng Thái Đơn Hàng</h3>
             <canvas id="orderStatusChart"></canvas>
         </div>
+
+        <h3 class="dashboard-title">Top 5 Người Chi Tiêu Nhiều Nhất</h3>
+        <table class="top-users-table">
+            <thead>
+                <tr>
+                    <th>Tên Khách Hàng</th>
+                    <th>Số Điện Thoại</th>
+                    <th>Tổng Chi Tiêu</th>
+                    <th>Tổng Số Đơn Hàng</th>
+                </tr>
+            </thead>
+            <tbody id="top-users-body">
+                <!-- Dữ liệu sẽ được chèn ở đây -->
+            </tbody>
+        </table>
     </main>
 </body>
 </html>
@@ -134,6 +175,7 @@ canvas {
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         loadDashboardStats();
+        loadTopSpendingUsers();
     });
 
     function loadDashboardStats() {
@@ -141,7 +183,6 @@ canvas {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
         };
 
-        // Gọi API để lấy tổng doanh thu
         fetch('http://127.0.0.1:8000/api/dashboard/total_revenue', { headers })
             .then(response => response.json())
             .then(data => {
@@ -149,7 +190,6 @@ canvas {
             })
             .catch(error => console.error('Failed to fetch total revenue:', error));
 
-        // Gọi API để lấy doanh thu hôm nay
         fetch('http://127.0.0.1:8000/api/dashboard/today-revenue', { headers })
             .then(response => response.json())
             .then(data => {
@@ -157,20 +197,44 @@ canvas {
             })
             .catch(error => console.error('Failed to fetch today revenue:', error));
 
-        // Gọi API để lấy phần trăm trạng thái đơn hàng
         fetch('http://127.0.0.1:8000/api/dashboard/order-status-percentages', { headers })
             .then(response => response.json())
             .then(data => {
                 renderOrderStatusChart(data);
             })
             .catch(error => console.error('Failed to fetch order status percentages:', error));
-        // Gọi API để lấy tổng doanh thu
+
         fetch('http://127.0.0.1:8000/api/dashboard/total-orders', { headers })
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('total-orders').innerText = data.total_orders || 0;
-        })
-        .catch(error => console.error('Failed to fetch total orders:', error));
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('total-orders').innerText = data.total_orders || 0;
+            })
+            .catch(error => console.error('Failed to fetch total orders:', error));
+    }
+
+    function loadTopSpendingUsers() {
+        const headers = {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+        };
+
+        fetch('http://127.0.0.1:8000/api/dashboard/top-5-spending', { headers })
+            .then(response => response.json())
+            .then(data => {
+                const tbody = document.getElementById('top-users-body');
+                tbody.innerHTML = '';
+                data.forEach(user => {
+                    const row = `
+                        <tr>
+                            <td>${user.full_name}</td>
+                            <td>${user.phone_number}</td>
+                            <td>${new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(user.total_spent)}</td>
+                            <td>${user.total_orders}</td>
+                        </tr>
+                    `;
+                    tbody.innerHTML += row;
+                });
+            })
+            .catch(error => console.error('Failed to fetch top spending users:', error));
     }
 
     function renderOrderStatusChart(statusPercentages) {
