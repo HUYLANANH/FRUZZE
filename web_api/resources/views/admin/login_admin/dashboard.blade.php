@@ -208,7 +208,7 @@ canvas {
         <div class="stat-grid">
             <div class="stat-card">
                 <h3>Tổng Đơn Hàng Theo Tháng</h3>
-                <p id="total-orders">0</p>
+                <p id="order-count">0</p>
             </div>
             <div class="stat-card">
                 <h3>Tổng Doanh Thu Theo Tháng</h3>
@@ -220,7 +220,7 @@ canvas {
             </div>
             <div class="stat-card">
                 <h3>Tổng Khách Hàng</h3>
-                <p id="today-revenue">0 VND</p>
+                <p id="user-count">0 </p>
             </div>
         </div>
 
@@ -298,6 +298,20 @@ canvas {
                 document.getElementById('total-revenue').innerText =
                     new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(data.total_revenue || 0);
             });
+        
+        fetch(`http://127.0.0.1:8000/api/dashboard/order-count?month=${month}&year=${year}`, { headers })
+            .then(response => response.json())
+            .then(data => {
+        document.getElementById('order-count').innerText = 
+            new Intl.NumberFormat('vi-VN').format(data.order_count || 0); // Hiển thị tổng số đơn hàng
+            });
+
+        fetch(`http://127.0.0.1:8000/api/dashboard/user-count?month=${month}&year=${year}`, { headers })
+            .then(response => response.json())
+            .then(data => {
+        document.getElementById('user-count').innerText = 
+            new Intl.NumberFormat('vi-VN').format(data.user_count || 0); // Hiển thị tổng số đơn hàng
+            });
 
         fetch(`http://127.0.0.1:8000/api/dashboard/today-revenue`, { headers })
             .then(response => response.json())
@@ -306,7 +320,10 @@ canvas {
                     new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(data.today_revenue || 0);
             });
 
-        fetch(`http://127.0.0.1:8000/api/dashboard/order-status-percentages`, { headers })
+
+
+
+        fetch(`http://127.0.0.1:8000/api/dashboard/order-status-percentages?month=${month}&year=${year}`, { headers })
             .then(response => response.json())
             .then(data => renderOrderStatusChart(data));
     }
@@ -387,31 +404,35 @@ canvas {
     }
 
     function loadTopSellingProducts() {
+    const month = document.getElementById('month-select').value;
+    const year = document.getElementById('year-select').value;
+
     const headers = {
-      'Authorization': `Bearer ${localStorage.getItem('token')}`
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
     };
 
-    fetch('http://127.0.0.1:8000/api/dashboard/top-5-selling?month=${month}&year=${year}', { headers })
-      .then(response => response.json())
-      .then(data => {
-        const tbody = document.getElementById('top-products-body');
-        tbody.innerHTML = '';
-        data.forEach((product, index) => {
-          tbody.innerHTML += `
-            <tr>
-              <td>${index + 1}</td>
-              <td>${product.name}</td>
-              <td>${product.price}</td>
-              <td>${product.total_sold}</td>
-              <td>${product.quantity}</td>
-            </tr>
-          `;
+    fetch(`http://127.0.0.1:8000/api/dashboard/top-5-selling?month=${month}&year=${year}`, { headers })
+        .then(response => response.json())
+        .then(data => {
+            const tbody = document.getElementById('top-products-body');
+            tbody.innerHTML = '';
+            data.forEach((product, index) => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>${product.name}</td>
+                        <td>${new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.price)}</td>
+                        <td>${product.total_sold}</td>
+                        <td>${product.quantity}</td>
+                    </tr>
+                `;
+            });
+        })
+        .catch(error => {
+            console.error('Fetch error:', error);
         });
-      })
-      .catch(error => {
-        console.error('Fetch error:', error);
-      });
 }
+
 
 </script>
 </body>

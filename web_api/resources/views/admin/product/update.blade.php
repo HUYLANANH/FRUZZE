@@ -101,7 +101,7 @@
             return fetch(`http://127.0.0.1:8000/api/product/thumbnail/${productId}`, {
                 method: 'POST',
                 headers: {
-                    'Authorization': `Bearer ${token}`
+                    'Authorization': `Bearer ${admin_admin_token}`
                 },
                 body: formData
             });
