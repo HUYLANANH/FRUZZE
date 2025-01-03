@@ -315,19 +315,19 @@ function fetchCartDataAndCheckStock() {
     function proceedToCheckout() {
     const checkoutButton = document.getElementById('checkoutButton');
     
-    // Kiểm tra xem nút có bị vô hiệu hóa không
-    if (checkoutButton.disabled) {
+    // Kiểm tra nếu nút bị vô hiệu hóa
+    if (!checkoutButton || checkoutButton.disabled) {
         alert('Không thể tiến hành thanh toán. Vui lòng kiểm tra lại tình trạng sản phẩm.');
         return;
     }
-
+    
+    // Lấy danh sách các sản phẩm trong giỏ hàng
     const cartItems = Array.from(document.querySelectorAll('#cartItemsBody tr')).map((row) => {
         const productId = row.getAttribute('data-product-id');
         const productName = row.querySelector('.product-name a').textContent.trim();
         const quantity = parseInt(row.querySelector('.cart-plus-minus-box').value) || 0;
         const price = parseFloat(row.querySelector('.product-price .amount').textContent.replace(/[^0-9]/g, '')) || 0;
         const subtotal = price * quantity;
-
         return {
             product_id: productId,
             name: productName,
@@ -336,22 +336,19 @@ function fetchCartDataAndCheckStock() {
             subtotal: subtotal,
         };
     });
-
     const totalBeforeVoucher = parseFloat(document.getElementById('cartTotal').textContent.replace(/[^0-9]/g, '')) || 0;
     const totalAfterVoucher = parseFloat(document.getElementById('cartTotalFinal').textContent.replace(/[^0-9]/g, '')) || totalBeforeVoucher;
-
     const checkoutData = {
         items: cartItems,
         totalBeforeVoucher: totalBeforeVoucher,
         totalAfterVoucher: totalAfterVoucher,
     };
-
     // Lưu dữ liệu vào localStorage để sử dụng trên trang checkout
     localStorage.setItem('checkoutData', JSON.stringify(checkoutData));
-
     // Chuyển hướng đến trang checkout
     window.location.href = '/check-out';
 }
+
 
     // Hàm xử lý khi nhấn nút "Cập nhật Voucher"
     function applyVoucher() {
