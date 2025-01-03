@@ -44,6 +44,7 @@ class Order extends Model
         self::STATUS_CONFIRMED,
         self::STATUS_SHIPPING,
         self::STATUS_COMPLETED,
+        self::STATUS_CANCEL,
     ];
 
     public function setStatus($status)
