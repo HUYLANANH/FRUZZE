@@ -9,10 +9,31 @@ use App\Models\OrderDetail;
 
 class DashboardController extends Controller
 {
-    public function getTotalRevenue()
+    public function getTotalRevenue(Request $request)
     {
-        // Lấy tổng doanh thu từ các đơn hàng có status là 'Hoàn tất'
-        $totalRevenue = Order::where('status', 'Hoàn tất')->sum('total_price');
+        // Lấy tháng và năm từ request, nếu không có thì mặc định là tháng và năm hiện tại
+        $month = $request->query('month', date('m')); // Mặc định là tháng hiện tại
+        $year = $request->query('year', date('Y')); // Mặc định là năm hiện tại
+
+        // Kiểm tra nếu tháng không hợp lệ
+        if (!preg_match('/^(0[1-9]|1[0-2])$/', $month)) {
+            return response()->json([
+                'error' => 'Tháng không hợp lệ. Vui lòng cung cấp tháng từ 01 đến 12.',
+            ], 400);
+        }
+
+        // Kiểm tra nếu năm không hợp lệ
+        if (!preg_match('/^\d{4}$/', $year)) {
+            return response()->json([
+                'error' => 'Năm không hợp lệ. Vui lòng cung cấp năm dưới dạng 4 chữ số.',
+            ], 400);
+        }
+
+        // Lấy tổng doanh thu từ các đơn hàng có status là 'Hoàn tất' trong tháng và năm đã cho
+        $totalRevenue = Order::where('status', 'Hoàn tất')
+            ->whereMonth('created_at', $month) // Lọc theo tháng
+            ->whereYear('created_at', $year) // Lọc theo năm
+            ->sum('total_price');
 
         // Trả về response dưới dạng JSON
         return response()->json([

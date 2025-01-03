@@ -120,7 +120,7 @@ Route::group([
 
 ], function ($router) {
     // lấy danh sách số lượng sản phẩm trong kho
-    Route::get('warehouse', [WarehouseController::class, 'index'])->middleware('admin');
+    Route::get('warehouse', [WarehouseController::class, 'index']);
     //thêm mới sản phẩm vào kho
     Route::post('warehouse', [WarehouseController::class, 'store'])->middleware('admin');
     //sửa số lượng sản phẩm trong kho
@@ -131,7 +131,7 @@ Route::group([
     'prefix' => 'dashboard',
 ], function ($router) {
     // lấy tổng doanh thu
-    Route::get('total_revenue', [DashboardController::class, 'getTotalRevenue'])->middleware('admin');
+    Route::get('total-revenue', [DashboardController::class, 'getTotalRevenue']);
     //lấy doanh thu hôm nay
     Route::get('today-revenue', [DashboardController::class, 'getTodayRevenue'])->middleware('admin');
     //lấy phần trăm trạng thái
@@ -139,7 +139,7 @@ Route::group([
     //lấy top 5 người dùng chi tiêu nhiều nhất
     Route::get('top-5-spending', [DashboardController::class, 'getTop5SpendingUsers'])->middleware('admin');
     //lấy top 5 người dùng chi tiêu nhiều nhất
-    Route::get('top-5-selling', [DashboardController::class, 'getTop5SellingProducts']);
+    Route::get('top-5-selling', [DashboardController::class, 'getTop5SellingProducts'])->middleware('admin');
 });
 
 Route::group([
