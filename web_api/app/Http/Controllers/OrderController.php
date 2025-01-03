@@ -116,6 +116,9 @@ class OrderController extends Controller
             $this->removeProductsFromCart($cart->id, $request->order_details);
         }
 
+        $emailController = new EmailController();
+        $emailController->sendOrderEmail($order->id,$user->email);
+
         return response()->json($order->load('orderDetails'), 201);
     }
 
