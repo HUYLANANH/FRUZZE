@@ -181,6 +181,6 @@ class DashboardController extends Controller
                     ->whereMonth('created_at', $month) // Lọc theo tháng
                     ->count(); // Đếm số lượng đơn hàng
 
-        return response()->json(['order_count' => $userCount], 200);
+        return response()->json(['user_count' => $userCount], 200);
     }
 }
