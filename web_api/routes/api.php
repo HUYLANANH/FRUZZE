@@ -142,15 +142,19 @@ Route::group([
     'prefix' => 'dashboard',
 ], function ($router) {
     // lấy tổng doanh thu
-    Route::get('total-revenue', [DashboardController::class, 'getTotalRevenue']);
+    Route::get('total-revenue', [DashboardController::class, 'getTotalRevenue'])->middleware('admin');
     //lấy doanh thu hôm nay
     Route::get('today-revenue', [DashboardController::class, 'getTodayRevenue'])->middleware('admin');
     //lấy phần trăm trạng thái
-    Route::get('order-status-percentages', [DashboardController::class, 'getOrderStatusPercentages'])->middleware('admin');
+    Route::get('order-status-percentages', [DashboardController::class, 'getOrderStatusPercentages']);
     //lấy top 5 người dùng chi tiêu nhiều nhất
     Route::get('top-5-spending', [DashboardController::class, 'getTop5SpendingUsers'])->middleware('admin');
-    //lấy top 5 người dùng chi tiêu nhiều nhất
+    //lấy top 5 sản phẩm bán chạy nhất
     Route::get('top-5-selling', [DashboardController::class, 'getTop5SellingProducts'])->middleware('admin');
+    //lấy số lượng đơn hàng
+    Route::get('order-count', [DashboardController::class, 'getOrder'])->middleware('admin');
+    //lấy số lượng người dùng
+    Route::get('user-count', [DashboardController::class, 'getUser'])->middleware('admin');
 });
 
 Route::group([

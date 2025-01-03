@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Order;
 use Carbon\Carbon;
 use App\Models\OrderDetail;
+use App\Models\User;
 
 class DashboardController extends Controller
 {
@@ -54,11 +55,14 @@ class DashboardController extends Controller
         ], 200);
     }
 
-    public function getOrderStatusPercentages()
+    public function getOrderStatusPercentages(Request $request)
     {
+        $month = $request->query('month', date('m')); // Mặc định là tháng hiện tại
+        $year = $request->query('year', date('Y')); // Mặc định là năm hiện tại
+
         // Lấy tổng số đơn hàng
-        $totalOrders = Order::whereMonth('created_at', Carbon::now()->month)
-                            ->whereYear('created_at', Carbon::now()->year)
+        $totalOrders = Order::whereMonth('created_at', $month)
+                            ->whereYear('created_at', $year)
                             ->count();
 
         // Nếu không có đơn hàng nào, trả về 0% cho tất cả các trạng thái
@@ -111,13 +115,18 @@ class DashboardController extends Controller
         return response()->json($percentages, 200);
     }
 
-    public function getTop5SpendingUsers()
+    public function getTop5SpendingUsers(Request $request)
     {
+        $month = $request->query('month', date('m')); // Mặc định là tháng hiện tại
+        $year = $request->query('year', date('Y')); // Mặc định là năm hiện tại
+
         $topUsers = Order::select('users.full_name', 'users.phone_number')
             ->selectRaw('SUM(total_price) as total_spent')
             ->selectRaw('COUNT(*) as total_orders') // Đếm số đơn hàng
             ->join('users', 'orders.user_id', '=', 'users.id') // Join với bảng users
             ->where('orders.status', 'Hoàn tất') // Chỉ tính cho các đơn hàng đã hoàn tất
+            ->whereYear('orders.created_at', $year) // Lọc theo năm
+            ->whereMonth('orders.created_at', $month) // Lọc theo tháng
             ->groupBy('user_id', 'users.full_name','users.phone_number') // Nhóm theo user_id và tên
             ->orderBy('total_spent', 'desc')
             ->take(5)
@@ -126,19 +135,52 @@ class DashboardController extends Controller
         return response()->json($topUsers, 200);
     }
 
-    public function getTop5SellingProducts()
+    public function getTop5SellingProducts(Request $request)
     {
+        $month = $request->query('month', date('m')); // Mặc định là tháng hiện tại
+        $year = $request->query('year', date('Y')); // Mặc định là năm hiện tại
+
         $topProducts = OrderDetail::select('products.name', 'products.price', 'warehouses.quantity') // Chọn tên, giá và số lượng tồn kho
             ->selectRaw('SUM(order_details.quantity) as total_sold') // Tính tổng số lượng đã bán
             ->join('orders', 'order_details.order_id', '=', 'orders.id') // Join với bảng orders
             ->join('products', 'order_details.product_id', '=', 'products.id') // Join với bảng products
             ->join('warehouses', 'products.id', '=', 'warehouses.product_id') // Join với bảng warehouse
             ->where('orders.status', 'Hoàn tất') // Chỉ tính cho các đơn hàng đã hoàn tất
+            ->whereYear('orders.created_at', $year) // Lọc theo năm
+            ->whereMonth('orders.created_at', $month) // Lọc theo tháng
             ->groupBy('order_details.product_id', 'products.name', 'products.price', 'warehouses.quantity') // Nhóm theo product_id
             ->orderBy('total_sold', 'desc') // Sắp xếp theo tổng số lượng bán
             ->take(5) // Lấy 5 sản phẩm
             ->get(['products.name', 'products.price', 'total_sold', 'warehouses.quantity']); // Chọn các trường cần thiết
 
         return response()->json($topProducts, 200);
+    }
+
+    public function getOrder(Request $request)
+    {
+        $month = $request->query('month', date('m')); // Mặc định là tháng hiện tại
+        $year = $request->query('year', date('Y')); // Mặc định là năm hiện tại
+
+        // Truy vấn lấy số lượng đơn hàng
+        $orderCount = Order::where('status', 'Hoàn tất') // Chỉ tính cho các đơn hàng đã hoàn tất
+            ->whereYear('created_at', $year) // Lọc theo năm
+            ->whereMonth('created_at', $month) // Lọc theo tháng
+            ->count(); // Đếm số lượng đơn hàng
+
+            return response()->json(['order_count' => $orderCount], 200);
+    }
+
+    public function getUser(Request $request)
+    {
+        $month = $request->query('month', date('m')); // Mặc định là tháng hiện tại
+        $year = $request->query('year', date('Y')); // Mặc định là năm hiện tại
+
+        // Truy vấn lấy số lượng đơn hàng
+        $userCount = User::where('role_id', 2)
+                    ->whereYear('created_at', $year) // Lọc theo năm
+                    ->whereMonth('created_at', $month) // Lọc theo tháng
+                    ->count(); // Đếm số lượng đơn hàng
+
+        return response()->json(['order_count' => $userCount], 200);
     }
 }
