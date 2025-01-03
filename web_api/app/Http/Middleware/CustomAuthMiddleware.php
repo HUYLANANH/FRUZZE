@@ -17,7 +17,7 @@ class CustomAuthMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if (!Auth::guard('api')->check()) {
-            return redirect('/login');
+            return redirect('http://127.0.0.1:8000/login');
         }
 
 

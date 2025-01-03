@@ -19,6 +19,6 @@ class AdminMiddleware
             return $next($request);
         }
 
-        return redirect('/admin/login');
+        return redirect('http://127.0.0.1:8000/admin/login');
     }
 }

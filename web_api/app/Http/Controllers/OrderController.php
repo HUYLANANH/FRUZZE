@@ -125,15 +125,22 @@ class OrderController extends Controller
     public function show(string $id)
     {
         // Tìm đơn hàng theo ID, kèm theo chi tiết sản phẩm
-        $order = Order::with('orderDetails')->find($id);
+        $orders = Order::with('orderDetails','orderDetails.product')->find($id);
 
         // Kiểm tra nếu đơn hàng không tồn tại
-        if (!$order) {
+        if (!$orders) {
             return response()->json(['message' => 'Order not found'], 404);
         }
 
+        $orderData = $orders->toArray();
+        foreach ($orderData['order_details'] as &$detail) {
+            $detail['product_name'] = $detail['product']['name'] ?? null; // Lấy product_name
+            unset($detail['product']); // Xóa thông tin không cần thiết
+            unset($detail['product_id']); // Xóa product_id nếu không cần
+        }
+
         // Trả về thông tin đơn hàng và chi tiết sản phẩm
-        return response()->json($order, 200);
+        return response()->json($orderData, 200);
     }
 
     public function myOrder()

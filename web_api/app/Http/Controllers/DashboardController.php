@@ -89,13 +89,22 @@ class DashboardController extends Controller
         return response()->json($percentages, 200);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function getTop5SpendingUsers()
     {
-        //
+        $topUsers = Order::select('users.full_name', 'users.phone_number')
+            ->selectRaw('SUM(total_price) as total_spent')
+            ->selectRaw('COUNT(*) as total_orders') // Đếm số đơn hàng
+            ->join('users', 'orders.user_id', '=', 'users.id') // Join với bảng users
+            ->where('orders.status', 'Hoàn tất') // Chỉ tính cho các đơn hàng đã hoàn tất
+            ->groupBy('user_id', 'users.full_name','users.phone_number') // Nhóm theo user_id và tên
+            ->orderBy('total_spent', 'desc')
+            ->take(5)
+            ->get(['users.full_name', 'users.phone_number', 'total_spent', 'total_orders']); // Chọn các trường cần thiết
+
+        return response()->json($topUsers, 200);
     }
+
+
 
     /**
      * Remove the specified resource from storage.
