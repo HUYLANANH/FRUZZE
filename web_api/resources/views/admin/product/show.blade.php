@@ -6,6 +6,9 @@
   <main class="main-content">
   <div class="container my-5">
     <h2 class="text-center mb-4">Quản lý sản phẩm</h2>
+    <div class="mb-3">
+      <button class="btn btn-success" onclick="addProduct()">Thêm sản phẩm</button>
+    </div>
 
     <table class="table table-bordered">
       <thead>
@@ -116,7 +119,10 @@ function renderPagination(data) {
     `;
   }
 }
-
+// Add product
+function addProduct() {
+  window.location.href = '/product/add'; // Đường dẫn đến trang tạo sản phẩm
+}
 // Edit product
 function editProduct(productId) {
   window.location.href = `/product/update/${productId}`; // Đường dẫn đến trang sửa sản phẩm
