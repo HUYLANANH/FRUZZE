@@ -131,18 +131,20 @@ Route::group([
     'prefix' => 'dashboard',
 ], function ($router) {
     // lấy tổng doanh thu
-    Route::get('total_revenue', [DashboardController::class, 'getTotalRevenue']);
+    Route::get('total_revenue', [DashboardController::class, 'getTotalRevenue'])->middleware('admin');
     //lấy doanh thu hôm nay
-    Route::get('today-revenue', [DashboardController::class, 'getTodayRevenue']);
+    Route::get('today-revenue', [DashboardController::class, 'getTodayRevenue'])->middleware('admin');
     //lấy phần trăm trạng thái
-    Route::get('order-status-percentages', [DashboardController::class, 'getOrderStatusPercentages']);
+    Route::get('order-status-percentages', [DashboardController::class, 'getOrderStatusPercentages'])->middleware('admin');
+    //lấy top 5 người dùng chi tiêu nhiều nhất
+    Route::get('top-5-spending', [DashboardController::class, 'getTop5SpendingUsers']);
 });
 
 Route::group([
     'prefix' => 'payment',
 ], function ($router) {
     // lấy tổng doanh thu
-    Route::get('vnpay', [VNPayController::class, 'vnpay_payment']);
+    Route::get('vnpay', [VNPayController::class, 'vnpay_payment'])->middleware('check_login');
     //lấy doanh thu hôm nay
     Route::get('vnpay_return', [VNPayController::class, 'return']);
 });
